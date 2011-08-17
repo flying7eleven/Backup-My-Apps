@@ -1,0 +1,8 @@
+*.swp
+*~
+.DS_Store
+.metadata
+*.class
+*.apk
+*.dex
+*.ap_
