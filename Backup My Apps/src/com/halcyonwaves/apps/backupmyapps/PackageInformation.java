@@ -55,6 +55,6 @@ public class PackageInformation {
      * @since 1.0
      */
     public void logPackage() {
-    	Log.v(PackageInformation.class.getName(), "Application(" + this.appname + "), Package(" + this.pname + "), VersionOfficial(" + this.versionName + "), VersionInternal(" + this.versionCode + ")" );
+    	Log.v(PackageInformation.class.getSimpleName(), "Application(" + this.appname + "), Package(" + this.pname + "), VersionOfficial(" + this.versionName + "), VersionInternal(" + this.versionCode + ")" );
     }
 }
