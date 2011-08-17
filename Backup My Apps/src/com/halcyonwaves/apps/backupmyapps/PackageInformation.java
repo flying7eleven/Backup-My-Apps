@@ -3,7 +3,7 @@ package com.halcyonwaves.apps.backupmyapps;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
-public class PInfo {
+public class PackageInformation {
     private String appname = "";
     private String pname = "";
     private String versionName = "";
