@@ -6,3 +6,4 @@
 *.apk
 *.dex
 *.ap_
+*/gen/*
