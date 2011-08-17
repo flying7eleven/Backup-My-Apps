@@ -5,4 +5,6 @@
     android:layout_height="fill_parent"
     >
     <TextView android:text="@string/textViewApplicationInformation" android:layout_height="wrap_content" android:id="@+id/textViewApplicationInformation" android:layout_width="match_parent"></TextView>
+    <Button android:text="@string/buttonBackupInstalledApplications" android:layout_height="wrap_content" android:id="@+id/buttonBackupInstalledApplications" android:layout_width="match_parent"></Button>
+    <Button android:text="@string/buttonRestoreInstalledApplications" android:layout_height="wrap_content" android:id="@+id/buttonRestoreInstalledApplications" android:layout_width="match_parent"></Button>
 </LinearLayout>
