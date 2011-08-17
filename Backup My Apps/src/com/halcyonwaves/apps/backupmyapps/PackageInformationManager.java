@@ -13,24 +13,20 @@ public class PackageInformationManager {
 		// TODO: implement this
 	}
 	
-	private PackageManager getPackageManager() {
-		return this.internalPackageManager;
-	}
-	
-	private ArrayList<PackageInformation> getInstalledApps(boolean getSysPackages) {
+	public ArrayList<PackageInformation> getInstalledApps(boolean getSysPackages) {
 	    ArrayList<PackageInformation> res = new ArrayList<PackageInformation>();        
-	    List<PackageInfo> packs = getPackageManager().getInstalledPackages(0);
+	    List<PackageInfo> packs = this.internalPackageManager.getInstalledPackages(0);
 	    for(int i=0;i<packs.size();i++) {
 	        PackageInfo p = packs.get(i);
 	        if ((!getSysPackages) && (p.versionName == null)) {
 	            continue ;
 	        }
 	        PackageInformation newInfo = new PackageInformation();
-	        newInfo.appname = p.applicationInfo.loadLabel(getPackageManager()).toString();
+	        newInfo.appname = p.applicationInfo.loadLabel(this.internalPackageManager).toString();
 	        newInfo.pname = p.packageName;
 	        newInfo.versionName = p.versionName;
 	        newInfo.versionCode = p.versionCode;
-	        newInfo.icon = p.applicationInfo.loadIcon(getPackageManager());
+	        newInfo.icon = p.applicationInfo.loadIcon(this.internalPackageManager);
 	        res.add(newInfo);
 	    }
 	    return res; 
