@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
         // add a click handler for the button to backup the installed applications
         this.buttonBackupInstalledApplications.setOnClickListener( new OnClickListener() {
 			public void onClick(View v) {
-				// TODO this
+				// TODO this 
 			}
 		});
         
