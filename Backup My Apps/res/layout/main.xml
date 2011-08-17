@@ -3,4 +3,5 @@
     <TextView android:text="@string/textViewApplicationInformation" android:layout_height="wrap_content" android:id="@+id/textViewApplicationInformation" android:layout_width="match_parent" android:paddingBottom="20px"></TextView>
     <Button android:text="@string/buttonBackupInstalledApplications" android:layout_height="wrap_content" android:id="@+id/buttonBackupInstalledApplications" android:layout_width="match_parent"></Button>
     <Button android:text="@string/buttonRestoreInstalledApplications" android:layout_height="wrap_content" android:id="@+id/buttonRestoreInstalledApplications" android:layout_width="match_parent"></Button>
+    <ProgressBar android:layout_height="wrap_content" android:id="@+id/progressBarCurrentStatus" android:layout_width="match_parent" style="@android:style/Widget.ProgressBar.Horizontal"></ProgressBar>
 </LinearLayout>
