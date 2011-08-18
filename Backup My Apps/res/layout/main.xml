@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-    <TextView android:text="@string/textViewApplicationInformation" android:layout_height="wrap_content" android:id="@+id/textViewApplicationInformation" android:layout_width="match_parent" android:paddingBottom="20px"></TextView>
+    <TextView android:text="@string/textViewApplicationInformation" android:layout_height="wrap_content" android:id="@+id/textViewApplicationInformation" android:layout_width="match_parent" android:paddingBottom="20dp"></TextView>
     <Button android:text="@string/buttonBackupInstalledApplications" android:layout_height="wrap_content" android:id="@+id/buttonBackupInstalledApplications" android:layout_width="match_parent"></Button>
     <Button android:text="@string/buttonRestoreInstalledApplications" android:layout_height="wrap_content" android:id="@+id/buttonRestoreInstalledApplications" android:layout_width="match_parent"></Button>
-    <ProgressBar android:layout_height="wrap_content" android:id="@+id/progressBarCurrentStatus" android:layout_width="match_parent" style="@android:style/Widget.ProgressBar.Horizontal"></ProgressBar>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="5dp">
+    	<ProgressBar android:layout_height="wrap_content" android:id="@+id/progressBarCurrentStatus" android:layout_width="fill_parent" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" style="@android:style/Widget.ProgressBar.Horizontal"></ProgressBar>
+    	<TextView android:id="@+id/textViewCurrentProcess" android:layout_width="fill_parent" android:gravity="center" android:layout_marginTop="5dp" android:layout_height="wrap_content" android:text="@string/textViewCurrentProcess" />
+    </LinearLayout>
 </LinearLayout>
