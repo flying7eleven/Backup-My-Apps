@@ -1,7 +1,12 @@
 package com.halcyonwaves.apps.backupmyapps;
 
+import java.io.File;
+import java.io.IOException;
+
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -26,7 +31,12 @@ public class MainActivity extends Activity {
         // add a click handler for the button to backup the installed applications
         this.buttonBackupInstalledApplications.setOnClickListener( new OnClickListener() {
 			public void onClick(View v) {
-				// TODO this 
+		        File newxmlfile = new File(Environment.getExternalStorageDirectory()+"/applicationBackupList.xml");
+		        try{
+		                newxmlfile.createNewFile();
+		        }catch(IOException e){
+		                Log.e("IOException", "exception in createNewFile() method");
+		        }
 			}
 		});
         
