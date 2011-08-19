@@ -16,6 +16,7 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 	private Button buttonBackupInstalledApplications = null;
 	private Button buttonRestoreInstalledApplications = null;
+	static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
@@ -36,13 +37,15 @@ public class MainActivity extends Activity {
 		// add a click handler for the button to backup the installed applications
 		this.buttonBackupInstalledApplications.setOnClickListener( new OnClickListener() {
 			public void onClick( View v ) {
+				// just log some information
 				Log.v( MainActivity.class.getSimpleName(), "Using following external storage directory: " + Environment.getExternalStorageDirectory() );
-				
-				File newxmlfile = new File( Environment.getExternalStorageDirectory() + "/applicationBackupList.xml" );
+
+				// try to open the output file
+				File backupFile = new File( Environment.getExternalStorageDirectory() + "/" + MainActivity.BACKUP_FILENAME );
 				try {
-					newxmlfile.createNewFile();
+					backupFile.createNewFile();
 				} catch( IOException e ) {
-					Log.e( "IOException", "exception in createNewFile() method" );
+					Log.e( MainActivity.class.getSimpleName(), "Failed to create the backup file. The message was: " + e.getMessage() );
 				}
 			}
 		} );
