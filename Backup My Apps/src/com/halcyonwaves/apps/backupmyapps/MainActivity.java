@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ProgressBar;
 
 public class MainActivity extends Activity {
 	private Button buttonBackupInstalledApplications = null;
