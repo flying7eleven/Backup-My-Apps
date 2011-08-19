@@ -48,6 +48,15 @@ public class PackageInformation {
 	}
 
 	/**
+	 * Checks if the component belongs to Android or not.
+	 * 
+	 * @return True if the component belongs to Android, false if not.
+	 */
+	public boolean isSystemComponent() {
+		return this.pname.toLowerCase().startsWith( "com.android." );
+	}
+
+	/**
 	 * Log the information of the managed package to the logging manager.
 	 * 
 	 * @author Tim Huetz
