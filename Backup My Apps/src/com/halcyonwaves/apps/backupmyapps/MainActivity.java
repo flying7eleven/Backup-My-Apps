@@ -6,6 +6,7 @@ import java.io.IOException;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -52,17 +53,17 @@ public class MainActivity extends Activity {
 		});
         
         // if no external storage is mounted, show an error and close
-        if( !Environment.getExternalStorageState().equals( Environment.MEDIA_MOUNTED ) ) {
-        	try {
-        		AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        		dialogBuilder.setMessage(R.string.dialogMessageNoExternalStorageMounted);
-        		dialogBuilder.setCancelable(false);
-        		AlertDialog infoDialog = dialogBuilder.create();
-        		infoDialog.show();
-				this.finalize();
-			} catch (Throwable e) {
-				Log.e( MainActivity.class.getSimpleName(), "Failed to finalize the activity after no mounted storage device was found!" );
-			}
+        if( Environment.getExternalStorageState().equals( Environment.MEDIA_MOUNTED ) ) {
+        	AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        	dialogBuilder.setMessage(R.string.dialogMessageNoExternalStorageMounted);
+        	dialogBuilder.setCancelable(false);
+        	dialogBuilder.setPositiveButton(R.string.buttonOk, new DialogInterface.OnClickListener() {
+        		public void onClick(DialogInterface dialog, int id) {
+        			MainActivity.this.finish();
+        		}
+        	});
+        	AlertDialog infoDialog = dialogBuilder.create();
+        	infoDialog.show();
         }
     }
 }
