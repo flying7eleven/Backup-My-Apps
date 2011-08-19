@@ -29,12 +29,15 @@ public class MainActivity extends Activity {
 
 		// if there is no backup file, disable the restore button
 		if( true ) { // TODO: this
+			Log.v( MainActivity.class.getSimpleName(), "No backup file found, disabling the restore button." );
 			this.buttonRestoreInstalledApplications.setEnabled( false );
 		}
 
 		// add a click handler for the button to backup the installed applications
 		this.buttonBackupInstalledApplications.setOnClickListener( new OnClickListener() {
 			public void onClick( View v ) {
+				Log.v( MainActivity.class.getSimpleName(), "Using following external storage directory: " + Environment.getExternalStorageDirectory() );
+				
 				File newxmlfile = new File( Environment.getExternalStorageDirectory() + "/applicationBackupList.xml" );
 				try {
 					newxmlfile.createNewFile();
