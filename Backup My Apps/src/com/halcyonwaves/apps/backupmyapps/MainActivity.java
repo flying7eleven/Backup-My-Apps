@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -20,11 +22,11 @@ public class MainActivity extends Activity {
     	// create the layout of the main activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
+               
         // get some control handles
         this.buttonBackupInstalledApplications = (Button)this.findViewById( R.id.buttonBackupInstalledApplications );
         this.buttonRestoreInstalledApplications = (Button)this.findViewById( R.id.buttonRestoreInstalledApplications );
-        
+               
         // if there is no backup file, disable the restore button
         if( true ) { // TODO: this
         	this.buttonRestoreInstalledApplications.setEnabled( false );
@@ -48,5 +50,19 @@ public class MainActivity extends Activity {
 				// TODO this
 			}
 		});
+        
+        // if no external storage is mounted, show an error and close
+        if( !Environment.getExternalStorageState().equals( Environment.MEDIA_MOUNTED ) ) {
+        	try {
+        		AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        		dialogBuilder.setMessage(R.string.dialogMessageNoExternalStorageMounted);
+        		dialogBuilder.setCancelable(false);
+        		AlertDialog infoDialog = dialogBuilder.create();
+        		infoDialog.show();
+				this.finalize();
+			} catch (Throwable e) {
+				Log.e( MainActivity.class.getSimpleName(), "Failed to finalize the activity after no mounted storage device was found!" );
+			}
+        }
     }
 }
