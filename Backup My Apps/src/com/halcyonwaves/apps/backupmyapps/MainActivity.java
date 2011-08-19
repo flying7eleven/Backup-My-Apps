@@ -53,7 +53,7 @@ public class MainActivity extends Activity {
 		});
         
         // if no external storage is mounted, show an error and close
-        if( Environment.getExternalStorageState().equals( Environment.MEDIA_MOUNTED ) ) {
+        if( !Environment.getExternalStorageState().equals( Environment.MEDIA_MOUNTED ) ) {
         	AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         	dialogBuilder.setMessage(R.string.dialogMessageNoExternalStorageMounted);
         	dialogBuilder.setCancelable(false);
