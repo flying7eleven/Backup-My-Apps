@@ -37,11 +37,15 @@ public class MainActivity extends Activity {
 		// add a click handler for the button to backup the installed applications
 		this.buttonBackupInstalledApplications.setOnClickListener( new OnClickListener() {
 			public void onClick( View v ) {
+				// be sure that the storage path exists
+				File storagePath = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS );
+				storagePath.mkdirs();
+				
 				// just log some information
-				Log.v( MainActivity.class.getSimpleName(), "Using following external storage directory: " + Environment.getExternalStorageDirectory() );
+				Log.v( MainActivity.class.getSimpleName(), "Using following external storage directory: " + storagePath );
 
 				// try to open the output file
-				File backupFile = new File( Environment.getExternalStorageDirectory() + "/" + MainActivity.BACKUP_FILENAME );
+				File backupFile = new File( storagePath, MainActivity.BACKUP_FILENAME );
 				try {
 					backupFile.createNewFile();
 				} catch( IOException e ) {
