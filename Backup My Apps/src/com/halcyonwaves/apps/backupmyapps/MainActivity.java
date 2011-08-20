@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,7 +20,9 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 	private Button buttonBackupInstalledApplications = null;
 	private Button buttonRestoreInstalledApplications = null;
-	static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
+	private PackageInformationManager packageInformationManager = null;
+	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
+	private final File storagePath = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS );
 
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
@@ -36,21 +40,44 @@ public class MainActivity extends Activity {
 			this.buttonRestoreInstalledApplications.setEnabled( false );
 		}
 
+		// be sure that the storage path exists
+		this.storagePath.mkdirs();
+
+		// get the package manager for this activity
+		this.packageInformationManager = new PackageInformationManager( this );
+
 		// add a click handler for the button to backup the installed applications
 		this.buttonBackupInstalledApplications.setOnClickListener( new OnClickListener() {
 			public void onClick( View v ) {
-				// be sure that the storage path exists
-				File storagePath = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS );
-				storagePath.mkdirs();
-
 				// just log some information
-				Log.v( MainActivity.class.getSimpleName(), "Using following external storage directory: " + storagePath );
+				Log.v( MainActivity.class.getSimpleName(), "Using following external storage directory: " + MainActivity.this.storagePath );
 
 				// try to open the output file
-				File backupFile = new File( storagePath, MainActivity.BACKUP_FILENAME );
+				File backupFile = new File( MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME );
 				try {
 					backupFile.createNewFile();
 					OutputStream backupFileStream = new FileOutputStream( backupFile );
+					PrintStream backupFilePrintStream = new PrintStream( backupFileStream );
+
+					// write the XML meta information
+					backupFilePrintStream.print( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" );
+					backupFilePrintStream.print( "<BackupMyApps version=\"1.0\">" );
+
+					// loop through the found packages and write them into the file
+					ArrayList< PackageInformation > foundPackages = MainActivity.this.packageInformationManager.getInstalledApps();
+					for( PackageInformation currentPackage : foundPackages ) {
+						if( !currentPackage.isSystemComponent() ) {
+							backupFilePrintStream.print( "<InstalledApp packageName=\"" + currentPackage.getPackageName() + "\" " );
+							backupFilePrintStream.print( "humanReadableName=\"" + currentPackage.getApplicationName() + "\" " );
+							backupFilePrintStream.print( "versionCode=\"" + currentPackage.getVersionCode() + "\" " );
+							backupFilePrintStream.print( "versionName=\"" + currentPackage.getVersionName() + "\"" );
+							backupFilePrintStream.print( "/>" );
+						}
+					}
+
+					// write the closing tags
+					backupFilePrintStream.print( "</BackupMyApps>" );
+
 					// TODO: this
 					backupFileStream.close();
 				} catch( IOException e ) {
