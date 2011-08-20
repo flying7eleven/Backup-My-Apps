@@ -7,4 +7,5 @@
     <string name="textViewCurrentProcess">No current progress</string>
     <string name="dialogMessageNoExternalStorageMounted">It seems that there is no external storage device mounted on your device. This application relies on having such a device and will close now.</string>
     <string name="buttonOk">OK</string>
+    <string name="progressDialogBackupInProgress">Gathering and saving application backup information. Please wait...</string>
 </resources>

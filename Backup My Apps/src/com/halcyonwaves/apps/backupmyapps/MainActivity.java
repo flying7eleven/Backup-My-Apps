@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Environment;
@@ -52,6 +53,9 @@ public class MainActivity extends Activity {
 				// just log some information
 				Log.v( MainActivity.class.getSimpleName(), "Using following external storage directory: " + MainActivity.this.storagePath );
 
+				// show a progress dialog
+				ProgressDialog backupProgressDialog = ProgressDialog.show( MainActivity.this, "", MainActivity.this.getString( R.string.progressDialogBackupInProgress ), true );
+
 				// try to open the output file
 				File backupFile = new File( MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME );
 				try {
@@ -78,9 +82,11 @@ public class MainActivity extends Activity {
 					// write the closing tags and close the stream
 					backupFilePrintStream.print( "</BackupMyApps>" );
 					backupFileStream.close();
-					
-					// as we succeeded in writing the file, we can enable the restore button now
+
+					// as we succeeded in writing the file, we can enable the restore button now and disable the
+					// progress dialog
 					MainActivity.this.buttonRestoreInstalledApplications.setEnabled( true );
+					backupProgressDialog.dismiss();
 				} catch( IOException e ) {
 					Log.e( MainActivity.class.getSimpleName(), "Failed to create the backup file. The message was: " + e.getMessage() );
 				}
