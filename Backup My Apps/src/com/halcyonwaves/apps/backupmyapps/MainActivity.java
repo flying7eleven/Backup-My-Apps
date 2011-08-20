@@ -75,11 +75,12 @@ public class MainActivity extends Activity {
 						}
 					}
 
-					// write the closing tags
+					// write the closing tags and close the stream
 					backupFilePrintStream.print( "</BackupMyApps>" );
-
-					// TODO: this
 					backupFileStream.close();
+					
+					// as we succeeded in writing the file, we can enable the restore button now
+					MainActivity.this.buttonRestoreInstalledApplications.setEnabled( true );
 				} catch( IOException e ) {
 					Log.e( MainActivity.class.getSimpleName(), "Failed to create the backup file. The message was: " + e.getMessage() );
 				}
