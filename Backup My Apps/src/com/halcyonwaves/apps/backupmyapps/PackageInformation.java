@@ -65,4 +65,48 @@ public class PackageInformation {
 	public void logPackage() {
 		Log.v( PackageInformation.class.getSimpleName(), "Application(" + this.appname + "), Package(" + this.pname + "), VersionOfficial(" + this.versionName + "), VersionInternal(" + this.versionCode + ")" );
 	}
+
+	/**
+	 * Get the name of the package of the managed application.
+	 * 
+	 * @author Tim Huetz
+	 * @since 1.0
+	 * @return The package name of the application.
+	 */
+	public String getPackageName() {
+		return this.pname;
+	}
+
+	/**
+	 * Get the name of the managed application.
+	 * 
+	 * @author Tim Huetz
+	 * @since 1.0
+	 * @return The name of the application.
+	 */
+	public String getApplicationName() {
+		return this.appname;
+	}
+
+	/**
+	 * Get the internally used version code number.
+	 * 
+	 * @author Tim Huetz
+	 * @since 1.0
+	 * @return The version code which is used internally.
+	 */
+	public int getVersionCode() {
+		return this.versionCode;
+	}
+
+	/**
+	 * Get the human readable version name.
+	 * 
+	 * @author Tim Huetz
+	 * @since 1.0
+	 * @return The human readable name of the version.
+	 */
+	public String getVersionName() {
+		return this.versionName;
+	}
 }
