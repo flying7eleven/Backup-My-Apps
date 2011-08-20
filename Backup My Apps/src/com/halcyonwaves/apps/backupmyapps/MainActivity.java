@@ -1,7 +1,9 @@
 package com.halcyonwaves.apps.backupmyapps;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -40,7 +42,7 @@ public class MainActivity extends Activity {
 				// be sure that the storage path exists
 				File storagePath = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS );
 				storagePath.mkdirs();
-				
+
 				// just log some information
 				Log.v( MainActivity.class.getSimpleName(), "Using following external storage directory: " + storagePath );
 
@@ -48,6 +50,9 @@ public class MainActivity extends Activity {
 				File backupFile = new File( storagePath, MainActivity.BACKUP_FILENAME );
 				try {
 					backupFile.createNewFile();
+					OutputStream backupFileStream = new FileOutputStream( backupFile );
+					// TODO: this
+					backupFileStream.close();
 				} catch( IOException e ) {
 					Log.e( MainActivity.class.getSimpleName(), "Failed to create the backup file. The message was: " + e.getMessage() );
 				}
