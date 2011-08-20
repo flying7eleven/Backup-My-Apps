@@ -36,7 +36,8 @@ public class MainActivity extends Activity {
 		this.buttonRestoreInstalledApplications = (Button)this.findViewById( R.id.buttonRestoreInstalledApplications );
 
 		// if there is no backup file, disable the restore button
-		if( true ) { // TODO: this
+		File backupFile = new File( this.storagePath, MainActivity.BACKUP_FILENAME );
+		if( !backupFile.exists() ) {
 			Log.v( MainActivity.class.getSimpleName(), "No backup file found, disabling the restore button." );
 			this.buttonRestoreInstalledApplications.setEnabled( false );
 		}
@@ -83,7 +84,8 @@ public class MainActivity extends Activity {
 					backupFilePrintStream.print( "</BackupMyApps>" );
 					backupFileStream.close();
 
-					// as we succeeded in writing the file, we can enable the restore button now and disable the
+					// as we succeeded in writing the file, we can enable the restore button now and
+					// disable the
 					// progress dialog
 					MainActivity.this.buttonRestoreInstalledApplications.setEnabled( true );
 					backupProgressDialog.dismiss();
