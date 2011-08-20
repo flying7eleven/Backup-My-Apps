@@ -36,10 +36,9 @@ public class PackageInformationManager {
 	 * 
 	 * @author Tim Huetz
 	 * @since 1.0
-	 * @param getSysPackages True if the system packages should also be listed, False if not.
 	 * @return A list of all found packages.
 	 */
-	public ArrayList< PackageInformation > getInstalledApps( boolean getSysPackages ) {
+	public ArrayList< PackageInformation > getInstalledApps() {
 		// allocated some resources and get the package list
 		ArrayList< PackageInformation > res = new ArrayList< PackageInformation >();
 		List< PackageInfo > packs = this.internalPackageManager.getInstalledPackages( 0 );
@@ -48,11 +47,6 @@ public class PackageInformationManager {
 		for( int i = 0; i < packs.size(); i++ ) {
 			// get the package information
 			PackageInfo p = packs.get( i );
-
-			// system packages have no version name, if they should be ignored, ignore them
-			if( (!getSysPackages) && (p.versionName == null) ) {
-				continue;
-			}
 
 			// get some extended properties
 			String appname = p.applicationInfo.loadLabel( this.internalPackageManager ).toString();
