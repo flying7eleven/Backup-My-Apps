@@ -20,10 +20,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	private Button buttonBackupInstalledApplications = null;
 	private Button buttonRestoreInstalledApplications = null;
+	private TextView textViewAdditionalInformation = null;
 	private PackageInformationManager packageInformationManager = null;
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS );
@@ -37,7 +39,11 @@ public class MainActivity extends Activity {
 		// get some control handles
 		this.buttonBackupInstalledApplications = (Button)this.findViewById( R.id.buttonBackupInstalledApplications );
 		this.buttonRestoreInstalledApplications = (Button)this.findViewById( R.id.buttonRestoreInstalledApplications );
+		this.textViewAdditionalInformation = (TextView)this.findViewById( R.id.textViewAdditionalInformation );
 
+		// set the correct text for the label for additional information
+		this.textViewAdditionalInformation.setText( String.format( this.getString( R.string.textViewAdditionalInformation ), "\"" + this.storagePath + "\"" ) );
+		
 		// if there is no backup file, disable the restore button
 		File backupFile = new File( this.storagePath, MainActivity.BACKUP_FILENAME );
 		if( !backupFile.exists() ) {
