@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menuHelp" android:title="@string/menuHelp"></item>
-    <item android:id="@+id/menuExit" android:title="@string/menuExit"></item>
+    <item android:id="@+id/menuHelp" android:title="@string/menuHelp" android:icon="@android:drawable/ic_menu_help"></item>
+    <item android:id="@+id/menuExit" android:title="@string/menuExit" android:icon="@android:drawable/ic_menu_close_clear_cancel"></item>
     
 </menu>
