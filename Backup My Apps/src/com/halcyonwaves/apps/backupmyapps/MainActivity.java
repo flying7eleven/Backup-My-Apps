@@ -16,6 +16,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -125,6 +126,20 @@ public class MainActivity extends Activity {
 			} );
 			AlertDialog infoDialog = dialogBuilder.create();
 			infoDialog.show();
+		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected( MenuItem item ) {
+		switch( item.getItemId() ) {
+			case R.id.menuHelp:
+				// TODO: implement this
+				return true;
+			case R.id.menuExit:
+				this.finish();
+				return true;
+			default:
+				return super.onOptionsItemSelected( item );
 		}
 	}
 
