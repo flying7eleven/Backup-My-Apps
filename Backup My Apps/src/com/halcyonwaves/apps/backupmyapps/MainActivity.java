@@ -98,7 +98,16 @@ public class MainActivity extends Activity {
 		// add a click handler for the button to restore the applications
 		this.buttonRestoreInstalledApplications.setOnClickListener( new OnClickListener() {
 			public void onClick( View v ) {
-				// TODO this
+				AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( MainActivity.this );
+				dialogBuilder.setMessage( R.string.dialogMessageNotImplemented );
+				dialogBuilder.setCancelable( false );
+				dialogBuilder.setPositiveButton( R.string.buttonOk, new DialogInterface.OnClickListener() {
+					public void onClick( DialogInterface dialog, int id ) {
+						dialog.dismiss();
+					}
+				} );
+				AlertDialog infoDialog = dialogBuilder.create();
+				infoDialog.show();
 			}
 		} );
 

@@ -8,4 +8,5 @@
     <string name="dialogMessageNoExternalStorageMounted">It seems that there is no external storage device mounted on your device. This application relies on having such a device and will close now.</string>
     <string name="buttonOk">OK</string>
     <string name="progressDialogBackupInProgress">Gathering and saving application backup information. Please wait...</string>
+    <string name="dialogMessageNotImplemented">Unfortunately, this feature is currently not implemented. It will be available as soon as possible through an update in the Android Market.</string>
 </resources>
