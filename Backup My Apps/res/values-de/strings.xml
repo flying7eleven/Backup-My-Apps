@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="applicationName">Backup My Apps</string>
-    <string name="textViewApplicationInformation">Diese Anwendung wurde dafür entwickelt eine Sicherung der von Ihnen auf diesem Gerät installierten Pakete zu erstellen. Dabei werden lediglich Metainformationen über die Pakete gespeichert, so dass diese in einem Wiederherstellungsvorgang über den Market installiert werden können. Dies reduziert bei einem neuen Gerät (oder nach dem zurücksetzen des Gerätes auf Werkszustand) eine Menge Arbeit.</string>
+    <string name="textViewApplicationInformation">Diese Anwendung wurde dafür entwickelt eine Sicherung der von Ihnen auf diesem Gerät installierten Pakete zu erstellen. Dabei werden lediglich Metainformationen über die Pakete gespeichert, so dass diese in einem Wiederherstellungsvorgang über den Market installiert werden können. Dies reduziert bei einem neuen Gerät (oder nach dem Zurücksetzen des Gerätes auf Werkszustand) den Arbeitsaufwand.</string>
     <string name="buttonBackupInstalledApplications">Anwendungsliste sichern</string>
     <string name="buttonRestoreInstalledApplications">Anwendungen wiederherstellen</string>
-    <string name="dialogMessageNoExternalStorageMounted">Es scheint das kein externes Speichermedium verfügbar ist. Thise Anwendung benötigt zwingend ein externes Speichermedium und wird sich nun beenden.</string>
+    <string name="dialogMessageNoExternalStorageMounted">Es scheint kein externes Speichermedium verfügbar zu sein. Thise Anwendung benötigt zwingend ein externes Speichermedium und wird sich nun beenden.</string>
     <string name="buttonOk">OK</string>
-    <string name="progressDialogBackupInProgress">Ermittelung und Speicherung der Metainformationen der installierten Anwendungen. Bitte warten...</string>
+    <string name="progressDialogBackupInProgress">Ermittlung und Speicherung der Metainformationen der installierten Anwendungen. Bitte warten...</string>
     <string name="dialogMessageNotImplemented">Leider ist diese Funktion derzeit noch nicht implementiert. Diese Funktion wird so schnell wie möglich durch ein Update im Android Market nachgeliefert.</string>
     <string name="menuHelp">Hilfe</string>
     <string name="menuExit">Beenden</string>
-    <string name="textViewAdditionalInformation">Um die installierten Anwendung zu sichern, drücken Sie auf den entsprechenden Knopf. Die Sicherungsinformationen werden unter %s gesichert. Um die Anwendungen wiederherzustellen, kopieren Sie die Sicherungsdatei in den selben Ordner und drücken Sie den Wiederherstellungsknop.\n\nFür weitere Informationen öffnen Sie das Menü und wählen Sie den Hilfeeintrag.</string>
+    <string name="textViewAdditionalInformation">Um die installierten Anwendungen zu sichern, drücken Sie auf den entsprechenden Knopf. Die Sicherungsinformationen werden unter %s gesichert. Um die Anwendungen wiederherzustellen, kopieren Sie die Sicherungsdatei in denselben Ordner und drücken Sie den Wiederherstellungsknopf.\n\nFür weitere Informationen öffnen Sie das Menü und wählen Sie den Hilfeeintrag.</string>
     <string name="dialogTitleHelpDialog">Hilfe</string>
-    <string name="textViewHelpText">Diese Anwendung ließt Informationen über die installierten Anwendungen ein und speichert diese in einer XML-Datei. Diese Datei kann dazu genutzt werden, die Anwendungen erneut auf einem neuen Gerät oder nach dem zurücksetzen des Geräts zu installieren.\n\nDa diese Anwendung noch in der Entwicklung steckt, erscheinen regelmäßig Updates im Android Market. Des Weiteren kann es zu Fehlern in der Anwendung kommen.</string>
+    <string name="textViewHelpText">Diese Anwendung liest Informationen über die installierten Anwendungen ein und speichert diese in eine XML-Datei. Diese Datei kann dazu genutzt werden, die Anwendungen erneut auf einem neuen Gerät oder nach dem Zurücksetzen des Geräts zu installieren.\n\nDa diese Anwendung noch in der Entwicklung steckt, erscheinen regelmäßig Updates im Android Market. Des Weiteren kann es zu Fehlern in der Anwendung kommen.</string>
     <string name="menuAbout">Über...</string>
     <string name="dialogTitleAboutDialog">Über...</string>
-    <string name="textViewAboutInformation">Diese Anwendung wurd 2011 von Tim Hütz entwickelt. Die Grafiken wurden von Tango harm-on-icons erstellt.\n</string>
+    <string name="textViewAboutInformation">Diese Anwendung wurde 2011 von Tim Hütz entwickelt. Die Grafiken wurden von Tango harm-on-icons erstellt.\n</string>
     <string name="textViewAboutAppName">Backup My Apps %s</string>
 </resources>
