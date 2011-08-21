@@ -3,7 +3,7 @@ package com.halcyonwaves.apps.backupmyapps;
 import android.os.AsyncTask;
 
 /**
- * Class for gathering the backup information in an async way.
+ * Class for gathering the backup information in an asynchronous way.
  * 
  * @author Tim Huetz
  * @since 0.2
