@@ -14,5 +14,5 @@
     <string name="textViewAdditionalInformation">To backup the installed application, press the backup button. The file with the backup information will be stored in %s. To restore the applications place the file with the backup information in the same folder and press the restore button.\n\nFor more information open the menu and select the Help item.</string>
     <string name="dialogTitleHelpDialog">Help</string>
     <string name="buttonCloseHelp">Close help</string>
-    <string name="textViewHelpText">TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO.</string>
+    <string name="textViewHelpText">This application reads information about the installed applications and stores this information in a XML file. This file can be used to reinstall all applications on a new device or after a factory reset.\n\n As this application is still on heavy development, please expect frequent updates and bus inside of the application.</string>
 </resources>
