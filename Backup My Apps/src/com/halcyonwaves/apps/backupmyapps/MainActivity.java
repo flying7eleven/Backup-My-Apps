@@ -58,7 +58,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			public void onClick( View v ) {
 				// show a progress dialog
 				MainActivity.this.backupProgressDialog = ProgressDialog.show( MainActivity.this, "", MainActivity.this.getString( R.string.progressDialogBackupInProgress ), true );
-				
+
 				// create and execute the backup task
 				GatherBackupInformationTask gatherTask = new GatherBackupInformationTask( MainActivity.this, MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME, MainActivity.this );
 				gatherTask.execute();
@@ -150,8 +150,8 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 
 	public void taskSuccessfull() {
 		// enable the restore button, because we succeeded creating the backup
-		this.buttonRestoreInstalledApplications.setEnabled(  true );
-		
+		this.buttonRestoreInstalledApplications.setEnabled( true );
+
 		// close the progress dialog
 		this.backupProgressDialog.dismiss();
 		this.backupProgressDialog = null;
@@ -161,7 +161,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// close the progress dialog
 		this.backupProgressDialog.dismiss();
 		this.backupProgressDialog = null;
-		
+
 		// TODO: notify the user that we failed
 	}
 }
