@@ -31,6 +31,7 @@ public class MainActivity extends Activity {
 	private Dialog dialogHelp = null;
 	private Dialog dialogAbout = null;
 	private PackageInformationManager packageInformationManager = null;
+	private ProgressDialog backupProgressDialog = null;
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS );
 
@@ -68,7 +69,7 @@ public class MainActivity extends Activity {
 				Log.v( MainActivity.class.getSimpleName(), "Using following external storage directory: " + MainActivity.this.storagePath );
 
 				// show a progress dialog
-				ProgressDialog backupProgressDialog = ProgressDialog.show( MainActivity.this, "", MainActivity.this.getString( R.string.progressDialogBackupInProgress ), true );
+				MainActivity.this.backupProgressDialog = ProgressDialog.show( MainActivity.this, "", MainActivity.this.getString( R.string.progressDialogBackupInProgress ), true );
 
 				// try to open the output file
 				File backupFile = new File( MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME );
@@ -101,7 +102,7 @@ public class MainActivity extends Activity {
 					// disable the
 					// progress dialog
 					MainActivity.this.buttonRestoreInstalledApplications.setEnabled( true );
-					backupProgressDialog.dismiss();
+					//MainActivity.this.backupProgressDialog.dismiss();
 				} catch( IOException e ) {
 					Log.e( MainActivity.class.getSimpleName(), "Failed to create the backup file. The message was: " + e.getMessage() );
 				}
