@@ -12,4 +12,7 @@
     <string name="menuHelp">Help</string>
     <string name="menuExit">Exit</string>
     <string name="textViewAdditionalInformation">To backup the installed application, press the backup button. The file with the backup information will be stored in %s. To restore the applications place the file with the backup information in the same folder and press the restore button.\n\nFor more information open the menu and select the Help item.</string>
+    <string name="dialogTitleHelpDialog">Help</string>
+    <string name="buttonCloseHelp">Close help</string>
+    <string name="textViewHelpText">TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO.</string>
 </resources>

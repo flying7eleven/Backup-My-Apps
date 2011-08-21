@@ -9,7 +9,9 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Environment;
@@ -20,12 +22,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	private Button buttonBackupInstalledApplications = null;
 	private Button buttonRestoreInstalledApplications = null;
 	private TextView textViewAdditionalInformation = null;
+	private Dialog dialogHelp = null;
 	private PackageInformationManager packageInformationManager = null;
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS );
@@ -43,7 +47,7 @@ public class MainActivity extends Activity {
 
 		// set the correct text for the label for additional information
 		this.textViewAdditionalInformation.setText( String.format( this.getString( R.string.textViewAdditionalInformation ), "\"" + this.storagePath + "\"" ) );
-		
+
 		// if there is no backup file, disable the restore button
 		File backupFile = new File( this.storagePath, MainActivity.BACKUP_FILENAME );
 		if( !backupFile.exists() ) {
@@ -139,7 +143,13 @@ public class MainActivity extends Activity {
 	public boolean onOptionsItemSelected( MenuItem item ) {
 		switch( item.getItemId() ) {
 			case R.id.menuHelp:
-				// TODO: implement this
+				if( null == this.dialogHelp ) {
+					this.dialogHelp = new Dialog( this );
+
+					this.dialogHelp.setContentView( R.layout.helpdialog );
+					this.dialogHelp.setTitle( R.string.dialogTitleHelpDialog );
+				}
+				this.dialogHelp.show();
 				return true;
 			case R.id.menuExit:
 				this.finish();
