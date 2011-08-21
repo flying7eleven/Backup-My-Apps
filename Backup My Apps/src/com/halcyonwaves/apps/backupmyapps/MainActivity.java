@@ -160,8 +160,17 @@ public class MainActivity extends Activity {
 					this.dialogAbout.setContentView( R.layout.aboutdialog );
 					this.dialogAbout.setTitle( R.string.dialogTitleAboutDialog );
 
-					TextView text = (TextView)this.dialogAbout.findViewById( R.id.textViewAboutInformation );
-					text.setText( "Hello, this is a custom dialog!" );
+					TextView appInformation = (TextView)this.dialogAbout.findViewById( R.id.textViewAboutAppName );
+					appInformation.setText( String.format( this.getString( R.string.textViewAboutAppName ), "0.2" ) ); // TODO:
+																														// get
+																														// the
+																														// version
+																														// name
+																														// correctly
+
+					TextView aboutInformation = (TextView)this.dialogAbout.findViewById( R.id.textViewAboutInformation );
+					aboutInformation.setText( this.getString( R.string.textViewAboutInformation ) );
+
 					ImageView image = (ImageView)this.dialogAbout.findViewById( R.id.imageViewApplicationIcon );
 					image.setImageResource( R.drawable.icon );
 				}
