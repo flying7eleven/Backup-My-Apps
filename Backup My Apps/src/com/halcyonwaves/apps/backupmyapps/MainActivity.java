@@ -143,6 +143,7 @@ public class MainActivity extends Activity {
 			case R.id.menuHelp:
 				if( null == this.dialogHelp ) {
 					this.dialogHelp = new Dialog( this );
+					this.dialogHelp.setCanceledOnTouchOutside( true );
 
 					this.dialogHelp.setContentView( R.layout.helpdialog );
 					this.dialogHelp.setTitle( R.string.dialogTitleHelpDialog );
