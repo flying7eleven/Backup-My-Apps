@@ -45,7 +45,7 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 	@Override
 	protected Boolean doInBackground( Void... arg0 ) {
 		// just log some information
-		Log.v( MainActivity.class.getSimpleName(), "Using following external storage directory: " + this.storagePath );
+		Log.v( GatherBackupInformationTask.class.getSimpleName(), "Using following external storage directory: " + this.storagePath );
 
 		// try to open the output file
 		File backupFile = new File( this.storagePath, this.backupFilename );
