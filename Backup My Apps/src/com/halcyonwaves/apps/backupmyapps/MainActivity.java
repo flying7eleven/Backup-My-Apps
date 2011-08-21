@@ -86,7 +86,7 @@ public class MainActivity extends Activity {
 					for( PackageInformation currentPackage : foundPackages ) {
 						if( !currentPackage.isSystemComponent() ) {
 							backupFilePrintStream.print( "<InstalledApp packageName=\"" + currentPackage.getPackageName() + "\" " );
-							backupFilePrintStream.print( "humanReadableName=\"" + currentPackage.getApplicationName() + "\" " );
+							backupFilePrintStream.print( "humanReadableName=\"" + currentPackage.getApplicationName().replace( "&", "&amp;" ).replace( "'", "&apos;" ).replace( "\"", "&quot;" ).replace( "<", "&lt;" ).replace( ">", "&gt;" ) + "\" " );
 							backupFilePrintStream.print( "versionCode=\"" + currentPackage.getVersionCode() + "\" " );
 							backupFilePrintStream.print( "versionName=\"" + currentPackage.getVersionName() + "\"" );
 							backupFilePrintStream.print( "/>" );
