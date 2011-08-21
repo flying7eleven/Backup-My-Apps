@@ -19,7 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private Button buttonBackupInstalledApplications = null;
 	private Button buttonRestoreInstalledApplications = null;
 	private TextView textViewAdditionalInformation = null;
@@ -146,5 +146,22 @@ public class MainActivity extends Activity {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate( R.menu.mainmenu, menu );
 		return true;
+	}
+
+	public void taskSuccessfull() {
+		// enable the restore button, because we succeeded creating the backup
+		this.buttonRestoreInstalledApplications.setEnabled(  true );
+		
+		// close the progress dialog
+		this.backupProgressDialog.dismiss();
+		this.backupProgressDialog = null;
+	}
+
+	public void taskFailed() {
+		// close the progress dialog
+		this.backupProgressDialog.dismiss();
+		this.backupProgressDialog = null;
+		
+		// TODO: notify the user that we failed
 	}
 }
