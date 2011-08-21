@@ -22,6 +22,7 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 	private Context applicationContext = null;
 	private String backupFilename = "";
 	private PackageInformationManager packageInformationManager = null;
+	private IAsyncTaskFeedback feedbackClass = null;
 
 	/**
 	 * Constructor for this class.
@@ -29,13 +30,15 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 	 * @param applicationContext The context of the application.
 	 * @param storagePath The path to the backup file.
 	 * @param backupFilename The name of the backup file.
+	 * @param feedbackClass The class which should handle the feedback of this task.
 	 * @author Tim Huetz
 	 * @since 0.2
 	 */
-	public GatherBackupInformationTask( Context applicationContext, File storagePath, String backupFilename ) {
+	public GatherBackupInformationTask( Context applicationContext, File storagePath, String backupFilename, IAsyncTaskFeedback feedbackClass ) {
 		this.storagePath = storagePath;
 		this.applicationContext = applicationContext;
 		this.backupFilename = backupFilename;
+		this.feedbackClass = feedbackClass;
 		this.packageInformationManager = new PackageInformationManager( this.applicationContext );
 	}
 
@@ -73,10 +76,12 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 
 		} catch( IOException e ) {
 			Log.e( GatherBackupInformationTask.class.getSimpleName(), "Failed to create the backup file. The message was: " + e.getMessage() );
+			this.feedbackClass.taskFailed();
 			return false;
 		}
 		
 		// it seems that we succeeded
+		this.feedbackClass.taskSuccessfull();
 		return true;
 	}
 
