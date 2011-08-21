@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -28,6 +29,7 @@ public class MainActivity extends Activity {
 	private Button buttonRestoreInstalledApplications = null;
 	private TextView textViewAdditionalInformation = null;
 	private Dialog dialogHelp = null;
+	private Dialog dialogAbout = null;
 	private PackageInformationManager packageInformationManager = null;
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS );
@@ -149,6 +151,21 @@ public class MainActivity extends Activity {
 					this.dialogHelp.setTitle( R.string.dialogTitleHelpDialog );
 				}
 				this.dialogHelp.show();
+				return true;
+			case R.id.menuAbout:
+				if( null == this.dialogAbout ) {
+					this.dialogAbout = new Dialog( this );
+					this.dialogAbout.setCanceledOnTouchOutside( true );
+
+					this.dialogAbout.setContentView( R.layout.aboutdialog );
+					this.dialogAbout.setTitle( R.string.dialogTitleAboutDialog );
+
+					TextView text = (TextView)this.dialogAbout.findViewById( R.id.textViewAboutInformation );
+					text.setText( "Hello, this is a custom dialog!" );
+					ImageView image = (ImageView)this.dialogAbout.findViewById( R.id.imageViewApplicationIcon );
+					image.setImageResource( R.drawable.icon );
+				}
+				this.dialogAbout.show();
 				return true;
 			case R.id.menuExit:
 				this.finish();

@@ -16,4 +16,5 @@
     <string name="buttonCloseHelp">Close help</string>
     <string name="textViewHelpText">This application reads information about the installed applications and stores this information in a XML file. This file can be used to reinstall all applications on a new device or after a factory reset.\n\n As this application is still on heavy development, please expect frequent updates and bus inside of the application.</string>
     <string name="menuAbout">About...</string>
+    <string name="dialogTitleAboutDialog">About...</string>
 </resources>
