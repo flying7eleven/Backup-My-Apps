@@ -4,7 +4,6 @@
     <string name="textViewApplicationInformation">This application is designed for doing a backup of your installed packages / applications on your device. It only stores the meta information of the packages in order to bunch-install them through the market on another device or after a factory reset of your device.</string>
     <string name="buttonBackupInstalledApplications">Backup application list</string>
     <string name="buttonRestoreInstalledApplications">Restore (install) applications</string>
-    <string name="textViewCurrentProcess">No current progress</string>
     <string name="dialogMessageNoExternalStorageMounted">It seems that there is no external storage device mounted on your device. This application relies on having such a device and will close now.</string>
     <string name="buttonOk">OK</string>
     <string name="progressDialogBackupInProgress">Gathering and saving application backup information. Please wait...</string>
