@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-    <TextView android:text="@string/textViewApplicationInformation" android:layout_height="wrap_content" android:id="@+id/textViewApplicationInformation" android:layout_width="match_parent" android:paddingBottom="20dp"></TextView>
-    <Button android:text="@string/buttonBackupInstalledApplications" android:layout_height="wrap_content" android:id="@+id/buttonBackupInstalledApplications" android:layout_width="match_parent"></Button>
-    <Button android:text="@string/buttonRestoreInstalledApplications" android:layout_height="wrap_content" android:id="@+id/buttonRestoreInstalledApplications" android:layout_width="match_parent"></Button>
-    <TextView android:text="N/A" android:layout_height="wrap_content" android:id="@+id/textViewAdditionalInformation" android:layout_width="match_parent" android:paddingBottom="20dp"></TextView>
+    <TextView android:text="@string/textViewApplicationInformation" android:layout_height="wrap_content" android:id="@+id/textViewApplicationInformation" android:layout_width="fill_parent" android:paddingBottom="20dp"></TextView>
+    <Button android:text="@string/buttonBackupInstalledApplications" android:layout_height="wrap_content" android:id="@+id/buttonBackupInstalledApplications" android:layout_width="fill_parent"></Button>
+    <Button android:text="@string/buttonRestoreInstalledApplications" android:layout_height="wrap_content" android:id="@+id/buttonRestoreInstalledApplications" android:layout_width="fill_parent"></Button>
+    <TextView android:text="N/A" android:layout_height="wrap_content" android:id="@+id/textViewAdditionalInformation" android:layout_width="fill_parent" android:paddingBottom="20dp"></TextView>
 </LinearLayout>
