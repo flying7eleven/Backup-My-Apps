@@ -27,7 +27,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private Dialog dialogAbout = null;
 	private ProgressDialog backupProgressDialog = null;
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
-	private final File storagePath = Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_DOWNLOADS );
+	private final File storagePath = Environment.getExternalStorageDirectory();
 
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
