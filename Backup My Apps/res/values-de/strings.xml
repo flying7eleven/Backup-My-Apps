@@ -15,6 +15,6 @@
     <string name="textViewHelpText">Diese Anwendung liest Informationen über die installierten Anwendungen ein und speichert diese in eine XML-Datei. Diese Datei kann dazu genutzt werden, die Anwendungen erneut auf einem neuen Gerät oder nach dem Zurücksetzen des Geräts zu installieren.\n\nDa diese Anwendung noch in der Entwicklung steckt, erscheinen regelmäßig Updates im Android Market. Des Weiteren kann es zu Fehlern in der Anwendung kommen.</string>
     <string name="menuAbout">Über...</string>
     <string name="dialogTitleAboutDialog">Über...</string>
-    <string name="textViewAboutInformation">Diese Anwendung wurde 2011 von Tim Hütz entwickelt. Die Grafiken wurden von Tango harm-on-icons erstellt.\n</string>
+    <string name="textViewAboutInformation">Diese Anwendung wurde 2011 von Tim Hütz entwickelt.\n\n<b>Grafiken</b>\nTango harm-on-icons\n\n<b>Übersetzungen</b>\nEnglisch: Tim Hütz\nDeutsch: Michaela Gaens</string>
     <string name="textViewAboutAppName">Backup My Apps %s</string>
 </resources>
