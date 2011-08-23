@@ -28,7 +28,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private ProgressDialog backupProgressDialog = null;
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStorageDirectory();
-	
+
 	/**
 	 * Get the version name of the application itself.
 	 * 
@@ -38,7 +38,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	 */
 	private String getApplicationVersion() {
 		try {
-			return this.getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName;
+			return this.getPackageManager().getPackageInfo( this.getPackageName(), 0 ).versionName;
 		} catch( NameNotFoundException e ) {
 			return "<unknown>";
 		}
