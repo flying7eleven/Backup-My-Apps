@@ -15,6 +15,6 @@
     <string name="textViewHelpText">This application reads information about the installed applications and stores this information in a XML file. This file can be used to reinstall all applications on a new device or after a factory reset.\n\n As this application is still under development, please expect frequent updates and bugs inside the application.</string>
     <string name="menuAbout">About...</string>
     <string name="dialogTitleAboutDialog">About...</string>
-    <string name="textViewAboutInformation">This application was developed 2011 by Tim Hütz. The artwork was done by Tango harm-on-icons.\n</string>
+    <string name="textViewAboutInformation">This application was developed 2011 by Tim Hütz.\n\n<b>Artwork</b>\nTango harm-on-icons\n\n<b>Translations</b>\nEnglish: Tim Hütz\nGerman: Michaela Gaens</string>
     <string name="textViewAboutAppName">Backup My Apps %s</string>
 </resources>

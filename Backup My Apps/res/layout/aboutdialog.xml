@@ -5,9 +5,9 @@
               android:layout_height="fill_parent"
               android:padding="10dp"
               >
-    <ImageView android:id="@+id/imageViewApplicationIcon" android:layout_width="55dp" android:layout_height="55dp" android:layout_marginRight="10dp" />
+    <ImageView android:id="@+id/imageViewApplicationIcon" android:src="@drawable/icon" android:layout_width="55dp" android:layout_height="55dp" android:layout_marginRight="10dp" />
     <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
     	<TextView android:id="@+id/textViewAboutAppName" android:textStyle="bold" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    	<TextView android:id="@+id/textViewAboutInformation" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    	<TextView android:id="@+id/textViewAboutInformation" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/textViewAboutInformation" />
     </LinearLayout>
 </LinearLayout>
