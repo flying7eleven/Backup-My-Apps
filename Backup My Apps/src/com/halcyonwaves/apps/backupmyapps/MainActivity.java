@@ -16,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends Activity implements IAsyncTaskFeedback {
@@ -118,7 +117,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 					this.dialogAbout.setTitle( R.string.dialogTitleAboutDialog );
 
 					TextView appInformation = (TextView)this.dialogAbout.findViewById( R.id.textViewAboutAppName );
-					appInformation.setText( String.format( this.getString( R.string.textViewAboutAppName ), "0.2.2" ) ); // TODO:
+					appInformation.setText( String.format( this.getString( R.string.textViewAboutAppName ), "0.2.3" ) ); // TODO:
 																														// get
 																														// the
 																														// version
