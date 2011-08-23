@@ -127,9 +127,6 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 
 					TextView aboutInformation = (TextView)this.dialogAbout.findViewById( R.id.textViewAboutInformation );
 					aboutInformation.setText( this.getString( R.string.textViewAboutInformation ) );
-
-					ImageView image = (ImageView)this.dialogAbout.findViewById( R.id.imageViewApplicationIcon );
-					image.setImageResource( R.drawable.icon );
 				}
 				this.dialogAbout.show();
 				return true;
