@@ -1,0 +1,2193 @@
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/backupmyapps/a
+  Superclass:    android/os/AsyncTask
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class com.halcyonwaves.apps.backupmyapps.a extends android.os.AsyncTask
+
+Interfaces (count = 0):
+
+Constant Pool (count = 198):
+  - String []
+  - String ["]
+  - String [" ]
+  - String [&]
+  - String [&amp;]
+  - String [&apos;]
+  - String [&gt;]
+  - String [&lt;]
+  - String [&quot;]
+  - String [']
+  - String [/>]
+  - String [<]
+  - String [</BackupMyApps>]
+  - String [<?xml version="1.0" encoding="UTF-8"?>]
+  - String [<BackupMyApps version="1.0">]
+  - String [<InstalledApp packageName="]
+  - String [>]
+  - String [Failed to create the backup file. The message was: ]
+  - String [Using following external storage directory: ]
+  - String [humanReadableName="]
+  - String [versionCode="]
+  - String [versionName="]
+  - Class [android/os/AsyncTask]
+  - Class [android/util/Log]
+  - Class [com/halcyonwaves/apps/backupmyapps/a]
+  - Class [com/halcyonwaves/apps/backupmyapps/b]
+  - Class [com/halcyonwaves/apps/backupmyapps/g]
+  - Class [com/halcyonwaves/apps/backupmyapps/h]
+  - Class [java/io/File]
+  - Class [java/io/FileOutputStream]
+  - Class [java/io/IOException]
+  - Class [java/io/OutputStream]
+  - Class [java/io/PrintStream]
+  - Class [java/lang/Boolean]
+  - Class [java/lang/Class]
+  - Class [java/lang/String]
+  - Class [java/lang/StringBuilder]
+  - Class [java/util/ArrayList]
+  - Class [java/util/Iterator]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/a.a Ljava/io/File;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/a.b Landroid/content/Context;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/a.c Ljava/lang/String;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/a.d Lcom/halcyonwaves/apps/backupmyapps/h;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/a.e Lcom/halcyonwaves/apps/backupmyapps/b;]
+  - Methodref [android/os/AsyncTask.<init> ()V]
+  - Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
+  - Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/a.a ()Ljava/lang/Boolean;]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/g.a ()Z]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/g.b ()Ljava/lang/String;]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/g.c ()Ljava/lang/String;]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/g.d ()I]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/g.e ()Ljava/lang/String;]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/h.<init> (Landroid/content/Context;)V]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/h.a ()Ljava/util/ArrayList;]
+  - Methodref [java/io/File.<init> (Ljava/io/File;Ljava/lang/String;)V]
+  - Methodref [java/io/File.createNewFile ()Z]
+  - Methodref [java/io/FileOutputStream.<init> (Ljava/io/File;)V]
+  - Methodref [java/io/IOException.getMessage ()Ljava/lang/String;]
+  - Methodref [java/io/OutputStream.close ()V]
+  - Methodref [java/io/PrintStream.<init> (Ljava/io/OutputStream;)V]
+  - Methodref [java/io/PrintStream.print (Ljava/lang/String;)V]
+  - Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
+  - Methodref [java/lang/Class.getSimpleName ()Ljava/lang/String;]
+  - Methodref [java/lang/String.replace (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;]
+  - Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+  - Methodref [java/lang/StringBuilder.append (I)Ljava/lang/StringBuilder;]
+  - Methodref [java/lang/StringBuilder.append (Ljava/lang/Object;)Ljava/lang/StringBuilder;]
+  - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  - Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+  - Methodref [java/util/ArrayList.iterator ()Ljava/util/Iterator;]
+  - InterfaceMethodref [com/halcyonwaves/apps/backupmyapps/b.a ()V]
+  - InterfaceMethodref [com/halcyonwaves/apps/backupmyapps/b.b ()V]
+  - InterfaceMethodref [java/util/Iterator.hasNext ()Z]
+  - InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/content/Context;)V]
+  + NameAndType [<init> (Ljava/io/File;)V]
+  + NameAndType [<init> (Ljava/io/File;Ljava/lang/String;)V]
+  + NameAndType [<init> (Ljava/io/OutputStream;)V]
+  + NameAndType [<init> (Ljava/lang/String;)V]
+  + NameAndType [a ()Ljava/lang/Boolean;]
+  + NameAndType [a ()Ljava/util/ArrayList;]
+  + NameAndType [a ()V]
+  + NameAndType [a ()Z]
+  + NameAndType [a Ljava/io/File;]
+  + NameAndType [append (I)Ljava/lang/StringBuilder;]
+  + NameAndType [append (Ljava/lang/Object;)Ljava/lang/StringBuilder;]
+  + NameAndType [append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + NameAndType [b ()Ljava/lang/String;]
+  + NameAndType [b ()V]
+  + NameAndType [b Landroid/content/Context;]
+  + NameAndType [c ()Ljava/lang/String;]
+  + NameAndType [c Ljava/lang/String;]
+  + NameAndType [close ()V]
+  + NameAndType [createNewFile ()Z]
+  + NameAndType [d ()I]
+  + NameAndType [d Lcom/halcyonwaves/apps/backupmyapps/h;]
+  + NameAndType [e ()Ljava/lang/String;]
+  + NameAndType [e (Ljava/lang/String;Ljava/lang/String;)I]
+  + NameAndType [e Lcom/halcyonwaves/apps/backupmyapps/b;]
+  + NameAndType [getMessage ()Ljava/lang/String;]
+  + NameAndType [getSimpleName ()Ljava/lang/String;]
+  + NameAndType [hasNext ()Z]
+  + NameAndType [iterator ()Ljava/util/Iterator;]
+  + NameAndType [next ()Ljava/lang/Object;]
+  + NameAndType [print (Ljava/lang/String;)V]
+  + NameAndType [replace (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;]
+  + NameAndType [toString ()Ljava/lang/String;]
+  + NameAndType [v (Ljava/lang/String;Ljava/lang/String;)I]
+  + NameAndType [valueOf (Z)Ljava/lang/Boolean;]
+  + Utf8 []
+  + Utf8 ["]
+  + Utf8 [" ]
+  + Utf8 [&]
+  + Utf8 [&amp;]
+  + Utf8 [&apos;]
+  + Utf8 [&gt;]
+  + Utf8 [&lt;]
+  + Utf8 [&quot;]
+  + Utf8 [']
+  + Utf8 [()I]
+  + Utf8 [()Ljava/lang/Boolean;]
+  + Utf8 [()Ljava/lang/Object;]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()Ljava/util/ArrayList;]
+  + Utf8 [()Ljava/util/Iterator;]
+  + Utf8 [()V]
+  + Utf8 [()Z]
+  + Utf8 [(I)Ljava/lang/StringBuilder;]
+  + Utf8 [(Landroid/content/Context;)V]
+  + Utf8 [(Landroid/content/Context;Ljava/io/File;Ljava/lang/String;Lcom/halcyonwaves/apps/backupmyapps/b;)V]
+  + Utf8 [(Ljava/io/File;)V]
+  + Utf8 [(Ljava/io/File;Ljava/lang/String;)V]
+  + Utf8 [(Ljava/io/OutputStream;)V]
+  + Utf8 [(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;]
+  + Utf8 [(Ljava/lang/Object;)Ljava/lang/StringBuilder;]
+  + Utf8 [(Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;)I]
+  + Utf8 [(Z)Ljava/lang/Boolean;]
+  + Utf8 [([Ljava/lang/Object;)Ljava/lang/Object;]
+  + Utf8 [/>]
+  + Utf8 [<]
+  + Utf8 [</BackupMyApps>]
+  + Utf8 [<?xml version="1.0" encoding="UTF-8"?>]
+  + Utf8 [<BackupMyApps version="1.0">]
+  + Utf8 [<InstalledApp packageName="]
+  + Utf8 [<init>]
+  + Utf8 [>]
+  + Utf8 [Code]
+  + Utf8 [Failed to create the backup file. The message was: ]
+  + Utf8 [Landroid/content/Context;]
+  + Utf8 [Lcom/halcyonwaves/apps/backupmyapps/b;]
+  + Utf8 [Lcom/halcyonwaves/apps/backupmyapps/h;]
+  + Utf8 [Ljava/io/File;]
+  + Utf8 [Ljava/lang/String;]
+  + Utf8 [Using following external storage directory: ]
+  + Utf8 [a]
+  + Utf8 [android/os/AsyncTask]
+  + Utf8 [android/util/Log]
+  + Utf8 [append]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [close]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/a]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/b]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/g]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/h]
+  + Utf8 [createNewFile]
+  + Utf8 [d]
+  + Utf8 [doInBackground]
+  + Utf8 [e]
+  + Utf8 [getMessage]
+  + Utf8 [getSimpleName]
+  + Utf8 [hasNext]
+  + Utf8 [humanReadableName="]
+  + Utf8 [iterator]
+  + Utf8 [java/io/File]
+  + Utf8 [java/io/FileOutputStream]
+  + Utf8 [java/io/IOException]
+  + Utf8 [java/io/OutputStream]
+  + Utf8 [java/io/PrintStream]
+  + Utf8 [java/lang/Boolean]
+  + Utf8 [java/lang/Class]
+  + Utf8 [java/lang/String]
+  + Utf8 [java/lang/StringBuilder]
+  + Utf8 [java/util/ArrayList]
+  + Utf8 [java/util/Iterator]
+  + Utf8 [next]
+  + Utf8 [print]
+  + Utf8 [replace]
+  + Utf8 [toString]
+  + Utf8 [v]
+  + Utf8 [valueOf]
+  + Utf8 [versionCode="]
+  + Utf8 [versionName="]
+
+Fields (count = 5):
+  + Field:        a Ljava/io/File;
+    Access flags: 0x2
+      = private java.io.File a
+  + Field:        b Landroid/content/Context;
+    Access flags: 0x2
+      = private android.content.Context b
+  + Field:        c Ljava/lang/String;
+    Access flags: 0x2
+      = private java.lang.String c
+  + Field:        d Lcom/halcyonwaves/apps/backupmyapps/h;
+    Access flags: 0x2
+      = private com.halcyonwaves.apps.backupmyapps.h d
+  + Field:        e Lcom/halcyonwaves/apps/backupmyapps/b;
+    Access flags: 0x2
+      = private com.halcyonwaves.apps.backupmyapps.b e
+
+Methods (count = 3):
+  - Method:       <init>(Landroid/content/Context;Ljava/io/File;Ljava/lang/String;Lcom/halcyonwaves/apps/backupmyapps/b;)V
+    Access flags: 0x1
+      = public a(android.content.Context,java.io.File,java.lang.String,com.halcyonwaves.apps.backupmyapps.b)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 67, locals = 5, stack = 4):
+      [0] aload_0 v0
+      [1] invokespecial #45
+        - Methodref [android/os/AsyncTask.<init> ()V]
+      [4] aload_0 v0
+      [5] aconst_null
+      [6] putfield #40
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.a Ljava/io/File;]
+      [9] aload_0 v0
+      [10] aconst_null
+      [11] putfield #41
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.b Landroid/content/Context;]
+      [14] aload_0 v0
+      [15] ldc #1
+        - String []
+      [17] putfield #42
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.c Ljava/lang/String;]
+      [20] aload_0 v0
+      [21] aconst_null
+      [22] putfield #43
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.d Lcom/halcyonwaves/apps/backupmyapps/h;]
+      [25] aload_0 v0
+      [26] aconst_null
+      [27] putfield #44
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.e Lcom/halcyonwaves/apps/backupmyapps/b;]
+      [30] aload_0 v0
+      [31] aload_2 v2
+      [32] putfield #40
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.a Ljava/io/File;]
+      [35] aload_0 v0
+      [36] aload_1 v1
+      [37] putfield #41
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.b Landroid/content/Context;]
+      [40] aload_0 v0
+      [41] aload_3 v3
+      [42] putfield #42
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.c Ljava/lang/String;]
+      [45] aload_0 v0
+      [46] aload v4
+      [48] putfield #44
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.e Lcom/halcyonwaves/apps/backupmyapps/b;]
+      [51] aload_0 v0
+      [52] new #28
+        - Class [com/halcyonwaves/apps/backupmyapps/h]
+      [55] dup
+      [56] aload_0 v0
+      [57] getfield #41
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.b Landroid/content/Context;]
+      [60] invokespecial #54
+        - Methodref [com/halcyonwaves/apps/backupmyapps/h.<init> (Landroid/content/Context;)V]
+      [63] putfield #43
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.d Lcom/halcyonwaves/apps/backupmyapps/h;]
+      [66] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a()Ljava/lang/Boolean;
+    Access flags: 0x82
+      = private varargs java.lang.Boolean a()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 347, locals = 5, stack = 5):
+      [0] ldc #25
+        - Class [com/halcyonwaves/apps/backupmyapps/a]
+      [2] invokevirtual #64
+        - Methodref [java/lang/Class.getSimpleName ()Ljava/lang/String;]
+      [5] new #37
+        - Class [java/lang/StringBuilder]
+      [8] dup
+      [9] ldc #19
+        - String [Using following external storage directory: ]
+      [11] invokespecial #66
+        - Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+      [14] aload_0 v0
+      [15] getfield #40
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.a Ljava/io/File;]
+      [18] invokevirtual #68
+        - Methodref [java/lang/StringBuilder.append (Ljava/lang/Object;)Ljava/lang/StringBuilder;]
+      [21] invokevirtual #70
+        - Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [24] invokestatic #47
+        - Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
+      [27] pop
+      [28] new #29
+        - Class [java/io/File]
+      [31] dup
+      [32] aload_0 v0
+      [33] getfield #40
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.a Ljava/io/File;]
+      [36] aload_0 v0
+      [37] getfield #42
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.c Ljava/lang/String;]
+      [40] invokespecial #56
+        - Methodref [java/io/File.<init> (Ljava/io/File;Ljava/lang/String;)V]
+      [43] astore_1 v1
+      [44] aload_1 v1
+      [45] invokevirtual #57
+        - Methodref [java/io/File.createNewFile ()Z]
+      [48] pop
+      [49] new #30
+        - Class [java/io/FileOutputStream]
+      [52] dup
+      [53] aload_1 v1
+      [54] invokespecial #58
+        - Methodref [java/io/FileOutputStream.<init> (Ljava/io/File;)V]
+      [57] astore_1 v1
+      [58] new #33
+        - Class [java/io/PrintStream]
+      [61] dup
+      [62] aload_1 v1
+      [63] invokespecial #61
+        - Methodref [java/io/PrintStream.<init> (Ljava/io/OutputStream;)V]
+      [66] dup
+      [67] astore_2 v2
+      [68] ldc #14
+        - String [<?xml version="1.0" encoding="UTF-8"?>]
+      [70] invokevirtual #62
+        - Methodref [java/io/PrintStream.print (Ljava/lang/String;)V]
+      [73] aload_2 v2
+      [74] ldc #15
+        - String [<BackupMyApps version="1.0">]
+      [76] invokevirtual #62
+        - Methodref [java/io/PrintStream.print (Ljava/lang/String;)V]
+      [79] aload_0 v0
+      [80] getfield #43
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.d Lcom/halcyonwaves/apps/backupmyapps/h;]
+      [83] invokevirtual #55
+        - Methodref [com/halcyonwaves/apps/backupmyapps/h.a ()Ljava/util/ArrayList;]
+      [86] aconst_null
+      [87] astore_3 v3
+      [88] invokevirtual #71
+        - Methodref [java/util/ArrayList.iterator ()Ljava/util/Iterator;]
+      [91] astore v4
+      [93] goto +174 (target=267)
+      [96] aload v4
+      [98] invokeinterface #75
+        - InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
+      [103] checkcast #27
+        - Class [com/halcyonwaves/apps/backupmyapps/g]
+      [106] dup
+      [107] astore_3 v3
+      [108] invokevirtual #49
+        - Methodref [com/halcyonwaves/apps/backupmyapps/g.a ()Z]
+      [111] ifne +156 (target=267)
+      [114] aload_2 v2
+      [115] new #37
+        - Class [java/lang/StringBuilder]
+      [118] dup
+      [119] ldc #16
+        - String [<InstalledApp packageName="]
+      [121] invokespecial #66
+        - Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+      [124] aload_3 v3
+      [125] invokevirtual #50
+        - Methodref [com/halcyonwaves/apps/backupmyapps/g.b ()Ljava/lang/String;]
+      [128] invokevirtual #69
+        - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [131] ldc #3
+        - String [" ]
+      [133] invokevirtual #69
+        - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [136] invokevirtual #70
+        - Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [139] invokevirtual #62
+        - Methodref [java/io/PrintStream.print (Ljava/lang/String;)V]
+      [142] aload_2 v2
+      [143] new #37
+        - Class [java/lang/StringBuilder]
+      [146] dup
+      [147] ldc #20
+        - String [humanReadableName="]
+      [149] invokespecial #66
+        - Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+      [152] aload_3 v3
+      [153] invokevirtual #51
+        - Methodref [com/halcyonwaves/apps/backupmyapps/g.c ()Ljava/lang/String;]
+      [156] ldc #4
+        - String [&]
+      [158] ldc #5
+        - String [&amp;]
+      [160] invokevirtual #65
+        - Methodref [java/lang/String.replace (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;]
+      [163] ldc #10
+        - String [']
+      [165] ldc #6
+        - String [&apos;]
+      [167] invokevirtual #65
+        - Methodref [java/lang/String.replace (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;]
+      [170] ldc #2
+        - String ["]
+      [172] ldc #9
+        - String [&quot;]
+      [174] invokevirtual #65
+        - Methodref [java/lang/String.replace (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;]
+      [177] ldc #12
+        - String [<]
+      [179] ldc #8
+        - String [&lt;]
+      [181] invokevirtual #65
+        - Methodref [java/lang/String.replace (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;]
+      [184] ldc #17
+        - String [>]
+      [186] ldc #7
+        - String [&gt;]
+      [188] invokevirtual #65
+        - Methodref [java/lang/String.replace (Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;]
+      [191] invokevirtual #69
+        - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [194] ldc #3
+        - String [" ]
+      [196] invokevirtual #69
+        - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [199] invokevirtual #70
+        - Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [202] invokevirtual #62
+        - Methodref [java/io/PrintStream.print (Ljava/lang/String;)V]
+      [205] aload_2 v2
+      [206] new #37
+        - Class [java/lang/StringBuilder]
+      [209] dup
+      [210] ldc #21
+        - String [versionCode="]
+      [212] invokespecial #66
+        - Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+      [215] aload_3 v3
+      [216] invokevirtual #52
+        - Methodref [com/halcyonwaves/apps/backupmyapps/g.d ()I]
+      [219] invokevirtual #67
+        - Methodref [java/lang/StringBuilder.append (I)Ljava/lang/StringBuilder;]
+      [222] ldc #3
+        - String [" ]
+      [224] invokevirtual #69
+        - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [227] invokevirtual #70
+        - Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [230] invokevirtual #62
+        - Methodref [java/io/PrintStream.print (Ljava/lang/String;)V]
+      [233] aload_2 v2
+      [234] new #37
+        - Class [java/lang/StringBuilder]
+      [237] dup
+      [238] ldc #22
+        - String [versionName="]
+      [240] invokespecial #66
+        - Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+      [243] aload_3 v3
+      [244] invokevirtual #53
+        - Methodref [com/halcyonwaves/apps/backupmyapps/g.e ()Ljava/lang/String;]
+      [247] invokevirtual #69
+        - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [250] ldc #2
+        - String ["]
+      [252] invokevirtual #69
+        - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [255] invokevirtual #70
+        - Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [258] invokevirtual #62
+        - Methodref [java/io/PrintStream.print (Ljava/lang/String;)V]
+      [261] aload_2 v2
+      [262] ldc #11
+        - String [/>]
+      [264] invokevirtual #62
+        - Methodref [java/io/PrintStream.print (Ljava/lang/String;)V]
+      [267] aload v4
+      [269] invokeinterface #74
+        - InterfaceMethodref [java/util/Iterator.hasNext ()Z]
+      [274] ifne -178 (target=96)
+      [277] aload_2 v2
+      [278] ldc #13
+        - String [</BackupMyApps>]
+      [280] invokevirtual #62
+        - Methodref [java/io/PrintStream.print (Ljava/lang/String;)V]
+      [283] aload_1 v1
+      [284] invokevirtual #60
+        - Methodref [java/io/OutputStream.close ()V]
+      [287] goto +46 (target=333)
+      [290] astore_1 v1
+      [291] ldc #25
+        - Class [com/halcyonwaves/apps/backupmyapps/a]
+      [293] invokevirtual #64
+        - Methodref [java/lang/Class.getSimpleName ()Ljava/lang/String;]
+      [296] new #37
+        - Class [java/lang/StringBuilder]
+      [299] dup
+      [300] ldc #18
+        - String [Failed to create the backup file. The message was: ]
+      [302] invokespecial #66
+        - Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+      [305] aload_1 v1
+      [306] invokevirtual #59
+        - Methodref [java/io/IOException.getMessage ()Ljava/lang/String;]
+      [309] invokevirtual #69
+        - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [312] invokevirtual #70
+        - Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [315] invokestatic #46
+        - Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
+      [318] pop
+      [319] aload_0 v0
+      [320] getfield #44
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.e Lcom/halcyonwaves/apps/backupmyapps/b;]
+      [323] invokeinterface #73
+        - InterfaceMethodref [com/halcyonwaves/apps/backupmyapps/b.b ()V]
+      [328] iconst_0
+      [329] invokestatic #63
+        - Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
+      [332] areturn
+      [333] aload_0 v0
+      [334] getfield #44
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.e Lcom/halcyonwaves/apps/backupmyapps/b;]
+      [337] invokeinterface #72
+        - InterfaceMethodref [com/halcyonwaves/apps/backupmyapps/b.a ()V]
+      [342] iconst_1
+      [343] invokestatic #63
+        - Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
+      [346] areturn
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (44 -> 287: 290):
+      - Class [java/io/IOException]
+      Code attribute attributes (attribute count = 0):
+  + Method:       doInBackground([Ljava/lang/Object;)Ljava/lang/Object;
+    Access flags: 0x1084
+      = protected varargs synthetic java.lang.Object doInBackground(java.lang.Object[])
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 2, stack = 1):
+      [0] aload_0 v0
+      [1] invokespecial #48
+        - Methodref [com/halcyonwaves/apps/backupmyapps/a.a ()Ljava/lang/Boolean;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/backupmyapps/b
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x601
+    = public interface com.halcyonwaves.apps.backupmyapps.b extends java.lang.Object
+
+Interfaces (count = 0):
+
+Constant Pool (count = 8):
+  - Class [com/halcyonwaves/apps/backupmyapps/b]
+  - Class [java/lang/Object]
+  + Utf8 [()V]
+  + Utf8 [a]
+  + Utf8 [b]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/b]
+  + Utf8 [java/lang/Object]
+
+Fields (count = 0):
+
+Methods (count = 2):
+  + Method:       a()V
+    Access flags: 0x401
+      = public abstract void a()
+  + Method:       b()V
+    Access flags: 0x401
+      = public abstract void b()
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/backupmyapps/MainActivity
+  Superclass:    android/app/Activity
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x21
+    = public class com.halcyonwaves.apps.backupmyapps.MainActivity extends android.app.Activity
+
+Interfaces (count = 1):
+  - Class [com/halcyonwaves/apps/backupmyapps/b]
+
+Constant Pool (count = 249):
+  - Integer [2130903040]
+  - Integer [2130903041]
+  - Integer [2130903042]
+  - Integer [2130968580]
+  - Integer [2130968581]
+  - Integer [2130968586]
+  - Integer [2130968587]
+  - Integer [2130968590]
+  - Integer [2130968591]
+  - Integer [2130968592]
+  - Integer [2131034112]
+  - Integer [2131099649]
+  - Integer [2131099650]
+  - Integer [2131099653]
+  - Integer [2131099654]
+  - Integer [2131099655]
+  - String ["]
+  - String [0.2.2]
+  - String [No backup file found, disabling the restore button.]
+  - String [installedApplications.backupmyapps]
+  - String [mounted]
+  - Class [android/app/Activity]
+  - Class [android/app/AlertDialog]
+  - Class [android/app/AlertDialog$Builder]
+  - Class [android/app/Dialog]
+  - Class [android/app/ProgressDialog]
+  - Class [android/content/DialogInterface]
+  - Class [android/content/DialogInterface$OnClickListener]
+  - Class [android/os/Environment]
+  - Class [android/util/Log]
+  - Class [android/view/MenuInflater]
+  - Class [android/view/MenuItem]
+  - Class [android/view/View]
+  - Class [android/view/View$OnClickListener]
+  - Class [android/widget/Button]
+  - Class [android/widget/TextView]
+  - Class [com/halcyonwaves/apps/backupmyapps/MainActivity]
+  - Class [com/halcyonwaves/apps/backupmyapps/b]
+  - Class [com/halcyonwaves/apps/backupmyapps/c]
+  - Class [com/halcyonwaves/apps/backupmyapps/d]
+  - Class [com/halcyonwaves/apps/backupmyapps/f]
+  - Class [java/io/File]
+  - Class [java/lang/Class]
+  - Class [java/lang/Object]
+  - Class [java/lang/String]
+  - Class [java/lang/StringBuilder]
+  - Fieldref [android/os/Environment.DIRECTORY_DOWNLOADS Ljava/lang/String;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.a Landroid/widget/Button;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.b Landroid/widget/Button;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.c Landroid/widget/TextView;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.d Landroid/app/Dialog;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.e Landroid/app/Dialog;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.f Landroid/app/ProgressDialog;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.g Ljava/io/File;]
+  - Methodref [android/app/Activity.<init> ()V]
+  - Methodref [android/app/Activity.onCreate (Landroid/os/Bundle;)V]
+  - Methodref [android/app/Activity.onOptionsItemSelected (Landroid/view/MenuItem;)Z]
+  - Methodref [android/app/AlertDialog.show ()V]
+  - Methodref [android/app/AlertDialog$Builder.<init> (Landroid/content/Context;)V]
+  - Methodref [android/app/AlertDialog$Builder.create ()Landroid/app/AlertDialog;]
+  - Methodref [android/app/AlertDialog$Builder.setCancelable (Z)Landroid/app/AlertDialog$Builder;]
+  - Methodref [android/app/AlertDialog$Builder.setMessage (I)Landroid/app/AlertDialog$Builder;]
+  - Methodref [android/app/AlertDialog$Builder.setPositiveButton (ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;]
+  - Methodref [android/app/Dialog.<init> (Landroid/content/Context;)V]
+  - Methodref [android/app/Dialog.findViewById (I)Landroid/view/View;]
+  - Methodref [android/app/Dialog.setCanceledOnTouchOutside (Z)V]
+  - Methodref [android/app/Dialog.setContentView (I)V]
+  - Methodref [android/app/Dialog.setTitle (I)V]
+  - Methodref [android/app/Dialog.show ()V]
+  - Methodref [android/app/ProgressDialog.dismiss ()V]
+  - Methodref [android/os/Environment.getExternalStoragePublicDirectory (Ljava/lang/String;)Ljava/io/File;]
+  - Methodref [android/os/Environment.getExternalStorageState ()Ljava/lang/String;]
+  - Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
+  - Methodref [android/view/MenuInflater.inflate (ILandroid/view/Menu;)V]
+  - Methodref [android/widget/Button.setEnabled (Z)V]
+  - Methodref [android/widget/Button.setOnClickListener (Landroid/view/View$OnClickListener;)V]
+  - Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.findViewById (I)Landroid/view/View;]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.finish ()V]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.getMenuInflater ()Landroid/view/MenuInflater;]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.getString (I)Ljava/lang/String;]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.setContentView (I)V]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/c.<init> (Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)V]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/d.<init> (Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)V]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/f.<init> (Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)V]
+  - Methodref [java/io/File.<init> (Ljava/io/File;Ljava/lang/String;)V]
+  - Methodref [java/io/File.exists ()Z]
+  - Methodref [java/io/File.mkdirs ()Z]
+  - Methodref [java/lang/Class.getSimpleName ()Ljava/lang/String;]
+  - Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
+  - Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+  - Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+  - Methodref [java/lang/StringBuilder.append (Ljava/lang/Object;)Ljava/lang/StringBuilder;]
+  - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  - Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+  - InterfaceMethodref [android/view/MenuItem.getItemId ()I]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/content/Context;)V]
+  + NameAndType [<init> (Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)V]
+  + NameAndType [<init> (Ljava/io/File;Ljava/lang/String;)V]
+  + NameAndType [<init> (Ljava/lang/String;)V]
+  + NameAndType [DIRECTORY_DOWNLOADS Ljava/lang/String;]
+  + NameAndType [a Landroid/widget/Button;]
+  + NameAndType [append (Ljava/lang/Object;)Ljava/lang/StringBuilder;]
+  + NameAndType [append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + NameAndType [b Landroid/widget/Button;]
+  + NameAndType [c Landroid/widget/TextView;]
+  + NameAndType [create ()Landroid/app/AlertDialog;]
+  + NameAndType [d Landroid/app/Dialog;]
+  + NameAndType [dismiss ()V]
+  + NameAndType [e Landroid/app/Dialog;]
+  + NameAndType [equals (Ljava/lang/Object;)Z]
+  + NameAndType [exists ()Z]
+  + NameAndType [f Landroid/app/ProgressDialog;]
+  + NameAndType [findViewById (I)Landroid/view/View;]
+  + NameAndType [finish ()V]
+  + NameAndType [format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+  + NameAndType [g Ljava/io/File;]
+  + NameAndType [getExternalStoragePublicDirectory (Ljava/lang/String;)Ljava/io/File;]
+  + NameAndType [getExternalStorageState ()Ljava/lang/String;]
+  + NameAndType [getItemId ()I]
+  + NameAndType [getMenuInflater ()Landroid/view/MenuInflater;]
+  + NameAndType [getSimpleName ()Ljava/lang/String;]
+  + NameAndType [getString (I)Ljava/lang/String;]
+  + NameAndType [inflate (ILandroid/view/Menu;)V]
+  + NameAndType [mkdirs ()Z]
+  + NameAndType [onCreate (Landroid/os/Bundle;)V]
+  + NameAndType [onOptionsItemSelected (Landroid/view/MenuItem;)Z]
+  + NameAndType [setCancelable (Z)Landroid/app/AlertDialog$Builder;]
+  + NameAndType [setCanceledOnTouchOutside (Z)V]
+  + NameAndType [setContentView (I)V]
+  + NameAndType [setEnabled (Z)V]
+  + NameAndType [setMessage (I)Landroid/app/AlertDialog$Builder;]
+  + NameAndType [setOnClickListener (Landroid/view/View$OnClickListener;)V]
+  + NameAndType [setPositiveButton (ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;]
+  + NameAndType [setText (Ljava/lang/CharSequence;)V]
+  + NameAndType [setTitle (I)V]
+  + NameAndType [show ()V]
+  + NameAndType [toString ()Ljava/lang/String;]
+  + NameAndType [v (Ljava/lang/String;Ljava/lang/String;)I]
+  + Utf8 ["]
+  + Utf8 [()I]
+  + Utf8 [()Landroid/app/AlertDialog;]
+  + Utf8 [()Landroid/view/MenuInflater;]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()V]
+  + Utf8 [()Z]
+  + Utf8 [(I)Landroid/app/AlertDialog$Builder;]
+  + Utf8 [(I)Landroid/view/View;]
+  + Utf8 [(I)Ljava/lang/String;]
+  + Utf8 [(I)V]
+  + Utf8 [(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;]
+  + Utf8 [(ILandroid/view/Menu;)V]
+  + Utf8 [(Landroid/content/Context;)V]
+  + Utf8 [(Landroid/os/Bundle;)V]
+  + Utf8 [(Landroid/view/Menu;)Z]
+  + Utf8 [(Landroid/view/MenuItem;)Z]
+  + Utf8 [(Landroid/view/View$OnClickListener;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)Ljava/io/File;]
+  + Utf8 [(Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/backupmyapps/MainActivity;Landroid/app/ProgressDialog;)V]
+  + Utf8 [(Ljava/io/File;Ljava/lang/String;)V]
+  + Utf8 [(Ljava/lang/CharSequence;)V]
+  + Utf8 [(Ljava/lang/Object;)Ljava/lang/StringBuilder;]
+  + Utf8 [(Ljava/lang/Object;)Z]
+  + Utf8 [(Ljava/lang/String;)Ljava/io/File;]
+  + Utf8 [(Ljava/lang/String;)Ljava/lang/StringBuilder;]
+  + Utf8 [(Ljava/lang/String;)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;)I]
+  + Utf8 [(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+  + Utf8 [(Z)Landroid/app/AlertDialog$Builder;]
+  + Utf8 [(Z)V]
+  + Utf8 [0.2.2]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [DIRECTORY_DOWNLOADS]
+  + Utf8 [Landroid/app/Dialog;]
+  + Utf8 [Landroid/app/ProgressDialog;]
+  + Utf8 [Landroid/widget/Button;]
+  + Utf8 [Landroid/widget/TextView;]
+  + Utf8 [Ljava/io/File;]
+  + Utf8 [Ljava/lang/String;]
+  + Utf8 [No backup file found, disabling the restore button.]
+  + Utf8 [a]
+  + Utf8 [android/app/Activity]
+  + Utf8 [android/app/AlertDialog]
+  + Utf8 [android/app/AlertDialog$Builder]
+  + Utf8 [android/app/Dialog]
+  + Utf8 [android/app/ProgressDialog]
+  + Utf8 [android/content/DialogInterface]
+  + Utf8 [android/content/DialogInterface$OnClickListener]
+  + Utf8 [android/os/Environment]
+  + Utf8 [android/util/Log]
+  + Utf8 [android/view/MenuInflater]
+  + Utf8 [android/view/MenuItem]
+  + Utf8 [android/view/View]
+  + Utf8 [android/view/View$OnClickListener]
+  + Utf8 [android/widget/Button]
+  + Utf8 [android/widget/TextView]
+  + Utf8 [append]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/MainActivity]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/b]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/c]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/d]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/f]
+  + Utf8 [create]
+  + Utf8 [d]
+  + Utf8 [dismiss]
+  + Utf8 [e]
+  + Utf8 [equals]
+  + Utf8 [exists]
+  + Utf8 [f]
+  + Utf8 [findViewById]
+  + Utf8 [finish]
+  + Utf8 [format]
+  + Utf8 [g]
+  + Utf8 [getExternalStoragePublicDirectory]
+  + Utf8 [getExternalStorageState]
+  + Utf8 [getItemId]
+  + Utf8 [getMenuInflater]
+  + Utf8 [getSimpleName]
+  + Utf8 [getString]
+  + Utf8 [inflate]
+  + Utf8 [installedApplications.backupmyapps]
+  + Utf8 [java/io/File]
+  + Utf8 [java/lang/Class]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/String]
+  + Utf8 [java/lang/StringBuilder]
+  + Utf8 [mkdirs]
+  + Utf8 [mounted]
+  + Utf8 [onCreate]
+  + Utf8 [onCreateOptionsMenu]
+  + Utf8 [onOptionsItemSelected]
+  + Utf8 [setCancelable]
+  + Utf8 [setCanceledOnTouchOutside]
+  + Utf8 [setContentView]
+  + Utf8 [setEnabled]
+  + Utf8 [setMessage]
+  + Utf8 [setOnClickListener]
+  + Utf8 [setPositiveButton]
+  + Utf8 [setText]
+  + Utf8 [setTitle]
+  + Utf8 [show]
+  + Utf8 [toString]
+  + Utf8 [v]
+
+Fields (count = 7):
+  + Field:        a Landroid/widget/Button;
+    Access flags: 0x2
+      = private android.widget.Button a
+  + Field:        b Landroid/widget/Button;
+    Access flags: 0x2
+      = private android.widget.Button b
+  + Field:        c Landroid/widget/TextView;
+    Access flags: 0x2
+      = private android.widget.TextView c
+  + Field:        d Landroid/app/Dialog;
+    Access flags: 0x2
+      = private android.app.Dialog d
+  + Field:        e Landroid/app/Dialog;
+    Access flags: 0x2
+      = private android.app.Dialog e
+  + Field:        f Landroid/app/ProgressDialog;
+    Access flags: 0x2
+      = private android.app.ProgressDialog f
+  + Field:        g Ljava/io/File;
+    Access flags: 0x12
+      = private final java.io.File g
+
+Methods (count = 8):
+  - Method:       <init>()V
+    Access flags: 0x1
+      = public MainActivity()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 45, locals = 1, stack = 2):
+      [0] aload_0 v0
+      [1] invokespecial #55
+        - Methodref [android/app/Activity.<init> ()V]
+      [4] aload_0 v0
+      [5] aconst_null
+      [6] putfield #48
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.a Landroid/widget/Button;]
+      [9] aload_0 v0
+      [10] aconst_null
+      [11] putfield #49
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.b Landroid/widget/Button;]
+      [14] aload_0 v0
+      [15] aconst_null
+      [16] putfield #50
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.c Landroid/widget/TextView;]
+      [19] aload_0 v0
+      [20] aconst_null
+      [21] putfield #51
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.d Landroid/app/Dialog;]
+      [24] aload_0 v0
+      [25] aconst_null
+      [26] putfield #52
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.e Landroid/app/Dialog;]
+      [29] aload_0 v0
+      [30] aconst_null
+      [31] putfield #53
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.f Landroid/app/ProgressDialog;]
+      [34] aload_0 v0
+      [35] getstatic #47
+        - Fieldref [android/os/Environment.DIRECTORY_DOWNLOADS Ljava/lang/String;]
+      [38] invokestatic #71
+        - Methodref [android/os/Environment.getExternalStoragePublicDirectory (Ljava/lang/String;)Ljava/io/File;]
+      [41] putfield #54
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.g Ljava/io/File;]
+      [44] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onCreate(Landroid/os/Bundle;)V
+    Access flags: 0x1
+      = public void onCreate(android.os.Bundle)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 229, locals = 2, stack = 8):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokespecial #56
+        - Methodref [android/app/Activity.onCreate (Landroid/os/Bundle;)V]
+      [5] aload_0 v0
+      [6] ldc #3
+        - Integer [2130903042]
+      [8] invokevirtual #82
+        - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.setContentView (I)V]
+      [11] aload_0 v0
+      [12] aload_0 v0
+      [13] ldc #14
+        - Integer [2131099653]
+      [15] invokevirtual #78
+        - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.findViewById (I)Landroid/view/View;]
+      [18] checkcast #35
+        - Class [android/widget/Button]
+      [21] putfield #48
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.a Landroid/widget/Button;]
+      [24] aload_0 v0
+      [25] aload_0 v0
+      [26] ldc #15
+        - Integer [2131099654]
+      [28] invokevirtual #78
+        - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.findViewById (I)Landroid/view/View;]
+      [31] checkcast #35
+        - Class [android/widget/Button]
+      [34] putfield #49
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.b Landroid/widget/Button;]
+      [37] aload_0 v0
+      [38] aload_0 v0
+      [39] ldc #16
+        - Integer [2131099655]
+      [41] invokevirtual #78
+        - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.findViewById (I)Landroid/view/View;]
+      [44] checkcast #36
+        - Class [android/widget/TextView]
+      [47] putfield #50
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.c Landroid/widget/TextView;]
+      [50] aload_0 v0
+      [51] getfield #50
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.c Landroid/widget/TextView;]
+      [54] aload_0 v0
+      [55] ldc #6
+        - Integer [2130968586]
+      [57] invokevirtual #81
+        - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.getString (I)Ljava/lang/String;]
+      [60] iconst_1
+      [61] anewarray #44
+        - Class [java/lang/Object]
+      [64] dup
+      [65] iconst_0
+      [66] new #46
+        - Class [java/lang/StringBuilder]
+      [69] dup
+      [70] ldc #17
+        - String ["]
+      [72] invokespecial #92
+        - Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+      [75] aload_0 v0
+      [76] getfield #54
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.g Ljava/io/File;]
+      [79] invokevirtual #93
+        - Methodref [java/lang/StringBuilder.append (Ljava/lang/Object;)Ljava/lang/StringBuilder;]
+      [82] ldc #17
+        - String ["]
+      [84] invokevirtual #94
+        - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [87] invokevirtual #95
+        - Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [90] aastore
+      [91] invokestatic #91
+        - Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+      [94] invokevirtual #77
+        - Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
+      [97] new #42
+        - Class [java/io/File]
+      [100] dup
+      [101] aload_0 v0
+      [102] getfield #54
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.g Ljava/io/File;]
+      [105] ldc #20
+        - String [installedApplications.backupmyapps]
+      [107] invokespecial #86
+        - Methodref [java/io/File.<init> (Ljava/io/File;Ljava/lang/String;)V]
+      [110] invokevirtual #87
+        - Methodref [java/io/File.exists ()Z]
+      [113] ifne +22 (target=135)
+      [116] ldc #37
+        - Class [com/halcyonwaves/apps/backupmyapps/MainActivity]
+      [118] invokevirtual #89
+        - Methodref [java/lang/Class.getSimpleName ()Ljava/lang/String;]
+      [121] ldc #19
+        - String [No backup file found, disabling the restore button.]
+      [123] invokestatic #73
+        - Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
+      [126] pop
+      [127] aload_0 v0
+      [128] getfield #49
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.b Landroid/widget/Button;]
+      [131] iconst_0
+      [132] invokevirtual #75
+        - Methodref [android/widget/Button.setEnabled (Z)V]
+      [135] aload_0 v0
+      [136] getfield #54
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.g Ljava/io/File;]
+      [139] invokevirtual #88
+        - Methodref [java/io/File.mkdirs ()Z]
+      [142] pop
+      [143] aload_0 v0
+      [144] getfield #48
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.a Landroid/widget/Button;]
+      [147] new #39
+        - Class [com/halcyonwaves/apps/backupmyapps/c]
+      [150] dup
+      [151] aload_0 v0
+      [152] invokespecial #83
+        - Methodref [com/halcyonwaves/apps/backupmyapps/c.<init> (Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)V]
+      [155] invokevirtual #76
+        - Methodref [android/widget/Button.setOnClickListener (Landroid/view/View$OnClickListener;)V]
+      [158] aload_0 v0
+      [159] getfield #49
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.b Landroid/widget/Button;]
+      [162] new #40
+        - Class [com/halcyonwaves/apps/backupmyapps/d]
+      [165] dup
+      [166] aload_0 v0
+      [167] invokespecial #84
+        - Methodref [com/halcyonwaves/apps/backupmyapps/d.<init> (Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)V]
+      [170] invokevirtual #76
+        - Methodref [android/widget/Button.setOnClickListener (Landroid/view/View$OnClickListener;)V]
+      [173] invokestatic #72
+        - Methodref [android/os/Environment.getExternalStorageState ()Ljava/lang/String;]
+      [176] ldc #21
+        - String [mounted]
+      [178] invokevirtual #90
+        - Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
+      [181] ifne +47 (target=228)
+      [184] new #24
+        - Class [android/app/AlertDialog$Builder]
+      [187] dup
+      [188] aload_0 v0
+      [189] invokespecial #59
+        - Methodref [android/app/AlertDialog$Builder.<init> (Landroid/content/Context;)V]
+      [192] dup
+      [193] astore_1 v1
+      [194] ldc #4
+        - Integer [2130968580]
+      [196] invokevirtual #62
+        - Methodref [android/app/AlertDialog$Builder.setMessage (I)Landroid/app/AlertDialog$Builder;]
+      [199] pop
+      [200] aload_1 v1
+      [201] iconst_0
+      [202] invokevirtual #61
+        - Methodref [android/app/AlertDialog$Builder.setCancelable (Z)Landroid/app/AlertDialog$Builder;]
+      [205] pop
+      [206] aload_1 v1
+      [207] ldc #5
+        - Integer [2130968581]
+      [209] new #41
+        - Class [com/halcyonwaves/apps/backupmyapps/f]
+      [212] dup
+      [213] aload_0 v0
+      [214] invokespecial #85
+        - Methodref [com/halcyonwaves/apps/backupmyapps/f.<init> (Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)V]
+      [217] invokevirtual #63
+        - Methodref [android/app/AlertDialog$Builder.setPositiveButton (ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;]
+      [220] pop
+      [221] aload_1 v1
+      [222] invokevirtual #60
+        - Methodref [android/app/AlertDialog$Builder.create ()Landroid/app/AlertDialog;]
+      [225] invokevirtual #58
+        - Methodref [android/app/AlertDialog.show ()V]
+      [228] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onOptionsItemSelected(Landroid/view/MenuItem;)Z
+    Access flags: 0x1
+      = public boolean onOptionsItemSelected(android.view.MenuItem)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 206, locals = 2, stack = 6):
+      [0] aload_1 v1
+      [1] invokeinterface #96
+        - InterfaceMethodref [android/view/MenuItem.getItemId ()I]
+      [6] tableswitch (3 offsets, default=194) (target=200)
+        2131099656: offset = 26, target = 32
+        2131099657: offset = 80, target = 86
+        2131099658: offset = 188, target = 194
+        default: offset = 194, target = 200
+      [32] aload_0 v0
+      [33] getfield #51
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.d Landroid/app/Dialog;]
+      [36] ifnonnull +41 (target=77)
+      [39] aload_0 v0
+      [40] new #25
+        - Class [android/app/Dialog]
+      [43] dup
+      [44] aload_0 v0
+      [45] invokespecial #64
+        - Methodref [android/app/Dialog.<init> (Landroid/content/Context;)V]
+      [48] putfield #51
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.d Landroid/app/Dialog;]
+      [51] aload_0 v0
+      [52] getfield #51
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.d Landroid/app/Dialog;]
+      [55] iconst_1
+      [56] invokevirtual #66
+        - Methodref [android/app/Dialog.setCanceledOnTouchOutside (Z)V]
+      [59] aload_0 v0
+      [60] getfield #51
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.d Landroid/app/Dialog;]
+      [63] ldc #2
+        - Integer [2130903041]
+      [65] invokevirtual #67
+        - Methodref [android/app/Dialog.setContentView (I)V]
+      [68] aload_0 v0
+      [69] getfield #51
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.d Landroid/app/Dialog;]
+      [72] ldc #7
+        - Integer [2130968587]
+      [74] invokevirtual #68
+        - Methodref [android/app/Dialog.setTitle (I)V]
+      [77] aload_0 v0
+      [78] getfield #51
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.d Landroid/app/Dialog;]
+      [81] invokevirtual #69
+        - Methodref [android/app/Dialog.show ()V]
+      [84] iconst_1
+      [85] ireturn
+      [86] aload_0 v0
+      [87] getfield #52
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.e Landroid/app/Dialog;]
+      [90] ifnonnull +95 (target=185)
+      [93] aload_0 v0
+      [94] new #25
+        - Class [android/app/Dialog]
+      [97] dup
+      [98] aload_0 v0
+      [99] invokespecial #64
+        - Methodref [android/app/Dialog.<init> (Landroid/content/Context;)V]
+      [102] putfield #52
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.e Landroid/app/Dialog;]
+      [105] aload_0 v0
+      [106] getfield #52
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.e Landroid/app/Dialog;]
+      [109] iconst_1
+      [110] invokevirtual #66
+        - Methodref [android/app/Dialog.setCanceledOnTouchOutside (Z)V]
+      [113] aload_0 v0
+      [114] getfield #52
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.e Landroid/app/Dialog;]
+      [117] ldc #1
+        - Integer [2130903040]
+      [119] invokevirtual #67
+        - Methodref [android/app/Dialog.setContentView (I)V]
+      [122] aload_0 v0
+      [123] getfield #52
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.e Landroid/app/Dialog;]
+      [126] ldc #8
+        - Integer [2130968590]
+      [128] invokevirtual #68
+        - Methodref [android/app/Dialog.setTitle (I)V]
+      [131] aload_0 v0
+      [132] getfield #52
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.e Landroid/app/Dialog;]
+      [135] ldc #12
+        - Integer [2131099649]
+      [137] invokevirtual #65
+        - Methodref [android/app/Dialog.findViewById (I)Landroid/view/View;]
+      [140] checkcast #36
+        - Class [android/widget/TextView]
+      [143] aload_0 v0
+      [144] ldc #10
+        - Integer [2130968592]
+      [146] invokevirtual #81
+        - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.getString (I)Ljava/lang/String;]
+      [149] iconst_1
+      [150] anewarray #44
+        - Class [java/lang/Object]
+      [153] dup
+      [154] iconst_0
+      [155] ldc #18
+        - String [0.2.2]
+      [157] aastore
+      [158] invokestatic #91
+        - Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
+      [161] invokevirtual #77
+        - Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
+      [164] aload_0 v0
+      [165] getfield #52
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.e Landroid/app/Dialog;]
+      [168] ldc #13
+        - Integer [2131099650]
+      [170] invokevirtual #65
+        - Methodref [android/app/Dialog.findViewById (I)Landroid/view/View;]
+      [173] checkcast #36
+        - Class [android/widget/TextView]
+      [176] aload_0 v0
+      [177] ldc #9
+        - Integer [2130968591]
+      [179] invokevirtual #81
+        - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.getString (I)Ljava/lang/String;]
+      [182] invokevirtual #77
+        - Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
+      [185] aload_0 v0
+      [186] getfield #52
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.e Landroid/app/Dialog;]
+      [189] invokevirtual #69
+        - Methodref [android/app/Dialog.show ()V]
+      [192] iconst_1
+      [193] ireturn
+      [194] aload_0 v0
+      [195] invokevirtual #79
+        - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.finish ()V]
+      [198] iconst_1
+      [199] ireturn
+      [200] aload_0 v0
+      [201] aload_1 v1
+      [202] invokespecial #57
+        - Methodref [android/app/Activity.onOptionsItemSelected (Landroid/view/MenuItem;)Z]
+      [205] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onCreateOptionsMenu(Landroid/view/Menu;)Z
+    Access flags: 0x1
+      = public boolean onCreateOptionsMenu(android.view.Menu)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 12, locals = 2, stack = 3):
+      [0] aload_0 v0
+      [1] invokevirtual #80
+        - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.getMenuInflater ()Landroid/view/MenuInflater;]
+      [4] ldc #11
+        - Integer [2131034112]
+      [6] aload_1 v1
+      [7] invokevirtual #74
+        - Methodref [android/view/MenuInflater.inflate (ILandroid/view/Menu;)V]
+      [10] iconst_1
+      [11] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a()V
+    Access flags: 0x11
+      = public final void a()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 21, locals = 1, stack = 2):
+      [0] aload_0 v0
+      [1] getfield #49
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.b Landroid/widget/Button;]
+      [4] iconst_1
+      [5] invokevirtual #75
+        - Methodref [android/widget/Button.setEnabled (Z)V]
+      [8] aload_0 v0
+      [9] getfield #53
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.f Landroid/app/ProgressDialog;]
+      [12] invokevirtual #70
+        - Methodref [android/app/ProgressDialog.dismiss ()V]
+      [15] aload_0 v0
+      [16] aconst_null
+      [17] putfield #53
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.f Landroid/app/ProgressDialog;]
+      [20] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b()V
+    Access flags: 0x11
+      = public final void b()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 13, locals = 1, stack = 2):
+      [0] aload_0 v0
+      [1] getfield #53
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.f Landroid/app/ProgressDialog;]
+      [4] invokevirtual #70
+        - Methodref [android/app/ProgressDialog.dismiss ()V]
+      [7] aload_0 v0
+      [8] aconst_null
+      [9] putfield #53
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.f Landroid/app/ProgressDialog;]
+      [12] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Lcom/halcyonwaves/apps/backupmyapps/MainActivity;Landroid/app/ProgressDialog;)V
+    Access flags: 0x1008
+      = static synthetic void a(com.halcyonwaves.apps.backupmyapps.MainActivity,android.app.ProgressDialog)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #53
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.f Landroid/app/ProgressDialog;]
+      [5] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a(Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)Ljava/io/File;
+    Access flags: 0x1008
+      = static synthetic java.io.File a(com.halcyonwaves.apps.backupmyapps.MainActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #54
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/MainActivity.g Ljava/io/File;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/backupmyapps/c
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x30
+    = final class com.halcyonwaves.apps.backupmyapps.c extends java.lang.Object
+
+Interfaces (count = 1):
+  - Class [android/view/View$OnClickListener]
+
+Constant Pool (count = 55):
+  - Integer [2130968582]
+  - String []
+  - String [installedApplications.backupmyapps]
+  - Class [android/app/ProgressDialog]
+  - Class [android/view/View]
+  - Class [android/view/View$OnClickListener]
+  - Class [com/halcyonwaves/apps/backupmyapps/MainActivity]
+  - Class [com/halcyonwaves/apps/backupmyapps/a]
+  - Class [com/halcyonwaves/apps/backupmyapps/c]
+  - Class [java/lang/Object]
+  - Class [java/lang/Void]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/c.a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+  - Methodref [android/app/ProgressDialog.show (Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Z)Landroid/app/ProgressDialog;]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.a (Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)Ljava/io/File;]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.a (Lcom/halcyonwaves/apps/backupmyapps/MainActivity;Landroid/app/ProgressDialog;)V]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.getString (I)Ljava/lang/String;]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/a.<init> (Landroid/content/Context;Ljava/io/File;Ljava/lang/String;Lcom/halcyonwaves/apps/backupmyapps/b;)V]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/a.execute ([Ljava/lang/Object;)Landroid/os/AsyncTask;]
+  - Methodref [java/lang/Object.<init> ()V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/content/Context;Ljava/io/File;Ljava/lang/String;Lcom/halcyonwaves/apps/backupmyapps/b;)V]
+  + NameAndType [a (Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)Ljava/io/File;]
+  + NameAndType [a (Lcom/halcyonwaves/apps/backupmyapps/MainActivity;Landroid/app/ProgressDialog;)V]
+  + NameAndType [a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+  + NameAndType [execute ([Ljava/lang/Object;)Landroid/os/AsyncTask;]
+  + NameAndType [getString (I)Ljava/lang/String;]
+  + NameAndType [show (Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Z)Landroid/app/ProgressDialog;]
+  + Utf8 []
+  + Utf8 [()V]
+  + Utf8 [(I)Ljava/lang/String;]
+  + Utf8 [(Landroid/content/Context;Ljava/io/File;Ljava/lang/String;Lcom/halcyonwaves/apps/backupmyapps/b;)V]
+  + Utf8 [(Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Z)Landroid/app/ProgressDialog;]
+  + Utf8 [(Landroid/view/View;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)Ljava/io/File;]
+  + Utf8 [(Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/backupmyapps/MainActivity;Landroid/app/ProgressDialog;)V]
+  + Utf8 [([Ljava/lang/Object;)Landroid/os/AsyncTask;]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+  + Utf8 [a]
+  + Utf8 [android/app/ProgressDialog]
+  + Utf8 [android/view/View]
+  + Utf8 [android/view/View$OnClickListener]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/MainActivity]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/a]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/c]
+  + Utf8 [execute]
+  + Utf8 [getString]
+  + Utf8 [installedApplications.backupmyapps]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/Void]
+  + Utf8 [onClick]
+  + Utf8 [show]
+
+Fields (count = 1):
+  + Field:        a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;
+    Access flags: 0x1010
+      = final synthetic com.halcyonwaves.apps.backupmyapps.MainActivity a
+
+Methods (count = 2):
+  - Method:       <init>(Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)V
+    Access flags: 0x0
+      = c(com.halcyonwaves.apps.backupmyapps.MainActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #12
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/c.a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+      [5] aload_0 v0
+      [6] invokespecial #19
+        - Methodref [java/lang/Object.<init> ()V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onClick(Landroid/view/View;)V
+    Access flags: 0x11
+      = public final void onClick(android.view.View)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 59, locals = 2, stack = 6):
+      [0] aload_0 v0
+      [1] getfield #12
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/c.a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+      [4] aload_0 v0
+      [5] getfield #12
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/c.a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+      [8] ldc #2
+        - String []
+      [10] aload_0 v0
+      [11] getfield #12
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/c.a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+      [14] ldc #1
+        - Integer [2130968582]
+      [16] invokevirtual #16
+        - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.getString (I)Ljava/lang/String;]
+      [19] iconst_1
+      [20] invokestatic #13
+        - Methodref [android/app/ProgressDialog.show (Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Z)Landroid/app/ProgressDialog;]
+      [23] invokestatic #15
+        - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.a (Lcom/halcyonwaves/apps/backupmyapps/MainActivity;Landroid/app/ProgressDialog;)V]
+      [26] new #8
+        - Class [com/halcyonwaves/apps/backupmyapps/a]
+      [29] dup
+      [30] aload_0 v0
+      [31] getfield #12
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/c.a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+      [34] aload_0 v0
+      [35] getfield #12
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/c.a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+      [38] invokestatic #14
+        - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.a (Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)Ljava/io/File;]
+      [41] ldc #3
+        - String [installedApplications.backupmyapps]
+      [43] aload_0 v0
+      [44] getfield #12
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/c.a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+      [47] invokespecial #17
+        - Methodref [com/halcyonwaves/apps/backupmyapps/a.<init> (Landroid/content/Context;Ljava/io/File;Ljava/lang/String;Lcom/halcyonwaves/apps/backupmyapps/b;)V]
+      [50] iconst_0
+      [51] anewarray #11
+        - Class [java/lang/Void]
+      [54] invokevirtual #18
+        - Methodref [com/halcyonwaves/apps/backupmyapps/a.execute ([Ljava/lang/Object;)Landroid/os/AsyncTask;]
+      [57] pop
+      [58] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/backupmyapps/d
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x30
+    = final class com.halcyonwaves.apps.backupmyapps.d extends java.lang.Object
+
+Interfaces (count = 1):
+  - Class [android/view/View$OnClickListener]
+
+Constant Pool (count = 60):
+  - Integer [2130968581]
+  - Integer [2130968583]
+  - Class [android/app/AlertDialog]
+  - Class [android/app/AlertDialog$Builder]
+  - Class [android/content/DialogInterface]
+  - Class [android/content/DialogInterface$OnClickListener]
+  - Class [android/view/View]
+  - Class [android/view/View$OnClickListener]
+  - Class [com/halcyonwaves/apps/backupmyapps/MainActivity]
+  - Class [com/halcyonwaves/apps/backupmyapps/d]
+  - Class [com/halcyonwaves/apps/backupmyapps/e]
+  - Class [java/lang/Object]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/d.a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+  - Methodref [android/app/AlertDialog.show ()V]
+  - Methodref [android/app/AlertDialog$Builder.<init> (Landroid/content/Context;)V]
+  - Methodref [android/app/AlertDialog$Builder.create ()Landroid/app/AlertDialog;]
+  - Methodref [android/app/AlertDialog$Builder.setCancelable (Z)Landroid/app/AlertDialog$Builder;]
+  - Methodref [android/app/AlertDialog$Builder.setMessage (I)Landroid/app/AlertDialog$Builder;]
+  - Methodref [android/app/AlertDialog$Builder.setPositiveButton (ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/e.<init> (Lcom/halcyonwaves/apps/backupmyapps/d;)V]
+  - Methodref [java/lang/Object.<init> ()V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/content/Context;)V]
+  + NameAndType [<init> (Lcom/halcyonwaves/apps/backupmyapps/d;)V]
+  + NameAndType [a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+  + NameAndType [create ()Landroid/app/AlertDialog;]
+  + NameAndType [setCancelable (Z)Landroid/app/AlertDialog$Builder;]
+  + NameAndType [setMessage (I)Landroid/app/AlertDialog$Builder;]
+  + NameAndType [setPositiveButton (ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;]
+  + NameAndType [show ()V]
+  + Utf8 [()Landroid/app/AlertDialog;]
+  + Utf8 [()V]
+  + Utf8 [(I)Landroid/app/AlertDialog$Builder;]
+  + Utf8 [(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;]
+  + Utf8 [(Landroid/content/Context;)V]
+  + Utf8 [(Landroid/view/View;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/backupmyapps/d;)V]
+  + Utf8 [(Z)Landroid/app/AlertDialog$Builder;]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+  + Utf8 [a]
+  + Utf8 [android/app/AlertDialog]
+  + Utf8 [android/app/AlertDialog$Builder]
+  + Utf8 [android/content/DialogInterface]
+  + Utf8 [android/content/DialogInterface$OnClickListener]
+  + Utf8 [android/view/View]
+  + Utf8 [android/view/View$OnClickListener]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/MainActivity]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/d]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/e]
+  + Utf8 [create]
+  + Utf8 [java/lang/Object]
+  + Utf8 [onClick]
+  + Utf8 [setCancelable]
+  + Utf8 [setMessage]
+  + Utf8 [setPositiveButton]
+  + Utf8 [show]
+
+Fields (count = 1):
+  + Field:        a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;
+    Access flags: 0x1010
+      = final synthetic com.halcyonwaves.apps.backupmyapps.MainActivity a
+
+Methods (count = 2):
+  - Method:       <init>(Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)V
+    Access flags: 0x0
+      = d(com.halcyonwaves.apps.backupmyapps.MainActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #13
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/d.a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+      [5] aload_0 v0
+      [6] invokespecial #21
+        - Methodref [java/lang/Object.<init> ()V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onClick(Landroid/view/View;)V
+    Access flags: 0x11
+      = public final void onClick(android.view.View)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 48, locals = 2, stack = 5):
+      [0] new #4
+        - Class [android/app/AlertDialog$Builder]
+      [3] dup
+      [4] aload_0 v0
+      [5] getfield #13
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/d.a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+      [8] invokespecial #15
+        - Methodref [android/app/AlertDialog$Builder.<init> (Landroid/content/Context;)V]
+      [11] dup
+      [12] astore_1 v1
+      [13] ldc #2
+        - Integer [2130968583]
+      [15] invokevirtual #18
+        - Methodref [android/app/AlertDialog$Builder.setMessage (I)Landroid/app/AlertDialog$Builder;]
+      [18] pop
+      [19] aload_1 v1
+      [20] iconst_0
+      [21] invokevirtual #17
+        - Methodref [android/app/AlertDialog$Builder.setCancelable (Z)Landroid/app/AlertDialog$Builder;]
+      [24] pop
+      [25] aload_1 v1
+      [26] ldc #1
+        - Integer [2130968581]
+      [28] new #11
+        - Class [com/halcyonwaves/apps/backupmyapps/e]
+      [31] dup
+      [32] aload_0 v0
+      [33] invokespecial #20
+        - Methodref [com/halcyonwaves/apps/backupmyapps/e.<init> (Lcom/halcyonwaves/apps/backupmyapps/d;)V]
+      [36] invokevirtual #19
+        - Methodref [android/app/AlertDialog$Builder.setPositiveButton (ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;]
+      [39] pop
+      [40] aload_1 v1
+      [41] invokevirtual #16
+        - Methodref [android/app/AlertDialog$Builder.create ()Landroid/app/AlertDialog;]
+      [44] invokevirtual #14
+        - Methodref [android/app/AlertDialog.show ()V]
+      [47] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/backupmyapps/e
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x30
+    = final class com.halcyonwaves.apps.backupmyapps.e extends java.lang.Object
+
+Interfaces (count = 1):
+  - Class [android/content/DialogInterface$OnClickListener]
+
+Constant Pool (count = 26):
+  - Class [android/content/DialogInterface]
+  - Class [android/content/DialogInterface$OnClickListener]
+  - Class [com/halcyonwaves/apps/backupmyapps/d]
+  - Class [com/halcyonwaves/apps/backupmyapps/e]
+  - Class [java/lang/Object]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/e.a Lcom/halcyonwaves/apps/backupmyapps/d;]
+  - Methodref [java/lang/Object.<init> ()V]
+  - InterfaceMethodref [android/content/DialogInterface.dismiss ()V]
+  + NameAndType [<init> ()V]
+  + NameAndType [a Lcom/halcyonwaves/apps/backupmyapps/d;]
+  + NameAndType [dismiss ()V]
+  + Utf8 [()V]
+  + Utf8 [(Landroid/content/DialogInterface;I)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/backupmyapps/d;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Lcom/halcyonwaves/apps/backupmyapps/d;]
+  + Utf8 [a]
+  + Utf8 [android/content/DialogInterface]
+  + Utf8 [android/content/DialogInterface$OnClickListener]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/d]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/e]
+  + Utf8 [dismiss]
+  + Utf8 [java/lang/Object]
+  + Utf8 [onClick]
+
+Fields (count = 1):
+  + Field:        a Lcom/halcyonwaves/apps/backupmyapps/d;
+    Access flags: 0x1010
+      = final synthetic com.halcyonwaves.apps.backupmyapps.d a
+
+Methods (count = 2):
+  - Method:       <init>(Lcom/halcyonwaves/apps/backupmyapps/d;)V
+    Access flags: 0x0
+      = e(com.halcyonwaves.apps.backupmyapps.d)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #6
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/e.a Lcom/halcyonwaves/apps/backupmyapps/d;]
+      [5] aload_0 v0
+      [6] invokespecial #7
+        - Methodref [java/lang/Object.<init> ()V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onClick(Landroid/content/DialogInterface;I)V
+    Access flags: 0x11
+      = public final void onClick(android.content.DialogInterface,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 7, locals = 3, stack = 1):
+      [0] aload_1 v1
+      [1] invokeinterface #8
+        - InterfaceMethodref [android/content/DialogInterface.dismiss ()V]
+      [6] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/backupmyapps/f
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x30
+    = final class com.halcyonwaves.apps.backupmyapps.f extends java.lang.Object
+
+Interfaces (count = 1):
+  - Class [android/content/DialogInterface$OnClickListener]
+
+Constant Pool (count = 26):
+  - Class [android/content/DialogInterface]
+  - Class [android/content/DialogInterface$OnClickListener]
+  - Class [com/halcyonwaves/apps/backupmyapps/MainActivity]
+  - Class [com/halcyonwaves/apps/backupmyapps/f]
+  - Class [java/lang/Object]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/f.a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.finish ()V]
+  - Methodref [java/lang/Object.<init> ()V]
+  + NameAndType [<init> ()V]
+  + NameAndType [a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+  + NameAndType [finish ()V]
+  + Utf8 [()V]
+  + Utf8 [(Landroid/content/DialogInterface;I)V]
+  + Utf8 [(Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+  + Utf8 [a]
+  + Utf8 [android/content/DialogInterface]
+  + Utf8 [android/content/DialogInterface$OnClickListener]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/MainActivity]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/f]
+  + Utf8 [finish]
+  + Utf8 [java/lang/Object]
+  + Utf8 [onClick]
+
+Fields (count = 1):
+  + Field:        a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;
+    Access flags: 0x1010
+      = final synthetic com.halcyonwaves.apps.backupmyapps.MainActivity a
+
+Methods (count = 2):
+  - Method:       <init>(Lcom/halcyonwaves/apps/backupmyapps/MainActivity;)V
+    Access flags: 0x0
+      = f(com.halcyonwaves.apps.backupmyapps.MainActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #6
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/f.a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+      [5] aload_0 v0
+      [6] invokespecial #8
+        - Methodref [java/lang/Object.<init> ()V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onClick(Landroid/content/DialogInterface;I)V
+    Access flags: 0x11
+      = public final void onClick(android.content.DialogInterface,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 8, locals = 3, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #6
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/f.a Lcom/halcyonwaves/apps/backupmyapps/MainActivity;]
+      [4] invokevirtual #7
+        - Methodref [com/halcyonwaves/apps/backupmyapps/MainActivity.finish ()V]
+      [7] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/backupmyapps/g
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x31
+    = public final class com.halcyonwaves.apps.backupmyapps.g extends java.lang.Object
+
+Interfaces (count = 0):
+
+Constant Pool (count = 54):
+  - String []
+  - String [android]
+  - String [android.tts]
+  - String [com.android.]
+  - String [com.example]
+  - Class [com/halcyonwaves/apps/backupmyapps/g]
+  - Class [java/lang/Object]
+  - Class [java/lang/String]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/g.a Ljava/lang/String;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/g.b Ljava/lang/String;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/g.c Ljava/lang/String;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/g.d I]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/g.e Landroid/graphics/drawable/Drawable;]
+  - Methodref [java/lang/Object.<init> ()V]
+  - Methodref [java/lang/String.equalsIgnoreCase (Ljava/lang/String;)Z]
+  - Methodref [java/lang/String.startsWith (Ljava/lang/String;)Z]
+  - Methodref [java/lang/String.toLowerCase ()Ljava/lang/String;]
+  + NameAndType [<init> ()V]
+  + NameAndType [a Ljava/lang/String;]
+  + NameAndType [b Ljava/lang/String;]
+  + NameAndType [c Ljava/lang/String;]
+  + NameAndType [d I]
+  + NameAndType [e Landroid/graphics/drawable/Drawable;]
+  + NameAndType [equalsIgnoreCase (Ljava/lang/String;)Z]
+  + NameAndType [startsWith (Ljava/lang/String;)Z]
+  + NameAndType [toLowerCase ()Ljava/lang/String;]
+  + Utf8 []
+  + Utf8 [()I]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()V]
+  + Utf8 [()Z]
+  + Utf8 [(Ljava/lang/String;)Z]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [I]
+  + Utf8 [Landroid/graphics/drawable/Drawable;]
+  + Utf8 [Ljava/lang/String;]
+  + Utf8 [a]
+  + Utf8 [android]
+  + Utf8 [android.tts]
+  + Utf8 [b]
+  + Utf8 [c]
+  + Utf8 [com.android.]
+  + Utf8 [com.example]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/g]
+  + Utf8 [d]
+  + Utf8 [e]
+  + Utf8 [equalsIgnoreCase]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/String]
+  + Utf8 [startsWith]
+  + Utf8 [toLowerCase]
+
+Fields (count = 5):
+  + Field:        a Ljava/lang/String;
+    Access flags: 0x2
+      = private java.lang.String a
+  + Field:        b Ljava/lang/String;
+    Access flags: 0x2
+      = private java.lang.String b
+  + Field:        c Ljava/lang/String;
+    Access flags: 0x2
+      = private java.lang.String c
+  + Field:        d I
+    Access flags: 0x2
+      = private int d
+  + Field:        e Landroid/graphics/drawable/Drawable;
+    Access flags: 0x2
+      = private android.graphics.drawable.Drawable e
+
+Methods (count = 6):
+  - Method:       <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;)V
+    Access flags: 0x1
+      = public g(java.lang.String,java.lang.String,java.lang.String,int,android.graphics.drawable.Drawable)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 55, locals = 6, stack = 2):
+      [0] aload_0 v0
+      [1] invokespecial #14
+        - Methodref [java/lang/Object.<init> ()V]
+      [4] aload_0 v0
+      [5] ldc #1
+        - String []
+      [7] putfield #9
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.a Ljava/lang/String;]
+      [10] aload_0 v0
+      [11] ldc #1
+        - String []
+      [13] putfield #10
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.b Ljava/lang/String;]
+      [16] aload_0 v0
+      [17] ldc #1
+        - String []
+      [19] putfield #11
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.c Ljava/lang/String;]
+      [22] aload_0 v0
+      [23] iconst_0
+      [24] putfield #12
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.d I]
+      [27] aload_0 v0
+      [28] aload_1 v1
+      [29] putfield #9
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.a Ljava/lang/String;]
+      [32] aload_0 v0
+      [33] aload_2 v2
+      [34] putfield #10
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.b Ljava/lang/String;]
+      [37] aload_0 v0
+      [38] aload_3 v3
+      [39] putfield #11
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.c Ljava/lang/String;]
+      [42] aload_0 v0
+      [43] iload v4
+      [45] putfield #12
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.d I]
+      [48] aload_0 v0
+      [49] aload v5
+      [51] putfield #13
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.e Landroid/graphics/drawable/Drawable;]
+      [54] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a()Z
+    Access flags: 0x11
+      = public final boolean a()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 58, locals = 1, stack = 2):
+      [0] aload_0 v0
+      [1] getfield #10
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.b Ljava/lang/String;]
+      [4] invokevirtual #17
+        - Methodref [java/lang/String.toLowerCase ()Ljava/lang/String;]
+      [7] ldc #4
+        - String [com.android.]
+      [9] invokevirtual #16
+        - Methodref [java/lang/String.startsWith (Ljava/lang/String;)Z]
+      [12] ifne +44 (target=56)
+      [15] aload_0 v0
+      [16] getfield #10
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.b Ljava/lang/String;]
+      [19] invokevirtual #17
+        - Methodref [java/lang/String.toLowerCase ()Ljava/lang/String;]
+      [22] ldc #5
+        - String [com.example]
+      [24] invokevirtual #16
+        - Methodref [java/lang/String.startsWith (Ljava/lang/String;)Z]
+      [27] ifne +29 (target=56)
+      [30] aload_0 v0
+      [31] getfield #10
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.b Ljava/lang/String;]
+      [34] ldc #2
+        - String [android]
+      [36] invokevirtual #15
+        - Methodref [java/lang/String.equalsIgnoreCase (Ljava/lang/String;)Z]
+      [39] ifne +17 (target=56)
+      [42] aload_0 v0
+      [43] getfield #10
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.b Ljava/lang/String;]
+      [46] ldc #3
+        - String [android.tts]
+      [48] invokevirtual #15
+        - Methodref [java/lang/String.equalsIgnoreCase (Ljava/lang/String;)Z]
+      [51] ifne +5 (target=56)
+      [54] iconst_0
+      [55] ireturn
+      [56] iconst_1
+      [57] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       b()Ljava/lang/String;
+    Access flags: 0x11
+      = public final java.lang.String b()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #10
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.b Ljava/lang/String;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       c()Ljava/lang/String;
+    Access flags: 0x11
+      = public final java.lang.String c()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #9
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.a Ljava/lang/String;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       d()I
+    Access flags: 0x11
+      = public final int d()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #12
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.d I]
+      [4] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       e()Ljava/lang/String;
+    Access flags: 0x11
+      = public final java.lang.String e()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #11
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/g.c Ljava/lang/String;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
++ Program class: com/halcyonwaves/apps/backupmyapps/h
+  Superclass:    java/lang/Object
+  Major version: 0x31
+  Minor version: 0x0
+  Access flags:  0x31
+    = public final class com.halcyonwaves.apps.backupmyapps.h extends java.lang.Object
+
+Interfaces (count = 0):
+
+Constant Pool (count = 83):
+  - Class [android/content/Context]
+  - Class [android/content/pm/ApplicationInfo]
+  - Class [android/content/pm/PackageInfo]
+  - Class [android/content/pm/PackageManager]
+  - Class [com/halcyonwaves/apps/backupmyapps/g]
+  - Class [com/halcyonwaves/apps/backupmyapps/h]
+  - Class [java/lang/CharSequence]
+  - Class [java/lang/Object]
+  - Class [java/util/ArrayList]
+  - Class [java/util/List]
+  - Fieldref [android/content/pm/PackageInfo.applicationInfo Landroid/content/pm/ApplicationInfo;]
+  - Fieldref [android/content/pm/PackageInfo.packageName Ljava/lang/String;]
+  - Fieldref [android/content/pm/PackageInfo.versionCode I]
+  - Fieldref [android/content/pm/PackageInfo.versionName Ljava/lang/String;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/h.a Landroid/content/pm/PackageManager;]
+  - Methodref [android/content/Context.getPackageManager ()Landroid/content/pm/PackageManager;]
+  - Methodref [android/content/pm/ApplicationInfo.loadIcon (Landroid/content/pm/PackageManager;)Landroid/graphics/drawable/Drawable;]
+  - Methodref [android/content/pm/ApplicationInfo.loadLabel (Landroid/content/pm/PackageManager;)Ljava/lang/CharSequence;]
+  - Methodref [android/content/pm/PackageManager.getInstalledPackages (I)Ljava/util/List;]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/g.<init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;)V]
+  - Methodref [java/lang/Object.<init> ()V]
+  - Methodref [java/util/ArrayList.<init> ()V]
+  - Methodref [java/util/ArrayList.add (Ljava/lang/Object;)Z]
+  - InterfaceMethodref [java/lang/CharSequence.toString ()Ljava/lang/String;]
+  - InterfaceMethodref [java/util/List.get (I)Ljava/lang/Object;]
+  - InterfaceMethodref [java/util/List.size ()I]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;)V]
+  + NameAndType [a Landroid/content/pm/PackageManager;]
+  + NameAndType [add (Ljava/lang/Object;)Z]
+  + NameAndType [applicationInfo Landroid/content/pm/ApplicationInfo;]
+  + NameAndType [get (I)Ljava/lang/Object;]
+  + NameAndType [getInstalledPackages (I)Ljava/util/List;]
+  + NameAndType [getPackageManager ()Landroid/content/pm/PackageManager;]
+  + NameAndType [loadIcon (Landroid/content/pm/PackageManager;)Landroid/graphics/drawable/Drawable;]
+  + NameAndType [loadLabel (Landroid/content/pm/PackageManager;)Ljava/lang/CharSequence;]
+  + NameAndType [packageName Ljava/lang/String;]
+  + NameAndType [size ()I]
+  + NameAndType [toString ()Ljava/lang/String;]
+  + NameAndType [versionCode I]
+  + NameAndType [versionName Ljava/lang/String;]
+  + Utf8 [()I]
+  + Utf8 [()Landroid/content/pm/PackageManager;]
+  + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()Ljava/util/ArrayList;]
+  + Utf8 [()V]
+  + Utf8 [(I)Ljava/lang/Object;]
+  + Utf8 [(I)Ljava/util/List;]
+  + Utf8 [(Landroid/content/Context;)V]
+  + Utf8 [(Landroid/content/pm/PackageManager;)Landroid/graphics/drawable/Drawable;]
+  + Utf8 [(Landroid/content/pm/PackageManager;)Ljava/lang/CharSequence;]
+  + Utf8 [(Ljava/lang/Object;)Z]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [I]
+  + Utf8 [Landroid/content/pm/ApplicationInfo;]
+  + Utf8 [Landroid/content/pm/PackageManager;]
+  + Utf8 [Ljava/lang/String;]
+  + Utf8 [a]
+  + Utf8 [add]
+  + Utf8 [android/content/Context]
+  + Utf8 [android/content/pm/ApplicationInfo]
+  + Utf8 [android/content/pm/PackageInfo]
+  + Utf8 [android/content/pm/PackageManager]
+  + Utf8 [applicationInfo]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/g]
+  + Utf8 [com/halcyonwaves/apps/backupmyapps/h]
+  + Utf8 [get]
+  + Utf8 [getInstalledPackages]
+  + Utf8 [getPackageManager]
+  + Utf8 [java/lang/CharSequence]
+  + Utf8 [java/lang/Object]
+  + Utf8 [java/util/ArrayList]
+  + Utf8 [java/util/List]
+  + Utf8 [loadIcon]
+  + Utf8 [loadLabel]
+  + Utf8 [packageName]
+  + Utf8 [size]
+  + Utf8 [toString]
+  + Utf8 [versionCode]
+  + Utf8 [versionName]
+
+Fields (count = 1):
+  + Field:        a Landroid/content/pm/PackageManager;
+    Access flags: 0x2
+      = private android.content.pm.PackageManager a
+
+Methods (count = 2):
+  - Method:       <init>(Landroid/content/Context;)V
+    Access flags: 0x1
+      = public h(android.content.Context)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 18, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] invokespecial #21
+        - Methodref [java/lang/Object.<init> ()V]
+      [4] aload_0 v0
+      [5] aconst_null
+      [6] putfield #15
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/h.a Landroid/content/pm/PackageManager;]
+      [9] aload_0 v0
+      [10] aload_1 v1
+      [11] invokevirtual #16
+        - Methodref [android/content/Context.getPackageManager ()Landroid/content/pm/PackageManager;]
+      [14] putfield #15
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/h.a Landroid/content/pm/PackageManager;]
+      [17] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       a()Ljava/util/ArrayList;
+    Access flags: 0x11
+      = public final java.util.ArrayList a()
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 112, locals = 7, stack = 8):
+      [0] new #9
+        - Class [java/util/ArrayList]
+      [3] dup
+      [4] invokespecial #22
+        - Methodref [java/util/ArrayList.<init> ()V]
+      [7] astore_1 v1
+      [8] aload_0 v0
+      [9] getfield #15
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/h.a Landroid/content/pm/PackageManager;]
+      [12] iconst_0
+      [13] invokevirtual #19
+        - Methodref [android/content/pm/PackageManager.getInstalledPackages (I)Ljava/util/List;]
+      [16] astore_2 v2
+      [17] iconst_0
+      [18] istore_3 v3
+      [19] goto +81 (target=100)
+      [22] aload_2 v2
+      [23] iload_3 v3
+      [24] invokeinterface #25
+        - InterfaceMethodref [java/util/List.get (I)Ljava/lang/Object;]
+      [29] checkcast #3
+        - Class [android/content/pm/PackageInfo]
+      [32] dup
+      [33] astore v4
+      [35] getfield #11
+        - Fieldref [android/content/pm/PackageInfo.applicationInfo Landroid/content/pm/ApplicationInfo;]
+      [38] aload_0 v0
+      [39] getfield #15
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/h.a Landroid/content/pm/PackageManager;]
+      [42] invokevirtual #18
+        - Methodref [android/content/pm/ApplicationInfo.loadLabel (Landroid/content/pm/PackageManager;)Ljava/lang/CharSequence;]
+      [45] invokeinterface #24
+        - InterfaceMethodref [java/lang/CharSequence.toString ()Ljava/lang/String;]
+      [50] astore v5
+      [52] aload v4
+      [54] getfield #11
+        - Fieldref [android/content/pm/PackageInfo.applicationInfo Landroid/content/pm/ApplicationInfo;]
+      [57] aload_0 v0
+      [58] getfield #15
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/h.a Landroid/content/pm/PackageManager;]
+      [61] invokevirtual #17
+        - Methodref [android/content/pm/ApplicationInfo.loadIcon (Landroid/content/pm/PackageManager;)Landroid/graphics/drawable/Drawable;]
+      [64] astore v6
+      [66] aload_1 v1
+      [67] new #5
+        - Class [com/halcyonwaves/apps/backupmyapps/g]
+      [70] dup
+      [71] aload v5
+      [73] aload v4
+      [75] getfield #12
+        - Fieldref [android/content/pm/PackageInfo.packageName Ljava/lang/String;]
+      [78] aload v4
+      [80] getfield #14
+        - Fieldref [android/content/pm/PackageInfo.versionName Ljava/lang/String;]
+      [83] aload v4
+      [85] getfield #13
+        - Fieldref [android/content/pm/PackageInfo.versionCode I]
+      [88] aload v6
+      [90] invokespecial #20
+        - Methodref [com/halcyonwaves/apps/backupmyapps/g.<init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;)V]
+      [93] invokevirtual #23
+        - Methodref [java/util/ArrayList.add (Ljava/lang/Object;)Z]
+      [96] pop
+      [97] iinc v3, 1
+      [100] iload_3 v3
+      [101] aload_2 v2
+      [102] invokeinterface #26
+        - InterfaceMethodref [java/util/List.size ()I]
+      [107] ificmplt -85 (target=22)
+      [110] aload_1 v1
+      [111] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+

@@ -1,0 +1,12 @@
+com.halcyonwaves.apps.backupmyapps.MainActivity:
+    private static final java.lang.String BACKUP_FILENAME
+com.halcyonwaves.apps.backupmyapps.PackageInformation:
+    47:47:public android.graphics.drawable.Drawable getIcon()
+    66:67:public void logPackage()
+com.halcyonwaves.apps.backupmyapps.R
+com.halcyonwaves.apps.backupmyapps.R$attr
+com.halcyonwaves.apps.backupmyapps.R$drawable
+com.halcyonwaves.apps.backupmyapps.R$id
+com.halcyonwaves.apps.backupmyapps.R$layout
+com.halcyonwaves.apps.backupmyapps.R$menu
+com.halcyonwaves.apps.backupmyapps.R$string
