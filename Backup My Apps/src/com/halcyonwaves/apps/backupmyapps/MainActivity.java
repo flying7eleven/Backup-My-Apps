@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -27,6 +28,21 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private ProgressDialog backupProgressDialog = null;
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStorageDirectory();
+	
+	/**
+	 * Get the version name of the application itself.
+	 * 
+	 * @author Tim Huetz
+	 * @since 0.3
+	 * @return The version name of the application itself.
+	 */
+	private String getApplicationVersion() {
+		try {
+			return this.getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName;
+		} catch( NameNotFoundException e ) {
+			return "<unknown>";
+		}
+	}
 
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
@@ -117,12 +133,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 					this.dialogAbout.setTitle( R.string.dialogTitleAboutDialog );
 
 					TextView appInformation = (TextView)this.dialogAbout.findViewById( R.id.textViewAboutAppName );
-					appInformation.setText( String.format( this.getString( R.string.textViewAboutAppName ), "0.3" ) ); // TODO:
-																														// get
-																														// the
-																														// version
-																														// name
-																														// correctly
+					appInformation.setText( String.format( this.getString( R.string.textViewAboutAppName ), this.getApplicationVersion() ) );
 				}
 				this.dialogAbout.show();
 				return true;
