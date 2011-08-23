@@ -16,5 +16,9 @@
     <string name="menuAbout">Über...</string>
     <string name="dialogTitleAboutDialog">Über...</string>
     <string name="textViewAboutAppName">Backup My Apps %s</string>
-    <string name="textViewAboutInformation">Diese Anwendung wurde 2011 von Tim Hütz entwickelt.\n\n<b>Grafiken</b>\nTango harm-on-icons\n\n<b>Übersetzungen</b>\nEnglisch: Tim Hütz\nDeutsch: Michaela Gaens</string>
+    <string name="textViewAboutCopyright">2011 von Tim Hütz entwickelt</string>
+    <string name="textViewAboutArtworkLabel">Grafiken</string>
+    <string name="textViewAboutArtworkContent">Tango harm-on-icons</string>
+    <string name="textViewAboutTranslationsLabel">Übersetzungen</string>
+    <string name="textViewAboutTranslationsContent">Tim Hütz\nMichaela Gaens</string>
 </resources>
