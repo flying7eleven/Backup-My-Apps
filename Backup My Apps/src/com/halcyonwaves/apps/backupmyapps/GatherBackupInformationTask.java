@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Currency;
 
 import org.xmlpull.v1.XmlSerializer;
 
@@ -53,6 +54,7 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 
 		// try to open the output file
 		File backupFile = new File( this.storagePath, this.backupFilename );
+		PackageInformation lastPackage = null;
 		try {
 			backupFile.createNewFile();
 			OutputStream backupFileStream = new FileOutputStream( backupFile );
@@ -73,6 +75,7 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 			// which are ignored
 			for( PackageInformation currentPackage : foundPackages ) {
 				if( !currentPackage.isSystemComponent() ) {
+					lastPackage = currentPackage;
 					backupSerializer.startTag( "", "InstalledApp" );
 					backupSerializer.attribute( "", "applicationName", currentPackage.getApplicationName() );
 					backupSerializer.attribute( "", "packageName", currentPackage.getPackageName() );
@@ -93,6 +96,9 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 			Log.e( GatherBackupInformationTask.class.getSimpleName(), "Failed to create the backup file. The message was: " + e.getMessage() );
 			this.feedbackClass.taskFailed();
 			return false;
+		} catch( NullPointerException e ) {
+			Log.e( GatherBackupInformationTask.class.getSimpleName(), "Failed to write the backup XML file because of an NullPointerException while writing the following package: " + lastPackage.toString() );
+			throw e;
 		}
 
 		// it seems that we succeeded
