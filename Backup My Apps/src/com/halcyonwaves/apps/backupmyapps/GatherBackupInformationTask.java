@@ -91,7 +91,7 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 			backupSerializer.endDocument();
 
 			// write the XML code into the file and close it
-			backupFilePrintStream.print( backupFilePrintStream.toString() );
+			backupFilePrintStream.print( backupXmlStringWriter.toString() );
 			backupFileStream.close();
 
 		} catch( IOException e ) {
