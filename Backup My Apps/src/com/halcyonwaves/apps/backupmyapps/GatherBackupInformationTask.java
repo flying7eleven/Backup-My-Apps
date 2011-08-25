@@ -5,11 +5,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.StringWriter;
 import java.util.ArrayList;
+
+import org.xmlpull.v1.XmlSerializer;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.util.Xml;
 
 /**
  * Class for gathering the backup information in an asynchronous way.
@@ -54,24 +58,35 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 			OutputStream backupFileStream = new FileOutputStream( backupFile );
 			PrintStream backupFilePrintStream = new PrintStream( backupFileStream );
 
-			// write the XML meta information
-			backupFilePrintStream.print( "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" );
-			backupFilePrintStream.print( "<BackupMyApps version=\"1.0\">" );
+			// create and initialize the XML serializer
+			StringWriter backupXmlStringWriter = new StringWriter();
+			XmlSerializer backupSerializer = Xml.newSerializer();
+			backupSerializer.setOutput( backupXmlStringWriter );
+			backupSerializer.startDocument( "UTF-8", true );
+			backupSerializer.startTag( "", "InstalledApplications" );
+			backupSerializer.attribute( "", "version", "0.3" );
 
 			// loop through the found packages and write them into the file
 			ArrayList< PackageInformation > foundPackages = this.packageInformationManager.getInstalledApps();
+			// backupSerializer.attribute( "", "numberOfApplications", String.valueOf(
+			// foundPackages.size() ) ); // TODO: all application, includes system applications
+			// which are ignored
 			for( PackageInformation currentPackage : foundPackages ) {
 				if( !currentPackage.isSystemComponent() ) {
-					backupFilePrintStream.print( "<InstalledApp packageName=\"" + currentPackage.getPackageName() + "\" " );
-					backupFilePrintStream.print( "humanReadableName=\"" + currentPackage.getApplicationName().replace( "&", "&amp;" ).replace( "'", "&apos;" ).replace( "\"", "&quot;" ).replace( "<", "&lt;" ).replace( ">", "&gt;" ) + "\" " );
-					backupFilePrintStream.print( "versionCode=\"" + currentPackage.getVersionCode() + "\" " );
-					backupFilePrintStream.print( "versionName=\"" + currentPackage.getVersionName() + "\"" );
-					backupFilePrintStream.print( "/>" );
+					backupSerializer.startTag( "", "InstalledApp" );
+					backupSerializer.attribute( "", "applicationName", currentPackage.getApplicationName() );
+					backupSerializer.attribute( "", "packageName", currentPackage.getPackageName() );
+					backupSerializer.attribute( "", "versionCode", String.valueOf( currentPackage.getVersionCode() ) );
+					backupSerializer.attribute( "", "versionName", currentPackage.getVersionName() );
 				}
 			}
 
-			// write the closing tags and close the stream
-			backupFilePrintStream.print( "</BackupMyApps>" );
+			// close the surrounding tag and finish the document creation
+			backupSerializer.endTag( "", "InstalledApplications" );
+			backupSerializer.endDocument();
+
+			// write the XML code into the file and close it
+			backupFilePrintStream.print( backupFilePrintStream.toString() );
 			backupFileStream.close();
 
 		} catch( IOException e ) {
