@@ -73,11 +73,16 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 			// which are ignored
 			for( PackageInformation currentPackage : foundPackages ) {
 				if( !currentPackage.isSystemComponent() ) {
+					if( currentPackage == null || currentPackage.getApplicationName() == null || currentPackage.getPackageName() == null || currentPackage.getVersionName() == null ) {
+						Log.e( GatherBackupInformationTask.class.getSimpleName(), "It seems that one of the fields of one of the packages had a 'null' entry in a required field. Skipping package." ); // TODO: find a way to inform the user
+						continue;
+					}
 					backupSerializer.startTag( "", "InstalledApp" );
 					backupSerializer.attribute( "", "applicationName", currentPackage.getApplicationName() );
 					backupSerializer.attribute( "", "packageName", currentPackage.getPackageName() );
 					backupSerializer.attribute( "", "versionCode", String.valueOf( currentPackage.getVersionCode() ) );
 					backupSerializer.attribute( "", "versionName", currentPackage.getVersionName() );
+					backupSerializer.endTag( "", "InstalledApp" );
 				}
 			}
 
@@ -86,7 +91,7 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 			backupSerializer.endDocument();
 
 			// write the XML code into the file and close it
-			backupFilePrintStream.print( backupFilePrintStream.toString() );
+			backupFilePrintStream.print( backupXmlStringWriter.toString() );
 			backupFileStream.close();
 
 		} catch( IOException e ) {
