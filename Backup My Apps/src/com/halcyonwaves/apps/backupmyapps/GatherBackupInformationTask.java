@@ -96,9 +96,6 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 			Log.e( GatherBackupInformationTask.class.getSimpleName(), "Failed to create the backup file. The message was: " + e.getMessage() );
 			this.feedbackClass.taskFailed();
 			return false;
-		} catch( NullPointerException e ) {
-			Log.e( GatherBackupInformationTask.class.getSimpleName(), "Failed to write the backup XML file because of an NullPointerException while writing the following package: " + lastPackage.toString() );
-			throw e;
 		}
 
 		// it seems that we succeeded
