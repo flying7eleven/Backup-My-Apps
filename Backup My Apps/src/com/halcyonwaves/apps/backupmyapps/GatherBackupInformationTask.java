@@ -53,7 +53,6 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 
 		// try to open the output file
 		File backupFile = new File( this.storagePath, this.backupFilename );
-		PackageInformation lastPackage = null;
 		try {
 			backupFile.createNewFile();
 			OutputStream backupFileStream = new FileOutputStream( backupFile );
@@ -74,7 +73,10 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 			// which are ignored
 			for( PackageInformation currentPackage : foundPackages ) {
 				if( !currentPackage.isSystemComponent() ) {
-					lastPackage = currentPackage;
+					if( currentPackage == null || currentPackage.getApplicationName() == null || currentPackage.getPackageName() == null || currentPackage.getVersionName() == null ) {
+						Log.e( GatherBackupInformationTask.class.getSimpleName(), "It seems that one of the fields of one of the packages had a 'null' entry in a required field. Skipping package." );
+						continue;
+					}
 					backupSerializer.startTag( "", "InstalledApp" );
 					backupSerializer.attribute( "", "applicationName", currentPackage.getApplicationName() );
 					backupSerializer.attribute( "", "packageName", currentPackage.getPackageName() );
