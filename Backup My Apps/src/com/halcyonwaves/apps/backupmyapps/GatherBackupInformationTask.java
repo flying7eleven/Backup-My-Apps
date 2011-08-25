@@ -7,7 +7,6 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
-import java.util.Currency;
 
 import org.xmlpull.v1.XmlSerializer;
 
