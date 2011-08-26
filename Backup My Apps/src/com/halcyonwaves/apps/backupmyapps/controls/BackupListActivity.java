@@ -7,5 +7,5 @@ import android.app.ListActivity;
  * @author Tim HŸtz
  * @since 0.4
  */
-public class BackupListView extends ListActivity {
+public class BackupListActivity extends ListActivity {
 }
