@@ -83,16 +83,12 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// add a click handler for the button to restore the applications
 		this.buttonRestoreInstalledApplications.setOnClickListener( new OnClickListener() {
 			public void onClick( View v ) {
-				AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( MainActivity.this );
-				dialogBuilder.setMessage( R.string.dialogMessageNotImplemented );
-				dialogBuilder.setCancelable( false );
-				dialogBuilder.setPositiveButton( R.string.buttonOk, new DialogInterface.OnClickListener() {
-					public void onClick( DialogInterface dialog, int id ) {
-						dialog.dismiss();
-					}
-				} );
-				AlertDialog infoDialog = dialogBuilder.create();
-				infoDialog.show();
+				// show a progress dialog
+				// TODO: this
+
+				// create and execute the restore task
+				RetoreBackupDataTask backupTask = new RetoreBackupDataTask( MainActivity.this, MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME, MainActivity.this );
+				backupTask.execute();
 			}
 		} );
 
