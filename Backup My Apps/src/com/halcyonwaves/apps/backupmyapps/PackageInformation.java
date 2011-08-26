@@ -53,7 +53,7 @@ public class PackageInformation {
 	 * @return True if the component belongs to Android, false if not.
 	 */
 	public boolean isSystemComponent() {
-		return this.pname.toLowerCase().startsWith( "com.android." ) || this.pname.toLowerCase().startsWith( "com.example" ) || this.pname.equalsIgnoreCase( "android" ) || this.pname.equalsIgnoreCase( "android.tts" ) || this.pname.toLowerCase().startsWith( "com.lge." ) || this.pname.toLowerCase().startsWith( "com.htc." ) || this.pname.toLowerCase().startsWith( "com.google.android." );
+		return this.pname.toLowerCase().startsWith( "com.android." ) || this.pname.toLowerCase().startsWith( "com.example" ) || this.pname.equalsIgnoreCase( "com.qo.android.htc" ) || this.pname.equalsIgnoreCase( "android" ) || this.pname.equalsIgnoreCase( "android.tts" ) || this.pname.toLowerCase().startsWith( "com.lge." ) || this.pname.toLowerCase().startsWith( "com.htc." ) || this.pname.toLowerCase().startsWith( "com.google.android." );
 	}
 
 	/**
