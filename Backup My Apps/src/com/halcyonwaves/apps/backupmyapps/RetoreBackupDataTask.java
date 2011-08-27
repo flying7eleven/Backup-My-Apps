@@ -3,6 +3,8 @@ package com.halcyonwaves.apps.backupmyapps;
 import java.io.File;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 
 /**
@@ -37,6 +39,11 @@ public class RetoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 	@Override
 	protected Boolean doInBackground( Void... arg0 ) {
 		// TODO Auto-generated method stub
+		
+		//
+		//Intent intent = new Intent(Intent.ACTION_VIEW);
+		//intent.setData(Uri.parse("market://details?id=com.android.example"));
+		//this.applicationContext.startActivity( intent );
 		return null;
 	}
 
