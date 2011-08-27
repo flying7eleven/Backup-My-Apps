@@ -32,7 +32,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStorageDirectory();
 	private SharedPreferences applicationPreferences = null;
-	private static final String PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION = "com.halcyonwaves.apps.backupmyapps.firstApplicationRun";
+	private static final String PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION = "com.halcyonwaves.apps.backupmyapps.userAskedToSendPackageInformation";
 
 	/**
 	 * Get the version name of the application itself.
