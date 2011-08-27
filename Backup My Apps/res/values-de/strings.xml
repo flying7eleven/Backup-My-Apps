@@ -22,4 +22,5 @@
     <string name="textViewAboutTranslationsLabel">Übersetzungen</string>
     <string name="textViewAboutTranslationsContent">Tim Hütz\nMichaela Gaens</string>
     <string name="dialogMessageAskForPackageInformation">Vielen Dank für die Nutzung dieser Anwendung!\n\nDa diese Anwendung Paketnamen für die Filterung von Systempaketen verwendet, müssen wir die Namen der Systempakete der Hersteller sammeln. Es wäre nett, wenn Sie uns Ihre Backupdatei an <a href="mailto:backupmyapps@halcyonwaves.com">backupmyapps@halcyonwaves.com</a> schicken würden, um die Pakete zu filtern.\n\nVielen Dank!</string>
+    <string name="progressDialogRestoreInProgress">TODO</string>
 </resources>

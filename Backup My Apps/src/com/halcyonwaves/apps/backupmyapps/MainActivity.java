@@ -29,6 +29,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private Dialog dialogHelp = null;
 	private Dialog dialogAbout = null;
 	private ProgressDialog backupProgressDialog = null;
+	private ProgressDialog restoreProgressDialog = null;
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStorageDirectory();
 	private SharedPreferences applicationPreferences = null;
@@ -92,7 +93,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		this.buttonRestoreInstalledApplications.setOnClickListener( new OnClickListener() {
 			public void onClick( View v ) {
 				// show a progress dialog
-				// TODO: this
+				MainActivity.this.restoreProgressDialog = ProgressDialog.show( MainActivity.this, "", MainActivity.this.getString( R.string.progressDialogRestoreInProgress ), true );
 
 				// create and execute the restore task
 				RetoreBackupDataTask backupTask = new RetoreBackupDataTask( MainActivity.this, MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME, MainActivity.this );
@@ -177,7 +178,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		return true;
 	}
 
-	public void taskSuccessfull(Object sender) {
+	public void taskSuccessfull( Object sender ) {
 		if( sender.getClass().getSimpleName().equalsIgnoreCase( GatherBackupInformationTask.class.getSimpleName() ) ) {
 			// enable the restore button, because we succeeded creating the backup
 			this.buttonRestoreInstalledApplications.setEnabled( true );
@@ -185,14 +186,24 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			// close the progress dialog
 			this.backupProgressDialog.dismiss();
 			this.backupProgressDialog = null;
+		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( RetoreBackupDataTask.class.getSimpleName() ) ) {
+			// close the progress dialog
+			this.restoreProgressDialog.dismiss();
+			this.restoreProgressDialog = null;
 		}
 	}
 
-	public void taskFailed(Object sender) {
+	public void taskFailed( Object sender ) {
 		if( sender.getClass().getSimpleName().equalsIgnoreCase( GatherBackupInformationTask.class.getSimpleName() ) ) {
 			// close the progress dialog
 			this.backupProgressDialog.dismiss();
 			this.backupProgressDialog = null;
+
+			// TODO: notify the user that we failed
+		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( RetoreBackupDataTask.class.getSimpleName() ) ) {
+			// close the progress dialog
+			this.restoreProgressDialog.dismiss();
+			this.restoreProgressDialog = null;
 
 			// TODO: notify the user that we failed
 		}
