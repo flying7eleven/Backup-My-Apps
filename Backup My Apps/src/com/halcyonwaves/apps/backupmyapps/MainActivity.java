@@ -178,19 +178,23 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	}
 
 	public void taskSuccessfull(Object sender) {
-		// enable the restore button, because we succeeded creating the backup
-		this.buttonRestoreInstalledApplications.setEnabled( true );
+		if( sender.getClass().getSimpleName().equalsIgnoreCase( GatherBackupInformationTask.class.getSimpleName() ) ) {
+			// enable the restore button, because we succeeded creating the backup
+			this.buttonRestoreInstalledApplications.setEnabled( true );
 
-		// close the progress dialog
-		this.backupProgressDialog.dismiss();
-		this.backupProgressDialog = null;
+			// close the progress dialog
+			this.backupProgressDialog.dismiss();
+			this.backupProgressDialog = null;
+		}
 	}
 
 	public void taskFailed(Object sender) {
-		// close the progress dialog
-		this.backupProgressDialog.dismiss();
-		this.backupProgressDialog = null;
+		if( sender.getClass().getSimpleName().equalsIgnoreCase( GatherBackupInformationTask.class.getSimpleName() ) ) {
+			// close the progress dialog
+			this.backupProgressDialog.dismiss();
+			this.backupProgressDialog = null;
 
-		// TODO: notify the user that we failed
+			// TODO: notify the user that we failed
+		}
 	}
 }
