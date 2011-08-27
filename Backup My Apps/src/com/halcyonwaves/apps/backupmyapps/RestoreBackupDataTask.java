@@ -21,8 +21,11 @@ import org.xml.sax.SAXException;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.PermissionInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.util.Log;
 
 /**
@@ -84,6 +87,15 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 
 		// return the parsed document
 		return doc;
+	}
+	
+	private void installPackage(String pathToApk) { // see http://www.anddev.org/androidpermissioninstall_packages_not_granted-t5858.html for more
+		// see http://stackoverflow.com/questions/5803999/install-apps-silently-with-granted-install-packages-permission
+		Uri packageUri = Uri.fromFile( new File( pathToApk ) );
+		// set permissions
+		PackageManager pm = this.applicationContext.getPackageManager();
+		// pm.addPermission(p);//error
+		// pm.installPackage(packageUri, null, 1);
 	}
 
 	@Override
