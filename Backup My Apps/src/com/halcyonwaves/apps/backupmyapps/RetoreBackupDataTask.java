@@ -68,13 +68,13 @@ public class RetoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 			is.setCharacterStream( new StringReader( xml ) );
 			doc = db.parse( is );
 		} catch( ParserConfigurationException e ) {
-			System.out.println( "XML parse error: " + e.getMessage() );
+			Log.e( RetoreBackupDataTask.class.getSimpleName(), "Failed to parse the backup file (ParserConfigurationException): " + e.getMessage() );
 			return null;
 		} catch( SAXException e ) {
-			System.out.println( "Wrong XML file structure: " + e.getMessage() );
+			Log.e( RetoreBackupDataTask.class.getSimpleName(), "Failed to parse the backup file (SAXException). Wrong XML structure: " + e.getMessage() );
 			return null;
 		} catch( IOException e ) {
-			System.out.println( "I/O exeption: " + e.getMessage() );
+			Log.e( RetoreBackupDataTask.class.getSimpleName(), "Failed to parse the backup file (IOException): " + e.getMessage() );
 			return null;
 		}
 
