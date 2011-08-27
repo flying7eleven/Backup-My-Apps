@@ -96,12 +96,12 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 
 		} catch( IOException e ) {
 			Log.e( GatherBackupInformationTask.class.getSimpleName(), "Failed to create the backup file. The message was: " + e.getMessage() );
-			this.feedbackClass.taskFailed();
+			this.feedbackClass.taskFailed( this );
 			return false;
 		}
 
 		// it seems that we succeeded
-		this.feedbackClass.taskSuccessfull();
+		this.feedbackClass.taskSuccessfull( this );
 		return true;
 	}
 
