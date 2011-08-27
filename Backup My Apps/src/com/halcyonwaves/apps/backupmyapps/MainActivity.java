@@ -116,7 +116,17 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		
 		// if this is the first application run, ask the user about the package list
 		if( this.applicationPreferences.getBoolean( MainActivity.PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION, true ) ) {
-			// TODO: ask the user
+			// ask the user for sending the requested information
+			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( this );
+			dialogBuilder.setMessage( R.string.dialogMessageAskForPackageInformation );
+			dialogBuilder.setCancelable( false );
+			dialogBuilder.setPositiveButton( R.string.buttonOk, new DialogInterface.OnClickListener() {
+				public void onClick( DialogInterface dialog, int id ) {
+					// nothing to do here
+				}
+			} );
+			AlertDialog infoDialog = dialogBuilder.create();
+			infoDialog.show();
 			
 			// store the value which indicates that the user was already asked to send the information
 			Editor prefsEditor = this.applicationPreferences.edit();
