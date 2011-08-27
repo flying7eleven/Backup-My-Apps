@@ -8,6 +8,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.Environment;
@@ -31,6 +32,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStorageDirectory();
 	private SharedPreferences applicationPreferences = null;
+	private static final String PREFERENCES_FIRST_APPLICATION_RUN = "com.halcyonwaves.apps.backupmyapps.firstApplicationRun";
 
 	/**
 	 * Get the version name of the application itself.
@@ -110,6 +112,17 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			} );
 			AlertDialog infoDialog = dialogBuilder.create();
 			infoDialog.show();
+		}
+		
+		// if this is the first application run, ask the user about the package list
+		if( this.applicationPreferences.getBoolean( MainActivity.PREFERENCES_FIRST_APPLICATION_RUN, true ) ) {
+			// TODO: ask the user
+			
+			// store the value which indicates that the user was already asked to send the information
+			Editor prefsEditor = this.applicationPreferences.edit();
+			prefsEditor.putBoolean( MainActivity.PREFERENCES_FIRST_APPLICATION_RUN, false );
+			prefsEditor.commit();
+			prefsEditor = null;
 		}
 	}
 
