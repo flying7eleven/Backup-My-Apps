@@ -14,7 +14,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
@@ -106,17 +105,22 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 			while( (line = buffreader.readLine()) != null ) { // TODO: optimize this
 				full += line;
 			}
-			
+
 			// get the xml document from the string
 			Document backupFile = this.XMLfromString( full );
-			
+
 			// loop through all package nodes
 			NodeList packageNodes = backupFile.getElementsByTagName( "InstalledApp" );
 			for( int currentNodeId = 0; currentNodeId < packageNodes.getLength(); currentNodeId++ ) {
 				Element currentPackage = (Element)packageNodes.item( currentNodeId );
-				
+
 				// just log that we found a new package
 				Log.v( RestoreBackupDataTask.class.getSimpleName(), "Found package to restore: " + currentPackage.getAttribute( "packageName" ) + " (" + currentPackage.getAttribute( "applicationName" ) + ")" );
+
+				// try to install the package
+				Intent intent = new Intent( Intent.ACTION_VIEW );
+				intent.setData( Uri.parse( "market://details?id=" + currentPackage.getAttribute( "packageName" ) ) );
+				this.applicationContext.startActivity( intent );
 			}
 
 		} catch( FileNotFoundException e ) {
@@ -127,11 +131,8 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 			e.printStackTrace();
 		}
 
-		//
-		// Intent intent = new Intent(Intent.ACTION_VIEW);
-		// intent.setData(Uri.parse("market://details?id=com.android.example"));
-		// this.applicationContext.startActivity( intent );
-		return null;
+		// it seems that we succeeded doing anything
+		return true;
 	}
 
 }
