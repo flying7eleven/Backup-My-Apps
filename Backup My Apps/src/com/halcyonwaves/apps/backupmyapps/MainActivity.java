@@ -32,7 +32,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStorageDirectory();
 	private SharedPreferences applicationPreferences = null;
-	private static final String PREFERENCES_FIRST_APPLICATION_RUN = "com.halcyonwaves.apps.backupmyapps.firstApplicationRun";
+	private static final String PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION = "com.halcyonwaves.apps.backupmyapps.firstApplicationRun";
 
 	/**
 	 * Get the version name of the application itself.
@@ -115,12 +115,12 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		}
 		
 		// if this is the first application run, ask the user about the package list
-		if( this.applicationPreferences.getBoolean( MainActivity.PREFERENCES_FIRST_APPLICATION_RUN, true ) ) {
+		if( this.applicationPreferences.getBoolean( MainActivity.PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION, true ) ) {
 			// TODO: ask the user
 			
 			// store the value which indicates that the user was already asked to send the information
 			Editor prefsEditor = this.applicationPreferences.edit();
-			prefsEditor.putBoolean( MainActivity.PREFERENCES_FIRST_APPLICATION_RUN, false );
+			prefsEditor.putBoolean( MainActivity.PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION, false );
 			prefsEditor.commit();
 			prefsEditor = null;
 		}
