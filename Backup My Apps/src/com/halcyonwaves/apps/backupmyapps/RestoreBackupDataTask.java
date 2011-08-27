@@ -27,7 +27,7 @@ import android.util.Log;
  * @author Tim Huetz
  * @since 0.3
  */
-public class RetoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
+public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 	private File storagePath = null;
 	private Context applicationContext = null;
 	private String backupFilename = "";
@@ -43,7 +43,7 @@ public class RetoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 	 * @author Tim Huetz
 	 * @since 0.3
 	 */
-	public RetoreBackupDataTask( Context applicationContext, File storagePath, String backupFilename, IAsyncTaskFeedback feedbackClass ) {
+	public RestoreBackupDataTask( Context applicationContext, File storagePath, String backupFilename, IAsyncTaskFeedback feedbackClass ) {
 		this.storagePath = storagePath;
 		this.applicationContext = applicationContext;
 		this.backupFilename = backupFilename;
@@ -68,13 +68,13 @@ public class RetoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 			is.setCharacterStream( new StringReader( xml ) );
 			doc = db.parse( is );
 		} catch( ParserConfigurationException e ) {
-			Log.e( RetoreBackupDataTask.class.getSimpleName(), "Failed to parse the backup file (ParserConfigurationException): " + e.getMessage() );
+			Log.e( RestoreBackupDataTask.class.getSimpleName(), "Failed to parse the backup file (ParserConfigurationException): " + e.getMessage() );
 			return null;
 		} catch( SAXException e ) {
-			Log.e( RetoreBackupDataTask.class.getSimpleName(), "Failed to parse the backup file (SAXException). Wrong XML structure: " + e.getMessage() );
+			Log.e( RestoreBackupDataTask.class.getSimpleName(), "Failed to parse the backup file (SAXException). Wrong XML structure: " + e.getMessage() );
 			return null;
 		} catch( IOException e ) {
-			Log.e( RetoreBackupDataTask.class.getSimpleName(), "Failed to parse the backup file (IOException): " + e.getMessage() );
+			Log.e( RestoreBackupDataTask.class.getSimpleName(), "Failed to parse the backup file (IOException): " + e.getMessage() );
 			return null;
 		}
 
@@ -85,7 +85,7 @@ public class RetoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 	@Override
 	protected Boolean doInBackground( Void... arg0 ) {
 		// just log some information
-		Log.v( RetoreBackupDataTask.class.getSimpleName(), "Using following external storage directory: " + this.storagePath );
+		Log.v( RestoreBackupDataTask.class.getSimpleName(), "Using following external storage directory: " + this.storagePath );
 
 		// try to open the input file
 		File backupFile = new File( this.storagePath, this.backupFilename );

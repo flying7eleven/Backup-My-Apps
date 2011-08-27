@@ -96,7 +96,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				MainActivity.this.restoreProgressDialog = ProgressDialog.show( MainActivity.this, "", MainActivity.this.getString( R.string.progressDialogRestoreInProgress ), true );
 
 				// create and execute the restore task
-				RetoreBackupDataTask backupTask = new RetoreBackupDataTask( MainActivity.this, MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME, MainActivity.this );
+				RestoreBackupDataTask backupTask = new RestoreBackupDataTask( MainActivity.this, MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME, MainActivity.this );
 				backupTask.execute();
 			}
 		} );
@@ -186,7 +186,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			// close the progress dialog
 			this.backupProgressDialog.dismiss();
 			this.backupProgressDialog = null;
-		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( RetoreBackupDataTask.class.getSimpleName() ) ) {
+		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( RestoreBackupDataTask.class.getSimpleName() ) ) {
 			// close the progress dialog
 			this.restoreProgressDialog.dismiss();
 			this.restoreProgressDialog = null;
@@ -200,7 +200,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			this.backupProgressDialog = null;
 
 			// TODO: notify the user that we failed
-		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( RetoreBackupDataTask.class.getSimpleName() ) ) {
+		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( RestoreBackupDataTask.class.getSimpleName() ) ) {
 			// close the progress dialog
 			this.restoreProgressDialog.dismiss();
 			this.restoreProgressDialog = null;
