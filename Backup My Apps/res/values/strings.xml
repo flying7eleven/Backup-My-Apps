@@ -22,4 +22,5 @@
     <string name="textViewAboutTranslationsLabel">Translations</string>
     <string name="textViewAboutTranslationsContent">Tim Hütz\nMichaela Gaens</string>
     <string name="dialogMessageAskForPackageInformation">First of all we would like to thank you for using this application.\n\nAs this application uses packages names for filtering system packages, it is required to collect system package names. Therefore, we\'re asking you to send us your backup file to <a href="mailto:backupmyapps@halcyonwaves.com">backupmyapps@halcyonwaves.com</a>.\n\nThank you!</string>
+    <string name="progressDialogRestoreInProgress">TODO</string>
 </resources>
