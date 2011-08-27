@@ -53,7 +53,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		super.onCreate( savedInstanceState );
 		setContentView( R.layout.main );
 		
-		// get the prference object for this application
+		// get the preference object for this application
 		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
 
 		// get some control handles
