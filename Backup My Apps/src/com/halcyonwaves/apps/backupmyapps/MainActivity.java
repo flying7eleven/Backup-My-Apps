@@ -7,9 +7,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,6 +30,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private ProgressDialog backupProgressDialog = null;
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStorageDirectory();
+	private SharedPreferences applicationPreferences = null;
 
 	/**
 	 * Get the version name of the application itself.
@@ -49,6 +52,9 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// create the layout of the main activity
 		super.onCreate( savedInstanceState );
 		setContentView( R.layout.main );
+		
+		// get the prference object for this application
+		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
 
 		// get some control handles
 		this.buttonBackupInstalledApplications = (Button)this.findViewById( R.id.buttonBackupInstalledApplications );
