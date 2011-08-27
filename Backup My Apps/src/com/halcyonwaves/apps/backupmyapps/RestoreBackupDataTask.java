@@ -4,12 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.io.StringReader;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -17,6 +14,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -109,6 +109,15 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 			
 			// get the xml document from the string
 			Document backupFile = this.XMLfromString( full );
+			
+			// loop through all package nodes
+			NodeList packageNodes = backupFile.getElementsByTagName( "InstalledApp" );
+			for( int currentNodeId = 0; currentNodeId < packageNodes.getLength(); currentNodeId++ ) {
+				Element currentPackage = (Element)packageNodes.item( currentNodeId );
+				
+				// just log that we found a new package
+				Log.v( RestoreBackupDataTask.class.getSimpleName(), "Found package to restore: " + currentPackage.getAttribute( "packageName" ) + " (" + currentPackage.getAttribute( "applicationName" ) + ")" );
+			}
 
 		} catch( FileNotFoundException e ) {
 			// TODO Auto-generated catch block
