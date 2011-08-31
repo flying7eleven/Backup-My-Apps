@@ -138,16 +138,21 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 		} catch( FileNotFoundException e ) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			this.feedbackClass.taskFailed( this );
 		} catch( IOException e ) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			this.feedbackClass.taskFailed( this );
 		}
 
 		// it seems that we succeeded doing anything
-		this.feedbackClass.taskSuccessfull( this );
 		return true;
 	}
 
+	@Override
+	protected void onPostExecute( Boolean result ) {
+		if( result ) {
+			this.feedbackClass.taskSuccessfull( this );
+		} else {
+			this.feedbackClass.taskFailed( this );
+		}
+	}
 }
