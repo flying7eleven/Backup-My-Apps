@@ -8,7 +8,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 210):
+Constant Pool (count = 215):
   - String []
   - String [0.2]
   - String [Failed to create the backup file. The message was: ]
@@ -68,6 +68,7 @@ Constant Pool (count = 210):
   - Methodref [java/io/PrintStream.print (Ljava/lang/String;)V]
   - Methodref [java/io/StringWriter.<init> ()V]
   - Methodref [java/io/StringWriter.toString ()Ljava/lang/String;]
+  - Methodref [java/lang/Boolean.booleanValue ()Z]
   - Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
   - Methodref [java/lang/Class.getSimpleName ()Ljava/lang/String;]
   - Methodref [java/lang/String.valueOf (I)Ljava/lang/String;]
@@ -103,6 +104,7 @@ Constant Pool (count = 210):
   + NameAndType [b ()Ljava/lang/String;]
   + NameAndType [b ()V]
   + NameAndType [b Landroid/content/Context;]
+  + NameAndType [booleanValue ()Z]
   + NameAndType [c ()Ljava/lang/String;]
   + NameAndType [c Ljava/lang/String;]
   + NameAndType [close ()V]
@@ -146,6 +148,7 @@ Constant Pool (count = 210):
   + Utf8 [(Ljava/io/OutputStream;)V]
   + Utf8 [(Ljava/io/Writer;)V]
   + Utf8 [(Ljava/lang/Object;)Ljava/lang/StringBuilder;]
+  + Utf8 [(Ljava/lang/Object;)V]
   + Utf8 [(Ljava/lang/String;)Ljava/lang/StringBuilder;]
   + Utf8 [(Ljava/lang/String;)V]
   + Utf8 [(Ljava/lang/String;Ljava/lang/Boolean;)V]
@@ -176,6 +179,7 @@ Constant Pool (count = 210):
   + Utf8 [applicationName]
   + Utf8 [attribute]
   + Utf8 [b]
+  + Utf8 [booleanValue]
   + Utf8 [c]
   + Utf8 [close]
   + Utf8 [com/halcyonwaves/apps/backupmyapps/a]
@@ -206,6 +210,7 @@ Constant Pool (count = 210):
   + Utf8 [java/util/Iterator]
   + Utf8 [newSerializer]
   + Utf8 [next]
+  + Utf8 [onPostExecute]
   + Utf8 [org/xmlpull/v1/XmlSerializer]
   + Utf8 [packageName]
   + Utf8 [print]
@@ -236,7 +241,7 @@ Fields (count = 5):
     Access flags: 0x2
       = private com.halcyonwaves.apps.backupmyapps.b e
 
-Methods (count = 3):
+Methods (count = 4):
   - Method:       <init>(Landroid/content/Context;Ljava/io/File;Ljava/lang/String;Lcom/halcyonwaves/apps/backupmyapps/b;)V
     Access flags: 0x1
       = public a(android.content.Context,java.io.File,java.lang.String,com.halcyonwaves.apps.backupmyapps.b)
@@ -300,24 +305,24 @@ Methods (count = 3):
     Access flags: 0x82
       = private varargs java.lang.Boolean a()
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 402, locals = 7, stack = 4):
+    + Code attribute instructions (code length = 384, locals = 7, stack = 4):
       [0] ldc #17
         - Class [com/halcyonwaves/apps/backupmyapps/a]
-      [2] invokevirtual #61
+      [2] invokevirtual #62
         - Methodref [java/lang/Class.getSimpleName ()Ljava/lang/String;]
       [5] new #30
         - Class [java/lang/StringBuilder]
       [8] dup
       [9] ldc #8
         - String [Using following external storage directory: ]
-      [11] invokespecial #63
+      [11] invokespecial #64
         - Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [14] aload_0 v0
       [15] getfield #34
         - Fieldref [com/halcyonwaves/apps/backupmyapps/a.a Ljava/io/File;]
-      [18] invokevirtual #64
+      [18] invokevirtual #65
         - Methodref [java/lang/StringBuilder.append (Ljava/lang/Object;)Ljava/lang/StringBuilder;]
-      [21] invokevirtual #66
+      [21] invokevirtual #67
         - Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [24] invokestatic #41
         - Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
@@ -363,22 +368,22 @@ Methods (count = 3):
       [78] dup
       [79] astore v4
       [81] aload_3 v3
-      [82] invokeinterface #75
+      [82] invokeinterface #76
         - InterfaceMethodref [org/xmlpull/v1/XmlSerializer.setOutput (Ljava/io/Writer;)V]
       [87] aload v4
       [89] ldc #7
         - String [UTF-8]
       [91] iconst_1
-      [92] invokestatic #60
+      [92] invokestatic #61
         - Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
-      [95] invokeinterface #76
+      [95] invokeinterface #77
         - InterfaceMethodref [org/xmlpull/v1/XmlSerializer.startDocument (Ljava/lang/String;Ljava/lang/Boolean;)V]
       [100] aload v4
       [102] ldc #1
         - String []
       [104] ldc #5
         - String [InstalledApplications]
-      [106] invokeinterface #77
+      [106] invokeinterface #78
         - InterfaceMethodref [org/xmlpull/v1/XmlSerializer.startTag (Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;]
       [111] pop
       [112] aload v4
@@ -388,7 +393,7 @@ Methods (count = 3):
         - String [version]
       [118] ldc #2
         - String [0.2]
-      [120] invokeinterface #72
+      [120] invokeinterface #73
         - InterfaceMethodref [org/xmlpull/v1/XmlSerializer.attribute (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;]
       [125] pop
       [126] aload_0 v0
@@ -398,12 +403,12 @@ Methods (count = 3):
         - Methodref [com/halcyonwaves/apps/backupmyapps/h.a ()Ljava/util/ArrayList;]
       [133] aconst_null
       [134] astore v5
-      [136] invokevirtual #67
+      [136] invokevirtual #68
         - Methodref [java/util/ArrayList.iterator ()Ljava/util/Iterator;]
       [139] astore v6
       [141] goto +160 (target=301)
       [144] aload v6
-      [146] invokeinterface #71
+      [146] invokeinterface #72
         - InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
       [151] checkcast #19
         - Class [com/halcyonwaves/apps/backupmyapps/g]
@@ -428,7 +433,7 @@ Methods (count = 3):
       [189] ifnonnull +17 (target=206)
       [192] ldc #17
         - Class [com/halcyonwaves/apps/backupmyapps/a]
-      [194] invokevirtual #61
+      [194] invokevirtual #62
         - Methodref [java/lang/Class.getSimpleName ()Ljava/lang/String;]
       [197] ldc #6
         - String [It seems that one of the fields of one of the packages had a 'null' entry in a required field. Skipping package.]
@@ -441,7 +446,7 @@ Methods (count = 3):
         - String []
       [210] ldc #4
         - String [InstalledApp]
-      [212] invokeinterface #77
+      [212] invokeinterface #78
         - InterfaceMethodref [org/xmlpull/v1/XmlSerializer.startTag (Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;]
       [217] pop
       [218] aload v4
@@ -452,7 +457,7 @@ Methods (count = 3):
       [224] aload v5
       [226] invokevirtual #46
         - Methodref [com/halcyonwaves/apps/backupmyapps/g.c ()Ljava/lang/String;]
-      [229] invokeinterface #72
+      [229] invokeinterface #73
         - InterfaceMethodref [org/xmlpull/v1/XmlSerializer.attribute (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;]
       [234] pop
       [235] aload v4
@@ -463,7 +468,7 @@ Methods (count = 3):
       [241] aload v5
       [243] invokevirtual #45
         - Methodref [com/halcyonwaves/apps/backupmyapps/g.b ()Ljava/lang/String;]
-      [246] invokeinterface #72
+      [246] invokeinterface #73
         - InterfaceMethodref [org/xmlpull/v1/XmlSerializer.attribute (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;]
       [251] pop
       [252] aload v4
@@ -474,9 +479,9 @@ Methods (count = 3):
       [258] aload v5
       [260] invokevirtual #47
         - Methodref [com/halcyonwaves/apps/backupmyapps/g.d ()I]
-      [263] invokestatic #62
+      [263] invokestatic #63
         - Methodref [java/lang/String.valueOf (I)Ljava/lang/String;]
-      [266] invokeinterface #72
+      [266] invokeinterface #73
         - InterfaceMethodref [org/xmlpull/v1/XmlSerializer.attribute (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;]
       [271] pop
       [272] aload v4
@@ -487,7 +492,7 @@ Methods (count = 3):
       [278] aload v5
       [280] invokevirtual #48
         - Methodref [com/halcyonwaves/apps/backupmyapps/g.e ()Ljava/lang/String;]
-      [283] invokeinterface #72
+      [283] invokeinterface #73
         - InterfaceMethodref [org/xmlpull/v1/XmlSerializer.attribute (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;]
       [288] pop
       [289] aload v4
@@ -495,11 +500,11 @@ Methods (count = 3):
         - String []
       [293] ldc #4
         - String [InstalledApp]
-      [295] invokeinterface #74
+      [295] invokeinterface #75
         - InterfaceMethodref [org/xmlpull/v1/XmlSerializer.endTag (Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;]
       [300] pop
       [301] aload v6
-      [303] invokeinterface #70
+      [303] invokeinterface #71
         - InterfaceMethodref [java/util/Iterator.hasNext ()Z]
       [308] ifne -164 (target=144)
       [311] aload v4
@@ -507,11 +512,11 @@ Methods (count = 3):
         - String []
       [315] ldc #5
         - String [InstalledApplications]
-      [317] invokeinterface #74
+      [317] invokeinterface #75
         - InterfaceMethodref [org/xmlpull/v1/XmlSerializer.endTag (Ljava/lang/String;Ljava/lang/String;)Lorg/xmlpull/v1/XmlSerializer;]
       [322] pop
       [323] aload v4
-      [325] invokeinterface #73
+      [325] invokeinterface #74
         - InterfaceMethodref [org/xmlpull/v1/XmlSerializer.endDocument ()V]
       [330] aload_2 v2
       [331] aload_3 v3
@@ -522,50 +527,69 @@ Methods (count = 3):
       [338] aload_1 v1
       [339] invokevirtual #55
         - Methodref [java/io/OutputStream.close ()V]
-      [342] goto +46 (target=388)
+      [342] goto +37 (target=379)
       [345] astore_1 v1
       [346] ldc #17
         - Class [com/halcyonwaves/apps/backupmyapps/a]
-      [348] invokevirtual #61
+      [348] invokevirtual #62
         - Methodref [java/lang/Class.getSimpleName ()Ljava/lang/String;]
       [351] new #30
         - Class [java/lang/StringBuilder]
       [354] dup
       [355] ldc #3
         - String [Failed to create the backup file. The message was: ]
-      [357] invokespecial #63
+      [357] invokespecial #64
         - Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [360] aload_1 v1
       [361] invokevirtual #54
         - Methodref [java/io/IOException.getMessage ()Ljava/lang/String;]
-      [364] invokevirtual #65
+      [364] invokevirtual #66
         - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [367] invokevirtual #66
+      [367] invokevirtual #67
         - Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [370] invokestatic #40
         - Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
       [373] pop
-      [374] aload_0 v0
-      [375] getfield #38
-        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.e Lcom/halcyonwaves/apps/backupmyapps/b;]
-      [378] invokeinterface #69
-        - InterfaceMethodref [com/halcyonwaves/apps/backupmyapps/b.b ()V]
-      [383] iconst_0
-      [384] invokestatic #60
+      [374] iconst_0
+      [375] invokestatic #61
         - Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
-      [387] areturn
-      [388] aload_0 v0
-      [389] getfield #38
-        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.e Lcom/halcyonwaves/apps/backupmyapps/b;]
-      [392] invokeinterface #68
-        - InterfaceMethodref [com/halcyonwaves/apps/backupmyapps/b.a ()V]
-      [397] iconst_1
-      [398] invokestatic #60
+      [378] areturn
+      [379] iconst_1
+      [380] invokestatic #61
         - Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
-      [401] areturn
+      [383] areturn
       Code attribute exceptions (count = 1):
       - ExceptionInfo (44 -> 342: 345):
       - Class [java/io/IOException]
+      Code attribute attributes (attribute count = 0):
+  + Method:       onPostExecute(Ljava/lang/Object;)V
+    Access flags: 0x1004
+      = protected synthetic void onPostExecute(java.lang.Object)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 34, locals = 3, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] checkcast #27
+        - Class [java/lang/Boolean]
+      [5] astore_2 v2
+      [6] astore_1 v1
+      [7] aload_2 v2
+      [8] invokevirtual #60
+        - Methodref [java/lang/Boolean.booleanValue ()Z]
+      [11] ifeq +13 (target=24)
+      [14] aload_1 v1
+      [15] getfield #38
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.e Lcom/halcyonwaves/apps/backupmyapps/b;]
+      [18] invokeinterface #69
+        - InterfaceMethodref [com/halcyonwaves/apps/backupmyapps/b.a ()V]
+      [23] return
+      [24] aload_1 v1
+      [25] getfield #38
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/a.e Lcom/halcyonwaves/apps/backupmyapps/b;]
+      [28] invokeinterface #70
+        - InterfaceMethodref [com/halcyonwaves/apps/backupmyapps/b.b ()V]
+      [33] return
+      Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
   + Method:       doInBackground([Ljava/lang/Object;)Ljava/lang/Object;
     Access flags: 0x1084
@@ -641,7 +665,7 @@ Constant Pool (count = 249):
   - Integer [2131099654]
   - Integer [2131099655]
   - String ["]
-  - String [0.2.4]
+  - String [0.2.5]
   - String [No backup file found, disabling the restore button.]
   - String [installedApplications.backupmyapps]
   - String [mounted]
@@ -796,7 +820,7 @@ Constant Pool (count = 249):
   + Utf8 [(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
   + Utf8 [(Z)Landroid/app/AlertDialog$Builder;]
   + Utf8 [(Z)V]
-  + Utf8 [0.2.4]
+  + Utf8 [0.2.5]
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [DIRECTORY_DOWNLOADS]
@@ -1226,7 +1250,7 @@ Methods (count = 8):
       [153] dup
       [154] iconst_0
       [155] ldc #18
-        - String [0.2.4]
+        - String [0.2.5]
       [157] aastore
       [158] invokestatic #91
         - Methodref [java/lang/String.format (Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;]
