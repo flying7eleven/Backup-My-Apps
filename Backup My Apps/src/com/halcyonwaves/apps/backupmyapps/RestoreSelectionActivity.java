@@ -19,6 +19,8 @@ import android.widget.ListView;
  * @since 0.3
  */
 public class RestoreSelectionActivity extends ListActivity {
+	private String[] packageNames = null;
+	
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
@@ -30,15 +32,18 @@ public class RestoreSelectionActivity extends ListActivity {
 		}
 
 		//
-		List< String > foundPackages = new ArrayList< String >();
+		List< String > foundPackageNames = new ArrayList< String >();
+		List< String > foundApplicationNames = new ArrayList< String >();
 		int numberOfPackages = extras.getInt( "packages" );
 		for( int i = 0; i < numberOfPackages; i++ ) {
-			String currentPackage = extras.getString( "package" + i );
-			foundPackages.add( currentPackage );
-			Log.v( RestoreSelectionActivity.class.getSimpleName(), "Found package: " + currentPackage );
+			String currentPackage = extras.getString( "packageName" + i );
+			String currentApplication = extras.getString( "applicationName" + i );
+			foundApplicationNames.add( currentApplication );
+			foundPackageNames.add(  currentPackage );
+			Log.v( RestoreSelectionActivity.class.getSimpleName(), "Found package: " + currentPackage + " (" + currentApplication + ")" );
 		}
 
-		ListAdapter adapter = new ArrayAdapter< String >( this, android.R.layout.simple_list_item_1, (String[])foundPackages.toArray(new String[0]) );
+		ListAdapter adapter = new ArrayAdapter< String >( this, android.R.layout.simple_list_item_1, (String[])foundApplicationNames.toArray(new String[0]) );
 		this.setListAdapter( adapter );
 	}
 
