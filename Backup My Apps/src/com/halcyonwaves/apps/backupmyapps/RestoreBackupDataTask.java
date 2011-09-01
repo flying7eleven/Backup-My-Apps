@@ -20,7 +20,6 @@ import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -32,7 +31,6 @@ import android.util.Log;
  */
 public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 	private File storagePath = null;
-	private Context applicationContext = null;
 	private String backupFilename = "";
 	private IAsyncTaskFeedback feedbackClass = null;
 	private HashMap< String, String > itemList = null;
@@ -40,16 +38,14 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 	/**
 	 * Constructor for this class.
 	 * 
-	 * @param applicationContext The context of the application.
 	 * @param storagePath The path to the backup file.
 	 * @param backupFilename The name of the backup file.
 	 * @param feedbackClass The class which should handle the feedback of this task.
 	 * @author Tim Huetz
 	 * @since 0.3
 	 */
-	public RestoreBackupDataTask( Context applicationContext, File storagePath, String backupFilename, IAsyncTaskFeedback feedbackClass ) {
+	public RestoreBackupDataTask( File storagePath, String backupFilename, IAsyncTaskFeedback feedbackClass ) {
 		this.storagePath = storagePath;
-		this.applicationContext = applicationContext;
 		this.backupFilename = backupFilename;
 		this.feedbackClass = feedbackClass;
 		this.itemList = new HashMap< String, String >();

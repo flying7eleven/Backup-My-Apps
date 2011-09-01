@@ -98,7 +98,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				MainActivity.this.restoreProgressDialog = ProgressDialog.show( MainActivity.this, "", MainActivity.this.getString( R.string.progressDialogRestoreInProgress ), true );
 
 				// create and execute the restore task
-				RestoreBackupDataTask backupTask = new RestoreBackupDataTask( MainActivity.this, MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME, MainActivity.this );
+				RestoreBackupDataTask backupTask = new RestoreBackupDataTask( MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME, MainActivity.this );
 				backupTask.execute();
 			}
 		} );
