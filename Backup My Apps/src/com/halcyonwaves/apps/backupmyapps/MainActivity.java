@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -190,6 +191,10 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			// close the progress dialog
 			this.restoreProgressDialog.dismiss();
 			this.restoreProgressDialog = null;
+			
+			// open the dialog for the selection of the applications to restore
+			Intent restoreSelectionActivity = new Intent(MainActivity.this, RestoreSelectionActivity.class);
+	        MainActivity.this.startActivity( restoreSelectionActivity ); 
 		}
 	}
 
