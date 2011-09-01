@@ -3,6 +3,9 @@ package com.halcyonwaves.apps.backupmyapps;
 import java.io.File;
 import java.util.HashMap;
 
+import com.halcyonwaves.apps.backupmyapps.tasks.GatherBackupInformationTask;
+import com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
