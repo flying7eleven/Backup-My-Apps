@@ -195,6 +195,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			
 			// open the dialog for the selection of the applications to restore
 			Intent restoreSelectionActivity = new Intent( MainActivity.this, RestoreSelectionActivity.class );
+			@SuppressWarnings( "unchecked" )
 			HashMap< String, String > packageInformationList = (HashMap< String, String >)data;
 			restoreSelectionActivity.putExtra( "packages", packageInformationList.size() );
 			int i = 0;
