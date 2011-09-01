@@ -21,11 +21,8 @@ import org.xml.sax.SAXException;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.PermissionInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Environment;
 import android.util.Log;
 
 /**
@@ -91,11 +88,32 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 	
 	private void installPackage(String pathToApk) { // see http://www.anddev.org/androidpermissioninstall_packages_not_granted-t5858.html for more
 		// see http://stackoverflow.com/questions/5803999/install-apps-silently-with-granted-install-packages-permission
-		Uri packageUri = Uri.fromFile( new File( pathToApk ) );
+		//Uri packageUri = Uri.fromFile( new File( pathToApk ) );
 		// set permissions
-		PackageManager pm = this.applicationContext.getPackageManager();
+		//PackageManager pm = this.applicationContext.getPackageManager();
 		// pm.addPermission(p);//error
 		// pm.installPackage(packageUri, null, 1);
+	}
+	
+	/**
+	 * Try to open the market with the supplied package name. If this fails, open
+	 * the browser URL of the market and search the package there.
+	 * 
+	 * @param packageName The name of the package to install.
+	 */
+	private void installPackageFromMarket( String packageName ) {
+		try {
+			Intent browserIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "http://www.google.com" ) );
+			this.applicationContext.startActivity( browserIntent );
+		} catch( Exception outerException ) {
+			Log.e( RestoreBackupDataTask.class.getSimpleName(), "Failed to open the market directly. The exception was: " + outerException.getMessage() );
+			try {
+				Intent browserIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "http://www.google.com" ) );
+				this.applicationContext.startActivity( browserIntent );
+			} catch( Exception innerException ) {
+				Log.e( RestoreBackupDataTask.class.getSimpleName(), "Failed to open the market in the browser. The exception was: " + innerException.getMessage() );
+			}
+		}
 	}
 
 	@Override
