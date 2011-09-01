@@ -11,13 +11,17 @@ import android.widget.ListAdapter;
  * @since 0.3
  */
 public class RestoreSelectionActivity extends ListActivity {
+	private String[] foundPackage = null;
+	
+	public RestoreSelectionActivity(String[] foundPackages) {
+		this.foundPackage = foundPackages;
+	}
 	
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		
-		String[] testValues = new String[]{ "Test1", "Test2", "Test3", "Test4" };
-		ListAdapter adapter = new ArrayAdapter< String >( this, android.R.layout.simple_list_item_1, testValues );
+		ListAdapter adapter = new ArrayAdapter< String >( this, android.R.layout.simple_list_item_1, this.foundPackage );
 		this.setListAdapter( adapter );
 	}
 }
