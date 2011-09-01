@@ -5,10 +5,11 @@ com.halcyonwaves.apps.backupmyapps.GatherBackupInformationTask -> com.halcyonwav
     com.halcyonwaves.apps.backupmyapps.PackageInformationManager packageInformationManager -> d
     com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback feedbackClass -> e
     java.lang.Boolean doInBackground$5f8445a4() -> a
+    void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback -> com.halcyonwaves.apps.backupmyapps.b:
-    void taskSuccessfull() -> a
-    void taskFailed() -> b
+    void taskSuccessfull(java.lang.Object,java.lang.Object) -> a
+    void taskFailed$2838e5ad(java.lang.Object) -> a
 com.halcyonwaves.apps.backupmyapps.MainActivity -> com.halcyonwaves.apps.backupmyapps.MainActivity:
     android.widget.Button buttonBackupInstalledApplications -> a
     android.widget.Button buttonRestoreInstalledApplications -> b
@@ -16,27 +17,34 @@ com.halcyonwaves.apps.backupmyapps.MainActivity -> com.halcyonwaves.apps.backupm
     android.app.Dialog dialogHelp -> d
     android.app.Dialog dialogAbout -> e
     android.app.ProgressDialog backupProgressDialog -> f
-    java.io.File storagePath -> g
+    android.app.ProgressDialog restoreProgressDialog -> g
+    java.io.File storagePath -> h
+    android.content.SharedPreferences applicationPreferences -> i
+    java.lang.String getApplicationVersion() -> a
     void onCreate(android.os.Bundle) -> onCreate
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
     boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
-    void taskSuccessfull() -> a
-    void taskFailed() -> b
+    void taskSuccessfull(java.lang.Object,java.lang.Object) -> a
+    void taskFailed$2838e5ad(java.lang.Object) -> a
     void access$0(com.halcyonwaves.apps.backupmyapps.MainActivity,android.app.ProgressDialog) -> a
     java.io.File access$1(com.halcyonwaves.apps.backupmyapps.MainActivity) -> a
+    void access$2(com.halcyonwaves.apps.backupmyapps.MainActivity,android.app.ProgressDialog) -> b
 com.halcyonwaves.apps.backupmyapps.MainActivity$1 -> com.halcyonwaves.apps.backupmyapps.c:
     com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
 com.halcyonwaves.apps.backupmyapps.MainActivity$2 -> com.halcyonwaves.apps.backupmyapps.d:
     com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
-com.halcyonwaves.apps.backupmyapps.MainActivity$2$1 -> com.halcyonwaves.apps.backupmyapps.e:
-    com.halcyonwaves.apps.backupmyapps.MainActivity$2 this$1 -> a
-    void onClick(android.content.DialogInterface,int) -> onClick
-com.halcyonwaves.apps.backupmyapps.MainActivity$3 -> com.halcyonwaves.apps.backupmyapps.f:
+com.halcyonwaves.apps.backupmyapps.MainActivity$3 -> com.halcyonwaves.apps.backupmyapps.e:
     com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.halcyonwaves.apps.backupmyapps.PackageInformation -> com.halcyonwaves.apps.backupmyapps.g:
+com.halcyonwaves.apps.backupmyapps.MainActivity$4 -> com.halcyonwaves.apps.backupmyapps.f:
+    com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.halcyonwaves.apps.backupmyapps.MainActivity$5 -> com.halcyonwaves.apps.backupmyapps.g:
+    com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.halcyonwaves.apps.backupmyapps.PackageInformation -> com.halcyonwaves.apps.backupmyapps.h:
     java.lang.String appname -> a
     java.lang.String pname -> b
     java.lang.String versionName -> c
@@ -47,6 +55,19 @@ com.halcyonwaves.apps.backupmyapps.PackageInformation -> com.halcyonwaves.apps.b
     java.lang.String getApplicationName() -> c
     int getVersionCode() -> d
     java.lang.String getVersionName() -> e
-com.halcyonwaves.apps.backupmyapps.PackageInformationManager -> com.halcyonwaves.apps.backupmyapps.h:
+com.halcyonwaves.apps.backupmyapps.PackageInformationManager -> com.halcyonwaves.apps.backupmyapps.i:
     android.content.pm.PackageManager internalPackageManager -> a
     java.util.ArrayList getInstalledApps() -> a
+com.halcyonwaves.apps.backupmyapps.RestoreBackupDataTask -> com.halcyonwaves.apps.backupmyapps.j:
+    java.io.File storagePath -> a
+    java.lang.String backupFilename -> b
+    com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback feedbackClass -> c
+    java.util.HashMap itemList -> d
+    org.w3c.dom.Document XMLfromString(java.lang.String) -> a
+    java.lang.Boolean doInBackground$5f8445a4() -> a
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+com.halcyonwaves.apps.backupmyapps.RestoreSelectionActivity -> com.halcyonwaves.apps.backupmyapps.RestoreSelectionActivity:
+    java.lang.String[] packageNames -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    void onListItemClick(android.widget.ListView,android.view.View,int,long) -> onListItemClick

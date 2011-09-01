@@ -1,15 +1,20 @@
 package com.halcyonwaves.apps.backupmyapps;
 
 import java.io.File;
+import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,8 +31,11 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private Dialog dialogHelp = null;
 	private Dialog dialogAbout = null;
 	private ProgressDialog backupProgressDialog = null;
+	private ProgressDialog restoreProgressDialog = null;
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStorageDirectory();
+	private SharedPreferences applicationPreferences = null;
+	private static final String PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION = "com.halcyonwaves.apps.backupmyapps.userAskedToSendPackageInformation";
 
 	/**
 	 * Get the version name of the application itself.
@@ -49,6 +57,9 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// create the layout of the main activity
 		super.onCreate( savedInstanceState );
 		setContentView( R.layout.main );
+		
+		// get the preference object for this application
+		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
 
 		// get some control handles
 		this.buttonBackupInstalledApplications = (Button)this.findViewById( R.id.buttonBackupInstalledApplications );
@@ -83,16 +94,12 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// add a click handler for the button to restore the applications
 		this.buttonRestoreInstalledApplications.setOnClickListener( new OnClickListener() {
 			public void onClick( View v ) {
-				AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( MainActivity.this );
-				dialogBuilder.setMessage( R.string.dialogMessageNotImplemented );
-				dialogBuilder.setCancelable( false );
-				dialogBuilder.setPositiveButton( R.string.buttonOk, new DialogInterface.OnClickListener() {
-					public void onClick( DialogInterface dialog, int id ) {
-						dialog.dismiss();
-					}
-				} );
-				AlertDialog infoDialog = dialogBuilder.create();
-				infoDialog.show();
+				// show a progress dialog
+				MainActivity.this.restoreProgressDialog = ProgressDialog.show( MainActivity.this, "", MainActivity.this.getString( R.string.progressDialogRestoreInProgress ), true );
+
+				// create and execute the restore task
+				RestoreBackupDataTask backupTask = new RestoreBackupDataTask( MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME, MainActivity.this );
+				backupTask.execute();
 			}
 		} );
 
@@ -108,6 +115,27 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			} );
 			AlertDialog infoDialog = dialogBuilder.create();
 			infoDialog.show();
+		}
+		
+		// if this is the first application run, ask the user about the package list
+		if( this.applicationPreferences.getBoolean( MainActivity.PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION, true ) ) {
+			// ask the user for sending the requested information
+			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( this );
+			dialogBuilder.setMessage( R.string.dialogMessageAskForPackageInformation );
+			dialogBuilder.setCancelable( false );
+			dialogBuilder.setPositiveButton( R.string.buttonOk, new DialogInterface.OnClickListener() {
+				public void onClick( DialogInterface dialog, int id ) {
+					// nothing to do here
+				}
+			} );
+			AlertDialog infoDialog = dialogBuilder.create();
+			infoDialog.show();
+			
+			// store the value which indicates that the user was already asked to send the information
+			Editor prefsEditor = this.applicationPreferences.edit();
+			prefsEditor.putBoolean( MainActivity.PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION, false );
+			prefsEditor.commit();
+			prefsEditor = null;
 		}
 	}
 
@@ -137,6 +165,19 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				}
 				this.dialogAbout.show();
 				return true;
+			case R.id.menuPackageInformationHelp:
+				// ask the user for sending the requested information
+				AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( this );
+				dialogBuilder.setMessage( R.string.dialogMessageAskForPackageInformation );
+				dialogBuilder.setCancelable( false );
+				dialogBuilder.setPositiveButton( R.string.buttonOk, new DialogInterface.OnClickListener() {
+					public void onClick( DialogInterface dialog, int id ) {
+						// nothing to do here
+					}
+				} );
+				AlertDialog infoDialog = dialogBuilder.create();
+				infoDialog.show();
+				return true;
 			case R.id.menuExit:
 				this.finish();
 				return true;
@@ -152,20 +193,47 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		return true;
 	}
 
-	public void taskSuccessfull() {
-		// enable the restore button, because we succeeded creating the backup
-		this.buttonRestoreInstalledApplications.setEnabled( true );
+	public void taskSuccessfull( Object sender, Object data ) {
+		if( sender.getClass().getSimpleName().equalsIgnoreCase( GatherBackupInformationTask.class.getSimpleName() ) ) {
+			// enable the restore button, because we succeeded creating the backup
+			this.buttonRestoreInstalledApplications.setEnabled( true );
 
-		// close the progress dialog
-		this.backupProgressDialog.dismiss();
-		this.backupProgressDialog = null;
+			// close the progress dialog
+			this.backupProgressDialog.dismiss();
+			this.backupProgressDialog = null;
+		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( RestoreBackupDataTask.class.getSimpleName() ) ) {
+			// close the progress dialog
+			this.restoreProgressDialog.dismiss();
+			this.restoreProgressDialog = null;
+			
+			// open the dialog for the selection of the applications to restore
+			Intent restoreSelectionActivity = new Intent( MainActivity.this, RestoreSelectionActivity.class );
+			@SuppressWarnings( "unchecked" )
+			HashMap< String, String > packageInformationList = (HashMap< String, String >)data;
+			restoreSelectionActivity.putExtra( "packages", packageInformationList.size() );
+			int i = 0;
+			for( String key: packageInformationList.keySet() ) {
+				restoreSelectionActivity.putExtra( "packageName" + i, key );
+				restoreSelectionActivity.putExtra( "applicationName" + i, packageInformationList.get( key ) );
+				i++;
+			}
+			MainActivity.this.startActivity( restoreSelectionActivity );
+		}
 	}
 
-	public void taskFailed() {
-		// close the progress dialog
-		this.backupProgressDialog.dismiss();
-		this.backupProgressDialog = null;
+	public void taskFailed( Object sender, Object data ) {
+		if( sender.getClass().getSimpleName().equalsIgnoreCase( GatherBackupInformationTask.class.getSimpleName() ) ) {
+			// close the progress dialog
+			this.backupProgressDialog.dismiss();
+			this.backupProgressDialog = null;
 
-		// TODO: notify the user that we failed
+			// TODO: notify the user that we failed
+		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( RestoreBackupDataTask.class.getSimpleName() ) ) {
+			// close the progress dialog
+			this.restoreProgressDialog.dismiss();
+			this.restoreProgressDialog = null;
+
+			// TODO: notify the user that we failed
+		}
 	}
 }
