@@ -14,6 +14,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 /**
+ * This class implements a dialog where the user can select the package which should actually be
+ * restored on a new device.
  * 
  * @author Tim Huetz
  * @since 0.3
@@ -25,13 +27,13 @@ public class RestoreSelectionActivity extends ListActivity {
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 
-		//
+		// get the information supplied to this activity
 		Bundle extras = getIntent().getExtras();
 		if( null == extras ) {
 			// TODO: ERROR; this should NEVER happen
 		}
 
-		//
+		// loop through the supplied data set and extract the required information
 		List< String > foundPackageNames = new ArrayList< String >();
 		List< String > foundApplicationNames = new ArrayList< String >();
 		int numberOfPackages = extras.getInt( "packages" );
@@ -43,10 +45,10 @@ public class RestoreSelectionActivity extends ListActivity {
 			Log.v( RestoreSelectionActivity.class.getSimpleName(), "Found package: " + currentPackage + " (" + currentApplication + ")" );
 		}
 
-		//
+		// store an array of the package names in the class members
 		this.packageNames = (String[])foundPackageNames.toArray( new String[ 0 ] );
 
-		//
+		// tell the view which data it should display
 		ListAdapter adapter = new ArrayAdapter< String >( this, android.R.layout.simple_list_item_1, (String[])foundApplicationNames.toArray( new String[ 0 ] ) );
 		this.setListAdapter( adapter );
 	}
