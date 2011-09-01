@@ -46,6 +46,7 @@ public class RestoreSelectionActivity extends ListActivity {
 
 	@Override
 	protected void onListItemClick( ListView l, View v, int position, long id ) {
+		/*
 		AlertDialog alertDialog = new AlertDialog.Builder( this ).create();
 		alertDialog.setTitle( "Item Selected" );
 		alertDialog.setMessage( "You just clicked an item position #" + String.valueOf( position ) );
@@ -54,8 +55,12 @@ public class RestoreSelectionActivity extends ListActivity {
 				return;
 			}
 		} );
-		alertDialog.show();
+		alertDialog.show();*/
+		
+		//
+		this.installPackageFromMarket( l.getItemAtPosition( position ).toString() );
 
+		//
 		super.onListItemClick( l, v, position, id );
 	}
 
