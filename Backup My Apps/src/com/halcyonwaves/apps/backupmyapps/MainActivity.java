@@ -165,6 +165,19 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				}
 				this.dialogAbout.show();
 				return true;
+			case R.id.menuPackageInformationHelp:
+				// ask the user for sending the requested information
+				AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( this );
+				dialogBuilder.setMessage( R.string.dialogMessageAskForPackageInformation );
+				dialogBuilder.setCancelable( false );
+				dialogBuilder.setPositiveButton( R.string.buttonOk, new DialogInterface.OnClickListener() {
+					public void onClick( DialogInterface dialog, int id ) {
+						// nothing to do here
+					}
+				} );
+				AlertDialog infoDialog = dialogBuilder.create();
+				infoDialog.show();
+				return true;
 			case R.id.menuExit:
 				this.finish();
 				return true;
