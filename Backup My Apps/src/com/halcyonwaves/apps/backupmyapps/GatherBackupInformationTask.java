@@ -106,9 +106,9 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 	@Override
 	protected void onPostExecute( Boolean result ) {
 		if( result ) {
-			this.feedbackClass.taskSuccessfull( this );
+			this.feedbackClass.taskSuccessfull( this, null );
 		} else {
-			this.feedbackClass.taskFailed( this );
+			this.feedbackClass.taskFailed( this, null );
 		}
 	}
 }
