@@ -14,16 +14,18 @@ public interface IAsyncTaskFeedback {
 	 * 
 	 * @author Tim Huetz
 	 * @param sender The caller of the method.
+	 * @param data Additional data for the method call.
 	 * @since 0.2
 	 */
-	void taskSuccessfull(Object sender);
+	void taskSuccessfull(Object sender, Object data);
 	
 	/**
 	 * This method gets called if the task execution failed.
 	 * 
 	 * @author Tim Huetz
 	 * @param sender The caller of the method.
+	 * @param data Additional data for the method call.
 	 * @since 0.2
 	 */
-	void taskFailed(Object sender);
+	void taskFailed(Object sender, Object data);
 }
