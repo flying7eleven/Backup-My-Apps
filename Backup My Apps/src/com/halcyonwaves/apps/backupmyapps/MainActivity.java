@@ -1,7 +1,7 @@
 package com.halcyonwaves.apps.backupmyapps;
 
 import java.io.File;
-import java.util.List;
+import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -195,10 +195,13 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			
 			// open the dialog for the selection of the applications to restore
 			Intent restoreSelectionActivity = new Intent( MainActivity.this, RestoreSelectionActivity.class );
-			List< String > packageInformationList = (List< String >)data;
+			HashMap< String, String > packageInformationList = (HashMap< String, String >)data;
 			restoreSelectionActivity.putExtra( "packages", packageInformationList.size() );
-			for( int i = 0; i < packageInformationList.size(); i++ ) {
-				restoreSelectionActivity.putExtra( "package" + i, packageInformationList.get( i ) ); // TODO: use iterators
+			int i = 0;
+			for( String key: packageInformationList.keySet() ) {
+				restoreSelectionActivity.putExtra( "packageName" + i, key );
+				restoreSelectionActivity.putExtra( "applicationName" + i, packageInformationList.get( key ) );
+				i++;
 			}
 			MainActivity.this.startActivity( restoreSelectionActivity );
 		}
