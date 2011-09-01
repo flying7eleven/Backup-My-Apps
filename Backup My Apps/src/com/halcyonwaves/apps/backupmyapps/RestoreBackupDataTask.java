@@ -22,8 +22,6 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -90,38 +88,6 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 		return doc;
 	}
 	
-	private void installPackage(String pathToApk) { // see http://www.anddev.org/androidpermissioninstall_packages_not_granted-t5858.html for more
-		// see http://stackoverflow.com/questions/5803999/install-apps-silently-with-granted-install-packages-permission
-		//Uri packageUri = Uri.fromFile( new File( pathToApk ) );
-		// set permissions
-		//PackageManager pm = this.applicationContext.getPackageManager();
-		// pm.addPermission(p);//error
-		// pm.installPackage(packageUri, null, 1);
-	}
-	
-	/**
-	 * Try to open the market with the supplied package name. If this fails, open
-	 * the browser URL of the market and search the package there.
-	 * 
-	 * @param packageName The name of the package to install.
-	 */
-	private void installPackageFromMarket( String packageName ) {
-		try {
-			Intent browserIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "market://details?id=" + packageName ) );
-			this.applicationContext.startActivity( browserIntent );
-		} catch( Exception outerException ) {
-			Log.e( RestoreBackupDataTask.class.getSimpleName(), "Failed to open the market directly. The exception was: " + outerException.getMessage() );
-			try {
-				Log.v( RestoreBackupDataTask.class.getSimpleName(), "Opening browser directly!!" );
-				Intent browserIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "https://market.android.com/details?id=" + packageName ) );
-				this.applicationContext.startActivity( browserIntent );
-				Log.v( RestoreBackupDataTask.class.getSimpleName(), "Browser closed!" );
-			} catch( Exception innerException ) {
-				Log.e( RestoreBackupDataTask.class.getSimpleName(), "Failed to open the market in the browser. The exception was: " + innerException.getMessage() );
-			}
-		}
-	}
-
 	@Override
 	protected Boolean doInBackground( Void... arg0 ) {
 		// just log some information
