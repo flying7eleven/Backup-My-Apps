@@ -11,12 +11,12 @@ import android.widget.ListAdapter;
  * @since 0.3
  */
 public class RestoreSelectionActivity extends ListActivity {
+	
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
-		// Create some mock data
+		
 		String[] testValues = new String[]{ "Test1", "Test2", "Test3", "Test4" };
-
 		ListAdapter adapter = new ArrayAdapter< String >( this, android.R.layout.simple_list_item_1, testValues );
 		this.setListAdapter( adapter );
 	}
