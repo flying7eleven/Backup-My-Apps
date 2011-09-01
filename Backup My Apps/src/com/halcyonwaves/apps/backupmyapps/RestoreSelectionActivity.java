@@ -27,6 +27,9 @@ public class RestoreSelectionActivity extends ListActivity {
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 
+		// set the custom layout of this view
+		this.setContentView( R.layout.restorelistactivity );
+		
 		// get the information supplied to this activity
 		Bundle extras = getIntent().getExtras();
 		if( null == extras ) {
