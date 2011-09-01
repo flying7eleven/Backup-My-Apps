@@ -3,13 +3,17 @@ package com.halcyonwaves.apps.backupmyapps;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 
 /**
  * 
@@ -39,7 +43,22 @@ public class RestoreSelectionActivity extends ListActivity {
 		ListAdapter adapter = new ArrayAdapter< String >( this, android.R.layout.simple_list_item_1, (String[])foundPackages.toArray(new String[0]) );
 		this.setListAdapter( adapter );
 	}
-	
+
+	@Override
+	protected void onListItemClick( ListView l, View v, int position, long id ) {
+		AlertDialog alertDialog = new AlertDialog.Builder( this ).create();
+		alertDialog.setTitle( "Item Selected" );
+		alertDialog.setMessage( "You just clicked an item position #" + String.valueOf( position ) );
+		alertDialog.setButton( "OK", new DialogInterface.OnClickListener() {
+			public void onClick( DialogInterface dialog, int which ) {
+				return;
+			}
+		} );
+		alertDialog.show();
+
+		super.onListItemClick( l, v, position, id );
+	}
+
 	private void installPackage(String pathToApk) { // see http://www.anddev.org/androidpermissioninstall_packages_not_granted-t5858.html for more
 		// see http://stackoverflow.com/questions/5803999/install-apps-silently-with-granted-install-packages-permission
 		//Uri packageUri = Uri.fromFile( new File( pathToApk ) );
