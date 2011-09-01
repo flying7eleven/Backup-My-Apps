@@ -79,7 +79,7 @@ public class RestoreSelectionActivity extends ListActivity {
 			Log.e( RestoreBackupDataTask.class.getSimpleName(), "Failed to open the market directly. The exception was: " + outerException.getMessage() );
 			try {
 				Log.v( RestoreBackupDataTask.class.getSimpleName(), "Opening browser directly!!" );
-				Intent browserIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "https://market.android.com/details?id=" + packageName ) );
+				Intent browserIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "http://market.android.com/details?id=" + packageName ) );
 				this.startActivity( browserIntent );
 				Log.v( RestoreBackupDataTask.class.getSimpleName(), "Browser closed!" );
 			} catch( Exception innerException ) {
