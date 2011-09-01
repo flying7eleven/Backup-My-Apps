@@ -179,7 +179,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		return true;
 	}
 
-	public void taskSuccessfull( Object sender ) {
+	public void taskSuccessfull( Object sender, Object data ) {
 		if( sender.getClass().getSimpleName().equalsIgnoreCase( GatherBackupInformationTask.class.getSimpleName() ) ) {
 			// enable the restore button, because we succeeded creating the backup
 			this.buttonRestoreInstalledApplications.setEnabled( true );
@@ -198,7 +198,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		}
 	}
 
-	public void taskFailed( Object sender ) {
+	public void taskFailed( Object sender, Object data ) {
 		if( sender.getClass().getSimpleName().equalsIgnoreCase( GatherBackupInformationTask.class.getSimpleName() ) ) {
 			// close the progress dialog
 			this.backupProgressDialog.dismiss();
