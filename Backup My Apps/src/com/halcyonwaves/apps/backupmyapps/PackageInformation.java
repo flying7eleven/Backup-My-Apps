@@ -55,6 +55,15 @@ public class PackageInformation {
 	public boolean isSystemComponent() {
 		return this.pname.toLowerCase().startsWith( "com.android." ) || this.pname.toLowerCase().startsWith( "com.example" ) || this.pname.equalsIgnoreCase( "com.htc" ) || this.pname.equalsIgnoreCase( "com.qo.android.htc" ) || this.pname.equalsIgnoreCase( "android" ) || this.pname.equalsIgnoreCase( "android.tts" ) || this.pname.toLowerCase().startsWith( "com.lge." ) || this.pname.toLowerCase().startsWith( "com.htc." ) || this.pname.toLowerCase().startsWith( "com.google.android." );
 	}
+	
+	
+	/*
+	 * private boolean isSystemPackage(ResolveInfo ri){
+    return ((ri.activityInfo.applicationInfo.flags&ApplicationInfo.FLAG_SYSTEM)!=0)?true:false;
+
+	}
+
+	 */
 
 	/**
 	 * Log the information of the managed package to the logging manager.

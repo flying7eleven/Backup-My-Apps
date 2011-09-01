@@ -7,7 +7,6 @@
     <string name="dialogMessageNoExternalStorageMounted">Es scheint kein externes Speichermedium verfügbar zu sein. Thise Anwendung benötigt zwingend ein externes Speichermedium und wird sich nun beenden.</string>
     <string name="buttonOk">OK</string>
     <string name="progressDialogBackupInProgress">Ermittlung und Speicherung der Metainformationen der installierten Anwendungen. Bitte warten...</string>
-    <string name="dialogMessageNotImplemented">Leider ist diese Funktion derzeit noch nicht implementiert. Diese Funktion wird so schnell wie möglich durch ein Update im Android Market nachgeliefert.</string>
     <string name="menuHelp">Hilfe</string>
     <string name="menuExit">Beenden</string>
     <string name="textViewAdditionalInformation">Um die installierten Anwendungen zu sichern, drücken Sie auf den entsprechenden Knopf. Die Sicherungsinformationen werden unter %s gesichert. Um die Anwendungen wiederherzustellen, kopieren Sie die Sicherungsdatei in denselben Ordner und drücken Sie den Wiederherstellungsknopf.\n\nFür weitere Informationen öffnen Sie das Menü und wählen Sie den Hilfeeintrag.</string>
@@ -21,4 +20,8 @@
     <string name="textViewAboutArtworkContent">Tango harm-on-icons</string>
     <string name="textViewAboutTranslationsLabel">Übersetzungen</string>
     <string name="textViewAboutTranslationsContent">Tim Hütz\nMichaela Gaens</string>
+    <string name="dialogMessageAskForPackageInformation">Vielen Dank für die Nutzung dieser Anwendung!\n\nDa diese Anwendung Paketnamen für die Filterung von Systempaketen verwendet, müssen wir die Namen der Systempakete der Hersteller sammeln. Es wäre nett, wenn Sie uns Ihre Backupdatei an <a href="mailto:backupmyapps@halcyonwaves.com">backupmyapps@halcyonwaves.com</a> schicken würden, um die Pakete zu filtern.\n\nVielen Dank!</string>
+    <string name="progressDialogRestoreInProgress">Wiederherstellung läuft. Bitte warten...</string>
+    <string name="menuPackageInformationHelp">Wie Sie helfen können</string>
+    <string name="textViewSelectApplicationToRestore">Zum Wiederherstellen einer Anwendung klicken Sie diese an. Die Anwendung wird dann im Android Market geöffnet und Sie können sie installieren.</string>
 </resources>
