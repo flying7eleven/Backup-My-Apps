@@ -148,9 +148,7 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 				Log.v( RestoreBackupDataTask.class.getSimpleName(), "Found package to restore: " + currentPackage.getAttribute( "packageName" ) + " (" + currentPackage.getAttribute( "applicationName" ) + ")" );
 
 				// try to install the package
-				Intent intent = new Intent( Intent.ACTION_VIEW );
-				intent.setData( Uri.parse( "market://details?id=" + currentPackage.getAttribute( "packageName" ) ) );
-				this.applicationContext.startActivity( intent );
+				this.installPackageFromMarket( currentPackage.getAttribute( "packageName" ) );
 			}
 
 		} catch( FileNotFoundException e ) {
