@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import org.xmlpull.v1.XmlSerializer;
 
 import com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback;
-import com.halcyonwaves.apps.backupmyapps.PackageInformation;
-import com.halcyonwaves.apps.backupmyapps.PackageInformationManager;
+import com.halcyonwaves.apps.backupmyapps.packages.PackageInformation;
+import com.halcyonwaves.apps.backupmyapps.packages.PackageInformationManager;
 
 import android.content.Context;
 import android.os.AsyncTask;

@@ -1,4 +1,4 @@
-package com.halcyonwaves.apps.backupmyapps;
+package com.halcyonwaves.apps.backupmyapps.packages;
 
 import android.graphics.drawable.Drawable;
 import android.util.Log;
