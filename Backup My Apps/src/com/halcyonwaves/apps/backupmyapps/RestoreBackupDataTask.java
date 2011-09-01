@@ -8,8 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -36,7 +35,7 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 	private Context applicationContext = null;
 	private String backupFilename = "";
 	private IAsyncTaskFeedback feedbackClass = null;
-	private List< String > itemList = null;
+	private HashMap< String, String > itemList = null;
 
 	/**
 	 * Constructor for this class.
@@ -53,7 +52,7 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 		this.applicationContext = applicationContext;
 		this.backupFilename = backupFilename;
 		this.feedbackClass = feedbackClass;
-		this.itemList = new ArrayList< String >();
+		this.itemList = new HashMap< String, String >();
 	}
 
 	/**
@@ -120,7 +119,7 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 				Log.v( RestoreBackupDataTask.class.getSimpleName(), "Found package to restore: " + currentPackage.getAttribute( "packageName" ) + " (" + currentPackage.getAttribute( "applicationName" ) + ")" );
 
 				// add the package to the item list
-				this.itemList.add( currentPackage.getAttribute( "packageName" ) );
+				this.itemList.put( currentPackage.getAttribute( "packageName" ), currentPackage.getAttribute( "applicationName" ) );
 			}
 
 		} catch( FileNotFoundException e ) {
