@@ -20,7 +20,7 @@ import android.widget.ListView;
  */
 public class RestoreSelectionActivity extends ListActivity {
 	private String[] packageNames = null;
-	
+
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
@@ -39,26 +39,30 @@ public class RestoreSelectionActivity extends ListActivity {
 			String currentPackage = extras.getString( "packageName" + i );
 			String currentApplication = extras.getString( "applicationName" + i );
 			foundApplicationNames.add( currentApplication );
-			foundPackageNames.add(  currentPackage );
+			foundPackageNames.add( currentPackage );
 			Log.v( RestoreSelectionActivity.class.getSimpleName(), "Found package: " + currentPackage + " (" + currentApplication + ")" );
 		}
 
-		ListAdapter adapter = new ArrayAdapter< String >( this, android.R.layout.simple_list_item_1, (String[])foundApplicationNames.toArray(new String[0]) );
+		//
+		this.packageNames = (String[])foundPackageNames.toArray( new String[ 0 ] );
+
+		//
+		ListAdapter adapter = new ArrayAdapter< String >( this, android.R.layout.simple_list_item_1, (String[])foundApplicationNames.toArray( new String[ 0 ] ) );
 		this.setListAdapter( adapter );
 	}
 
 	@Override
-	protected void onListItemClick( ListView l, View v, int position, long id ) {	
+	protected void onListItemClick( ListView l, View v, int position, long id ) {
 		// try to install the package through the market
-		this.installPackageFromMarket( l.getItemAtPosition( position ).toString() );
+		this.installPackageFromMarket( this.packageNames[ position ] );
 
 		// call the handler for this event of the super class
 		super.onListItemClick( l, v, position, id );
 	}
-	
+
 	/**
-	 * Try to open the market with the supplied package name. If this fails, open
-	 * the browser URL of the market and search the package there.
+	 * Try to open the market with the supplied package name. If this fails, open the browser URL of
+	 * the market and search the package there.
 	 * 
 	 * @param packageName The name of the package to install.
 	 */
