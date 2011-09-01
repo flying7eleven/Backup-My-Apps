@@ -1,4 +1,4 @@
-package com.halcyonwaves.apps.backupmyapps;
+package com.halcyonwaves.apps.backupmyapps.tasks;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -9,6 +9,10 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 
 import org.xmlpull.v1.XmlSerializer;
+
+import com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback;
+import com.halcyonwaves.apps.backupmyapps.PackageInformation;
+import com.halcyonwaves.apps.backupmyapps.PackageInformationManager;
 
 import android.content.Context;
 import android.os.AsyncTask;
