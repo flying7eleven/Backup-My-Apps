@@ -103,12 +103,12 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 	 */
 	private void installPackageFromMarket( String packageName ) {
 		try {
-			Intent browserIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "http://www.google.com" ) );
+			Intent browserIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "https://market.android.com/details?id=" + packageName ) );
 			this.applicationContext.startActivity( browserIntent );
 		} catch( Exception outerException ) {
 			Log.e( RestoreBackupDataTask.class.getSimpleName(), "Failed to open the market directly. The exception was: " + outerException.getMessage() );
 			try {
-				Intent browserIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "http://www.google.com" ) );
+				Intent browserIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "market://details?id=" + packageName ) );
 				this.applicationContext.startActivity( browserIntent );
 			} catch( Exception innerException ) {
 				Log.e( RestoreBackupDataTask.class.getSimpleName(), "Failed to open the market in the browser. The exception was: " + innerException.getMessage() );
