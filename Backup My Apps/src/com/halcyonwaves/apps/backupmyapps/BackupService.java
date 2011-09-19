@@ -11,7 +11,7 @@ import android.content.Intent;
  * @since 0.4
  */
 public class BackupService extends IntentService {
-
+// see http://developer.android.com/guide/topics/fundamentals/services.html
 	/**
 	 * Default constructor of this class.
 	 * 
