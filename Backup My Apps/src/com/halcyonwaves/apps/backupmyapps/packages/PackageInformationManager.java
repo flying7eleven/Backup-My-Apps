@@ -53,7 +53,7 @@ public class PackageInformationManager {
 			Drawable icon = p.applicationInfo.loadIcon( this.internalPackageManager );
 
 			// add the found package to the array we want to return
-			res.add( new PackageInformation( appname, p.packageName, p.versionName, p.versionCode, icon ) );
+			res.add( new PackageInformation( appname, p.packageName, p.versionName, p.versionCode, icon, p.applicationInfo ) );
 		}
 
 		// return the gathered information
