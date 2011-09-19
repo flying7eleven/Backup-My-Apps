@@ -2310,7 +2310,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 64):
+Constant Pool (count = 73):
   - String []
   - String [android]
   - String [android.tts]
@@ -2321,14 +2321,17 @@ Constant Pool (count = 64):
   - String [com.htc.]
   - String [com.lge.]
   - String [com.qo.android.htc]
+  - Class [android/content/pm/ApplicationInfo]
   - Class [com/halcyonwaves/apps/backupmyapps/h]
   - Class [java/lang/Object]
   - Class [java/lang/String]
+  - Fieldref [android/content/pm/ApplicationInfo.flags I]
   - Fieldref [com/halcyonwaves/apps/backupmyapps/h.a Ljava/lang/String;]
   - Fieldref [com/halcyonwaves/apps/backupmyapps/h.b Ljava/lang/String;]
   - Fieldref [com/halcyonwaves/apps/backupmyapps/h.c Ljava/lang/String;]
   - Fieldref [com/halcyonwaves/apps/backupmyapps/h.d I]
   - Fieldref [com/halcyonwaves/apps/backupmyapps/h.e Landroid/graphics/drawable/Drawable;]
+  - Fieldref [com/halcyonwaves/apps/backupmyapps/h.f Landroid/content/pm/ApplicationInfo;]
   - Methodref [java/lang/Object.<init> ()V]
   - Methodref [java/lang/String.equalsIgnoreCase (Ljava/lang/String;)Z]
   - Methodref [java/lang/String.startsWith (Ljava/lang/String;)Z]
@@ -2340,6 +2343,8 @@ Constant Pool (count = 64):
   + NameAndType [d I]
   + NameAndType [e Landroid/graphics/drawable/Drawable;]
   + NameAndType [equalsIgnoreCase (Ljava/lang/String;)Z]
+  + NameAndType [f Landroid/content/pm/ApplicationInfo;]
+  + NameAndType [flags I]
   + NameAndType [startsWith (Ljava/lang/String;)Z]
   + NameAndType [toLowerCase ()Ljava/lang/String;]
   + Utf8 []
@@ -2348,15 +2353,17 @@ Constant Pool (count = 64):
   + Utf8 [()V]
   + Utf8 [()Z]
   + Utf8 [(Ljava/lang/String;)Z]
-  + Utf8 [(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;Landroid/content/pm/ApplicationInfo;)V]
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [I]
+  + Utf8 [Landroid/content/pm/ApplicationInfo;]
   + Utf8 [Landroid/graphics/drawable/Drawable;]
   + Utf8 [Ljava/lang/String;]
   + Utf8 [a]
   + Utf8 [android]
   + Utf8 [android.tts]
+  + Utf8 [android/content/pm/ApplicationInfo]
   + Utf8 [b]
   + Utf8 [c]
   + Utf8 [com.android.]
@@ -2370,12 +2377,14 @@ Constant Pool (count = 64):
   + Utf8 [d]
   + Utf8 [e]
   + Utf8 [equalsIgnoreCase]
+  + Utf8 [f]
+  + Utf8 [flags]
   + Utf8 [java/lang/Object]
   + Utf8 [java/lang/String]
   + Utf8 [startsWith]
   + Utf8 [toLowerCase]
 
-Fields (count = 5):
+Fields (count = 6):
   + Field:        a Ljava/lang/String;
     Access flags: 0x2
       = private java.lang.String a
@@ -2391,149 +2400,188 @@ Fields (count = 5):
   + Field:        e Landroid/graphics/drawable/Drawable;
     Access flags: 0x2
       = private android.graphics.drawable.Drawable e
+  + Field:        f Landroid/content/pm/ApplicationInfo;
+    Access flags: 0x2
+      = private android.content.pm.ApplicationInfo f
 
 Methods (count = 6):
-  - Method:       <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;)V
+  - Method:       <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;Landroid/content/pm/ApplicationInfo;)V
     Access flags: 0x1
-      = public h(java.lang.String,java.lang.String,java.lang.String,int,android.graphics.drawable.Drawable)
+      = public h(java.lang.String,java.lang.String,java.lang.String,int,android.graphics.drawable.Drawable,android.content.pm.ApplicationInfo)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 55, locals = 6, stack = 2):
+    + Code attribute instructions (code length = 61, locals = 7, stack = 2):
       [0] aload_0 v0
-      [1] invokespecial #19
+      [1] invokespecial #22
         - Methodref [java/lang/Object.<init> ()V]
       [4] aload_0 v0
       [5] ldc #1
         - String []
-      [7] putfield #14
+      [7] putfield #16
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.a Ljava/lang/String;]
       [10] aload_0 v0
       [11] ldc #1
         - String []
-      [13] putfield #15
+      [13] putfield #17
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.b Ljava/lang/String;]
       [16] aload_0 v0
       [17] ldc #1
         - String []
-      [19] putfield #16
+      [19] putfield #18
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.c Ljava/lang/String;]
       [22] aload_0 v0
       [23] iconst_0
-      [24] putfield #17
+      [24] putfield #19
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.d I]
       [27] aload_0 v0
       [28] aload_1 v1
-      [29] putfield #14
+      [29] putfield #16
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.a Ljava/lang/String;]
       [32] aload_0 v0
       [33] aload_2 v2
-      [34] putfield #15
+      [34] putfield #17
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.b Ljava/lang/String;]
       [37] aload_0 v0
       [38] aload_3 v3
-      [39] putfield #16
+      [39] putfield #18
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.c Ljava/lang/String;]
       [42] aload_0 v0
       [43] iload v4
-      [45] putfield #17
+      [45] putfield #19
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.d I]
       [48] aload_0 v0
       [49] aload v5
-      [51] putfield #18
+      [51] putfield #20
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.e Landroid/graphics/drawable/Drawable;]
-      [54] return
+      [54] aload_0 v0
+      [55] aload v6
+      [57] putfield #21
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/h.f Landroid/content/pm/ApplicationInfo;]
+      [60] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
   + Method:       a()Z
     Access flags: 0x11
       = public final boolean a()
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 127, locals = 1, stack = 2):
+    + Code attribute instructions (code length = 179, locals = 3, stack = 2):
       [0] aload_0 v0
-      [1] getfield #15
+      [1] getfield #17
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.b Ljava/lang/String;]
-      [4] invokevirtual #22
+      [4] invokevirtual #25
         - Methodref [java/lang/String.toLowerCase ()Ljava/lang/String;]
       [7] ldc #4
         - String [com.android.]
-      [9] invokevirtual #21
+      [9] invokevirtual #24
         - Methodref [java/lang/String.startsWith (Ljava/lang/String;)Z]
-      [12] ifne +113 (target=125)
+      [12] ifne +115 (target=127)
       [15] aload_0 v0
-      [16] getfield #15
+      [16] getfield #17
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.b Ljava/lang/String;]
-      [19] invokevirtual #22
+      [19] invokevirtual #25
         - Methodref [java/lang/String.toLowerCase ()Ljava/lang/String;]
       [22] ldc #5
         - String [com.example]
-      [24] invokevirtual #21
+      [24] invokevirtual #24
         - Methodref [java/lang/String.startsWith (Ljava/lang/String;)Z]
-      [27] ifne +98 (target=125)
+      [27] ifne +100 (target=127)
       [30] aload_0 v0
-      [31] getfield #15
+      [31] getfield #17
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.b Ljava/lang/String;]
       [34] ldc #7
         - String [com.htc]
-      [36] invokevirtual #20
+      [36] invokevirtual #23
         - Methodref [java/lang/String.equalsIgnoreCase (Ljava/lang/String;)Z]
-      [39] ifne +86 (target=125)
+      [39] ifne +88 (target=127)
       [42] aload_0 v0
-      [43] getfield #15
+      [43] getfield #17
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.b Ljava/lang/String;]
       [46] ldc #10
         - String [com.qo.android.htc]
-      [48] invokevirtual #20
+      [48] invokevirtual #23
         - Methodref [java/lang/String.equalsIgnoreCase (Ljava/lang/String;)Z]
-      [51] ifne +74 (target=125)
+      [51] ifne +76 (target=127)
       [54] aload_0 v0
-      [55] getfield #15
+      [55] getfield #17
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.b Ljava/lang/String;]
       [58] ldc #2
         - String [android]
-      [60] invokevirtual #20
+      [60] invokevirtual #23
         - Methodref [java/lang/String.equalsIgnoreCase (Ljava/lang/String;)Z]
-      [63] ifne +62 (target=125)
+      [63] ifne +64 (target=127)
       [66] aload_0 v0
-      [67] getfield #15
+      [67] getfield #17
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.b Ljava/lang/String;]
       [70] ldc #3
         - String [android.tts]
-      [72] invokevirtual #20
+      [72] invokevirtual #23
         - Methodref [java/lang/String.equalsIgnoreCase (Ljava/lang/String;)Z]
-      [75] ifne +50 (target=125)
+      [75] ifne +52 (target=127)
       [78] aload_0 v0
-      [79] getfield #15
+      [79] getfield #17
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.b Ljava/lang/String;]
-      [82] invokevirtual #22
+      [82] invokevirtual #25
         - Methodref [java/lang/String.toLowerCase ()Ljava/lang/String;]
       [85] ldc #9
         - String [com.lge.]
-      [87] invokevirtual #21
+      [87] invokevirtual #24
         - Methodref [java/lang/String.startsWith (Ljava/lang/String;)Z]
-      [90] ifne +35 (target=125)
+      [90] ifne +37 (target=127)
       [93] aload_0 v0
-      [94] getfield #15
+      [94] getfield #17
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.b Ljava/lang/String;]
-      [97] invokevirtual #22
+      [97] invokevirtual #25
         - Methodref [java/lang/String.toLowerCase ()Ljava/lang/String;]
       [100] ldc #8
         - String [com.htc.]
-      [102] invokevirtual #21
+      [102] invokevirtual #24
         - Methodref [java/lang/String.startsWith (Ljava/lang/String;)Z]
-      [105] ifne +20 (target=125)
+      [105] ifne +22 (target=127)
       [108] aload_0 v0
-      [109] getfield #15
+      [109] getfield #17
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.b Ljava/lang/String;]
-      [112] invokevirtual #22
+      [112] invokevirtual #25
         - Methodref [java/lang/String.toLowerCase ()Ljava/lang/String;]
       [115] ldc #6
         - String [com.google.android.]
-      [117] invokevirtual #21
+      [117] invokevirtual #24
         - Methodref [java/lang/String.startsWith (Ljava/lang/String;)Z]
-      [120] ifne +5 (target=125)
+      [120] ifne +7 (target=127)
       [123] iconst_0
-      [124] ireturn
-      [125] iconst_1
-      [126] ireturn
+      [124] goto +4 (target=128)
+      [127] iconst_1
+      [128] istore_1 v1
+      [129] iconst_0
+      [130] istore_2 v2
+      [131] iload_1 v1
+      [132] ifne +35 (target=167)
+      [135] aload_0 v0
+      [136] getfield #21
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/h.f Landroid/content/pm/ApplicationInfo;]
+      [139] getfield #15
+        - Fieldref [android/content/pm/ApplicationInfo.flags I]
+      [142] iconst_1
+      [143] iand
+      [144] ifne +21 (target=165)
+      [147] aload_0 v0
+      [148] getfield #21
+        - Fieldref [com/halcyonwaves/apps/backupmyapps/h.f Landroid/content/pm/ApplicationInfo;]
+      [151] getfield #15
+        - Fieldref [android/content/pm/ApplicationInfo.flags I]
+      [154] sipush 128
+      [157] iand
+      [158] ifne +7 (target=165)
+      [161] iconst_0
+      [162] goto +4 (target=166)
+      [165] iconst_1
+      [166] istore_2 v2
+      [167] iload_1 v1
+      [168] ifne +9 (target=177)
+      [171] iload_2 v2
+      [172] ifne +5 (target=177)
+      [175] iconst_0
+      [176] ireturn
+      [177] iconst_1
+      [178] ireturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
   + Method:       b()Ljava/lang/String;
@@ -2542,7 +2590,7 @@ Methods (count = 6):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #15
+      [1] getfield #17
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.b Ljava/lang/String;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -2553,7 +2601,7 @@ Methods (count = 6):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #14
+      [1] getfield #16
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.a Ljava/lang/String;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -2564,7 +2612,7 @@ Methods (count = 6):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #17
+      [1] getfield #19
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.d I]
       [4] ireturn
       Code attribute exceptions (count = 0):
@@ -2575,7 +2623,7 @@ Methods (count = 6):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #16
+      [1] getfield #18
         - Fieldref [com/halcyonwaves/apps/backupmyapps/h.c Ljava/lang/String;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -2613,7 +2661,7 @@ Constant Pool (count = 83):
   - Methodref [android/content/pm/ApplicationInfo.loadIcon (Landroid/content/pm/PackageManager;)Landroid/graphics/drawable/Drawable;]
   - Methodref [android/content/pm/ApplicationInfo.loadLabel (Landroid/content/pm/PackageManager;)Ljava/lang/CharSequence;]
   - Methodref [android/content/pm/PackageManager.getInstalledPackages (I)Ljava/util/List;]
-  - Methodref [com/halcyonwaves/apps/backupmyapps/h.<init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;)V]
+  - Methodref [com/halcyonwaves/apps/backupmyapps/h.<init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;Landroid/content/pm/ApplicationInfo;)V]
   - Methodref [java/lang/Object.<init> ()V]
   - Methodref [java/util/ArrayList.<init> ()V]
   - Methodref [java/util/ArrayList.add (Ljava/lang/Object;)Z]
@@ -2621,7 +2669,7 @@ Constant Pool (count = 83):
   - InterfaceMethodref [java/util/List.get (I)Ljava/lang/Object;]
   - InterfaceMethodref [java/util/List.size ()I]
   + NameAndType [<init> ()V]
-  + NameAndType [<init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;)V]
+  + NameAndType [<init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;Landroid/content/pm/ApplicationInfo;)V]
   + NameAndType [a Landroid/content/pm/PackageManager;]
   + NameAndType [add (Ljava/lang/Object;)Z]
   + NameAndType [applicationInfo Landroid/content/pm/ApplicationInfo;]
@@ -2646,7 +2694,7 @@ Constant Pool (count = 83):
   + Utf8 [(Landroid/content/pm/PackageManager;)Landroid/graphics/drawable/Drawable;]
   + Utf8 [(Landroid/content/pm/PackageManager;)Ljava/lang/CharSequence;]
   + Utf8 [(Ljava/lang/Object;)Z]
-  + Utf8 [(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;)V]
+  + Utf8 [(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;Landroid/content/pm/ApplicationInfo;)V]
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [I]
@@ -2708,7 +2756,7 @@ Methods (count = 2):
     Access flags: 0x11
       = public final java.util.ArrayList a()
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 112, locals = 7, stack = 8):
+    + Code attribute instructions (code length = 117, locals = 7, stack = 9):
       [0] new #9
         - Class [java/util/ArrayList]
       [3] dup
@@ -2724,7 +2772,7 @@ Methods (count = 2):
       [16] astore_2 v2
       [17] iconst_0
       [18] istore_3 v3
-      [19] goto +81 (target=100)
+      [19] goto +86 (target=105)
       [22] aload_2 v2
       [23] iload_3 v3
       [24] invokeinterface #25
@@ -2767,19 +2815,22 @@ Methods (count = 2):
       [85] getfield #13
         - Fieldref [android/content/pm/PackageInfo.versionCode I]
       [88] aload v6
-      [90] invokespecial #20
-        - Methodref [com/halcyonwaves/apps/backupmyapps/h.<init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;)V]
-      [93] invokevirtual #23
+      [90] aload v4
+      [92] getfield #11
+        - Fieldref [android/content/pm/PackageInfo.applicationInfo Landroid/content/pm/ApplicationInfo;]
+      [95] invokespecial #20
+        - Methodref [com/halcyonwaves/apps/backupmyapps/h.<init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/graphics/drawable/Drawable;Landroid/content/pm/ApplicationInfo;)V]
+      [98] invokevirtual #23
         - Methodref [java/util/ArrayList.add (Ljava/lang/Object;)Z]
-      [96] pop
-      [97] iinc v3, 1
-      [100] iload_3 v3
-      [101] aload_2 v2
-      [102] invokeinterface #26
+      [101] pop
+      [102] iinc v3, 1
+      [105] iload_3 v3
+      [106] aload_2 v2
+      [107] invokeinterface #26
         - InterfaceMethodref [java/util/List.size ()I]
-      [107] ificmplt -85 (target=22)
-      [110] aload_1 v1
-      [111] areturn
+      [112] ificmplt -90 (target=22)
+      [115] aload_1 v1
+      [116] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
 

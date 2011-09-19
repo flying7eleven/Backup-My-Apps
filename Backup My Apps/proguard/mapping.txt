@@ -50,6 +50,7 @@ com.halcyonwaves.apps.backupmyapps.PackageInformation -> com.halcyonwaves.apps.b
     java.lang.String versionName -> c
     int versionCode -> d
     android.graphics.drawable.Drawable icon -> e
+    android.content.pm.ApplicationInfo applicationInfo -> f
     boolean isSystemComponent() -> a
     java.lang.String getPackageName() -> b
     java.lang.String getApplicationName() -> c
