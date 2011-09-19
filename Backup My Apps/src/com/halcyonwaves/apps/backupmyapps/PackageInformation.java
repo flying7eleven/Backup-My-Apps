@@ -1,5 +1,6 @@
 package com.halcyonwaves.apps.backupmyapps;
 
+import android.content.pm.ApplicationInfo;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
@@ -16,6 +17,7 @@ public class PackageInformation {
 	private String versionName = "";
 	private int versionCode = 0;
 	private Drawable icon;
+	private ApplicationInfo applicationInfo;
 
 	/**
 	 * Constructor of this class.
@@ -25,15 +27,17 @@ public class PackageInformation {
 	 * @param versionName The official version name of the application.
 	 * @param versionCode The internal version code of the application.
 	 * @param appIcon The icon of the application.
+	 * @param appInfo The information about the application.
 	 * @author Tim Huetz
 	 * @since 1.0
 	 */
-	public PackageInformation( String applicationName, String packageName, String versionName, int versionCode, Drawable appIcon ) {
+	public PackageInformation( String applicationName, String packageName, String versionName, int versionCode, Drawable appIcon, ApplicationInfo appInfo ) {
 		this.appname = applicationName;
 		this.pname = packageName;
 		this.versionName = versionName;
 		this.versionCode = versionCode;
 		this.icon = appIcon;
+		this.applicationInfo = appInfo;
 	}
 
 	/**
@@ -58,6 +62,9 @@ public class PackageInformation {
 		
 		// and the new method the system API
 		boolean secondFlag = false;
+		if( !firstFlag ) {
+			secondFlag = ((this.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) || ((this.applicationInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0);
+		}
 		
 		// if one of the two flags is true, its a system package
 		return firstFlag || secondFlag;
