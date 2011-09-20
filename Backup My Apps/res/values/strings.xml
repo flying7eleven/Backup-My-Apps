@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="applicationName">Backup My Apps</string>
+    <string name="applicationBackupServiceName">Backup My Apps Background Backup Service</string>
     <string name="textViewApplicationInformation">This application is designed for doing a backup of your installed packages / applications on your device. It only stores the meta information of the packages in order to bunch-install them through the market on another device or after a factory reset of your device.</string>
     <string name="buttonBackupInstalledApplications">Backup application list</string>
     <string name="buttonRestoreInstalledApplications">Restore (install) applications</string>

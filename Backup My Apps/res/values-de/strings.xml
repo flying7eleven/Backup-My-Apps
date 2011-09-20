@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="applicationName">Backup My Apps</string>
+    <string name="applicationBackupServiceName">Backup My Apps Backup Hintergrunddienst</string>
     <string name="textViewApplicationInformation">Diese Anwendung wurde dafür entwickelt eine Sicherung der von Ihnen auf diesem Gerät installierten Pakete zu erstellen. Dabei werden lediglich Metainformationen über die Pakete gespeichert, so dass diese in einem Wiederherstellungsvorgang über den Market installiert werden können. Dies reduziert bei einem neuen Gerät (oder nach dem Zurücksetzen des Gerätes auf Werkszustand) den Arbeitsaufwand.</string>
     <string name="buttonBackupInstalledApplications">Anwendungsliste sichern</string>
     <string name="buttonRestoreInstalledApplications">Anwendungen wiederherstellen</string>

@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application android:icon="@drawable/icon" android:label="@string/applicationName">
+    	<service android:name=".BackupService" android:enabled="true" android:label="@string/applicationBackupServiceName" />
         <activity android:name=".MainActivity"
                   android:label="@string/applicationName">
             <intent-filter>
