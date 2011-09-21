@@ -201,6 +201,18 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			// close the progress dialog
 			this.backupProgressDialog.dismiss();
 			this.backupProgressDialog = null;
+			
+			// inform the user that we succeeded in backupping the data
+			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( this );
+			dialogBuilder.setMessage( R.string.dialogMessageBackupSucceeded );
+			dialogBuilder.setCancelable( false );
+			dialogBuilder.setPositiveButton( R.string.buttonOk, new DialogInterface.OnClickListener() {
+				public void onClick( DialogInterface dialog, int id ) {
+					// nothing to do here
+				}
+			} );
+			dialogBuilder.show();
+			
 		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( RestoreBackupDataTask.class.getSimpleName() ) ) {
 			// close the progress dialog
 			this.restoreProgressDialog.dismiss();
@@ -227,7 +239,17 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			this.backupProgressDialog.dismiss();
 			this.backupProgressDialog = null;
 
-			// TODO: notify the user that we failed
+			// notify the user that we failed
+			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( this );
+			dialogBuilder.setMessage( R.string.dialogMessageBackupFailed );
+			dialogBuilder.setCancelable( false );
+			dialogBuilder.setPositiveButton( R.string.buttonOk, new DialogInterface.OnClickListener() {
+				public void onClick( DialogInterface dialog, int id ) {
+					// nothing to do here
+				}
+			} );
+			dialogBuilder.show();
+			
 		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( RestoreBackupDataTask.class.getSimpleName() ) ) {
 			// close the progress dialog
 			this.restoreProgressDialog.dismiss();

@@ -24,4 +24,6 @@
     <string name="progressDialogRestoreInProgress">Wiederherstellung läuft. Bitte warten...</string>
     <string name="menuPackageInformationHelp">Wie Sie helfen können</string>
     <string name="textViewSelectApplicationToRestore">Zum Wiederherstellen einer Anwendung klicken Sie diese an. Die Anwendung wird dann im Android Market geöffnet und Sie können sie installieren.</string>
+    <string name="dialogMessageBackupFailed">Das Backup der installierten Anwendungen ist fehlgeschlagen. Bitte starten Sie Ihr Gerät neu und versuchen Sie es erneut.</string>
+    <string name="dialogMessageBackupSucceeded">Das Backup der installierten Anwendungen wurde erfolgreich erstellt.</string>
 </resources>
