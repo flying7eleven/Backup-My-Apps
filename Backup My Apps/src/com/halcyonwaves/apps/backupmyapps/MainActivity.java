@@ -181,9 +181,6 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				AlertDialog infoDialog = dialogBuilder.create();
 				infoDialog.show();
 				return true;
-			case R.id.menuExit:
-				this.finish();
-				return true;
 			default:
 				return super.onOptionsItemSelected( item );
 		}
