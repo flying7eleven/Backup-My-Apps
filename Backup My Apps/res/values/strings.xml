@@ -27,4 +27,8 @@
     <string name="dialogMessageBackupFailed">Failed to create a list of the installed applications. Please reboot your device and try it again.</string>
     <string name="dialogMessageBackupSucceeded">Successfully created the list of the installed applications.</string>
     <string name="menuSettings">Settings</string>
+    <string name="preferenceCategoryBackgroundService">Background service</string>
+    <string name="preferenceTitleUseBackupBackgroundService">Use backup background service</string>
+    <string name="preferenceSummaryBackgroundServiceOn">The background service will regularly backup your installed applications.</string>
+    <string name="preferenceSummaryBackgroundServiceOff">The background service will NOT backup your installed applications.</string>
 </resources>
