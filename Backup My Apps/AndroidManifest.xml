@@ -18,6 +18,8 @@
         <activity android:name=".RestoreSelectionActivity">
             <intent-filter></intent-filter>
         </activity>
-
+        <activity android:name=".SettingsActivity">
+            <intent-filter></intent-filter>
+        </activity>
     </application>
 </manifest>
