@@ -145,6 +145,8 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	@Override
 	public boolean onOptionsItemSelected( MenuItem item ) {
 		switch( item.getItemId() ) {
+			case R.id.menuSettings:
+				return true; // TODO: implement this
 			case R.id.menuHelp:
 				if( null == this.dialogHelp ) {
 					this.dialogHelp = new Dialog( this );
