@@ -27,4 +27,8 @@
     <string name="dialogMessageBackupFailed">Das Backup der installierten Anwendungen ist fehlgeschlagen. Bitte starten Sie Ihr Gerät neu und versuchen Sie es erneut.</string>
     <string name="dialogMessageBackupSucceeded">Das Backup der installierten Anwendungen wurde erfolgreich erstellt.</string>
     <string name="menuSettings">Einstellungen</string>
+    <string name="preferenceCategoryBackgroundService">Hintergrunddienst</string>
+    <string name="preferenceTitleUseBackupBackgroundService">Hintergrunddienst für Backups nutzen</string>
+    <string name="preferenceSummaryBackgroundServiceOn">Der Backupdienst wird regelmäßig Backups der installierten Anwendungen erstellen.</string>
+    <string name="preferenceSummaryBackgroundServiceOff">Der Backupdienst wird NICHT regelmäßig Backups der installierten Anwendungen erstellen.</string>
 </resources>
