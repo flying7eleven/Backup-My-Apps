@@ -26,7 +26,7 @@
     <string name="textViewSelectApplicationToRestore">To restore an application from your backup, click on the application name. The corresponding item will open in the Android Market allowing you to install the application.</string>
     <string name="dialogMessageBackupFailed">Failed to create a list of the installed applications. Please reboot your device and try it again.</string>
     <string name="dialogMessageBackupSucceeded">Successfully created the list of the installed applications.</string>
-    <string name="menuSettings">Settings</string>
+    <string name="menuSettings">Preferences</string>
     <string name="preferenceCategoryBackgroundService">Background service</string>
     <string name="preferenceTitleUseBackupBackgroundService">Use backup background service</string>
     <string name="preferenceSummaryBackgroundServiceOn">The background service will regularly backup your installed applications.</string>
