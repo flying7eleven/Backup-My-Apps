@@ -23,7 +23,7 @@
     <string name="progressDialogRestoreInProgress">Restore in progress. Please wait...</string>
     <string name="menuPackageInformationHelp">How you can help</string>
     <string name="textViewSelectApplicationToRestore">To restore an application from your backup, click on the application name. The corresponding item will open in the Android Market allowing you to install the application.</string>
-    <string name="dialogMessageBackupFailed">Failed to create a list of the installed applications. Please reboot your device and try it again.</string>
+    <string name="dialogMessageBackupFailed">Failed to create a list of the installed applications. Please reboot your device and try again.</string>
     <string name="dialogMessageBackupSucceeded">Successfully created the list of the installed applications.</string>
     <string name="menuSettings">Preferences</string>
     <string name="preferenceCategoryBackgroundService">Background service</string>
@@ -36,5 +36,5 @@
     <string name="preferenceCategoryStorage">Storage</string>
     <string name="preferenceTitleUseLocalStorage">Use local storage</string>
     <string name="preferenceSummaryUseLocalStorageOn">Use local storage for the backup file of your applications.</string>
-    <string name="preferenceSummaryUseLocalStorageOff">Do not use local storage for your backup file. The file will just be stored in your Dropbox account.</string>
+    <string name="preferenceSummaryUseLocalStorageOff">Do not use local storage for your backup file. The file will only be stored in your Dropbox account.</string>
 </resources>
