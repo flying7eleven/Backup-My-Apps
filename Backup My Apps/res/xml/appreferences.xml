@@ -5,6 +5,6 @@
         <CheckBoxPreference android:summaryOn="@string/preferenceSummaryBackgroundServiceOn" android:summaryOff="@string/preferenceSummaryBackgroundServiceOff" android:title="@string/preferenceTitleUseBackupBackgroundService" android:key="backgroundService.isEnabled"></CheckBoxPreference>
     </PreferenceCategory>-->
     <PreferenceCategory android:title="@string/preferenceCategoryBuildVersion">
-        <Preference android:title="@string/preferenceTitleBuildVersion" android:summary="@string/preferenceSummaryBuildVersion"></Preference>
+        <Preference android:key="BUILD_VERSION_PREFERENCE" android:title="@string/preferenceTitleBuildVersion" android:summary="@string/preferenceSummaryBuildVersion"></Preference>
     </PreferenceCategory>  
 </PreferenceScreen>
