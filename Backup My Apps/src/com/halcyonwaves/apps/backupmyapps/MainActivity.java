@@ -14,7 +14,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -32,28 +31,12 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private Button buttonRestoreInstalledApplications = null;
 	private TextView textViewAdditionalInformation = null;
 	private Dialog dialogHelp = null;
-	private Dialog dialogAbout = null;
 	private ProgressDialog backupProgressDialog = null;
 	private ProgressDialog restoreProgressDialog = null;
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStorageDirectory();
 	private SharedPreferences applicationPreferences = null;
 	private static final String PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION = "com.halcyonwaves.apps.backupmyapps.userAskedToSendPackageInformation";
-
-	/**
-	 * Get the version name of the application itself.
-	 * 
-	 * @author Tim Huetz
-	 * @since 0.3
-	 * @return The version name of the application itself.
-	 */
-	private String getApplicationVersion() {
-		try {
-			return this.getPackageManager().getPackageInfo( this.getPackageName(), 0 ).versionName;
-		} catch( NameNotFoundException e ) {
-			return "<unknown>";
-		}
-	}
 
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
@@ -158,19 +141,6 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 					this.dialogHelp.setTitle( R.string.dialogTitleHelpDialog );
 				}
 				this.dialogHelp.show();
-				return true;
-			case R.id.menuAbout:
-				if( null == this.dialogAbout ) {
-					this.dialogAbout = new Dialog( this );
-					this.dialogAbout.setCanceledOnTouchOutside( true );
-
-					this.dialogAbout.setContentView( R.layout.aboutdialog );
-					this.dialogAbout.setTitle( R.string.dialogTitleAboutDialog );
-
-					TextView appInformation = (TextView)this.dialogAbout.findViewById( R.id.textViewAboutAppName );
-					appInformation.setText( String.format( this.getString( R.string.textViewAboutAppName ), this.getApplicationVersion() ) );
-				}
-				this.dialogAbout.show();
 				return true;
 			case R.id.menuPackageInformationHelp:
 				// ask the user for sending the requested information
