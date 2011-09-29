@@ -31,4 +31,7 @@
     <string name="preferenceTitleUseBackupBackgroundService">Use backup background service</string>
     <string name="preferenceSummaryBackgroundServiceOn">The background service will regularly backup your installed applications.</string>
     <string name="preferenceSummaryBackgroundServiceOff">The background service will NOT backup your installed applications.</string>
+    <string name="preferenceCategoryBuildVersion">Build-Version</string>
+    <string name="preferenceTitleBuildVersion">Build-Version</string>
+    <string name="preferenceSummaryBuildVersion">Version: %s</string>
 </resources>
