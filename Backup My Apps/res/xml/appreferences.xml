@@ -4,7 +4,10 @@
     <!--<PreferenceCategory android:title="@string/preferenceCategoryBackgroundService">
         <CheckBoxPreference android:summaryOn="@string/preferenceSummaryBackgroundServiceOn" android:summaryOff="@string/preferenceSummaryBackgroundServiceOff" android:title="@string/preferenceTitleUseBackupBackgroundService" android:key="backgroundService.isEnabled"></CheckBoxPreference>
     </PreferenceCategory>-->
+    <PreferenceCategory android:title="@string/preferenceCategoryStorage">
+    	<CheckBoxPreference android:title="@string/preferenceTitleUseLocalStorage" android:summaryOn="@string/preferenceSummaryUseLocalStorageOn" android:summaryOff="@string/preferenceSummaryUseLocalStorageOff" android:enabled="false" android:key="storage.useLocalStorage" android:defaultValue="true"/>
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/preferenceCategoryBuildVersion">
         <Preference android:key="BUILD_VERSION_PREFERENCE" android:title="@string/preferenceTitleBuildVersion" android:summary="@string/preferenceSummaryBuildVersion"></Preference>
-    </PreferenceCategory>  
+    </PreferenceCategory> 
 </PreferenceScreen>
