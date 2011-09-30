@@ -33,6 +33,8 @@
     <string name="preferenceCategoryBuildVersion">Build-Version</string>
     <string name="preferenceTitleBuildVersion">Build-Version</string>
     <string name="preferenceSummaryBuildVersion">Version: %s</string>
+    
+    
     <string name="preferenceCategoryStorage">Storage</string>
     <string name="preferenceTitleUseLocalStorage">Use local storage</string>
     <string name="preferenceSummaryUseLocalStorageOn">Use local storage for the backup file of your applications.</string>
