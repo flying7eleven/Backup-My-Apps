@@ -35,8 +35,12 @@
     <string name="preferenceSummaryBuildVersion">Version: %s</string>
     
     
-    <string name="preferenceCategoryStorage">Storage</string>
-    <string name="preferenceTitleUseLocalStorage">Use local storage</string>
-    <string name="preferenceSummaryUseLocalStorageOn">Use local storage for the backup file of your applications.</string>
-    <string name="preferenceSummaryUseLocalStorageOff">Do not use local storage for your backup file. The file will only be stored in your Dropbox account.</string>
+    <string name="preferenceCategorySynchronization">Synchronization</string>
+    <string name="preferenceTitleEnableDropboxSynchronization">Use synchronization</string>
+    <string name="preferenceSummaryEnableDropboxSynchronizationOn">Data will be stored locally and in your Dropbox account.</string>
+    <string name="preferenceSummaryEnableDropboxSynchronizationOff">There will be NO synchronization with Dropbox. Data will only be stored locally.</string>
+    <string name="preferenceTitleDropboxStorageFolder">Dropbox storage folder</string>
+    <string name="preferenceSummaryDropboxStorageFolder">Folder in your Dropbox account where the files are stored.</string>
+    <string name="preferenceTitleLogoutFromDropbox">Logout from Dropbox</string>
+    <string name="preferenceSummaryLogoutFromDropbox">Deauthenticate your Device from your Dropbox account.</string>
 </resources>
