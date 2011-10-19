@@ -1,4 +1,4 @@
-com.halcyonwaves.apps.backupmyapps.BackupService
 com.halcyonwaves.apps.backupmyapps.MainActivity
 com.halcyonwaves.apps.backupmyapps.RestoreSelectionActivity
 com.halcyonwaves.apps.backupmyapps.SettingsActivity
+com.halcyonwaves.apps.backupmyapps.BackupService
