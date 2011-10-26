@@ -34,13 +34,8 @@
     <string name="preferenceTitleBuildVersion">Build-Version</string>
     <string name="preferenceSummaryBuildVersion">Version: %s</string>
     
-    
     <string name="preferenceCategorySynchronization">Synchronisation</string>
     <string name="preferenceTitleEnableDropboxSynchronization">Synchronisation verwenden</string>
     <string name="preferenceSummaryEnableDropboxSynchronizationOn">Die Daten werden lokal und in Ihrem Dropbox-Account gespeichert.</string>
     <string name="preferenceSummaryEnableDropboxSynchronizationOff">Es wird keine Synchronisation mit Dropbox vorgenommen und die Daten werden nur lokal gespeichert.</string>
-    <string name="preferenceTitleDropboxStorageFolder">Dropbox Speicherort</string>
-    <string name="preferenceSummaryDropboxStorageFolder">Ordner in Ihrem Dropbox-Account wo die Daten abgelegt werden.</string>
-    <string name="preferenceTitleLogoutFromDropbox">Von Dropbox ausloggen</string>
-    <string name="preferenceSummaryLogoutFromDropbox">Berechtigung zum Zugriff auf Ihren Dropbox-Account entziehen.</string>
 </resources>
