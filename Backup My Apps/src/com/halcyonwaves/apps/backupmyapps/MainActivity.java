@@ -16,6 +16,7 @@ import com.dropbox.client2.session.Session.AccessType;
 import com.halcyonwaves.apps.backupmyapps.tasks.GatherBackupInformationTask;
 import com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask;
 
+import android.R.anim;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -27,6 +28,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -210,8 +212,8 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 
 			// if we should sync, copy the file to the Dropbox account
 			if( true ) { // TODO check if we should do this
-				// get the device name for putting the file in sync
-				// TODO this
+				// define the backup filename
+				String backupFilename = android.os.Build.DEVICE + "-" + android.os.Build.MODEL + ".txt";
 
 				// upload the file
 				File backupFile = new File( this.storagePath, MainActivity.BACKUP_FILENAME );
@@ -219,7 +221,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				// try to upload the backup file
 				try {
 					FileInputStream inputStream = new FileInputStream( backupFile );
-					Entry newEntry = MainActivity.dropboxDatabaseApi.putFile( "/testing.txt", inputStream, backupFile.length(), null, null );
+					Entry newEntry = MainActivity.dropboxDatabaseApi.putFile( "/" + backupFilename, inputStream, backupFile.length(), null, null );
 					Log.i( "BackupMyAppsDropbox", "The uploaded file's rev is: " + newEntry.rev );
 				} catch( DropboxUnlinkedException e ) {
 					Log.e( "BackupMyAppsDropbox", "The Dropbox account is not linked to the application anymore. Cannot upload the backup file." );
