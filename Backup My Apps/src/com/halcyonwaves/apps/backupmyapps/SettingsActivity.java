@@ -103,7 +103,15 @@ public class SettingsActivity extends PreferenceActivity {
 				if(((CheckBoxPreference)SettingsActivity.this.loginIntoDropbox).isChecked()) {
 					MainActivity.dropboxDatabaseApi.getSession().startAuthentication(SettingsActivity.this);
 				} else {
-					// TODO: deauthenticate
+					// to deauthenticate, just delete the stored tokens
+					Editor sharedPreferenceEditor = SettingsActivity.this.applicationPreferences.edit();
+					sharedPreferenceEditor.putString( "synchronization.dropboxAccessKey", "" );
+					sharedPreferenceEditor.putString( "synchronization.dropboxAccessSecret", "" );
+					if( !sharedPreferenceEditor.commit() ) {
+						Log.e( "BackupMyAppsDropbox", "Failed to perform the deauthentication." );
+					} else {
+						Log.i( "BackupMyAppsDropbox", "Dropbox deauthentication successfull." );
+					}
 				}
 				return true;
 			}
