@@ -3,6 +3,10 @@ package com.halcyonwaves.apps.backupmyapps;
 import java.io.File;
 import java.util.HashMap;
 
+import com.dropbox.client2.DropboxAPI;
+import com.dropbox.client2.android.AndroidAuthSession;
+import com.dropbox.client2.session.AccessTokenPair;
+import com.dropbox.client2.session.AppKeyPair;
 import com.dropbox.client2.session.Session.AccessType;
 import com.halcyonwaves.apps.backupmyapps.tasks.GatherBackupInformationTask;
 import com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask;
@@ -41,6 +45,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private final File storagePath = Environment.getExternalStorageDirectory();
 	private SharedPreferences applicationPreferences = null;
 	private static final String PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION = "com.halcyonwaves.apps.backupmyapps.userAskedToSendPackageInformation";
+	public static DropboxAPI<AndroidAuthSession> dropboxDatabaseApi = null;
 
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
@@ -50,6 +55,27 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		
 		// get the preference object for this application
 		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
+		
+		// setup the Dropbox API client
+		AppKeyPair appKeys = new AppKeyPair( MainActivity.DROPBOX_API_APP_KEY, MainActivity.DROPBOX_API_APP_SECRET );
+		AndroidAuthSession session = new AndroidAuthSession( appKeys, MainActivity.DROPBOX_API_APP_ACCESS_TYPE );
+		MainActivity.dropboxDatabaseApi = new DropboxAPI<AndroidAuthSession>( session );
+		
+		// if we already have stored authentication keys, use them
+		if( this.applicationPreferences.getString( "synchronization.dropboxAccessKey", "" ).length() > 0 ) {
+			// get the key and the secret from the settings
+			String key = this.applicationPreferences.getString( "synchronization.dropboxAccessKey", "" );
+			String secret = this.applicationPreferences.getString( "synchronization.dropboxAccessSecret", "" );
+
+			// create the required Dropbox access token object
+			AccessTokenPair tokens = new AccessTokenPair( key, secret );
+
+			// set the loaded access token pair
+			MainActivity.dropboxDatabaseApi.getSession().setAccessTokenPair( tokens );
+
+			// just log that we set the correct auth tokens
+			Log.i( "BackupMyAppsDropbox", "Successfully set the stored Dropbox authentication tokens." );
+		}
 
 		// get some control handles
 		this.buttonBackupInstalledApplications = (Button)this.findViewById( R.id.buttonBackupInstalledApplications );
