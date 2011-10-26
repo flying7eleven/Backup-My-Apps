@@ -27,6 +27,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends Activity implements IAsyncTaskFeedback {
+	public static final String DROPBOX_API_APP_KEY = "lacao8kfka8qr5b";
+	public static final String DROPBOX_API_APP_SECRET = "ue58x1dzuakhog4";
 	private Button buttonBackupInstalledApplications = null;
 	private Button buttonRestoreInstalledApplications = null;
 	private TextView textViewAdditionalInformation = null;
