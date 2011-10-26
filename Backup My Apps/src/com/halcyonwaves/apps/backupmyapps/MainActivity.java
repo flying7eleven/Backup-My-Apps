@@ -3,6 +3,7 @@ package com.halcyonwaves.apps.backupmyapps;
 import java.io.File;
 import java.util.HashMap;
 
+import com.dropbox.client2.session.Session.AccessType;
 import com.halcyonwaves.apps.backupmyapps.tasks.GatherBackupInformationTask;
 import com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask;
 
@@ -29,6 +30,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	public static final String DROPBOX_API_APP_KEY = "lacao8kfka8qr5b";
 	public static final String DROPBOX_API_APP_SECRET = "ue58x1dzuakhog4";
+	public final static AccessType DROPBOX_API_APP_ACCESS_TYPE = AccessType.APP_FOLDER;
 	private Button buttonBackupInstalledApplications = null;
 	private Button buttonRestoreInstalledApplications = null;
 	private TextView textViewAdditionalInformation = null;
