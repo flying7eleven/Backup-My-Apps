@@ -5,9 +5,7 @@
         <CheckBoxPreference android:summaryOn="@string/preferenceSummaryBackgroundServiceOn" android:summaryOff="@string/preferenceSummaryBackgroundServiceOff" android:title="@string/preferenceTitleUseBackupBackgroundService" android:key="backgroundService.isEnabled"></CheckBoxPreference>
     </PreferenceCategory>-->
     <PreferenceCategory android:title="@string/preferenceCategorySynchronization">
-        <CheckBoxPreference android:title="@string/preferenceTitleEnableDropboxSynchronization" android:summaryOn="@string/preferenceSummaryEnableDropboxSynchronizationOn" android:summaryOff="@string/preferenceSummaryEnableDropboxSynchronizationOff" android:key="synchronization.useDropbox" android:disableDependentsState="false" android:defaultValue="/backupmyapps"></CheckBoxPreference>
-        <EditTextPreference android:key="synchronization.dropboxStorageFolder" android:dependency="synchronization.useDropbox" android:title="@string/preferenceTitleDropboxStorageFolder" android:summary="@string/preferenceSummaryDropboxStorageFolder"></EditTextPreference>
-        <Preference android:key="synchronization.loginIntoDropbox" android:dependency="synchronization.useDropbox" android:summary="Login into Dropbox" android:title="Login"/><Preference android:key="synchronization.logoutFromDropbox" android:dependency="synchronization.useDropbox" android:title="@string/preferenceTitleLogoutFromDropbox" android:summary="@string/preferenceSummaryLogoutFromDropbox"></Preference>
+        <CheckBoxPreference android:title="@string/preferenceTitleEnableDropboxSynchronization" android:summaryOn="@string/preferenceSummaryEnableDropboxSynchronizationOn" android:summaryOff="@string/preferenceSummaryEnableDropboxSynchronizationOff" android:key="synchronization.useDropbox"></CheckBoxPreference>
         
 	</PreferenceCategory>
     <PreferenceCategory android:title="@string/preferenceCategoryBuildVersion">
