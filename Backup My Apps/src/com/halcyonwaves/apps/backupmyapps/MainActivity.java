@@ -1,10 +1,15 @@
 package com.halcyonwaves.apps.backupmyapps;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 
 import com.dropbox.client2.DropboxAPI;
+import com.dropbox.client2.DropboxAPI.Entry;
 import com.dropbox.client2.android.AndroidAuthSession;
+import com.dropbox.client2.exception.DropboxException;
+import com.dropbox.client2.exception.DropboxUnlinkedException;
 import com.dropbox.client2.session.AccessTokenPair;
 import com.dropbox.client2.session.AppKeyPair;
 import com.dropbox.client2.session.Session.AccessType;
@@ -202,6 +207,27 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			// enable the restore button, because we succeeded creating the backup
 			this.buttonRestoreInstalledApplications.setEnabled( true );
 
+			// if we should sync, copy the file to the Dropbox account
+			if(true ){ // TODO check if we should do this
+				// get the device name for putting the file in sync
+				// TODO this
+				
+				// upload the file
+				File backupFile = new File( this.storagePath, MainActivity.BACKUP_FILENAME );
+				try {
+					FileInputStream inputStream = new FileInputStream( backupFile );
+				   Entry newEntry = MainActivity.dropboxDatabaseApi.putFile( "/testing.txt", inputStream, backupFile.length(), null, null);
+				   Log.i("DbExampleLog", "The uploaded file's rev is: " + newEntry.rev);
+				} catch (DropboxUnlinkedException e) {
+				   // User has unlinked, ask them to link again here.
+				   Log.e("DbExampleLog", "User has unlinked.");
+				} catch (DropboxException e) {
+				   Log.e("DbExampleLog", "Something went wrong while uploading.");
+				} catch (FileNotFoundException e) {
+					Log.e("DbExampleLog", "No Input");
+				}
+			}
+			
 			// close the progress dialog
 			this.backupProgressDialog.dismiss();
 			this.backupProgressDialog = null;
