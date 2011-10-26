@@ -50,22 +50,22 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private final File storagePath = Environment.getExternalStorageDirectory();
 	private SharedPreferences applicationPreferences = null;
 	private static final String PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION = "com.halcyonwaves.apps.backupmyapps.userAskedToSendPackageInformation";
-	public static DropboxAPI<AndroidAuthSession> dropboxDatabaseApi = null;
+	public static DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
 
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
 		// create the layout of the main activity
 		super.onCreate( savedInstanceState );
 		setContentView( R.layout.main );
-		
+
 		// get the preference object for this application
 		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
-		
+
 		// setup the Dropbox API client
 		AppKeyPair appKeys = new AppKeyPair( MainActivity.DROPBOX_API_APP_KEY, MainActivity.DROPBOX_API_APP_SECRET );
 		AndroidAuthSession session = new AndroidAuthSession( appKeys, MainActivity.DROPBOX_API_APP_ACCESS_TYPE );
-		MainActivity.dropboxDatabaseApi = new DropboxAPI<AndroidAuthSession>( session );
-		
+		MainActivity.dropboxDatabaseApi = new DropboxAPI< AndroidAuthSession >( session );
+
 		// if we already have stored authentication keys, use them
 		if( this.applicationPreferences.getString( "synchronization.dropboxAccessKey", "" ).length() > 0 ) {
 			// get the key and the secret from the settings
@@ -137,7 +137,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			AlertDialog infoDialog = dialogBuilder.create();
 			infoDialog.show();
 		}
-		
+
 		// if this is the first application run, ask the user about the package list
 		if( this.applicationPreferences.getBoolean( MainActivity.PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION, true ) ) {
 			// ask the user for sending the requested information
@@ -151,8 +151,9 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			} );
 			AlertDialog infoDialog = dialogBuilder.create();
 			infoDialog.show();
-			
-			// store the value which indicates that the user was already asked to send the information
+
+			// store the value which indicates that the user was already asked to send the
+			// information
 			Editor prefsEditor = this.applicationPreferences.edit();
 			prefsEditor.putBoolean( MainActivity.PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION, false );
 			prefsEditor.commit();
@@ -164,7 +165,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	public boolean onOptionsItemSelected( MenuItem item ) {
 		switch( item.getItemId() ) {
 			case R.id.menuSettings:
-				Intent preferenceIntent = new Intent(MainActivity.this, SettingsActivity.class);
+				Intent preferenceIntent = new Intent( MainActivity.this, SettingsActivity.class );
 				this.startActivity( preferenceIntent );
 				return true;
 			case R.id.menuHelp:
@@ -208,30 +209,31 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			this.buttonRestoreInstalledApplications.setEnabled( true );
 
 			// if we should sync, copy the file to the Dropbox account
-			if(true ){ // TODO check if we should do this
+			if( true ) { // TODO check if we should do this
 				// get the device name for putting the file in sync
 				// TODO this
-				
+
 				// upload the file
 				File backupFile = new File( this.storagePath, MainActivity.BACKUP_FILENAME );
+				
+				// try to upload the backup file
 				try {
 					FileInputStream inputStream = new FileInputStream( backupFile );
-				   Entry newEntry = MainActivity.dropboxDatabaseApi.putFile( "/testing.txt", inputStream, backupFile.length(), null, null);
-				   Log.i("DbExampleLog", "The uploaded file's rev is: " + newEntry.rev);
-				} catch (DropboxUnlinkedException e) {
-				   // User has unlinked, ask them to link again here.
-				   Log.e("DbExampleLog", "User has unlinked.");
-				} catch (DropboxException e) {
-				   Log.e("DbExampleLog", "Something went wrong while uploading.");
-				} catch (FileNotFoundException e) {
-					Log.e("DbExampleLog", "No Input");
+					Entry newEntry = MainActivity.dropboxDatabaseApi.putFile( "/testing.txt", inputStream, backupFile.length(), null, null );
+					Log.i( "BackupMyAppsDropbox", "The uploaded file's rev is: " + newEntry.rev );
+				} catch( DropboxUnlinkedException e ) {
+					Log.e( "BackupMyAppsDropbox", "The Dropbox account is not linked to the application anymore. Cannot upload the backup file." );
+				} catch( DropboxException e ) {
+					Log.e( "BackupMyAppsDropbox", "Something went wrong while uploading the backup file to the Dropbox account." );
+				} catch( FileNotFoundException e ) {
+					Log.e( "BackupMyAppsDropbox", "The backup file was not found." );
 				}
 			}
-			
+
 			// close the progress dialog
 			this.backupProgressDialog.dismiss();
 			this.backupProgressDialog = null;
-			
+
 			// inform the user that we succeeded in backupping the data
 			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( this );
 			dialogBuilder.setMessage( R.string.dialogMessageBackupSucceeded );
@@ -242,19 +244,19 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				}
 			} );
 			dialogBuilder.show();
-			
+
 		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( RestoreBackupDataTask.class.getSimpleName() ) ) {
 			// close the progress dialog
 			this.restoreProgressDialog.dismiss();
 			this.restoreProgressDialog = null;
-			
+
 			// open the dialog for the selection of the applications to restore
 			Intent restoreSelectionActivity = new Intent( MainActivity.this, RestoreSelectionActivity.class );
 			@SuppressWarnings( "unchecked" )
 			HashMap< String, String > packageInformationList = (HashMap< String, String >)data;
 			restoreSelectionActivity.putExtra( "packages", packageInformationList.size() );
 			int i = 0;
-			for( String key: packageInformationList.keySet() ) {
+			for( String key : packageInformationList.keySet() ) {
 				restoreSelectionActivity.putExtra( "packageName" + i, key );
 				restoreSelectionActivity.putExtra( "applicationName" + i, packageInformationList.get( key ) );
 				i++;
@@ -279,7 +281,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				}
 			} );
 			dialogBuilder.show();
-			
+
 		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( RestoreBackupDataTask.class.getSimpleName() ) ) {
 			// close the progress dialog
 			this.restoreProgressDialog.dismiss();
