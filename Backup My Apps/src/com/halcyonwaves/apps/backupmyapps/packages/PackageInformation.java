@@ -1,6 +1,13 @@
 package com.halcyonwaves.apps.backupmyapps.packages;
 
+import java.io.ByteArrayOutputStream;
+
+import com.halcyonwaves.apps.backupmyapps.utils.Base64;
+
 import android.content.pm.ApplicationInfo;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
@@ -41,14 +48,24 @@ public class PackageInformation {
 	}
 
 	/**
-	 * Get the icon of the managed application.
+	 * Get the Base64-encoded icon of the managed application.
 	 * 
 	 * @author Tim Huetz
 	 * @since 1.0
 	 * @return A handle to the applications icon.
 	 */
-	public Drawable getIcon() {
-		return this.icon;
+	public String getIcon() {
+		// just get the bitmap object for the application icon
+		BitmapDrawable applicationIcon = (BitmapDrawable)this.icon;
+		Bitmap applicationIconBitmap = applicationIcon.getBitmap();
+		
+		// get the byte stream and try to compress the stream
+		ByteArrayOutputStream iconDataStream = new ByteArrayOutputStream();
+		applicationIconBitmap.compress( CompressFormat.PNG, 100, iconDataStream );
+		byte[] applicationIconBytes = iconDataStream.toByteArray();
+		
+		// return the base64 encoded application icon
+		return Base64.encodeToString( applicationIconBytes, false );
 	}
 
 	/**
