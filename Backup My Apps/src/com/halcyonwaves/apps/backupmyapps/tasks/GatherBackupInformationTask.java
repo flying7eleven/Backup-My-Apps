@@ -68,7 +68,7 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 			backupSerializer.setOutput( backupXmlStringWriter );
 			backupSerializer.startDocument( "UTF-8", true );
 			backupSerializer.startTag( "", "InstalledApplications" );
-			backupSerializer.attribute( "", "version", "0.3" );
+			backupSerializer.attribute( "", "version", "0.5" );
 
 			// loop through the found packages and write them into the file
 			ArrayList< PackageInformation > foundPackages = this.packageInformationManager.getInstalledApps();
