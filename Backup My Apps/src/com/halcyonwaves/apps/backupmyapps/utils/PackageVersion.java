@@ -1,5 +1,7 @@
 package com.halcyonwaves.apps.backupmyapps.utils;
 
+import android.util.Log;
+
 /**
  * This class implements some functions to parse a version string and compare the version to other
  * versions.
@@ -18,7 +20,20 @@ public class PackageVersion {
 	 * @param versionString The string which should be parsed.
 	 */
 	public PackageVersion( String versionString ) {
-		// TODO: implement this
+		// just log the event
+		Log.v( "PackageVersion", "Constructor got following version string: " + versionString );
+
+		// try to split the version string
+		String[] versionStringParts = versionString.trim().split( "\\." );
+		try {
+			this.majorVersion = Integer.parseInt( versionStringParts[ 0 ] );
+			this.minorVersion = Integer.parseInt( versionStringParts[ 1 ] );
+			if( versionStringParts.length > 2 ) {
+				this.buildVersion = Integer.parseInt( versionStringParts[ 2 ] );
+			}
+		} catch( Exception e ) {
+			Log.e( "PackageVersion", "Failed to parse the version string: ", e );
+		}
 	}
 
 	/**
