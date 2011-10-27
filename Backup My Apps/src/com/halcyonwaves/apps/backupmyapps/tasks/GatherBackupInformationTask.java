@@ -90,6 +90,7 @@ public class GatherBackupInformationTask extends AsyncTask< Void, Void, Boolean 
 					backupSerializer.attribute( "", "packageName", currentPackage.getPackageName() );
 					backupSerializer.attribute( "", "versionCode", String.valueOf( currentPackage.getVersionCode() ) );
 					backupSerializer.attribute( "", "versionName", currentPackage.getVersionName() );
+					backupSerializer.attribute( "", "applicationIcon", currentPackage.getIcon() );
 					backupSerializer.endTag( "", "InstalledApp" );
 				}
 			}
