@@ -24,6 +24,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback;
+import com.halcyonwaves.apps.backupmyapps.utils.PackageVersion;
 
 import android.R.integer;
 import android.os.AsyncTask;
@@ -113,12 +114,25 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 			Document backupFile = this.XMLfromString( full );
 			
 			// check the version of the backup file
-			NamedNodeMap fileAttributes = backupFile.getAttributes();
+			NamedNodeMap fileAttributes = backupFile.getElementsByTagName( "InstalledApplications" ).item( 0 ).getAttributes();
 			for( int i = 0; i < fileAttributes.getLength(); i++ ) {
 				Node currentNode = fileAttributes.item( i );
 				Attr currentAttribute = (Attr)currentNode;
+				if( currentAttribute == null ) {
+					continue;
+				}
+				Log.v( "BackupFileVersion", "Found a new attribute with the following name: " + currentAttribute.getName() );
 				if( currentAttribute.getName().equalsIgnoreCase( "version" ) ) {
-					// TODO: implement this
+					final PackageVersion supportedVersion = new PackageVersion( "0.5" );
+					PackageVersion backupfileVersion = new PackageVersion( currentAttribute.getValue() );
+					if( !supportedVersion.equals( backupfileVersion ) ) {
+						Log.e( "BackupFileVersion", "It seems that the format of the backup file is not supported by this application." ); // TODO:
+																																			// show
+																																			// the
+																																			// version
+																																			// numbers
+						return false;
+					}
 				}
 			}
 
