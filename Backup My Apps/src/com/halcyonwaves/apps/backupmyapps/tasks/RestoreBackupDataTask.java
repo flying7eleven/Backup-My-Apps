@@ -14,7 +14,10 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
@@ -22,6 +25,7 @@ import org.xml.sax.SAXException;
 
 import com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback;
 
+import android.R.integer;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -107,6 +111,16 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 
 			// get the xml document from the string
 			Document backupFile = this.XMLfromString( full );
+			
+			// check the version of the backup file
+			NamedNodeMap fileAttributes = backupFile.getAttributes();
+			for( int i = 0; i < fileAttributes.getLength(); i++ ) {
+				Node currentNode = fileAttributes.item( i );
+				Attr currentAttribute = (Attr)currentNode;
+				if( currentAttribute.getName().equalsIgnoreCase( "version" ) ) {
+					// TODO: implement this
+				}
+			}
 
 			// loop through all package nodes
 			NodeList packageNodes = backupFile.getElementsByTagName( "InstalledApp" );
