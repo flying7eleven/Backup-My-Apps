@@ -51,7 +51,34 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private SharedPreferences applicationPreferences = null;
 	private static final String PREFERENCES_LAST_WHATSNEW_DIALOG = "com.halcyonwaves.apps.backupmyapps.lastWhatsNewDialog";
 	public static DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
+	private final static int DIALOG_WHATSNEW = 1; 
 
+	@Override
+	protected Dialog onCreateDialog( int id ) {
+		Dialog dialogToShow;
+		switch( id ) {
+			case MainActivity.DIALOG_WHATSNEW:
+				dialogToShow = new Dialog( this );
+
+				// setup the dialogs content
+				dialogToShow.setTitle( this.getString( R.string.textViewWhatsNewLabel ) );
+				dialogToShow.setContentView( R.layout.dialog_whatsnew );
+				dialogToShow.setCancelable( false );
+
+				// just tell the dialog what to do with the close button
+				Button closeButton = (Button)dialogToShow.findViewById( R.id.buttonCloseWhatsNewDialog );
+				closeButton.setOnClickListener( new OnClickListener() {
+					public void onClick( View v ) {
+						dismissDialog( MainActivity.DIALOG_WHATSNEW );
+					}
+				} );
+				break;
+			default:
+				dialogToShow = null;
+		}
+		return dialogToShow;
+	}
+	
 	@Override
 	public void onCreate( Bundle savedInstanceState ) {
 		// create the layout of the main activity
@@ -139,24 +166,9 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		}
 
 		// for each application update, show the What's new? dialog
-		if( this.applicationPreferences.getInt( MainActivity.PREFERENCES_LAST_WHATSNEW_DIALOG, 0 ) <= 1 ) { // TODO: correct version check
-			Dialog whatsNewDialog = new Dialog( this );
-			
-			// setup the dialogs content
-			whatsNewDialog.setTitle( this.getString( R.string.textViewWhatsNewLabel ) );
-			whatsNewDialog.setContentView( R.layout.dialog_whatsnew );
-			whatsNewDialog.setCancelable( true );
-					
-			// just tell the dialog what to do with the close button
-			Button closeButton = (Button)whatsNewDialog.findViewById( R.id.buttonCloseWhatsNewDialog );
-			closeButton.setOnClickListener( new OnClickListener() {
-				public void onClick( View v ) {
-					finish();
-				}
-			} );
-			
+		if( this.applicationPreferences.getInt( MainActivity.PREFERENCES_LAST_WHATSNEW_DIALOG, 0 ) <= 1 ) { // TODO: correct version check		
 			// show the dialog
-			whatsNewDialog.show();
+			this.showDialog( MainActivity.DIALOG_WHATSNEW );
 
 			// after we showed the dialog, save that we showed the dialog for this version
 			Editor prefsEditor = this.applicationPreferences.edit();
