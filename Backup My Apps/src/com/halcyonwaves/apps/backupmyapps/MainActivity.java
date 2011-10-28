@@ -23,6 +23,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -48,7 +49,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStorageDirectory();
 	private SharedPreferences applicationPreferences = null;
-	//rivate static final String PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION = "com.halcyonwaves.apps.backupmyapps.userAskedToSendPackageInformation";
+	private static final String PREFERENCES_LAST_WHATSNEW_DIALOG = "com.halcyonwaves.apps.backupmyapps.lastWhatsNewDialog";
 	public static DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
 
 	@Override
@@ -137,28 +138,33 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			infoDialog.show();
 		}
 
-		// if this is the first application run, ask the user about the package list
-		/*
-		if( this.applicationPreferences.getBoolean( MainActivity.PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION, true ) ) {
-			// ask the user for sending the requested information
-			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( this );
-			dialogBuilder.setMessage( R.string.dialogMessageAskForPackageInformation );
-			dialogBuilder.setCancelable( false );
-			dialogBuilder.setPositiveButton( R.string.buttonOk, new DialogInterface.OnClickListener() {
-				public void onClick( DialogInterface dialog, int id ) {
-					// nothing to do here
+		// for each application update, show the What's new? dialog
+		if( this.applicationPreferences.getInt( MainActivity.PREFERENCES_LAST_WHATSNEW_DIALOG, 0 ) <= 1 ) { // TODO: correct version check
+			Dialog whatsNewDialog = new Dialog( this );
+			
+			// setup the dialogs content
+			whatsNewDialog.setTitle( "What's new?" );
+			whatsNewDialog.setContentView( R.layout.dialog_whatsnew );
+			whatsNewDialog.setCancelable( true );
+			
+			// just tell the dialog what to do with the close button
+			Button closeButton = (Button)whatsNewDialog.findViewById( R.id.buttonCloseWhatsNewDialog );
+			closeButton.setOnClickListener( new OnClickListener() {
+				public void onClick( View v ) {
+					finish();	
 				}
 			} );
-			AlertDialog infoDialog = dialogBuilder.create();
-			infoDialog.show();
+			
+			// show the dialog
+			whatsNewDialog.show();
 
 			// store the value which indicates that the user was already asked to send the
 			// information
-			Editor prefsEditor = this.applicationPreferences.edit();
-			prefsEditor.putBoolean( MainActivity.PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION, false );
-			prefsEditor.commit();
-			prefsEditor = null;
-		}*/
+			//Editor prefsEditor = this.applicationPreferences.edit();
+			//prefsEditor.putBoolean( MainActivity.PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION, false );
+			//prefsEditor.commit();
+			//prefsEditor = null;
+		}
 	}
 
 	@Override
