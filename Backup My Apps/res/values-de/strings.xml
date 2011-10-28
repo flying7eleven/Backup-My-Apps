@@ -40,4 +40,5 @@
     <string name="preferenceSummaryEnableDropboxSynchronizationOff">Es wird keine Synchronisation mit Dropbox vorgenommen und die Daten werden nur lokal gespeichert.</string>
     <string name="textViewWhatsNewLabel">Was ist neu?</string>
     <string name="buttonClose">Schließen</string>
+    <string name="textViewWhatsNewText">Thank you for using / updating Backup My Apps. Here are the changes since the last update:\n\n* Support for Dropbox synchronization\n* The icons of the applications are stored and displayed\n* Some bugfixes</string>
 </resources>
