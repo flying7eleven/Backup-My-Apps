@@ -17,9 +17,9 @@ import android.widget.TextView;
 
 public class SettingsActivity extends PreferenceActivity {
 	private Preference buildVersionPreference = null;
-	private Preference loginIntoDropbox = null;
+	private CheckBoxPreference loginIntoDropbox = null;
 	private SharedPreferences applicationPreferences = null;
-	
+
 	/**
 	 * Get the version name of the application itself.
 	 * 
@@ -34,7 +34,7 @@ public class SettingsActivity extends PreferenceActivity {
 			return "<unknown>";
 		}
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -53,19 +53,19 @@ public class SettingsActivity extends PreferenceActivity {
 				sharedPreferenceEditor.putString( "synchronization.dropboxAccessKey", tokens.key );
 				sharedPreferenceEditor.putString( "synchronization.dropboxAccessSecret", tokens.secret );
 				if( !sharedPreferenceEditor.commit() ) {
-					((CheckBoxPreference)this.loginIntoDropbox).setChecked( false );
+					// ((CheckBoxPreference)this.loginIntoDropbox).setChecked( false );
 					Log.e( "BackupMyAppsDropbox", "Error during the authentication with Dropbox! Failed to store the keys." );
 					return;
 				}
-				
+
 				// just log the state
 				Log.i( "BackupMyAppsDropbox", "Authentication with Dropbox successfull!" );
-				
+
 			} catch( IllegalStateException e ) {
 				Log.e( "BackupMyAppsDropbox", "Error during the authentication with Dropbox!", e );
 			}
 		} else {
-			((CheckBoxPreference)this.loginIntoDropbox).setChecked( false );
+			// ((CheckBoxPreference)this.loginIntoDropbox).setChecked( false );
 		}
 	}
 
@@ -74,7 +74,7 @@ public class SettingsActivity extends PreferenceActivity {
 		// create the preference dialog
 		super.onCreate( savedInstanceState );
 		this.addPreferencesFromResource( R.xml.appreferences );
-		
+
 		// get the preference object for this application
 		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
 
@@ -95,13 +95,14 @@ public class SettingsActivity extends PreferenceActivity {
 				return true;
 			}
 		} );
-		
+
 		// get the entry to login into Dropbox and setup the onClick handler
-		this.loginIntoDropbox = (Preference)this.findPreference( "synchronization.useDropbox" );
+		this.loginIntoDropbox = (CheckBoxPreference)this.findPreference( "synchronization.useDropbox" );
 		this.loginIntoDropbox.setOnPreferenceClickListener( new OnPreferenceClickListener() {
 			public boolean onPreferenceClick( Preference preference ) {
-				if(((CheckBoxPreference)SettingsActivity.this.loginIntoDropbox).isChecked()) {
-					MainActivity.dropboxDatabaseApi.getSession().startAuthentication(SettingsActivity.this);
+				Log.v( "BackupMyAppsPreferences", "Dropbox checkbox OnClickHandler called!" );
+				if( ((CheckBoxPreference)SettingsActivity.this.loginIntoDropbox).isChecked() ) {
+					MainActivity.dropboxDatabaseApi.getSession().startAuthentication( SettingsActivity.this );
 				} else {
 					// to deauthenticate, just delete the stored tokens
 					Editor sharedPreferenceEditor = SettingsActivity.this.applicationPreferences.edit();
@@ -116,8 +117,8 @@ public class SettingsActivity extends PreferenceActivity {
 				return true;
 			}
 		} );
-		
+
 		// update the version number in the summary of the build-version object
-		this.buildVersionPreference.setSummary( String.format(  this.getString( R.string.preferenceSummaryBuildVersion ), SettingsActivity.this.getApplicationVersion() ) );
+		this.buildVersionPreference.setSummary( String.format( this.getString( R.string.preferenceSummaryBuildVersion ), SettingsActivity.this.getApplicationVersion() ) );
 	}
 }
