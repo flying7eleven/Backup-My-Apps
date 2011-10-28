@@ -223,11 +223,11 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 					Entry newEntry = MainActivity.dropboxDatabaseApi.putFileOverwrite( "/" + backupFilename, inputStream, backupFile.length(), null );
 					Log.i( "BackupMyAppsDropbox", "The uploaded file's rev is: " + newEntry.rev );
 				} catch( DropboxUnlinkedException e ) {
-					Log.e( "BackupMyAppsDropbox", "The Dropbox account is not linked to the application anymore. Cannot upload the backup file." );
+					Log.e( "BackupMyAppsDropbox", "The Dropbox account is not linked to the application anymore. Cannot upload the backup file.", e ); // TODO: handle this by telling it to the user
 				} catch( DropboxException e ) {
-					Log.e( "BackupMyAppsDropbox", "Something went wrong while uploading the backup file to the Dropbox account." );
+					Log.e( "BackupMyAppsDropbox", "Something went wrong while uploading the backup file to the Dropbox account.", e ); // TODO: handle this by telling it to the user
 				} catch( FileNotFoundException e ) {
-					Log.e( "BackupMyAppsDropbox", "The backup file was not found." );
+					Log.e( "BackupMyAppsDropbox", "The backup file was not found.", e );
 				}
 			}
 
@@ -235,7 +235,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			this.backupProgressDialog.dismiss();
 			this.backupProgressDialog = null;
 
-			// inform the user that we succeeded in backupping the data
+			// inform the user that we succeeded in backuping the data
 			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( this );
 			dialogBuilder.setMessage( R.string.dialogMessageBackupSucceeded );
 			dialogBuilder.setCancelable( false );
