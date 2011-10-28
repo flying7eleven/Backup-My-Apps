@@ -143,7 +143,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			Dialog whatsNewDialog = new Dialog( this );
 			
 			// setup the dialogs content
-			whatsNewDialog.setTitle( "What's new?" );
+			whatsNewDialog.setTitle( this.getString( R.string.textViewWhatsNewLabel ) );
 			whatsNewDialog.setContentView( R.layout.dialog_whatsnew );
 			whatsNewDialog.setCancelable( true );
 			
