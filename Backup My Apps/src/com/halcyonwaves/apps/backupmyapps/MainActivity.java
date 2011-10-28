@@ -209,7 +209,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			this.buttonRestoreInstalledApplications.setEnabled( true );
 
 			// if we should sync, copy the file to the Dropbox account
-			if( true ) { // TODO check if we should do this
+			if( this.applicationPreferences.getBoolean( "synchronization.useDropbox", false ) ) {
 				// define the backup filename
 				String backupFilename = android.os.Build.DEVICE + "-" + android.os.Build.MODEL + ".backupmyapps";
 				backupFilename = backupFilename.replace( ' ', '-' );
