@@ -69,8 +69,8 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// if we already have stored authentication keys, use them
 		if( this.applicationPreferences.getString( "synchronization.dropboxAccessKey", "" ).length() > 0 ) {
 			// get the key and the secret from the settings
-			String key = this.applicationPreferences.getString( "synchronization.dropboxAccessKey", "" );
-			String secret = this.applicationPreferences.getString( "synchronization.dropboxAccessSecret", "" );
+			String key = this.applicationPreferences.getString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_KEY, "" );
+			String secret = this.applicationPreferences.getString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_SECRET, "" );
 
 			// create the required Dropbox access token object
 			AccessTokenPair tokens = new AccessTokenPair( key, secret );

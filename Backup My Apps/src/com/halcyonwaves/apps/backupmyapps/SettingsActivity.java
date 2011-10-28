@@ -19,6 +19,9 @@ public class SettingsActivity extends PreferenceActivity {
 	private Preference buildVersionPreference = null;
 	private CheckBoxPreference loginIntoDropbox = null;
 	private SharedPreferences applicationPreferences = null;
+	
+	public final static String PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_KEY = "synchronization.dropboxAccessKey";
+	public final static String PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_SECRET = "synchronization.dropboxAccessSecret";
 
 	/**
 	 * Get the version name of the application itself.
@@ -50,8 +53,8 @@ public class SettingsActivity extends PreferenceActivity {
 
 				// store the access token pair in the applications settings
 				Editor sharedPreferenceEditor = this.applicationPreferences.edit();
-				sharedPreferenceEditor.putString( "synchronization.dropboxAccessKey", tokens.key );
-				sharedPreferenceEditor.putString( "synchronization.dropboxAccessSecret", tokens.secret );
+				sharedPreferenceEditor.putString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_KEY, tokens.key );
+				sharedPreferenceEditor.putString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_SECRET, tokens.secret );
 				if( !sharedPreferenceEditor.commit() ) {
 					// ((CheckBoxPreference)this.loginIntoDropbox).setChecked( false );
 					Log.e( "BackupMyAppsDropbox", "Error during the authentication with Dropbox! Failed to store the keys." );
@@ -106,8 +109,8 @@ public class SettingsActivity extends PreferenceActivity {
 				} else {
 					// to deauthenticate, just delete the stored tokens
 					Editor sharedPreferenceEditor = SettingsActivity.this.applicationPreferences.edit();
-					sharedPreferenceEditor.putString( "synchronization.dropboxAccessKey", "" );
-					sharedPreferenceEditor.putString( "synchronization.dropboxAccessSecret", "" );
+					sharedPreferenceEditor.putString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_KEY, "" );
+					sharedPreferenceEditor.putString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_SECRET, "" );
 					if( !sharedPreferenceEditor.commit() ) {
 						Log.e( "BackupMyAppsDropbox", "Failed to perform the deauthentication." );
 					} else {
