@@ -38,4 +38,5 @@
     <string name="preferenceTitleEnableDropboxSynchronization">Use synchronization</string>
     <string name="preferenceSummaryEnableDropboxSynchronizationOn">Data will be stored locally and in your Dropbox account.</string>
     <string name="preferenceSummaryEnableDropboxSynchronizationOff">There will be NO synchronization with Dropbox. Data will only be stored locally.</string>
+    <string name="textViewWhatsNewLabel">What's new?</string>
 </resources>

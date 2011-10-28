@@ -38,4 +38,5 @@
     <string name="preferenceTitleEnableDropboxSynchronization">Synchronisation verwenden</string>
     <string name="preferenceSummaryEnableDropboxSynchronizationOn">Die Daten werden lokal und in Ihrem Dropbox-Account gespeichert.</string>
     <string name="preferenceSummaryEnableDropboxSynchronizationOff">Es wird keine Synchronisation mit Dropbox vorgenommen und die Daten werden nur lokal gespeichert.</string>
+    <string name="textViewWhatsNewLabel">Was ist neu?</string>
 </resources>
