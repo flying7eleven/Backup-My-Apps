@@ -211,7 +211,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			// if we should sync, copy the file to the Dropbox account
 			if( true ) { // TODO check if we should do this
 				// define the backup filename
-				String backupFilename = android.os.Build.DEVICE + "-" + android.os.Build.MODEL + ".backupmyapps";
+				String backupFilename = "latest_backups.backupmyapps"; //TODO: android.os.Build.DEVICE + "-" + android.os.Build.MODEL + ".backupmyapps";
 
 				// upload the file
 				File backupFile = new File( this.storagePath, MainActivity.BACKUP_FILENAME );
