@@ -23,7 +23,6 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -49,7 +48,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStorageDirectory();
 	private SharedPreferences applicationPreferences = null;
-	private static final String PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION = "com.halcyonwaves.apps.backupmyapps.userAskedToSendPackageInformation";
+	//rivate static final String PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION = "com.halcyonwaves.apps.backupmyapps.userAskedToSendPackageInformation";
 	public static DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
 
 	@Override
@@ -139,6 +138,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		}
 
 		// if this is the first application run, ask the user about the package list
+		/*
 		if( this.applicationPreferences.getBoolean( MainActivity.PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION, true ) ) {
 			// ask the user for sending the requested information
 			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( this );
@@ -158,7 +158,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			prefsEditor.putBoolean( MainActivity.PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION, false );
 			prefsEditor.commit();
 			prefsEditor = null;
-		}
+		}*/
 	}
 
 	@Override
