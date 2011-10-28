@@ -146,24 +146,23 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			whatsNewDialog.setTitle( this.getString( R.string.textViewWhatsNewLabel ) );
 			whatsNewDialog.setContentView( R.layout.dialog_whatsnew );
 			whatsNewDialog.setCancelable( true );
-			
+					
 			// just tell the dialog what to do with the close button
 			Button closeButton = (Button)whatsNewDialog.findViewById( R.id.buttonCloseWhatsNewDialog );
 			closeButton.setOnClickListener( new OnClickListener() {
 				public void onClick( View v ) {
-					finish();	
+					finish();
 				}
 			} );
 			
 			// show the dialog
 			whatsNewDialog.show();
 
-			// store the value which indicates that the user was already asked to send the
-			// information
-			//Editor prefsEditor = this.applicationPreferences.edit();
-			//prefsEditor.putBoolean( MainActivity.PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION, false );
-			//prefsEditor.commit();
-			//prefsEditor = null;
+			// after we showed the dialog, save that we showed the dialog for this version
+			Editor prefsEditor = this.applicationPreferences.edit();
+			prefsEditor.putInt( MainActivity.PREFERENCES_LAST_WHATSNEW_DIALOG, 0 ); // TODO: this
+			prefsEditor.commit();
+			prefsEditor = null;
 		}
 	}
 
