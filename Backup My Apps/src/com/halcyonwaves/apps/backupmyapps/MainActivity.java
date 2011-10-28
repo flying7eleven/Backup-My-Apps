@@ -169,14 +169,16 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// for each application update, show the What's new? dialog
 		try {
 			final int applicationVersionCode = this.getPackageManager().getPackageInfo( this.getPackageName(), 0 ).versionCode;
-			if( this.applicationPreferences.getInt( MainActivity.PREFERENCES_LAST_WHATSNEW_DIALOG, 0 ) <= applicationVersionCode ) { 
+			if( this.applicationPreferences.getInt( MainActivity.PREFERENCES_LAST_WHATSNEW_DIALOG, 0 ) < applicationVersionCode ) { 
 				// show the dialog
 				this.showDialog( MainActivity.DIALOG_WHATSNEW );
 
 				// after we showed the dialog, save that we showed the dialog for this version
 				Editor prefsEditor = this.applicationPreferences.edit();
 				prefsEditor.putInt( MainActivity.PREFERENCES_LAST_WHATSNEW_DIALOG, applicationVersionCode );
-				prefsEditor.commit();
+				if( !prefsEditor.commit() ) {
+					Log.e( "BackupMyAppsMainActivity", "Failed to commit the changes to the local settings database for storing the state of the \"What's new?\" dialog." );
+				}
 				prefsEditor = null;
 			}
 		} catch( NameNotFoundException e ) {
