@@ -1,0 +1,349 @@
+com.dropbox.client2.DropboxAPI -> com.dropbox.client2.b:
+    com.dropbox.client2.session.Session session -> a
+    com.dropbox.client2.session.Session getSession() -> a
+    com.dropbox.client2.DropboxAPI$Entry putFileOverwrite(java.lang.String,java.io.InputStream,long,com.dropbox.client2.ProgressListener) -> a
+    com.dropbox.client2.DropboxAPI$UploadRequest putFileOverwriteRequest(java.lang.String,java.io.InputStream,long,com.dropbox.client2.ProgressListener) -> b
+    void assertAuthenticated() -> b
+    long getFromMapAsLong(java.util.Map,java.lang.String) -> a
+    boolean getFromMapAsBoolean(java.util.Map,java.lang.String) -> b
+    com.dropbox.client2.DropboxAPI$UploadRequest putFileRequest(java.lang.String,java.io.InputStream,long,boolean,java.lang.String,com.dropbox.client2.ProgressListener) -> a
+com.dropbox.client2.DropboxAPI$Entry -> com.dropbox.client2.f:
+    long bytes -> a
+    java.lang.String hash -> b
+    java.lang.String icon -> c
+    boolean isDir -> d
+    java.lang.String modified -> e
+    java.lang.String path -> f
+    java.lang.String root -> g
+    java.lang.String size -> h
+    java.lang.String mimeType -> i
+    java.lang.String rev -> j
+    boolean thumbExists -> k
+    boolean isDeleted -> l
+    java.util.List contents -> m
+com.dropbox.client2.DropboxAPI$UploadRequest -> com.dropbox.client2.c:
+    org.apache.http.client.methods.HttpUriRequest request -> a
+    com.dropbox.client2.session.Session session -> b
+    com.dropbox.client2.DropboxAPI$Entry upload() -> a
+com.dropbox.client2.ProgressListener -> com.dropbox.client2.e:
+    void onProgress(long,long) -> a
+    long progressInterval() -> a
+com.dropbox.client2.ProgressListener$ProgressHttpEntity -> com.dropbox.client2.a:
+    com.dropbox.client2.ProgressListener listener -> a
+    long length -> b
+    void writeTo(java.io.OutputStream) -> writeTo
+    com.dropbox.client2.ProgressListener access$000(com.dropbox.client2.ProgressListener$ProgressHttpEntity) -> a
+    long access$100(com.dropbox.client2.ProgressListener$ProgressHttpEntity) -> b
+com.dropbox.client2.ProgressListener$ProgressHttpEntity$CountingOutputStream -> com.dropbox.client2.d:
+    long lastListened -> b
+    long intervalMs -> c
+    long transferred -> d
+    com.dropbox.client2.ProgressListener$ProgressHttpEntity this$0 -> a
+    void write(byte[],int,int) -> write
+    void write(int) -> write
+com.dropbox.client2.RESTUtility -> com.dropbox.client2.g:
+    java.text.DateFormat dateFormat -> a
+    java.lang.Object parseAsJSON(org.apache.http.HttpResponse) -> a
+    org.apache.http.HttpResponse execute(com.dropbox.client2.session.Session,org.apache.http.client.methods.HttpUriRequest,int) -> a
+    java.lang.String buildURL(java.lang.String,int,java.lang.String,java.lang.String[]) -> a
+    org.apache.http.client.HttpClient updatedHttpClient(com.dropbox.client2.session.Session) -> a
+    void updateClientProxy(org.apache.http.client.HttpClient,com.dropbox.client2.session.Session) -> a
+    java.lang.String urlencode(java.lang.String[]) -> a
+com.dropbox.client2.android.AndroidAuthSession -> com.dropbox.client2.android.a:
+    void startAuthentication(android.content.Context) -> a
+    boolean authenticationSuccessful() -> a
+    java.lang.String finishAuthentication() -> b
+com.dropbox.client2.android.AndroidAuthSession$1 -> com.dropbox.client2.android.b:
+    com.dropbox.client2.android.AndroidAuthSession this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.dropbox.client2.android.AuthActivity -> com.dropbox.client2.android.AuthActivity:
+    android.content.Intent lastResult -> a
+    java.lang.String consumerKey -> b
+    java.lang.String consumerSecret -> c
+    boolean hasDelegated -> d
+    boolean gotNewIntent -> e
+    java.lang.String[] DROPBOX_APP_SIGNATURES -> f
+    void onCreate(android.os.Bundle) -> onCreate
+    void onSaveInstanceState(android.os.Bundle) -> onSaveInstanceState
+    void onResume() -> onResume
+    void onNewIntent(android.content.Intent) -> onNewIntent
+    java.lang.String getConsumerSig() -> a
+    boolean hasDropboxApp(android.content.Intent) -> a
+    void startWebAuth() -> b
+com.dropbox.client2.exception.DropboxException -> com.dropbox.client2.b.e:
+com.dropbox.client2.exception.DropboxIOException -> com.dropbox.client2.b.h:
+com.dropbox.client2.exception.DropboxParseException -> com.dropbox.client2.b.f:
+    java.lang.String body -> a
+    java.lang.String toString() -> toString
+com.dropbox.client2.exception.DropboxPartialFileException -> com.dropbox.client2.b.g:
+    long bytesTransferred -> a
+com.dropbox.client2.exception.DropboxSSLException -> com.dropbox.client2.b.b:
+com.dropbox.client2.exception.DropboxServerException -> com.dropbox.client2.b.d:
+    com.dropbox.client2.exception.DropboxServerException$Error body -> a
+    int error -> b
+    java.lang.String reason -> c
+    java.lang.String server -> d
+    java.lang.String location -> e
+    java.lang.String toString() -> toString
+    boolean isValidWithNullBody(org.apache.http.HttpResponse) -> a
+    java.lang.String getHeader(org.apache.http.HttpResponse,java.lang.String) -> a
+com.dropbox.client2.exception.DropboxServerException$Error -> com.dropbox.client2.b.c:
+    java.lang.String error -> a
+    java.lang.String userError -> b
+com.dropbox.client2.exception.DropboxUnlinkedException -> com.dropbox.client2.b.a:
+com.dropbox.client2.session.AbstractSession -> com.dropbox.client2.a.d:
+    com.dropbox.client2.session.Session$AccessType accessType -> a
+    com.dropbox.client2.session.AppKeyPair appKeyPair -> b
+    com.dropbox.client2.session.AccessTokenPair accessTokenPair -> c
+    org.apache.http.client.HttpClient client -> d
+    void setAccessTokenPair(com.dropbox.client2.session.AccessTokenPair) -> a
+    com.dropbox.client2.session.AppKeyPair getAppKeyPair() -> c
+    com.dropbox.client2.session.AccessTokenPair getAccessTokenPair() -> d
+    com.dropbox.client2.session.Session$AccessType getAccessType() -> e
+    java.util.Locale getLocale() -> f
+    boolean isLinked() -> g
+    void sign(org.apache.http.HttpRequest) -> a
+    java.lang.String buildOAuthHeader(com.dropbox.client2.session.AppKeyPair,com.dropbox.client2.session.AccessTokenPair) -> a
+    java.lang.String encode(java.lang.String) -> a
+    com.dropbox.client2.session.Session$ProxyInfo getProxyInfo() -> h
+    org.apache.http.client.HttpClient getHttpClient() -> i
+    void setRequestTimeout(org.apache.http.client.methods.HttpUriRequest) -> a
+    java.lang.String getContentServer() -> j
+com.dropbox.client2.session.AbstractSession$1 -> com.dropbox.client2.a.a:
+    com.dropbox.client2.session.AbstractSession this$0 -> a
+    int getMaxForRoute(org.apache.http.conn.routing.HttpRoute) -> getMaxForRoute
+com.dropbox.client2.session.AbstractSession$2 -> com.dropbox.client2.a.e:
+    com.dropbox.client2.session.AbstractSession this$0 -> a
+    org.apache.http.conn.ConnectionKeepAliveStrategy createConnectionKeepAliveStrategy() -> createConnectionKeepAliveStrategy
+com.dropbox.client2.session.AbstractSession$DBClientConnManager -> com.dropbox.client2.a.k:
+    org.apache.http.conn.ClientConnectionRequest requestConnection(org.apache.http.conn.routing.HttpRoute,java.lang.Object) -> requestConnection
+com.dropbox.client2.session.AbstractSession$DBKeepAliveStrategy -> com.dropbox.client2.a.j:
+    long getKeepAliveDuration(org.apache.http.HttpResponse,org.apache.http.protocol.HttpContext) -> getKeepAliveDuration
+com.dropbox.client2.session.AbstractSession$IdleConnectionCloserThread -> com.dropbox.client2.a.b:
+    com.dropbox.client2.session.AbstractSession$DBClientConnManager manager -> a
+    int idleTimeoutSeconds -> b
+    int checkIntervalMs -> c
+    com.dropbox.client2.session.AbstractSession$IdleConnectionCloserThread thread -> d
+    void ensureRunning(com.dropbox.client2.session.AbstractSession$DBClientConnManager,int,int) -> a
+    void run() -> run
+com.dropbox.client2.session.AccessTokenPair -> com.dropbox.client2.a.f:
+com.dropbox.client2.session.AppKeyPair -> com.dropbox.client2.a.g:
+com.dropbox.client2.session.Session -> com.dropbox.client2.a.i:
+    com.dropbox.client2.session.Session$AccessType getAccessType() -> e
+    java.util.Locale getLocale() -> f
+    boolean isLinked() -> g
+    void sign(org.apache.http.HttpRequest) -> a
+    com.dropbox.client2.session.Session$ProxyInfo getProxyInfo() -> h
+    org.apache.http.client.HttpClient getHttpClient() -> i
+    void setRequestTimeout(org.apache.http.client.methods.HttpUriRequest) -> a
+    java.lang.String getContentServer() -> j
+com.dropbox.client2.session.Session$AccessType -> com.dropbox.client2.a.l:
+    com.dropbox.client2.session.Session$AccessType DROPBOX -> a
+    com.dropbox.client2.session.Session$AccessType APP_FOLDER -> b
+    java.lang.String urlPart -> c
+    com.dropbox.client2.session.Session$AccessType[] $VALUES -> d
+    com.dropbox.client2.session.Session$AccessType[] values() -> values
+    com.dropbox.client2.session.Session$AccessType valueOf(java.lang.String) -> valueOf
+    java.lang.String toString() -> toString
+com.dropbox.client2.session.Session$ProxyInfo -> com.dropbox.client2.a.h:
+    java.lang.String host -> a
+    int port -> b
+com.dropbox.client2.session.TokenPair -> com.dropbox.client2.a.c:
+    java.lang.String key -> a
+    java.lang.String secret -> b
+    int hashCode() -> hashCode
+    boolean equals(java.lang.Object) -> equals
+    boolean equals(com.dropbox.client2.session.TokenPair) -> a
+    java.lang.String toString() -> toString
+com.halcyonwaves.apps.backupmyapps.BackupService -> com.halcyonwaves.apps.backupmyapps.BackupService:
+    void onHandleIntent(android.content.Intent) -> onHandleIntent
+com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback -> com.halcyonwaves.apps.backupmyapps.h:
+    void taskSuccessfull(java.lang.Object,java.lang.Object) -> a
+    void taskFailed(java.lang.Object,java.lang.Object) -> b
+com.halcyonwaves.apps.backupmyapps.MainActivity -> com.halcyonwaves.apps.backupmyapps.MainActivity:
+    com.dropbox.client2.session.Session$AccessType DROPBOX_API_APP_ACCESS_TYPE -> a
+    android.widget.Button buttonBackupInstalledApplications -> c
+    android.widget.Button buttonRestoreInstalledApplications -> d
+    android.widget.TextView textViewAdditionalInformation -> e
+    android.app.Dialog dialogHelp -> f
+    android.app.ProgressDialog backupProgressDialog -> g
+    android.app.ProgressDialog restoreProgressDialog -> h
+    java.io.File storagePath -> i
+    android.content.SharedPreferences applicationPreferences -> j
+    com.dropbox.client2.DropboxAPI dropboxDatabaseApi -> b
+    void onCreate(android.os.Bundle) -> onCreate
+    boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
+    boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
+    void taskSuccessfull(java.lang.Object,java.lang.Object) -> a
+    void taskFailed(java.lang.Object,java.lang.Object) -> b
+    void access$0(com.halcyonwaves.apps.backupmyapps.MainActivity,android.app.ProgressDialog) -> a
+    java.io.File access$1(com.halcyonwaves.apps.backupmyapps.MainActivity) -> a
+    void access$2(com.halcyonwaves.apps.backupmyapps.MainActivity,android.app.ProgressDialog) -> b
+com.halcyonwaves.apps.backupmyapps.MainActivity$1 -> com.halcyonwaves.apps.backupmyapps.b:
+    com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.halcyonwaves.apps.backupmyapps.MainActivity$2 -> com.halcyonwaves.apps.backupmyapps.a:
+    com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.halcyonwaves.apps.backupmyapps.MainActivity$3 -> com.halcyonwaves.apps.backupmyapps.f:
+    com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.halcyonwaves.apps.backupmyapps.MainActivity$4 -> com.halcyonwaves.apps.backupmyapps.e:
+    com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.halcyonwaves.apps.backupmyapps.MainActivity$5 -> com.halcyonwaves.apps.backupmyapps.d:
+    com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.halcyonwaves.apps.backupmyapps.MainActivity$6 -> com.halcyonwaves.apps.backupmyapps.c:
+    com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.halcyonwaves.apps.backupmyapps.MainActivity$7 -> com.halcyonwaves.apps.backupmyapps.g:
+    com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.halcyonwaves.apps.backupmyapps.RestoreSelectFileActivity -> com.halcyonwaves.apps.backupmyapps.RestoreSelectFileActivity:
+    void onCreate(android.os.Bundle) -> onCreate
+com.halcyonwaves.apps.backupmyapps.RestoreSelectionActivity -> com.halcyonwaves.apps.backupmyapps.RestoreSelectionActivity:
+    java.lang.String[] packageNames -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    void onListItemClick(android.widget.ListView,android.view.View,int,long) -> onListItemClick
+    void installPackageFromMarket(java.lang.String) -> a
+com.halcyonwaves.apps.backupmyapps.SettingsActivity -> com.halcyonwaves.apps.backupmyapps.SettingsActivity:
+    android.preference.Preference buildVersionPreference -> a
+    android.preference.CheckBoxPreference loginIntoDropbox -> b
+    android.content.SharedPreferences applicationPreferences -> c
+    java.lang.String getApplicationVersion() -> a
+    void onResume() -> onResume
+    void onCreate(android.os.Bundle) -> onCreate
+    java.lang.String access$0(com.halcyonwaves.apps.backupmyapps.SettingsActivity) -> a
+    android.preference.CheckBoxPreference access$1(com.halcyonwaves.apps.backupmyapps.SettingsActivity) -> b
+    android.content.SharedPreferences access$2(com.halcyonwaves.apps.backupmyapps.SettingsActivity) -> c
+com.halcyonwaves.apps.backupmyapps.SettingsActivity$1 -> com.halcyonwaves.apps.backupmyapps.i:
+    com.halcyonwaves.apps.backupmyapps.SettingsActivity this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.halcyonwaves.apps.backupmyapps.SettingsActivity$2 -> com.halcyonwaves.apps.backupmyapps.j:
+    com.halcyonwaves.apps.backupmyapps.SettingsActivity this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.halcyonwaves.apps.backupmyapps.packages.PackageInformation -> com.halcyonwaves.apps.backupmyapps.b.b:
+    java.lang.String appname -> a
+    java.lang.String pname -> b
+    java.lang.String versionName -> c
+    int versionCode -> d
+    android.graphics.drawable.Drawable icon -> e
+    android.content.pm.ApplicationInfo applicationInfo -> f
+    java.lang.String getIcon() -> a
+    boolean isSystemComponent() -> b
+    java.lang.String getPackageName() -> c
+    java.lang.String getApplicationName() -> d
+    int getVersionCode() -> e
+    java.lang.String getVersionName() -> f
+com.halcyonwaves.apps.backupmyapps.packages.PackageInformationManager -> com.halcyonwaves.apps.backupmyapps.b.a:
+    android.content.pm.PackageManager internalPackageManager -> a
+    java.util.ArrayList getInstalledApps() -> a
+com.halcyonwaves.apps.backupmyapps.tasks.GatherBackupInformationTask -> com.halcyonwaves.apps.backupmyapps.a.a:
+    java.io.File storagePath -> a
+    android.content.Context applicationContext -> b
+    java.lang.String backupFilename -> c
+    com.halcyonwaves.apps.backupmyapps.packages.PackageInformationManager packageInformationManager -> d
+    com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback feedbackClass -> e
+    java.lang.Boolean doInBackground(java.lang.Void[]) -> a
+    void onPostExecute(java.lang.Boolean) -> a
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask -> com.halcyonwaves.apps.backupmyapps.a.b:
+    java.io.File storagePath -> a
+    java.lang.String backupFilename -> b
+    com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback feedbackClass -> c
+    java.util.HashMap itemList -> d
+    org.w3c.dom.Document XMLfromString(java.lang.String) -> a
+    java.lang.Boolean doInBackground(java.lang.Void[]) -> a
+    void onPostExecute(java.lang.Boolean) -> a
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+com.halcyonwaves.apps.backupmyapps.utils.Base64 -> com.halcyonwaves.apps.backupmyapps.c.b:
+    char[] CA -> a
+    int[] IA -> b
+    char[] encodeToChar(byte[],boolean) -> a
+    java.lang.String encodeToString(byte[],boolean) -> b
+com.halcyonwaves.apps.backupmyapps.utils.PackageVersion -> com.halcyonwaves.apps.backupmyapps.c.a:
+    int majorVersion -> a
+    int minorVersion -> b
+    int buildVersion -> c
+    boolean equals(com.halcyonwaves.apps.backupmyapps.utils.PackageVersion) -> a
+org.json.simple.JSONArray -> a.a.a.a:
+    java.lang.String toJSONString(java.util.List) -> a
+    java.lang.String toJSONString() -> a
+    java.lang.String toString() -> toString
+org.json.simple.JSONAware -> a.a.a.c:
+    java.lang.String toJSONString() -> a
+org.json.simple.JSONObject -> a.a.a.b:
+    java.lang.String toJSONString(java.util.Map) -> a
+    java.lang.String toJSONString() -> a
+    java.lang.String toJSONString(java.lang.String,java.lang.Object,java.lang.StringBuffer) -> a
+    java.lang.String toString() -> toString
+org.json.simple.JSONValue -> a.a.a.d:
+    java.lang.String toJSONString(java.lang.Object) -> a
+    java.lang.String escape(java.lang.String) -> a
+    void escape(java.lang.String,java.lang.StringBuffer) -> a
+org.json.simple.parser.ContainerFactory -> a.a.a.a.c:
+    java.util.Map createObjectContainer() -> a
+    java.util.List creatArrayContainer() -> b
+org.json.simple.parser.JSONParser -> a.a.a.a.e:
+    java.util.LinkedList handlerStatusStack -> a
+    org.json.simple.parser.Yylex lexer -> b
+    org.json.simple.parser.Yytoken token -> c
+    int status -> d
+    int peekStatus(java.util.LinkedList) -> a
+    void reset() -> a
+    void reset(java.io.Reader) -> a
+    int getPosition() -> b
+    java.lang.Object parse(java.io.Reader) -> b
+    java.lang.Object parse(java.io.Reader,org.json.simple.parser.ContainerFactory) -> a
+    void nextToken() -> c
+    java.util.Map createObjectContainer(org.json.simple.parser.ContainerFactory) -> a
+    java.util.List createArrayContainer(org.json.simple.parser.ContainerFactory) -> b
+org.json.simple.parser.ParseException -> a.a.a.a.d:
+    int errorType -> a
+    java.lang.Object unexpectedObject -> b
+    int position -> c
+    java.lang.String toString() -> toString
+org.json.simple.parser.Yylex -> a.a.a.a.a:
+    int[] ZZ_LEXSTATE -> a
+    char[] ZZ_CMAP -> b
+    int[] ZZ_ACTION -> c
+    int[] ZZ_ROWMAP -> d
+    int[] ZZ_TRANS -> e
+    java.lang.String[] ZZ_ERROR_MSG -> f
+    int[] ZZ_ATTRIBUTE -> g
+    java.io.Reader zzReader -> h
+    int zzState -> i
+    int zzLexicalState -> j
+    char[] zzBuffer -> k
+    int zzMarkedPos -> l
+    int zzCurrentPos -> m
+    int zzStartRead -> n
+    int zzEndRead -> o
+    int yyline -> p
+    int yychar -> q
+    int yycolumn -> r
+    boolean zzAtBOL -> s
+    boolean zzAtEOF -> t
+    java.lang.StringBuffer sb -> u
+    int[] zzUnpackAction() -> d
+    int zzUnpackAction(java.lang.String,int,int[]) -> a
+    int[] zzUnpackRowMap() -> e
+    int zzUnpackRowMap(java.lang.String,int,int[]) -> b
+    int[] zzUnpackAttribute() -> f
+    int zzUnpackAttribute(java.lang.String,int,int[]) -> c
+    int getPosition() -> a
+    char[] zzUnpackCMap(java.lang.String) -> a
+    boolean zzRefill() -> g
+    void yyreset(java.io.Reader) -> a
+    void yybegin(int) -> a
+    java.lang.String yytext() -> b
+    char yycharat(int) -> b
+    void zzScanError(int) -> c
+    org.json.simple.parser.Yytoken yylex() -> c
+org.json.simple.parser.Yytoken -> a.a.a.a.b:
+    int type -> a
+    java.lang.Object value -> b
+    java.lang.String toString() -> toString

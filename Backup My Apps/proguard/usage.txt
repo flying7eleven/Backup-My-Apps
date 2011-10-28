@@ -1,0 +1,227 @@
+com.dropbox.client2.DropboxAPI:
+    public static final int VERSION
+    public static final java.lang.String SDK_VERSION
+    public static final long MAX_UPLOAD_SIZE
+    protected static final int METADATA_DEFAULT_LIMIT
+    private static final int REVISION_DEFAULT_LIMIT
+    private static final int SEARCH_DEFAULT_LIMIT
+    private static final int UPLOAD_SO_TIMEOUT_MS
+    public com.dropbox.client2.DropboxAPI$Account accountInfo()
+    public com.dropbox.client2.DropboxAPI$DropboxFileInfo getFile(java.lang.String,java.lang.String,java.io.OutputStream,com.dropbox.client2.ProgressListener)
+    public com.dropbox.client2.DropboxAPI$DropboxInputStream getFileStream(java.lang.String,java.lang.String)
+    public com.dropbox.client2.DropboxAPI$Entry putFile(java.lang.String,java.io.InputStream,long,java.lang.String,com.dropbox.client2.ProgressListener)
+    public com.dropbox.client2.DropboxAPI$UploadRequest putFileRequest(java.lang.String,java.io.InputStream,long,java.lang.String,com.dropbox.client2.ProgressListener)
+    public com.dropbox.client2.DropboxAPI$DropboxFileInfo getThumbnail(java.lang.String,java.io.OutputStream,com.dropbox.client2.DropboxAPI$ThumbSize,com.dropbox.client2.DropboxAPI$ThumbFormat,com.dropbox.client2.ProgressListener)
+    public com.dropbox.client2.DropboxAPI$DropboxInputStream getThumbnailStream(java.lang.String,com.dropbox.client2.DropboxAPI$ThumbSize,com.dropbox.client2.DropboxAPI$ThumbFormat)
+    public com.dropbox.client2.DropboxAPI$Entry metadata(java.lang.String,int,java.lang.String,boolean,java.lang.String)
+    public java.util.List revisions(java.lang.String,int)
+    public java.util.List search(java.lang.String,java.lang.String,int,boolean)
+    public com.dropbox.client2.DropboxAPI$Entry move(java.lang.String,java.lang.String)
+    public com.dropbox.client2.DropboxAPI$Entry copy(java.lang.String,java.lang.String)
+    public com.dropbox.client2.DropboxAPI$Entry createFolder(java.lang.String)
+    public void delete(java.lang.String)
+    public com.dropbox.client2.DropboxAPI$Entry restore(java.lang.String,java.lang.String)
+    public com.dropbox.client2.DropboxAPI$DropboxLink media(java.lang.String,boolean)
+    public com.dropbox.client2.DropboxAPI$DropboxLink share(java.lang.String)
+com.dropbox.client2.DropboxAPI$1
+com.dropbox.client2.DropboxAPI$Account
+com.dropbox.client2.DropboxAPI$DropboxFileInfo
+com.dropbox.client2.DropboxAPI$DropboxInputStream
+com.dropbox.client2.DropboxAPI$DropboxLink
+com.dropbox.client2.DropboxAPI$Entry:
+    public java.lang.String fileName()
+    public java.lang.String parentPath()
+com.dropbox.client2.DropboxAPI$RequestAndResponse
+com.dropbox.client2.DropboxAPI$ThumbFormat
+com.dropbox.client2.DropboxAPI$ThumbSize
+com.dropbox.client2.DropboxAPI$UploadRequest:
+    public void abort()
+com.dropbox.client2.RESTUtility:
+    public static java.lang.Object request(com.dropbox.client2.RESTUtility$RequestMethod,java.lang.String,java.lang.String,int,java.lang.String[],com.dropbox.client2.session.Session)
+    public static com.dropbox.client2.DropboxAPI$RequestAndResponse streamRequest(com.dropbox.client2.RESTUtility$RequestMethod,java.lang.String,java.lang.String,int,java.lang.String[],com.dropbox.client2.session.Session)
+    public static java.util.Map parseAsQueryString(org.apache.http.HttpResponse)
+    public static org.apache.http.HttpResponse execute(com.dropbox.client2.session.Session,org.apache.http.client.methods.HttpUriRequest)
+    public static java.util.Date parseDate(java.lang.String)
+com.dropbox.client2.RESTUtility$RequestMethod
+com.dropbox.client2.android.AuthActivity:
+    public static final java.lang.String EXTRA_CONSUMER_KEY
+    public static final java.lang.String EXTRA_ACCESS_TOKEN
+    public static final java.lang.String EXTRA_ACCESS_SECRET
+    public static final java.lang.String EXTRA_UID
+    public static final java.lang.String EXTRA_CONSUMER_SIG
+    public static final java.lang.String EXTRA_CALLING_PACKAGE
+    public static final java.lang.String ACTION_AUTHENTICATE_V1
+    public static final int AUTH_VERSION
+    static final java.lang.String EXTRA_INTERNAL_CONSUMER_KEY
+    static final java.lang.String EXTRA_INTERNAL_CONSUMER_SECRET
+com.dropbox.client2.exception.DropboxException:
+    private static final long serialVersionUID
+com.dropbox.client2.exception.DropboxFileSizeException
+com.dropbox.client2.exception.DropboxIOException:
+    private static final long serialVersionUID
+com.dropbox.client2.exception.DropboxLocalStorageFullException
+com.dropbox.client2.exception.DropboxParseException:
+    private static final long serialVersionUID
+com.dropbox.client2.exception.DropboxPartialFileException:
+    private static final long serialVersionUID
+com.dropbox.client2.exception.DropboxSSLException:
+    private static final long serialVersionUID
+com.dropbox.client2.exception.DropboxServerException:
+    public static final int _200_OK
+    public static final int _302_FOUND
+    public static final int _304_NOT_MODIFIED
+    public static final int _400_BAD_REQUEST
+    public static final int _401_UNAUTHORIZED
+    public static final int _403_FORBIDDEN
+    public static final int _404_NOT_FOUND
+    public static final int _405_METHOD_NOT_ALLOWED
+    public static final int _406_NOT_ACCEPTABLE
+    public static final int _409_CONFLICT
+    public static final int _411_LENGTH_REQUIRED
+    public static final int _415_UNSUPPORTED_MEDIA
+    public static final int _500_INTERNAL_SERVER_ERROR
+    public static final int _501_NOT_IMPLEMENTED
+    public static final int _502_BAD_GATEWAY
+    public static final int _503_SERVICE_UNAVAILABLE
+    public static final int _507_INSUFFICIENT_STORAGE
+    private static final long serialVersionUID
+    public boolean isDuplicateAccount()
+com.dropbox.client2.exception.DropboxUnlinkedException:
+    private static final long serialVersionUID
+com.dropbox.client2.session.AbstractSession:
+    private static final java.lang.String API_SERVER
+    private static final java.lang.String CONTENT_SERVER
+    private static final java.lang.String WEB_SERVER
+    private static final int KEEP_ALIVE_DURATION_SECS
+    private static final int KEEP_ALIVE_MONITOR_INTERVAL_SECS
+    private static final int DEFAULT_TIMEOUT_MILLIS
+    public void unlink()
+    public java.lang.String getAPIServer()
+    public java.lang.String getWebServer()
+com.dropbox.client2.session.AccessTokenPair:
+    private static final long serialVersionUID
+com.dropbox.client2.session.RequestTokenPair
+com.dropbox.client2.session.Session:
+    public abstract com.dropbox.client2.session.AppKeyPair getAppKeyPair()
+    public abstract com.dropbox.client2.session.AccessTokenPair getAccessTokenPair()
+    public abstract void unlink()
+    public abstract java.lang.String getAPIServer()
+    public abstract java.lang.String getWebServer()
+com.dropbox.client2.session.Session$ProxyInfo:
+    public Session$ProxyInfo(java.lang.String,int)
+    public Session$ProxyInfo(java.lang.String)
+com.dropbox.client2.session.WebAuthSession
+com.dropbox.client2.session.WebAuthSession$1
+com.dropbox.client2.session.WebAuthSession$WebAuthInfo
+com.halcyonwaves.apps.backupmyapps.MainActivity:
+    public static final java.lang.String DROPBOX_API_APP_KEY
+    public static final java.lang.String DROPBOX_API_APP_SECRET
+    private static final java.lang.String BACKUP_FILENAME
+    private static final java.lang.String PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION
+com.halcyonwaves.apps.backupmyapps.R
+com.halcyonwaves.apps.backupmyapps.R$attr
+com.halcyonwaves.apps.backupmyapps.R$drawable
+com.halcyonwaves.apps.backupmyapps.R$id
+com.halcyonwaves.apps.backupmyapps.R$layout
+com.halcyonwaves.apps.backupmyapps.R$menu
+com.halcyonwaves.apps.backupmyapps.R$string
+com.halcyonwaves.apps.backupmyapps.R$xml
+com.halcyonwaves.apps.backupmyapps.SettingsActivity:
+    public static final java.lang.String PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_KEY
+    public static final java.lang.String PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_SECRET
+com.halcyonwaves.apps.backupmyapps.packages.PackageInformation:
+    106:107:public void logPackage()
+com.halcyonwaves.apps.backupmyapps.utils.Base64:
+    150:192:public static final byte[] decode(char[])
+    207:257:public static final byte[] decodeFast(char[])
+    274:314:public static final byte[] encodeToByte(byte[],boolean)
+    326:368:public static final byte[] decode(byte[])
+    384:434:public static final byte[] decodeFast(byte[])
+    465:508:public static final byte[] decode(java.lang.String)
+    523:573:public static final byte[] decodeFast(java.lang.String)
+org.apache.http.entity.mime.FormBodyPart
+org.apache.http.entity.mime.HttpMultipart
+org.apache.http.entity.mime.HttpMultipart$1
+org.apache.http.entity.mime.HttpMultipartMode
+org.apache.http.entity.mime.MIME
+org.apache.http.entity.mime.MinimalField
+org.apache.http.entity.mime.MultipartEntity
+org.apache.http.entity.mime.UnexpectedMimeException
+org.apache.http.entity.mime.content.AbstractContentBody
+org.apache.http.entity.mime.content.ContentBody
+org.apache.http.entity.mime.content.FileBody
+org.apache.http.entity.mime.content.InputStreamBody
+org.apache.http.entity.mime.content.StringBody
+org.json.simple.ItemList
+org.json.simple.JSONArray:
+    private static final long serialVersionUID
+    public static void writeJSONString(java.util.List,java.io.Writer)
+    public void writeJSONString(java.io.Writer)
+org.json.simple.JSONObject:
+    private static final long serialVersionUID
+    public static void writeJSONString(java.util.Map,java.io.Writer)
+    public void writeJSONString(java.io.Writer)
+    public static java.lang.String toString(java.lang.String,java.lang.Object)
+    public static java.lang.String escape(java.lang.String)
+org.json.simple.JSONStreamAware
+org.json.simple.JSONValue:
+    public static java.lang.Object parse(java.io.Reader)
+    public static java.lang.Object parse(java.lang.String)
+    public static java.lang.Object parseWithException(java.io.Reader)
+    public static java.lang.Object parseWithException(java.lang.String)
+    public static void writeJSONString(java.lang.Object,java.io.Writer)
+org.json.simple.parser.ContentHandler
+org.json.simple.parser.JSONParser:
+    public static final int S_INIT
+    public static final int S_IN_FINISHED_VALUE
+    public static final int S_IN_OBJECT
+    public static final int S_IN_ARRAY
+    public static final int S_PASSED_PAIR_KEY
+    public static final int S_IN_PAIR_VALUE
+    public static final int S_END
+    public static final int S_IN_ERROR
+    public java.lang.Object parse(java.lang.String)
+    public java.lang.Object parse(java.lang.String,org.json.simple.parser.ContainerFactory)
+    public void parse(java.lang.String,org.json.simple.parser.ContentHandler)
+    public void parse(java.lang.String,org.json.simple.parser.ContentHandler,boolean)
+    public void parse(java.io.Reader,org.json.simple.parser.ContentHandler)
+    public void parse(java.io.Reader,org.json.simple.parser.ContentHandler,boolean)
+org.json.simple.parser.ParseException:
+    private static final long serialVersionUID
+    public static final int ERROR_UNEXPECTED_CHAR
+    public static final int ERROR_UNEXPECTED_TOKEN
+    public static final int ERROR_UNEXPECTED_EXCEPTION
+    public ParseException(int)
+    public ParseException(int,java.lang.Object)
+    public int getErrorType()
+    public void setErrorType(int)
+    public int getPosition()
+    public void setPosition(int)
+    public java.lang.Object getUnexpectedObject()
+    public void setUnexpectedObject(java.lang.Object)
+org.json.simple.parser.Yylex:
+    public static final int YYEOF
+    private static final int ZZ_BUFFERSIZE
+    public static final int YYINITIAL
+    public static final int STRING_BEGIN
+    private static final java.lang.String ZZ_CMAP_PACKED
+    private static final java.lang.String ZZ_ACTION_PACKED_0
+    private static final java.lang.String ZZ_ROWMAP_PACKED_0
+    private static final int ZZ_UNKNOWN_ERROR
+    private static final int ZZ_NO_MATCH
+    private static final int ZZ_PUSHBACK_2BIG
+    private static final java.lang.String ZZ_ATTRIBUTE_PACKED_0
+    Yylex(java.io.InputStream)
+    public final void yyclose()
+    public final int yystate()
+    public final int yylength()
+    public void yypushback(int)
+org.json.simple.parser.Yytoken:
+    public static final int TYPE_VALUE
+    public static final int TYPE_LEFT_BRACE
+    public static final int TYPE_RIGHT_BRACE
+    public static final int TYPE_LEFT_SQUARE
+    public static final int TYPE_RIGHT_SQUARE
+    public static final int TYPE_COMMA
+    public static final int TYPE_COLON
+    public static final int TYPE_EOF
