@@ -220,7 +220,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				// try to upload the backup file
 				try {
 					FileInputStream inputStream = new FileInputStream( backupFile );
-					Entry newEntry = MainActivity.dropboxDatabaseApi.putFile( "/" + backupFilename, inputStream, backupFile.length(), null, null );
+					Entry newEntry = MainActivity.dropboxDatabaseApi.putFileOverwrite( "/" + backupFilename, inputStream, backupFile.length(), null );
 					Log.i( "BackupMyAppsDropbox", "The uploaded file's rev is: " + newEntry.rev );
 				} catch( DropboxUnlinkedException e ) {
 					Log.e( "BackupMyAppsDropbox", "The Dropbox account is not linked to the application anymore. Cannot upload the backup file." );
