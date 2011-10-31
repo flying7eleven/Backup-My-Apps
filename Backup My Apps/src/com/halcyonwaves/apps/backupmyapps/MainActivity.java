@@ -3,7 +3,6 @@ package com.halcyonwaves.apps.backupmyapps;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
 
 import com.dropbox.client2.DropboxAPI;
 import com.dropbox.client2.DropboxAPI.Entry;
@@ -14,7 +13,6 @@ import com.dropbox.client2.session.AccessTokenPair;
 import com.dropbox.client2.session.AppKeyPair;
 import com.dropbox.client2.session.Session.AccessType;
 import com.halcyonwaves.apps.backupmyapps.tasks.GatherBackupInformationTask;
-import com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask;
 
 import android.app.Activity;
 import android.app.AlertDialog;
