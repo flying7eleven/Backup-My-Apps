@@ -7,13 +7,10 @@ com.dropbox.client2.DropboxAPI:
     private static final int SEARCH_DEFAULT_LIMIT
     private static final int UPLOAD_SO_TIMEOUT_MS
     public com.dropbox.client2.DropboxAPI$Account accountInfo()
-    public com.dropbox.client2.DropboxAPI$DropboxFileInfo getFile(java.lang.String,java.lang.String,java.io.OutputStream,com.dropbox.client2.ProgressListener)
-    public com.dropbox.client2.DropboxAPI$DropboxInputStream getFileStream(java.lang.String,java.lang.String)
     public com.dropbox.client2.DropboxAPI$Entry putFile(java.lang.String,java.io.InputStream,long,java.lang.String,com.dropbox.client2.ProgressListener)
     public com.dropbox.client2.DropboxAPI$UploadRequest putFileRequest(java.lang.String,java.io.InputStream,long,java.lang.String,com.dropbox.client2.ProgressListener)
     public com.dropbox.client2.DropboxAPI$DropboxFileInfo getThumbnail(java.lang.String,java.io.OutputStream,com.dropbox.client2.DropboxAPI$ThumbSize,com.dropbox.client2.DropboxAPI$ThumbFormat,com.dropbox.client2.ProgressListener)
     public com.dropbox.client2.DropboxAPI$DropboxInputStream getThumbnailStream(java.lang.String,com.dropbox.client2.DropboxAPI$ThumbSize,com.dropbox.client2.DropboxAPI$ThumbFormat)
-    public com.dropbox.client2.DropboxAPI$Entry metadata(java.lang.String,int,java.lang.String,boolean,java.lang.String)
     public java.util.List revisions(java.lang.String,int)
     public java.util.List search(java.lang.String,java.lang.String,int,boolean)
     public com.dropbox.client2.DropboxAPI$Entry move(java.lang.String,java.lang.String)
@@ -23,26 +20,21 @@ com.dropbox.client2.DropboxAPI:
     public com.dropbox.client2.DropboxAPI$Entry restore(java.lang.String,java.lang.String)
     public com.dropbox.client2.DropboxAPI$DropboxLink media(java.lang.String,boolean)
     public com.dropbox.client2.DropboxAPI$DropboxLink share(java.lang.String)
-com.dropbox.client2.DropboxAPI$1
 com.dropbox.client2.DropboxAPI$Account
-com.dropbox.client2.DropboxAPI$DropboxFileInfo
-com.dropbox.client2.DropboxAPI$DropboxInputStream
+com.dropbox.client2.DropboxAPI$DropboxFileInfo:
+    public final java.lang.String getMimeType()
+    public final java.lang.String getCharset()
 com.dropbox.client2.DropboxAPI$DropboxLink
 com.dropbox.client2.DropboxAPI$Entry:
     public java.lang.String fileName()
     public java.lang.String parentPath()
-com.dropbox.client2.DropboxAPI$RequestAndResponse
 com.dropbox.client2.DropboxAPI$ThumbFormat
 com.dropbox.client2.DropboxAPI$ThumbSize
 com.dropbox.client2.DropboxAPI$UploadRequest:
     public void abort()
 com.dropbox.client2.RESTUtility:
-    public static java.lang.Object request(com.dropbox.client2.RESTUtility$RequestMethod,java.lang.String,java.lang.String,int,java.lang.String[],com.dropbox.client2.session.Session)
-    public static com.dropbox.client2.DropboxAPI$RequestAndResponse streamRequest(com.dropbox.client2.RESTUtility$RequestMethod,java.lang.String,java.lang.String,int,java.lang.String[],com.dropbox.client2.session.Session)
     public static java.util.Map parseAsQueryString(org.apache.http.HttpResponse)
-    public static org.apache.http.HttpResponse execute(com.dropbox.client2.session.Session,org.apache.http.client.methods.HttpUriRequest)
     public static java.util.Date parseDate(java.lang.String)
-com.dropbox.client2.RESTUtility$RequestMethod
 com.dropbox.client2.android.AuthActivity:
     public static final java.lang.String EXTRA_CONSUMER_KEY
     public static final java.lang.String EXTRA_ACCESS_TOKEN
@@ -59,7 +51,8 @@ com.dropbox.client2.exception.DropboxException:
 com.dropbox.client2.exception.DropboxFileSizeException
 com.dropbox.client2.exception.DropboxIOException:
     private static final long serialVersionUID
-com.dropbox.client2.exception.DropboxLocalStorageFullException
+com.dropbox.client2.exception.DropboxLocalStorageFullException:
+    private static final long serialVersionUID
 com.dropbox.client2.exception.DropboxParseException:
     private static final long serialVersionUID
 com.dropbox.client2.exception.DropboxPartialFileException:
@@ -96,7 +89,6 @@ com.dropbox.client2.session.AbstractSession:
     private static final int KEEP_ALIVE_MONITOR_INTERVAL_SECS
     private static final int DEFAULT_TIMEOUT_MILLIS
     public void unlink()
-    public java.lang.String getAPIServer()
     public java.lang.String getWebServer()
 com.dropbox.client2.session.AccessTokenPair:
     private static final long serialVersionUID
@@ -105,7 +97,6 @@ com.dropbox.client2.session.Session:
     public abstract com.dropbox.client2.session.AppKeyPair getAppKeyPair()
     public abstract com.dropbox.client2.session.AccessTokenPair getAccessTokenPair()
     public abstract void unlink()
-    public abstract java.lang.String getAPIServer()
     public abstract java.lang.String getWebServer()
 com.dropbox.client2.session.Session$ProxyInfo:
     public Session$ProxyInfo(java.lang.String,int)
@@ -117,7 +108,8 @@ com.halcyonwaves.apps.backupmyapps.MainActivity:
     public static final java.lang.String DROPBOX_API_APP_KEY
     public static final java.lang.String DROPBOX_API_APP_SECRET
     private static final java.lang.String BACKUP_FILENAME
-    private static final java.lang.String PREFERENCES_USER_ASKED_ABOUT_PACKAGE_INFORMATION
+    private static final java.lang.String PREFERENCES_LAST_WHATSNEW_DIALOG
+    private static final int DIALOG_WHATSNEW
 com.halcyonwaves.apps.backupmyapps.R
 com.halcyonwaves.apps.backupmyapps.R$attr
 com.halcyonwaves.apps.backupmyapps.R$drawable
@@ -131,6 +123,8 @@ com.halcyonwaves.apps.backupmyapps.SettingsActivity:
     public static final java.lang.String PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_SECRET
 com.halcyonwaves.apps.backupmyapps.packages.PackageInformation:
     106:107:public void logPackage()
+com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask:
+    53:57:public RestoreBackupDataTask(java.io.File,java.lang.String,com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback)
 com.halcyonwaves.apps.backupmyapps.utils.Base64:
     150:192:public static final byte[] decode(char[])
     207:257:public static final byte[] decodeFast(char[])
