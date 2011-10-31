@@ -97,7 +97,16 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 	}
 
 	public void taskFailed( Object sender, Object data ) {
-		// TODO Auto-generated method stub
-		
+		if( sender.getClass().getSimpleName().equalsIgnoreCase( RestoreBackupDataTask.class.getSimpleName() ) ) {
+			// close the progress dialog
+			this.restoreProgressDialog.dismiss();
+			this.restoreProgressDialog = null;
+			
+			// show an error message
+			// TODO: this
+			
+			// close this activity and return to the main activity
+			this.finish();
+		}
 	}
 }
