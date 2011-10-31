@@ -1,13 +1,29 @@
-com.dropbox.client2.DropboxAPI -> com.dropbox.client2.b:
+com.dropbox.client2.DropboxAPI -> com.dropbox.client2.e:
     com.dropbox.client2.session.Session session -> a
     com.dropbox.client2.session.Session getSession() -> a
+    com.dropbox.client2.DropboxAPI$DropboxFileInfo getFile(java.lang.String,java.lang.String,java.io.OutputStream,com.dropbox.client2.ProgressListener) -> a
+    com.dropbox.client2.DropboxAPI$DropboxInputStream getFileStream(java.lang.String,java.lang.String) -> a
     com.dropbox.client2.DropboxAPI$Entry putFileOverwrite(java.lang.String,java.io.InputStream,long,com.dropbox.client2.ProgressListener) -> a
     com.dropbox.client2.DropboxAPI$UploadRequest putFileOverwriteRequest(java.lang.String,java.io.InputStream,long,com.dropbox.client2.ProgressListener) -> b
+    com.dropbox.client2.DropboxAPI$Entry metadata(java.lang.String,int,java.lang.String,boolean,java.lang.String) -> a
     void assertAuthenticated() -> b
     long getFromMapAsLong(java.util.Map,java.lang.String) -> a
     boolean getFromMapAsBoolean(java.util.Map,java.lang.String) -> b
     com.dropbox.client2.DropboxAPI$UploadRequest putFileRequest(java.lang.String,java.io.InputStream,long,boolean,java.lang.String,com.dropbox.client2.ProgressListener) -> a
-com.dropbox.client2.DropboxAPI$Entry -> com.dropbox.client2.f:
+com.dropbox.client2.DropboxAPI$1 -> com.dropbox.client2.c:
+com.dropbox.client2.DropboxAPI$DropboxFileInfo -> com.dropbox.client2.h:
+    java.lang.String mimeType -> a
+    long length -> b
+    java.lang.String charset -> c
+    long getContentLength() -> a
+    long access$100(com.dropbox.client2.DropboxAPI$DropboxFileInfo) -> a
+com.dropbox.client2.DropboxAPI$DropboxInputStream -> com.dropbox.client2.j:
+    org.apache.http.client.methods.HttpUriRequest request -> a
+    com.dropbox.client2.DropboxAPI$DropboxFileInfo info -> b
+    void close() -> close
+    com.dropbox.client2.DropboxAPI$DropboxFileInfo getFileInfo() -> a
+    void copyStreamToOutput(java.io.OutputStream,com.dropbox.client2.ProgressListener) -> a
+com.dropbox.client2.DropboxAPI$Entry -> com.dropbox.client2.k:
     long bytes -> a
     java.lang.String hash -> b
     java.lang.String icon -> c
@@ -21,34 +37,46 @@ com.dropbox.client2.DropboxAPI$Entry -> com.dropbox.client2.f:
     boolean thumbExists -> k
     boolean isDeleted -> l
     java.util.List contents -> m
-com.dropbox.client2.DropboxAPI$UploadRequest -> com.dropbox.client2.c:
+com.dropbox.client2.DropboxAPI$RequestAndResponse -> com.dropbox.client2.b:
+    org.apache.http.client.methods.HttpUriRequest request -> a
+    org.apache.http.HttpResponse response -> b
+com.dropbox.client2.DropboxAPI$UploadRequest -> com.dropbox.client2.f:
     org.apache.http.client.methods.HttpUriRequest request -> a
     com.dropbox.client2.session.Session session -> b
     com.dropbox.client2.DropboxAPI$Entry upload() -> a
-com.dropbox.client2.ProgressListener -> com.dropbox.client2.e:
+com.dropbox.client2.ProgressListener -> com.dropbox.client2.i:
     void onProgress(long,long) -> a
     long progressInterval() -> a
-com.dropbox.client2.ProgressListener$ProgressHttpEntity -> com.dropbox.client2.a:
+com.dropbox.client2.ProgressListener$ProgressHttpEntity -> com.dropbox.client2.d:
     com.dropbox.client2.ProgressListener listener -> a
     long length -> b
     void writeTo(java.io.OutputStream) -> writeTo
     com.dropbox.client2.ProgressListener access$000(com.dropbox.client2.ProgressListener$ProgressHttpEntity) -> a
     long access$100(com.dropbox.client2.ProgressListener$ProgressHttpEntity) -> b
-com.dropbox.client2.ProgressListener$ProgressHttpEntity$CountingOutputStream -> com.dropbox.client2.d:
+com.dropbox.client2.ProgressListener$ProgressHttpEntity$CountingOutputStream -> com.dropbox.client2.g:
     long lastListened -> b
     long intervalMs -> c
     long transferred -> d
     com.dropbox.client2.ProgressListener$ProgressHttpEntity this$0 -> a
     void write(byte[],int,int) -> write
     void write(int) -> write
-com.dropbox.client2.RESTUtility -> com.dropbox.client2.g:
+com.dropbox.client2.RESTUtility -> com.dropbox.client2.l:
     java.text.DateFormat dateFormat -> a
+    java.lang.Object request(com.dropbox.client2.RESTUtility$RequestMethod,java.lang.String,java.lang.String,int,java.lang.String[],com.dropbox.client2.session.Session) -> a
+    com.dropbox.client2.DropboxAPI$RequestAndResponse streamRequest(com.dropbox.client2.RESTUtility$RequestMethod,java.lang.String,java.lang.String,int,java.lang.String[],com.dropbox.client2.session.Session) -> b
     java.lang.Object parseAsJSON(org.apache.http.HttpResponse) -> a
+    org.apache.http.HttpResponse execute(com.dropbox.client2.session.Session,org.apache.http.client.methods.HttpUriRequest) -> a
     org.apache.http.HttpResponse execute(com.dropbox.client2.session.Session,org.apache.http.client.methods.HttpUriRequest,int) -> a
     java.lang.String buildURL(java.lang.String,int,java.lang.String,java.lang.String[]) -> a
     org.apache.http.client.HttpClient updatedHttpClient(com.dropbox.client2.session.Session) -> a
     void updateClientProxy(org.apache.http.client.HttpClient,com.dropbox.client2.session.Session) -> a
     java.lang.String urlencode(java.lang.String[]) -> a
+com.dropbox.client2.RESTUtility$RequestMethod -> com.dropbox.client2.a:
+    com.dropbox.client2.RESTUtility$RequestMethod GET -> a
+    com.dropbox.client2.RESTUtility$RequestMethod POST -> b
+    com.dropbox.client2.RESTUtility$RequestMethod[] $VALUES -> c
+    com.dropbox.client2.RESTUtility$RequestMethod[] values() -> values
+    com.dropbox.client2.RESTUtility$RequestMethod valueOf(java.lang.String) -> valueOf
 com.dropbox.client2.android.AndroidAuthSession -> com.dropbox.client2.android.a:
     void startAuthentication(android.content.Context) -> a
     boolean authenticationSuccessful() -> a
@@ -70,15 +98,16 @@ com.dropbox.client2.android.AuthActivity -> com.dropbox.client2.android.AuthActi
     java.lang.String getConsumerSig() -> a
     boolean hasDropboxApp(android.content.Intent) -> a
     void startWebAuth() -> b
-com.dropbox.client2.exception.DropboxException -> com.dropbox.client2.b.e:
-com.dropbox.client2.exception.DropboxIOException -> com.dropbox.client2.b.h:
-com.dropbox.client2.exception.DropboxParseException -> com.dropbox.client2.b.f:
+com.dropbox.client2.exception.DropboxException -> com.dropbox.client2.b.f:
+com.dropbox.client2.exception.DropboxIOException -> com.dropbox.client2.b.i:
+com.dropbox.client2.exception.DropboxLocalStorageFullException -> com.dropbox.client2.b.c:
+com.dropbox.client2.exception.DropboxParseException -> com.dropbox.client2.b.g:
     java.lang.String body -> a
     java.lang.String toString() -> toString
-com.dropbox.client2.exception.DropboxPartialFileException -> com.dropbox.client2.b.g:
+com.dropbox.client2.exception.DropboxPartialFileException -> com.dropbox.client2.b.h:
     long bytesTransferred -> a
 com.dropbox.client2.exception.DropboxSSLException -> com.dropbox.client2.b.b:
-com.dropbox.client2.exception.DropboxServerException -> com.dropbox.client2.b.d:
+com.dropbox.client2.exception.DropboxServerException -> com.dropbox.client2.b.e:
     com.dropbox.client2.exception.DropboxServerException$Error body -> a
     int error -> b
     java.lang.String reason -> c
@@ -87,7 +116,7 @@ com.dropbox.client2.exception.DropboxServerException -> com.dropbox.client2.b.d:
     java.lang.String toString() -> toString
     boolean isValidWithNullBody(org.apache.http.HttpResponse) -> a
     java.lang.String getHeader(org.apache.http.HttpResponse,java.lang.String) -> a
-com.dropbox.client2.exception.DropboxServerException$Error -> com.dropbox.client2.b.c:
+com.dropbox.client2.exception.DropboxServerException$Error -> com.dropbox.client2.b.d:
     java.lang.String error -> a
     java.lang.String userError -> b
 com.dropbox.client2.exception.DropboxUnlinkedException -> com.dropbox.client2.b.a:
@@ -108,7 +137,8 @@ com.dropbox.client2.session.AbstractSession -> com.dropbox.client2.a.d:
     com.dropbox.client2.session.Session$ProxyInfo getProxyInfo() -> h
     org.apache.http.client.HttpClient getHttpClient() -> i
     void setRequestTimeout(org.apache.http.client.methods.HttpUriRequest) -> a
-    java.lang.String getContentServer() -> j
+    java.lang.String getAPIServer() -> j
+    java.lang.String getContentServer() -> k
 com.dropbox.client2.session.AbstractSession$1 -> com.dropbox.client2.a.a:
     com.dropbox.client2.session.AbstractSession this$0 -> a
     int getMaxForRoute(org.apache.http.conn.routing.HttpRoute) -> getMaxForRoute
@@ -136,7 +166,8 @@ com.dropbox.client2.session.Session -> com.dropbox.client2.a.i:
     com.dropbox.client2.session.Session$ProxyInfo getProxyInfo() -> h
     org.apache.http.client.HttpClient getHttpClient() -> i
     void setRequestTimeout(org.apache.http.client.methods.HttpUriRequest) -> a
-    java.lang.String getContentServer() -> j
+    java.lang.String getAPIServer() -> j
+    java.lang.String getContentServer() -> k
 com.dropbox.client2.session.Session$AccessType -> com.dropbox.client2.a.l:
     com.dropbox.client2.session.Session$AccessType DROPBOX -> a
     com.dropbox.client2.session.Session$AccessType APP_FOLDER -> b
@@ -167,10 +198,10 @@ com.halcyonwaves.apps.backupmyapps.MainActivity -> com.halcyonwaves.apps.backupm
     android.widget.TextView textViewAdditionalInformation -> e
     android.app.Dialog dialogHelp -> f
     android.app.ProgressDialog backupProgressDialog -> g
-    android.app.ProgressDialog restoreProgressDialog -> h
-    java.io.File storagePath -> i
-    android.content.SharedPreferences applicationPreferences -> j
+    java.io.File storagePath -> h
+    android.content.SharedPreferences applicationPreferences -> i
     com.dropbox.client2.DropboxAPI dropboxDatabaseApi -> b
+    android.app.Dialog onCreateDialog(int) -> onCreateDialog
     void onCreate(android.os.Bundle) -> onCreate
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
     boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
@@ -178,7 +209,6 @@ com.halcyonwaves.apps.backupmyapps.MainActivity -> com.halcyonwaves.apps.backupm
     void taskFailed(java.lang.Object,java.lang.Object) -> b
     void access$0(com.halcyonwaves.apps.backupmyapps.MainActivity,android.app.ProgressDialog) -> a
     java.io.File access$1(com.halcyonwaves.apps.backupmyapps.MainActivity) -> a
-    void access$2(com.halcyonwaves.apps.backupmyapps.MainActivity,android.app.ProgressDialog) -> b
 com.halcyonwaves.apps.backupmyapps.MainActivity$1 -> com.halcyonwaves.apps.backupmyapps.b:
     com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
@@ -187,7 +217,7 @@ com.halcyonwaves.apps.backupmyapps.MainActivity$2 -> com.halcyonwaves.apps.backu
     void onClick(android.view.View) -> onClick
 com.halcyonwaves.apps.backupmyapps.MainActivity$3 -> com.halcyonwaves.apps.backupmyapps.f:
     com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
-    void onClick(android.content.DialogInterface,int) -> onClick
+    void onClick(android.view.View) -> onClick
 com.halcyonwaves.apps.backupmyapps.MainActivity$4 -> com.halcyonwaves.apps.backupmyapps.e:
     com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
@@ -201,7 +231,13 @@ com.halcyonwaves.apps.backupmyapps.MainActivity$7 -> com.halcyonwaves.apps.backu
     com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
 com.halcyonwaves.apps.backupmyapps.RestoreSelectFileActivity -> com.halcyonwaves.apps.backupmyapps.RestoreSelectFileActivity:
+    java.lang.String[] foundFilePathsArray -> a
+    android.app.ProgressDialog restoreProgressDialog -> b
+    android.content.SharedPreferences applicationPreferences -> c
     void onCreate(android.os.Bundle) -> onCreate
+    void onListItemClick(android.widget.ListView,android.view.View,int,long) -> onListItemClick
+    void taskSuccessfull(java.lang.Object,java.lang.Object) -> a
+    void taskFailed(java.lang.Object,java.lang.Object) -> b
 com.halcyonwaves.apps.backupmyapps.RestoreSelectionActivity -> com.halcyonwaves.apps.backupmyapps.RestoreSelectionActivity:
     java.lang.String[] packageNames -> a
     void onCreate(android.os.Bundle) -> onCreate
@@ -250,10 +286,9 @@ com.halcyonwaves.apps.backupmyapps.tasks.GatherBackupInformationTask -> com.halc
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask -> com.halcyonwaves.apps.backupmyapps.a.b:
-    java.io.File storagePath -> a
-    java.lang.String backupFilename -> b
-    com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback feedbackClass -> c
-    java.util.HashMap itemList -> d
+    java.io.File backupFile -> a
+    com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback feedbackClass -> b
+    java.util.HashMap itemList -> c
     org.w3c.dom.Document XMLfromString(java.lang.String) -> a
     java.lang.Boolean doInBackground(java.lang.Void[]) -> a
     void onPostExecute(java.lang.Boolean) -> a
