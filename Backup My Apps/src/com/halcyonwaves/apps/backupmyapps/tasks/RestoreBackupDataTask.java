@@ -26,7 +26,6 @@ import org.xml.sax.SAXException;
 import com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback;
 import com.halcyonwaves.apps.backupmyapps.utils.PackageVersion;
 
-import android.R.integer;
 import android.os.AsyncTask;
 import android.util.Log;
 
