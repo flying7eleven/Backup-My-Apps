@@ -144,11 +144,13 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		this.buttonRestoreInstalledApplications.setOnClickListener( new OnClickListener() {
 			public void onClick( View v ) {
 				// show a progress dialog
-				MainActivity.this.restoreProgressDialog = ProgressDialog.show( MainActivity.this, "", MainActivity.this.getString( R.string.progressDialogRestoreInProgress ), true );
+				//MainActivity.this.restoreProgressDialog = ProgressDialog.show( MainActivity.this, "", MainActivity.this.getString( R.string.progressDialogRestoreInProgress ), true );
 
 				// create and execute the restore task
-				RestoreBackupDataTask backupTask = new RestoreBackupDataTask( MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME, MainActivity.this );
-				backupTask.execute();
+				//RestoreBackupDataTask backupTask = new RestoreBackupDataTask( MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME, MainActivity.this );
+				//backupTask.execute();
+				Intent selectRestoreFileIntent = new Intent( MainActivity.this, RestoreSelectFileActivity.class );
+				MainActivity.this.startActivity( selectRestoreFileIntent );
 			}
 		} );
 

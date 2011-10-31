@@ -41,4 +41,5 @@
     <string name="textViewWhatsNewLabel">Was ist neu?</string>
     <string name="buttonClose">Schließen</string>
     <string name="textViewWhatsNewText">Thank you for using / updating Backup My Apps. Here are the changes since the last update:\n\n* Support for Dropbox synchronization\n* The icons of the applications are stored and displayed\n* Some bugfixes</string>
+    <string name="textViewSelectFileToRestore">Bitte wählen Sie die Backupdatei aus, welche wiederhergestellt werden soll.</string>
 </resources>
