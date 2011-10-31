@@ -51,6 +51,9 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 			Log.v( "RestoreSelectFileActivity", "Added the local backup file as possible restore source." );
 		}
 		
+		// if Dropbox-Sync is active, search for all backup files and put them into the list
+		// TODO: this
+		
 		// store an array of the package names in the class members
 		this.foundFilePathsArray = (String[])foundFilePaths.toArray( new String[ 0 ] );
 
