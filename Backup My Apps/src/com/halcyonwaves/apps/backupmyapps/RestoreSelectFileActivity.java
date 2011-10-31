@@ -5,12 +5,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.dropbox.client2.DropboxAPI;
+import com.dropbox.client2.DropboxAPI.Entry;
+import com.dropbox.client2.android.AndroidAuthSession;
+import com.dropbox.client2.exception.DropboxException;
+import com.dropbox.client2.session.AppKeyPair;
 import com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -27,6 +34,7 @@ import android.widget.ListView;
 public class RestoreSelectFileActivity extends ListActivity implements IAsyncTaskFeedback {
 	private String[] foundFilePathsArray = null;
 	private ProgressDialog restoreProgressDialog = null;
+	private SharedPreferences applicationPreferences = null;
 	
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
@@ -36,6 +44,9 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 
 		// set the custom layout of this view
 		this.setContentView( R.layout.restore_selectfile );
+		
+		// get the preference object for this application
+		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
 
 		// get the information supplied to this activity
 		Bundle extras = getIntent().getExtras();
@@ -52,7 +63,23 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 		}
 		
 		// if Dropbox-Sync is active, search for all backup files and put them into the list
-		// TODO: this
+		if( this.applicationPreferences.getBoolean( "synchronization.useDropbox", false ) ) {
+			Entry rootDirectoryMetadata = null;
+			List< Entry > directoryContent = null;
+			try {
+				rootDirectoryMetadata = MainActivity.dropboxDatabaseApi.metadata( "/", 100, null, true, null );
+				directoryContent = rootDirectoryMetadata.contents;
+				for( Entry currentEntry : directoryContent ) {
+					if( currentEntry.path.toLowerCase().endsWith( ".backupmyapps" ) ) {
+						foundFileNames.add( currentEntry.path.substring( 1, currentEntry.path.length() - 1  ) );
+						foundFilePaths.add( currentEntry.path );
+						Log.v( "RestoreSelectFileActivity>>", "Found a new backup file in the Dropbox directory: " + currentEntry.path );
+					}
+				}
+			} catch( DropboxException e ) {
+				Log.e( "RestoreSelectFileActivity", "Error while fetching the backup files in the Dropbox folder.", e );
+			}
+		}
 		
 		// store an array of the package names in the class members
 		this.foundFilePathsArray = (String[])foundFilePaths.toArray( new String[ 0 ] );
