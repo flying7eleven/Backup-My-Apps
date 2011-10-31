@@ -150,6 +150,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				//RestoreBackupDataTask backupTask = new RestoreBackupDataTask( MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME, MainActivity.this );
 				//backupTask.execute();
 				Intent selectRestoreFileIntent = new Intent( MainActivity.this, RestoreSelectFileActivity.class );
+				selectRestoreFileIntent.putExtra( "BackupFileName", (new File( MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME ) ).toString() );
 				MainActivity.this.startActivity( selectRestoreFileIntent );
 			}
 		} );
