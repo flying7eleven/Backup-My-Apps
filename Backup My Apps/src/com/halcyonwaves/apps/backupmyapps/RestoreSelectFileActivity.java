@@ -2,22 +2,32 @@ package com.halcyonwaves.apps.backupmyapps;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask;
+
 import android.app.ListActivity;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 
 /**
  * This class implements a dialog where the user can select the backup file he or she wants to
  * restore.
  * 
  * @author Tim Huetz
- * @since 0.6
+ * @since 0.5
  */
-public class RestoreSelectFileActivity extends ListActivity {
+public class RestoreSelectFileActivity extends ListActivity implements IAsyncTaskFeedback {
+	private String[] foundFilePathsArray = null;
+	private ProgressDialog restoreProgressDialog = null;
+	
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
@@ -40,9 +50,54 @@ public class RestoreSelectFileActivity extends ListActivity {
 			foundFilePaths.add( extras.getString( "BackupFileName" ) );
 			Log.v( "RestoreSelectFileActivity", "Added the local backup file as possible restore source." );
 		}
+		
+		// store an array of the package names in the class members
+		this.foundFilePathsArray = (String[])foundFilePaths.toArray( new String[ 0 ] );
 
 		// tell the view which data it should display
 		ListAdapter adapter = new ArrayAdapter< String >( this, android.R.layout.simple_list_item_1, (String[])foundFileNames.toArray( new String[ 0 ] ) );
 		this.setListAdapter( adapter );
+	}
+	
+	@Override
+	protected void onListItemClick( ListView l, View v, int position, long id ) {
+		// get the name of the file to restore
+		final String fileToRestore = this.foundFilePathsArray[ position ]; 
+		
+		// show a progress dialog
+		RestoreSelectFileActivity.this.restoreProgressDialog = ProgressDialog.show( RestoreSelectFileActivity.this, "", RestoreSelectFileActivity.this.getString( R.string.progressDialogRestoreInProgress ), true );
+
+		// create and execute the restore task
+		RestoreBackupDataTask backupTask = new RestoreBackupDataTask( fileToRestore, RestoreSelectFileActivity.this );
+		backupTask.execute();
+
+		// call the handler for this event of the super class
+		super.onListItemClick( l, v, position, id );
+	}
+
+	public void taskSuccessfull( Object sender, Object data ) {
+		if( sender.getClass().getSimpleName().equalsIgnoreCase( RestoreBackupDataTask.class.getSimpleName() ) ) {
+			// close the progress dialog
+			this.restoreProgressDialog.dismiss();
+			this.restoreProgressDialog = null;
+
+			// open the dialog for the selection of the applications to restore
+			Intent restoreSelectionActivity = new Intent( RestoreSelectFileActivity.this, RestoreSelectionActivity.class );
+			@SuppressWarnings( "unchecked" )
+			HashMap< String, String > packageInformationList = (HashMap< String, String >)data;
+			restoreSelectionActivity.putExtra( "packages", packageInformationList.size() );
+			int i = 0;
+			for( String key : packageInformationList.keySet() ) {
+				restoreSelectionActivity.putExtra( "packageName" + i, key );
+				restoreSelectionActivity.putExtra( "applicationName" + i, packageInformationList.get( key ) );
+				i++;
+			}
+			RestoreSelectFileActivity.this.startActivity( restoreSelectionActivity );
+		}
+	}
+
+	public void taskFailed( Object sender, Object data ) {
+		// TODO Auto-generated method stub
+		
 	}
 }

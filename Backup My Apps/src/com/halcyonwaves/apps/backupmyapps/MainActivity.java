@@ -46,7 +46,6 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private TextView textViewAdditionalInformation = null;
 	private Dialog dialogHelp = null;
 	private ProgressDialog backupProgressDialog = null;
-	private ProgressDialog restoreProgressDialog = null;
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStorageDirectory();
 	private SharedPreferences applicationPreferences = null;
@@ -143,12 +142,6 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// add a click handler for the button to restore the applications
 		this.buttonRestoreInstalledApplications.setOnClickListener( new OnClickListener() {
 			public void onClick( View v ) {
-				// show a progress dialog
-				//MainActivity.this.restoreProgressDialog = ProgressDialog.show( MainActivity.this, "", MainActivity.this.getString( R.string.progressDialogRestoreInProgress ), true );
-
-				// create and execute the restore task
-				//RestoreBackupDataTask backupTask = new RestoreBackupDataTask( MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME, MainActivity.this );
-				//backupTask.execute();
 				Intent selectRestoreFileIntent = new Intent( MainActivity.this, RestoreSelectFileActivity.class );
 				selectRestoreFileIntent.putExtra( "BackupFileName", (new File( MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME ) ).toString() );
 				MainActivity.this.startActivity( selectRestoreFileIntent );
@@ -274,23 +267,6 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			} );
 			dialogBuilder.show();
 
-		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( RestoreBackupDataTask.class.getSimpleName() ) ) {
-			// close the progress dialog
-			this.restoreProgressDialog.dismiss();
-			this.restoreProgressDialog = null;
-
-			// open the dialog for the selection of the applications to restore
-			Intent restoreSelectionActivity = new Intent( MainActivity.this, RestoreSelectionActivity.class );
-			@SuppressWarnings( "unchecked" )
-			HashMap< String, String > packageInformationList = (HashMap< String, String >)data;
-			restoreSelectionActivity.putExtra( "packages", packageInformationList.size() );
-			int i = 0;
-			for( String key : packageInformationList.keySet() ) {
-				restoreSelectionActivity.putExtra( "packageName" + i, key );
-				restoreSelectionActivity.putExtra( "applicationName" + i, packageInformationList.get( key ) );
-				i++;
-			}
-			MainActivity.this.startActivity( restoreSelectionActivity );
 		}
 	}
 
@@ -310,13 +286,6 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				}
 			} );
 			dialogBuilder.show();
-
-		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( RestoreBackupDataTask.class.getSimpleName() ) ) {
-			// close the progress dialog
-			this.restoreProgressDialog.dismiss();
-			this.restoreProgressDialog = null;
-
-			// TODO: notify the user that we failed
 		}
 	}
 }
