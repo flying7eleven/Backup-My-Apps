@@ -1,6 +1,8 @@
 package com.halcyonwaves.apps.backupmyapps;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -92,7 +94,29 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 	@Override
 	protected void onListItemClick( ListView l, View v, int position, long id ) {
 		// get the name of the file to restore
-		final String fileToRestore = this.foundFilePathsArray[ position ]; 
+		String fileToRestore = this.foundFilePathsArray[ position ]; 
+		
+		// check if it is a local or a Dropbox file; if its a Dropbox file, download it
+		if( !(new File( fileToRestore )).exists() ) {
+			// get a temporary file
+			File restoreFile;
+			try {
+				// get a temporary file
+				restoreFile = File.createTempFile( "backupfile", "backupmyapps" );
+				
+				// try to download the file
+				FileOutputStream outputFile = new FileOutputStream( restoreFile );
+				MainActivity.dropboxDatabaseApi.getFile( fileToRestore, null, outputFile, null );
+
+				// set the new filename
+				fileToRestore = restoreFile.toString();
+				
+			} catch( IOException e ) {
+				Log.e( "RestoreSelectFileActivity", "Failed to download the backup file from the Dropbox account.", e ); // TODO: show an error message
+			} catch(DropboxException e) {
+				Log.e( "RestoreSelectFileActivity", "Failed to download the backup file from the Dropbox account.", e ); // TODO: show an error message
+			}
+		}
 		
 		// show a progress dialog
 		RestoreSelectFileActivity.this.restoreProgressDialog = ProgressDialog.show( RestoreSelectFileActivity.this, "", RestoreSelectFileActivity.this.getString( R.string.progressDialogRestoreInProgress ), true );
