@@ -71,7 +71,7 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 				directoryContent = rootDirectoryMetadata.contents;
 				for( Entry currentEntry : directoryContent ) {
 					if( currentEntry.path.toLowerCase().endsWith( ".backupmyapps" ) ) {
-						foundFileNames.add( currentEntry.path.substring( 1, currentEntry.path.length() - 1  ) );
+						foundFileNames.add( "Dropbox: " + currentEntry.path.substring( 1, currentEntry.path.length() - 13  ) );
 						foundFilePaths.add( currentEntry.path );
 						Log.v( "RestoreSelectFileActivity>>", "Found a new backup file in the Dropbox directory: " + currentEntry.path );
 					}
