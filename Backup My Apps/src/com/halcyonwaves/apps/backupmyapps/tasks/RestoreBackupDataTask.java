@@ -37,8 +37,7 @@ import android.util.Log;
  * @since 0.3
  */
 public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
-	private File storagePath = null;
-	private String backupFilename = "";
+	private File backupFile = null;
 	private IAsyncTaskFeedback feedbackClass = null;
 	private HashMap< String, String > itemList = null;
 
@@ -52,8 +51,22 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 	 * @since 0.3
 	 */
 	public RestoreBackupDataTask( File storagePath, String backupFilename, IAsyncTaskFeedback feedbackClass ) {
-		this.storagePath = storagePath;
-		this.backupFilename = backupFilename;
+		this.backupFile = new File( storagePath, backupFilename );
+		this.feedbackClass = feedbackClass;
+		this.itemList = new HashMap< String, String >();
+	}
+	
+	/**
+	 * Constructor for this class.
+	 * 
+	 * @param storagePath The path to the backup file.
+	 * @param backupFilename The name of the backup file.
+	 * @param feedbackClass The class which should handle the feedback of this task.
+	 * @author Tim Huetz
+	 * @since 0.5
+	 */
+	public RestoreBackupDataTask( String fileToRestore, IAsyncTaskFeedback feedbackClass ) {
+		this.backupFile = new File( fileToRestore );
 		this.feedbackClass = feedbackClass;
 		this.itemList = new HashMap< String, String >();
 	}
@@ -93,12 +106,12 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 	@Override
 	protected Boolean doInBackground( Void... arg0 ) {
 		// just log some information
-		Log.v( RestoreBackupDataTask.class.getSimpleName(), "Using following external storage directory: " + this.storagePath );
+		Log.v( RestoreBackupDataTask.class.getSimpleName(), "Using following external storage file: " + this.backupFile );
 
 		// try to open the input file
 		try {
 			// get the input stream to the backup file
-			InputStream backupFileStream = new FileInputStream( new File( this.storagePath, this.backupFilename ) );
+			InputStream backupFileStream = new FileInputStream( this.backupFile );
 
 			// prepare the file for reading
 			InputStreamReader inputreader = new InputStreamReader( backupFileStream );
