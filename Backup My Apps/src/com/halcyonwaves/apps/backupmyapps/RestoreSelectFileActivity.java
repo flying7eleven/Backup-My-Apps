@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.dropbox.client2.DropboxAPI.Entry;
 import com.dropbox.client2.exception.DropboxException;
+import com.halcyonwaves.apps.backupmyapps.tasks.DownloadFromDropboxTask;
 import com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask;
 
 import android.app.ListActivity;
@@ -119,7 +120,8 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 			RestoreSelectFileActivity.this.downloadFileProgressDialog = ProgressDialog.show( RestoreSelectFileActivity.this, "", RestoreSelectFileActivity.this.getString( R.string.progressDialogDownloadingFromDropbox ), true );
 
 			// execute the background task which should download the file
-			// TODO: this
+			DownloadFromDropboxTask downloadTask = new DownloadFromDropboxTask();
+			downloadTask.execute();
 			
 			// call the handler for this event of the super class
 			super.onListItemClick( l, v, position, id );
@@ -155,6 +157,20 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 				i++;
 			}
 			RestoreSelectFileActivity.this.startActivity( restoreSelectionActivity );
+		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( DownloadFromDropboxTask.class.getSimpleName() ) ){
+			// close the download progress dialog
+			this.downloadFileProgressDialog.dismiss();
+			this.downloadFileProgressDialog = null;
+			
+			// show a progress dialog
+			RestoreSelectFileActivity.this.restoreProgressDialog = ProgressDialog.show( RestoreSelectFileActivity.this, "", RestoreSelectFileActivity.this.getString( R.string.progressDialogRestoreInProgress ), true );
+
+			// get the filename from the executing task
+			String fileToRestore = (String)data;
+	
+			// create and execute the restore task
+			RestoreBackupDataTask backupTask = new RestoreBackupDataTask( fileToRestore, RestoreSelectFileActivity.this );
+			backupTask.execute();
 		}
 	}
 
@@ -163,6 +179,16 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 			// close the progress dialog
 			this.restoreProgressDialog.dismiss();
 			this.restoreProgressDialog = null;
+			
+			// show an error message
+			// TODO: this
+			
+			// close this activity and return to the main activity
+			this.finish();
+		} else 	if( sender.getClass().getSimpleName().equalsIgnoreCase( DownloadFromDropboxTask.class.getSimpleName() ) ) {
+			// close the progress dialog
+			this.downloadFileProgressDialog.dismiss();
+			this.downloadFileProgressDialog = null;
 			
 			// show an error message
 			// TODO: this
