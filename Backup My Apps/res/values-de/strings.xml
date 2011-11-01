@@ -33,7 +33,6 @@
     <string name="preferenceCategoryBuildVersion">Build-Version</string>
     <string name="preferenceTitleBuildVersion">Build-Version</string>
     <string name="preferenceSummaryBuildVersion">Version: %s</string>
-    
     <string name="preferenceCategorySynchronization">Synchronisation</string>
     <string name="preferenceTitleEnableDropboxSynchronization">Synchronisation verwenden</string>
     <string name="preferenceSummaryEnableDropboxSynchronizationOn">Die Daten werden lokal und in Ihrem Dropbox-Account gespeichert.</string>
