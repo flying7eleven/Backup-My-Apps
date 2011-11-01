@@ -96,31 +96,12 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 		String fileToRestore = this.foundFilePathsArray[ position ]; 
 		
 		// check if it is a local or a Dropbox file; if its a Dropbox file, download it
-		if( !(new File( fileToRestore )).exists() ) {
-			/*// get a temporary file
-			File restoreFile;
-			try {
-				// get a temporary file
-				restoreFile = File.createTempFile( "backupfile", "backupmyapps" );
-				
-				// try to download the file
-				FileOutputStream outputFile = new FileOutputStream( restoreFile );
-				MainActivity.dropboxDatabaseApi.getFile( fileToRestore, null, outputFile, null );
-
-				// set the new filename
-				fileToRestore = restoreFile.toString();
-				
-			} catch( IOException e ) {
-				Log.e( "RestoreSelectFileActivity", "Failed to download the backup file from the Dropbox account.", e ); // TODO: show an error message
-			} catch(DropboxException e) {
-				Log.e( "RestoreSelectFileActivity", "Failed to download the backup file from the Dropbox account.", e ); // TODO: show an error message
-			}*/
-			
+		if( !(new File( fileToRestore )).exists() ) {			
 			// show a progress dialog that the application is downloading the file
 			RestoreSelectFileActivity.this.downloadFileProgressDialog = ProgressDialog.show( RestoreSelectFileActivity.this, "", RestoreSelectFileActivity.this.getString( R.string.progressDialogDownloadingFromDropbox ), true );
 
 			// execute the background task which should download the file
-			DownloadFromDropboxTask downloadTask = new DownloadFromDropboxTask( this.getApplicationContext(), RestoreSelectFileActivity.this );
+			DownloadFromDropboxTask downloadTask = new DownloadFromDropboxTask( fileToRestore, this.getApplicationContext(), RestoreSelectFileActivity.this );
 			downloadTask.execute();
 			
 			// call the handler for this event of the super class
