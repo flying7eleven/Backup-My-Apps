@@ -1,7 +1,12 @@
 package com.halcyonwaves.apps.backupmyapps.tasks;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import com.dropbox.client2.DropboxAPI;
 import com.dropbox.client2.android.AndroidAuthSession;
+import com.dropbox.client2.exception.DropboxException;
 import com.dropbox.client2.session.AccessTokenPair;
 import com.dropbox.client2.session.AppKeyPair;
 import com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback;
@@ -12,6 +17,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 /**
  * Class for downloading the backup file from the Dropbox account.
@@ -22,6 +28,8 @@ import android.preference.PreferenceManager;
 public class DownloadFromDropboxTask extends AsyncTask< Void, Void, Boolean > {
 	private SharedPreferences applicationPreferences = null;
 	private DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
+	private IAsyncTaskFeedback usedFeedbackClass = null;
+	private String fileToRestore = "";
 	
 	/**
 	 * Constructor of this class.
@@ -29,7 +37,11 @@ public class DownloadFromDropboxTask extends AsyncTask< Void, Void, Boolean > {
 	 * @param applicationContext The application context used to get the preferences.
 	 * @param feedbackClass The class to which the feedback should be send.
 	 */
-	public DownloadFromDropboxTask( Context applicationContext, IAsyncTaskFeedback feedbackClass ) {
+	public DownloadFromDropboxTask( String fileToRestoreFromDb, Context applicationContext, IAsyncTaskFeedback feedbackClass ) {
+		// set some class attributes
+		this.fileToRestore = fileToRestoreFromDb;
+		this.usedFeedbackClass = feedbackClass;
+		
 		// get the preference object for this application
 		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( applicationContext );
 		
@@ -51,8 +63,29 @@ public class DownloadFromDropboxTask extends AsyncTask< Void, Void, Boolean > {
 	
 	@Override
 	protected Boolean doInBackground( Void... arg0 ) {
-		// TODO Auto-generated method stub
-		return null;
+		// get a temporary file
+		File restoreFile;
+		try {
+			// get a temporary file
+			restoreFile = File.createTempFile( "backupfile", "backupmyapps" );
+			
+			// try to download the file
+			FileOutputStream outputFile = new FileOutputStream( restoreFile );
+			this.dropboxDatabaseApi.getFile( this.fileToRestore, null, outputFile, null );
+
+			// give application feedback
+			this.usedFeedbackClass.taskSuccessfull( this, (Object)restoreFile.toString() );
+			return true;
+			
+		} catch( IOException e ) {
+			Log.e( "RestoreSelectFileActivity", "Failed to download the backup file from the Dropbox account.", e ); // TODO: show an error message
+		} catch(DropboxException e) {
+			Log.e( "RestoreSelectFileActivity", "Failed to download the backup file from the Dropbox account.", e ); // TODO: show an error message
+		}
+		
+		// failed to do this task
+		this.usedFeedbackClass.taskFailed( this, null );
+		return false;
 	}
 
 }
