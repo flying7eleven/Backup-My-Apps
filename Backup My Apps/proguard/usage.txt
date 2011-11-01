@@ -124,7 +124,7 @@ com.halcyonwaves.apps.backupmyapps.SettingsActivity:
 com.halcyonwaves.apps.backupmyapps.packages.PackageInformation:
     106:107:public void logPackage()
 com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask:
-    53:57:public RestoreBackupDataTask(java.io.File,java.lang.String,com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback)
+    52:56:public RestoreBackupDataTask(java.io.File,java.lang.String,com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback)
 com.halcyonwaves.apps.backupmyapps.utils.Base64:
     150:192:public static final byte[] decode(char[])
     207:257:public static final byte[] decodeFast(char[])
