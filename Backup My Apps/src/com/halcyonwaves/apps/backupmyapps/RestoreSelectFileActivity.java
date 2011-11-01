@@ -120,7 +120,7 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 			RestoreSelectFileActivity.this.downloadFileProgressDialog = ProgressDialog.show( RestoreSelectFileActivity.this, "", RestoreSelectFileActivity.this.getString( R.string.progressDialogDownloadingFromDropbox ), true );
 
 			// execute the background task which should download the file
-			DownloadFromDropboxTask downloadTask = new DownloadFromDropboxTask();
+			DownloadFromDropboxTask downloadTask = new DownloadFromDropboxTask( this.getApplicationContext(), RestoreSelectFileActivity.this );
 			downloadTask.execute();
 			
 			// call the handler for this event of the super class
