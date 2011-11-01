@@ -33,6 +33,7 @@ import android.widget.ListView;
 public class RestoreSelectFileActivity extends ListActivity implements IAsyncTaskFeedback {
 	private String[] foundFilePathsArray = null;
 	private ProgressDialog restoreProgressDialog = null;
+	private ProgressDialog downloadFileProgressDialog = null;
 	private SharedPreferences applicationPreferences = null;
 	
 	@Override
@@ -95,7 +96,7 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 		
 		// check if it is a local or a Dropbox file; if its a Dropbox file, download it
 		if( !(new File( fileToRestore )).exists() ) {
-			// get a temporary file
+			/*// get a temporary file
 			File restoreFile;
 			try {
 				// get a temporary file
@@ -112,7 +113,17 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 				Log.e( "RestoreSelectFileActivity", "Failed to download the backup file from the Dropbox account.", e ); // TODO: show an error message
 			} catch(DropboxException e) {
 				Log.e( "RestoreSelectFileActivity", "Failed to download the backup file from the Dropbox account.", e ); // TODO: show an error message
-			}
+			}*/
+			
+			// show a progress dialog that the application is downloading the file
+			RestoreSelectFileActivity.this.downloadFileProgressDialog = ProgressDialog.show( RestoreSelectFileActivity.this, "", RestoreSelectFileActivity.this.getString( R.string.progressDialogDownloadingFromDropbox ), true );
+
+			// execute the background task which should download the file
+			// TODO: this
+			
+			// call the handler for this event of the super class
+			super.onListItemClick( l, v, position, id );
+			return;
 		}
 		
 		// show a progress dialog
