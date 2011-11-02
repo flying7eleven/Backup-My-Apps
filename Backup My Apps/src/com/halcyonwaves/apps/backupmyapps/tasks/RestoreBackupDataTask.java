@@ -114,7 +114,7 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 
 			// prepare the file for reading
 			InputStreamReader inputreader = new InputStreamReader( backupFileStream );
-			BufferedReader buffreader = new BufferedReader( inputreader );
+			BufferedReader buffreader = new BufferedReader( inputreader, 8192 );
 
 			// read the whole file into the memory
 			String line, full = "";
