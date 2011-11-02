@@ -72,7 +72,7 @@ public class SettingsActivity extends PreferenceActivity {
 				Log.e( "BackupMyAppsDropbox", "Error during the authentication with Dropbox!", e );
 			}
 		} else {
-			// ((CheckBoxPreference)this.loginIntoDropbox).setChecked( false );
+			((CheckBoxPreference)this.loginIntoDropbox).setChecked( false );
 		}
 	}
 
