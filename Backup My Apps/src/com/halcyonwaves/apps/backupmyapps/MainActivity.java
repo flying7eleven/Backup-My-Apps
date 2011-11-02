@@ -48,7 +48,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private final File storagePath = Environment.getExternalStorageDirectory();
 	private SharedPreferences applicationPreferences = null;
 	private static final String PREFERENCES_LAST_WHATSNEW_DIALOG = "com.halcyonwaves.apps.backupmyapps.lastWhatsNewDialog";
-	public static DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
+	private DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
 	private final static int DIALOG_WHATSNEW = 1; 
 
 	@Override
@@ -89,7 +89,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// setup the Dropbox API client
 		AppKeyPair appKeys = new AppKeyPair( MainActivity.DROPBOX_API_APP_KEY, MainActivity.DROPBOX_API_APP_SECRET );
 		AndroidAuthSession session = new AndroidAuthSession( appKeys, MainActivity.DROPBOX_API_APP_ACCESS_TYPE );
-		MainActivity.dropboxDatabaseApi = new DropboxAPI< AndroidAuthSession >( session );
+		this.dropboxDatabaseApi = new DropboxAPI< AndroidAuthSession >( session );
 
 		// if we already have stored authentication keys, use them
 		if( this.applicationPreferences.getString( "synchronization.dropboxAccessKey", "" ).length() > 0 ) {
@@ -101,7 +101,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			AccessTokenPair tokens = new AccessTokenPair( key, secret );
 
 			// set the loaded access token pair
-			MainActivity.dropboxDatabaseApi.getSession().setAccessTokenPair( tokens );
+			this.dropboxDatabaseApi.getSession().setAccessTokenPair( tokens );
 
 			// just log that we set the correct auth tokens
 			Log.i( "BackupMyAppsDropbox", "Successfully set the stored Dropbox authentication tokens." );
@@ -226,7 +226,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				// try to upload the backup file
 				try {
 					FileInputStream inputStream = new FileInputStream( backupFile );
-					Entry newEntry = MainActivity.dropboxDatabaseApi.putFileOverwrite( "/" + backupFilename, inputStream, backupFile.length(), null );
+					Entry newEntry = this.dropboxDatabaseApi.putFileOverwrite( "/" + backupFilename, inputStream, backupFile.length(), null );
 					Log.i( "BackupMyAppsDropbox", "The uploaded file's rev is: " + newEntry.rev );
 				} catch( DropboxUnlinkedException e ) {
 					Log.e( "BackupMyAppsDropbox", "The Dropbox account is not linked to the application anymore. Cannot upload the backup file.", e ); // TODO: handle this by telling it to the user
