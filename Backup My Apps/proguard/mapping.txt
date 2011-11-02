@@ -193,14 +193,15 @@ com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback -> com.halcyonwaves.apps.b
     void taskFailed(java.lang.Object,java.lang.Object) -> b
 com.halcyonwaves.apps.backupmyapps.MainActivity -> com.halcyonwaves.apps.backupmyapps.MainActivity:
     com.dropbox.client2.session.Session$AccessType DROPBOX_API_APP_ACCESS_TYPE -> a
-    android.widget.Button buttonBackupInstalledApplications -> c
-    android.widget.Button buttonRestoreInstalledApplications -> d
-    android.widget.TextView textViewAdditionalInformation -> e
-    android.app.Dialog dialogHelp -> f
-    android.app.ProgressDialog backupProgressDialog -> g
+    android.widget.Button buttonBackupInstalledApplications -> b
+    android.widget.Button buttonRestoreInstalledApplications -> c
+    android.widget.TextView textViewAdditionalInformation -> d
+    android.app.Dialog dialogHelp -> e
+    android.app.ProgressDialog backupProgressDialog -> f
+    android.app.ProgressDialog uploadProgressDialog -> g
     java.io.File storagePath -> h
     android.content.SharedPreferences applicationPreferences -> i
-    com.dropbox.client2.DropboxAPI dropboxDatabaseApi -> b
+    com.dropbox.client2.DropboxAPI dropboxDatabaseApi -> j
     android.app.Dialog onCreateDialog(int) -> onCreateDialog
     void onCreate(android.os.Bundle) -> onCreate
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
@@ -233,7 +234,9 @@ com.halcyonwaves.apps.backupmyapps.MainActivity$7 -> com.halcyonwaves.apps.backu
 com.halcyonwaves.apps.backupmyapps.RestoreSelectFileActivity -> com.halcyonwaves.apps.backupmyapps.RestoreSelectFileActivity:
     java.lang.String[] foundFilePathsArray -> a
     android.app.ProgressDialog restoreProgressDialog -> b
-    android.content.SharedPreferences applicationPreferences -> c
+    android.app.ProgressDialog downloadFileProgressDialog -> c
+    android.content.SharedPreferences applicationPreferences -> d
+    com.dropbox.client2.DropboxAPI dropboxDatabaseApi -> e
     void onCreate(android.os.Bundle) -> onCreate
     void onListItemClick(android.widget.ListView,android.view.View,int,long) -> onListItemClick
     void taskSuccessfull(java.lang.Object,java.lang.Object) -> a
@@ -247,12 +250,14 @@ com.halcyonwaves.apps.backupmyapps.SettingsActivity -> com.halcyonwaves.apps.bac
     android.preference.Preference buildVersionPreference -> a
     android.preference.CheckBoxPreference loginIntoDropbox -> b
     android.content.SharedPreferences applicationPreferences -> c
+    com.dropbox.client2.DropboxAPI dropboxDatabaseApi -> d
     java.lang.String getApplicationVersion() -> a
     void onResume() -> onResume
     void onCreate(android.os.Bundle) -> onCreate
     java.lang.String access$0(com.halcyonwaves.apps.backupmyapps.SettingsActivity) -> a
     android.preference.CheckBoxPreference access$1(com.halcyonwaves.apps.backupmyapps.SettingsActivity) -> b
-    android.content.SharedPreferences access$2(com.halcyonwaves.apps.backupmyapps.SettingsActivity) -> c
+    com.dropbox.client2.DropboxAPI access$2(com.halcyonwaves.apps.backupmyapps.SettingsActivity) -> c
+    android.content.SharedPreferences access$3(com.halcyonwaves.apps.backupmyapps.SettingsActivity) -> d
 com.halcyonwaves.apps.backupmyapps.SettingsActivity$1 -> com.halcyonwaves.apps.backupmyapps.i:
     com.halcyonwaves.apps.backupmyapps.SettingsActivity this$0 -> a
     boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
@@ -275,6 +280,15 @@ com.halcyonwaves.apps.backupmyapps.packages.PackageInformation -> com.halcyonwav
 com.halcyonwaves.apps.backupmyapps.packages.PackageInformationManager -> com.halcyonwaves.apps.backupmyapps.b.a:
     android.content.pm.PackageManager internalPackageManager -> a
     java.util.ArrayList getInstalledApps() -> a
+com.halcyonwaves.apps.backupmyapps.tasks.DownloadFromDropboxTask -> com.halcyonwaves.apps.backupmyapps.a.b:
+    android.content.SharedPreferences applicationPreferences -> a
+    com.dropbox.client2.DropboxAPI dropboxDatabaseApi -> b
+    com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback usedFeedbackClass -> c
+    java.lang.String fileToRestore -> d
+    java.lang.Boolean doInBackground(java.lang.Void[]) -> a
+    void onPostExecute(java.lang.Boolean) -> a
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 com.halcyonwaves.apps.backupmyapps.tasks.GatherBackupInformationTask -> com.halcyonwaves.apps.backupmyapps.a.a:
     java.io.File storagePath -> a
     android.content.Context applicationContext -> b
@@ -285,11 +299,20 @@ com.halcyonwaves.apps.backupmyapps.tasks.GatherBackupInformationTask -> com.halc
     void onPostExecute(java.lang.Boolean) -> a
     void onPostExecute(java.lang.Object) -> onPostExecute
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask -> com.halcyonwaves.apps.backupmyapps.a.b:
+com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask -> com.halcyonwaves.apps.backupmyapps.a.c:
     java.io.File backupFile -> a
     com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback feedbackClass -> b
     java.util.HashMap itemList -> c
     org.w3c.dom.Document XMLfromString(java.lang.String) -> a
+    java.lang.Boolean doInBackground(java.lang.Void[]) -> a
+    void onPostExecute(java.lang.Boolean) -> a
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+com.halcyonwaves.apps.backupmyapps.tasks.UploadToDropboxTask -> com.halcyonwaves.apps.backupmyapps.a.d:
+    android.content.SharedPreferences applicationPreferences -> a
+    com.dropbox.client2.DropboxAPI dropboxDatabaseApi -> b
+    com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback usedFeedbackClass -> c
+    java.lang.String fileToUpload -> d
     java.lang.Boolean doInBackground(java.lang.Void[]) -> a
     void onPostExecute(java.lang.Boolean) -> a
     void onPostExecute(java.lang.Object) -> onPostExecute
