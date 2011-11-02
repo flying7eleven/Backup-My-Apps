@@ -23,7 +23,7 @@ import android.util.Log;
  * Class for downloading the backup file from the Dropbox account.
  * 
  * @author Tim Huetz
- * @since 0.5
+ * @since 0.5.1
  */
 public class DownloadFromDropboxTask extends AsyncTask< Void, Void, Boolean > {
 	private SharedPreferences applicationPreferences = null;
@@ -34,6 +34,7 @@ public class DownloadFromDropboxTask extends AsyncTask< Void, Void, Boolean > {
 	/**
 	 * Constructor of this class.
 	 * 
+	 * @param fileToRestoreFromDb The file which should be downloaded from the Dropbox account.
 	 * @param applicationContext The application context used to get the preferences.
 	 * @param feedbackClass The class to which the feedback should be send.
 	 */
