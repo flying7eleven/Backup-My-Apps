@@ -5,8 +5,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.dropbox.client2.DropboxAPI;
 import com.dropbox.client2.DropboxAPI.Entry;
+import com.dropbox.client2.android.AndroidAuthSession;
 import com.dropbox.client2.exception.DropboxException;
+import com.dropbox.client2.session.AccessTokenPair;
+import com.dropbox.client2.session.AppKeyPair;
 import com.halcyonwaves.apps.backupmyapps.tasks.DownloadFromDropboxTask;
 import com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask;
 
@@ -35,6 +39,7 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 	private ProgressDialog restoreProgressDialog = null;
 	private ProgressDialog downloadFileProgressDialog = null;
 	private SharedPreferences applicationPreferences = null;
+	private DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
 	private static final int DIALOG_DOWNLOADING_FILE = 1;
 	private static final int DIALOG_RESTORING_APPS = 2;
 	
@@ -62,6 +67,27 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 		
 		// get the preference object for this application
 		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
+		
+		// setup the Dropbox API client
+		AppKeyPair appKeys = new AppKeyPair( MainActivity.DROPBOX_API_APP_KEY, MainActivity.DROPBOX_API_APP_SECRET );
+		AndroidAuthSession session = new AndroidAuthSession( appKeys, MainActivity.DROPBOX_API_APP_ACCESS_TYPE );
+		this.dropboxDatabaseApi = new DropboxAPI< AndroidAuthSession >( session );
+
+		// if we already have stored authentication keys, use them
+		if( this.applicationPreferences.getString( "synchronization.dropboxAccessKey", "" ).length() > 0 ) {
+			// get the key and the secret from the settings
+			String key = this.applicationPreferences.getString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_KEY, "" );
+			String secret = this.applicationPreferences.getString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_SECRET, "" );
+
+			// create the required Dropbox access token object
+			AccessTokenPair tokens = new AccessTokenPair( key, secret );
+
+			// set the loaded access token pair
+			this.dropboxDatabaseApi.getSession().setAccessTokenPair( tokens );
+
+			// just log that we set the correct auth tokens
+			Log.i( "BackupMyAppsRestoreSelectFile", "Successfully set the stored Dropbox authentication tokens." );
+		}
 
 		// get the information supplied to this activity
 		Bundle extras = getIntent().getExtras();
@@ -82,7 +108,7 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 			Entry rootDirectoryMetadata = null;
 			List< Entry > directoryContent = null;
 			try {
-				rootDirectoryMetadata = MainActivity.dropboxDatabaseApi.metadata( "/", 100, null, true, null );
+				rootDirectoryMetadata = this.dropboxDatabaseApi.metadata( "/", 100, null, true, null );
 				directoryContent = rootDirectoryMetadata.contents;
 				for( Entry currentEntry : directoryContent ) {
 					if( currentEntry.path.toLowerCase().endsWith( ".backupmyapps" ) ) {
