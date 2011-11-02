@@ -9,7 +9,6 @@
     <string name="buttonOk">OK</string>
     <string name="progressDialogBackupInProgress">Gathering and saving application backup information. Please wait...</string>
     <string name="menuHelp">Help</string>
-    <string name="textViewAdditionalInformation">To backup the installed applications, press the backup button. The file with the backup information will be stored in %s. To restore the applications place the file with the backup information in the same folder and press the restore button.\n\nFor more information open the menu and select the Help item.</string>
     <string name="dialogTitleHelpDialog">Help</string>
     <string name="textViewHelpText">This application reads information about the installed applications and stores this information in a XML file. This file can be used to reinstall all applications on a new device or after a factory reset.\n\n As this application is still under development, please expect frequent updates and bugs inside the application.</string>
     <string name="dialogTitleAboutDialog">About...</string>
@@ -19,9 +18,7 @@
     <string name="textViewAboutArtworkContent">Tango harm-on-icons</string>
     <string name="textViewAboutTranslationsLabel">Translations</string>
     <string name="textViewAboutTranslationsContent">Tim Hütz\nMichaela Gaens</string>
-    <string name="dialogMessageAskForPackageInformation">First of all we would like to thank you for using this application.\n\nSince this application uses package names in order to exclude system packages from the backup, we are currently collecting system package names for the various smartphone manufacturers. Therefore, we would like to ask you to send us your backup file to <a href="mailto:backupmyapps@halcyonwaves.com">backupmyapps@halcyonwaves.com</a>.\n\nThank you!</string>
     <string name="progressDialogRestoreInProgress">Restore in progress. Please wait...</string>
-    <string name="menuPackageInformationHelp">How you can help</string>
     <string name="textViewSelectApplicationToRestore">To restore an application from your backup, click on the application name. The corresponding item will open in the Android Market allowing you to install the application.</string>
     <string name="dialogMessageBackupFailed">Failed to create a list of the installed applications. Please reboot your device and try again.</string>
     <string name="dialogMessageBackupSucceeded">Successfully created the list of the installed applications.</string>
@@ -42,4 +39,7 @@
     <string name="textViewWhatsNewText">Thank you for using / updating Backup My Apps. Here are the changes since the last update:\n\n* Support for Dropbox synchronization\n* Better multithreading support\n* Application icons are now stored in the backup file\n* Several bugfixes</string>
     <string name="textViewSelectFileToRestore">Please select the backup file you want to restore from on your current device.</string>
     <string name="listItemLocalBackupFile">Local backup file</string>
+    <string name="textViewAdditionalInformation">To backup the installed applications, press the backup button. The file with the backup information will be stored in %s. To restore the applications place the file with the backup information in the same folder and press the restore button. Optionally, if you enabled the synchronization option of this application, the restore function will also display backup files found in your Dropbox folder.\n\nFor more information open the menu and select the Help item.</string>
+    <string name="progressDialogUploadingToDropbox">Uploading the backup file into your Dropbox folder. Please wait...</string>
+    <string name="progressDialogDownloadingFromDropbox">Downloading the backup file from your Dropbox folder. Please wait...</string>
 </resources>

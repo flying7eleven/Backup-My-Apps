@@ -1,14 +1,17 @@
 package com.halcyonwaves.apps.backupmyapps;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.dropbox.client2.DropboxAPI;
 import com.dropbox.client2.DropboxAPI.Entry;
+import com.dropbox.client2.android.AndroidAuthSession;
 import com.dropbox.client2.exception.DropboxException;
+import com.dropbox.client2.session.AccessTokenPair;
+import com.dropbox.client2.session.AppKeyPair;
+import com.halcyonwaves.apps.backupmyapps.tasks.DownloadFromDropboxTask;
 import com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask;
 
 import android.app.ListActivity;
@@ -33,7 +36,9 @@ import android.widget.ListView;
 public class RestoreSelectFileActivity extends ListActivity implements IAsyncTaskFeedback {
 	private String[] foundFilePathsArray = null;
 	private ProgressDialog restoreProgressDialog = null;
+	private ProgressDialog downloadFileProgressDialog = null;
 	private SharedPreferences applicationPreferences = null;
+	private DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
 	
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
@@ -46,6 +51,27 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 		
 		// get the preference object for this application
 		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
+		
+		// setup the Dropbox API client
+		AppKeyPair appKeys = new AppKeyPair( MainActivity.DROPBOX_API_APP_KEY, MainActivity.DROPBOX_API_APP_SECRET );
+		AndroidAuthSession session = new AndroidAuthSession( appKeys, MainActivity.DROPBOX_API_APP_ACCESS_TYPE );
+		this.dropboxDatabaseApi = new DropboxAPI< AndroidAuthSession >( session );
+
+		// if we already have stored authentication keys, use them
+		if( this.applicationPreferences.getString( "synchronization.dropboxAccessKey", "" ).length() > 0 ) {
+			// get the key and the secret from the settings
+			String key = this.applicationPreferences.getString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_KEY, "" );
+			String secret = this.applicationPreferences.getString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_SECRET, "" );
+
+			// create the required Dropbox access token object
+			AccessTokenPair tokens = new AccessTokenPair( key, secret );
+
+			// set the loaded access token pair
+			this.dropboxDatabaseApi.getSession().setAccessTokenPair( tokens );
+
+			// just log that we set the correct auth tokens
+			Log.i( "BackupMyAppsRestoreSelectFile", "Successfully set the stored Dropbox authentication tokens." );
+		}
 
 		// get the information supplied to this activity
 		Bundle extras = getIntent().getExtras();
@@ -66,7 +92,7 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 			Entry rootDirectoryMetadata = null;
 			List< Entry > directoryContent = null;
 			try {
-				rootDirectoryMetadata = MainActivity.dropboxDatabaseApi.metadata( "/", 100, null, true, null );
+				rootDirectoryMetadata = this.dropboxDatabaseApi.metadata( "/", 100, null, true, null );
 				directoryContent = rootDirectoryMetadata.contents;
 				for( Entry currentEntry : directoryContent ) {
 					if( currentEntry.path.toLowerCase().endsWith( ".backupmyapps" ) ) {
@@ -94,25 +120,17 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 		String fileToRestore = this.foundFilePathsArray[ position ]; 
 		
 		// check if it is a local or a Dropbox file; if its a Dropbox file, download it
-		if( !(new File( fileToRestore )).exists() ) {
-			// get a temporary file
-			File restoreFile;
-			try {
-				// get a temporary file
-				restoreFile = File.createTempFile( "backupfile", "backupmyapps" );
-				
-				// try to download the file
-				FileOutputStream outputFile = new FileOutputStream( restoreFile );
-				MainActivity.dropboxDatabaseApi.getFile( fileToRestore, null, outputFile, null );
+		if( !(new File( fileToRestore )).exists() ) {			
+			// show a progress dialog that the application is downloading the file
+			RestoreSelectFileActivity.this.downloadFileProgressDialog = ProgressDialog.show( RestoreSelectFileActivity.this, "", RestoreSelectFileActivity.this.getString( R.string.progressDialogDownloadingFromDropbox ), true );
 
-				// set the new filename
-				fileToRestore = restoreFile.toString();
-				
-			} catch( IOException e ) {
-				Log.e( "RestoreSelectFileActivity", "Failed to download the backup file from the Dropbox account.", e ); // TODO: show an error message
-			} catch(DropboxException e) {
-				Log.e( "RestoreSelectFileActivity", "Failed to download the backup file from the Dropbox account.", e ); // TODO: show an error message
-			}
+			// execute the background task which should download the file
+			DownloadFromDropboxTask downloadTask = new DownloadFromDropboxTask( fileToRestore, this.getApplicationContext(), RestoreSelectFileActivity.this );
+			downloadTask.execute();
+			
+			// call the handler for this event of the super class
+			super.onListItemClick( l, v, position, id );
+			return;
 		}
 		
 		// show a progress dialog
@@ -144,6 +162,20 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 				i++;
 			}
 			RestoreSelectFileActivity.this.startActivity( restoreSelectionActivity );
+		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( DownloadFromDropboxTask.class.getSimpleName() ) ){
+			// close the download progress dialog
+			this.downloadFileProgressDialog.dismiss();
+			this.downloadFileProgressDialog = null;
+			
+			// show a progress dialog
+			this.restoreProgressDialog = ProgressDialog.show( RestoreSelectFileActivity.this, "", RestoreSelectFileActivity.this.getString( R.string.progressDialogRestoreInProgress ), true );
+
+			// get the filename from the executing task
+			String fileToRestore = (String)data;
+	
+			// create and execute the restore task
+			RestoreBackupDataTask backupTask = new RestoreBackupDataTask( fileToRestore, RestoreSelectFileActivity.this );
+			backupTask.execute();
 		}
 	}
 
@@ -152,6 +184,15 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 			// close the progress dialog
 			this.restoreProgressDialog.dismiss();
 			this.restoreProgressDialog = null;
+			
+			// show an error message
+			// TODO: this
+			// close this activity and return to the main activity
+			this.finish();
+		} else 	if( sender.getClass().getSimpleName().equalsIgnoreCase( DownloadFromDropboxTask.class.getSimpleName() ) ) {
+			// close the progress dialog
+			this.downloadFileProgressDialog.dismiss();
+			this.downloadFileProgressDialog = null;
 			
 			// show an error message
 			// TODO: this

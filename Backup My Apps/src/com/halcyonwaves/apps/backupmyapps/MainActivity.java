@@ -1,18 +1,14 @@
 package com.halcyonwaves.apps.backupmyapps;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 
 import com.dropbox.client2.DropboxAPI;
-import com.dropbox.client2.DropboxAPI.Entry;
 import com.dropbox.client2.android.AndroidAuthSession;
-import com.dropbox.client2.exception.DropboxException;
-import com.dropbox.client2.exception.DropboxUnlinkedException;
 import com.dropbox.client2.session.AccessTokenPair;
 import com.dropbox.client2.session.AppKeyPair;
 import com.dropbox.client2.session.Session.AccessType;
 import com.halcyonwaves.apps.backupmyapps.tasks.GatherBackupInformationTask;
+import com.halcyonwaves.apps.backupmyapps.tasks.UploadToDropboxTask;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -44,11 +40,12 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private TextView textViewAdditionalInformation = null;
 	private Dialog dialogHelp = null;
 	private ProgressDialog backupProgressDialog = null;
+	private ProgressDialog uploadProgressDialog = null;
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStorageDirectory();
 	private SharedPreferences applicationPreferences = null;
 	private static final String PREFERENCES_LAST_WHATSNEW_DIALOG = "com.halcyonwaves.apps.backupmyapps.lastWhatsNewDialog";
-	public static DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
+	private DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
 	private final static int DIALOG_WHATSNEW = 1; 
 
 	@Override
@@ -89,7 +86,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// setup the Dropbox API client
 		AppKeyPair appKeys = new AppKeyPair( MainActivity.DROPBOX_API_APP_KEY, MainActivity.DROPBOX_API_APP_SECRET );
 		AndroidAuthSession session = new AndroidAuthSession( appKeys, MainActivity.DROPBOX_API_APP_ACCESS_TYPE );
-		MainActivity.dropboxDatabaseApi = new DropboxAPI< AndroidAuthSession >( session );
+		this.dropboxDatabaseApi = new DropboxAPI< AndroidAuthSession >( session );
 
 		// if we already have stored authentication keys, use them
 		if( this.applicationPreferences.getString( "synchronization.dropboxAccessKey", "" ).length() > 0 ) {
@@ -101,7 +98,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			AccessTokenPair tokens = new AccessTokenPair( key, secret );
 
 			// set the loaded access token pair
-			MainActivity.dropboxDatabaseApi.getSession().setAccessTokenPair( tokens );
+			this.dropboxDatabaseApi.getSession().setAccessTokenPair( tokens );
 
 			// just log that we set the correct auth tokens
 			Log.i( "BackupMyAppsDropbox", "Successfully set the stored Dropbox authentication tokens." );
@@ -197,19 +194,6 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				}
 				this.dialogHelp.show();
 				return true;
-			case R.id.menuPackageInformationHelp:
-				// ask the user for sending the requested information
-				AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( this );
-				dialogBuilder.setMessage( R.string.dialogMessageAskForPackageInformation );
-				dialogBuilder.setCancelable( false );
-				dialogBuilder.setPositiveButton( R.string.buttonOk, new DialogInterface.OnClickListener() {
-					public void onClick( DialogInterface dialog, int id ) {
-						// nothing to do here
-					}
-				} );
-				AlertDialog infoDialog = dialogBuilder.create();
-				infoDialog.show();
-				return true;
 			default:
 				return super.onOptionsItemSelected( item );
 		}
@@ -227,32 +211,25 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			// enable the restore button, because we succeeded creating the backup
 			this.buttonRestoreInstalledApplications.setEnabled( true );
 
-			// if we should sync, copy the file to the Dropbox account
-			if( this.applicationPreferences.getBoolean( "synchronization.useDropbox", false ) ) {
-				// define the backup filename
-				String backupFilename = android.os.Build.DEVICE + "-" + android.os.Build.MODEL + ".backupmyapps";
-				backupFilename = backupFilename.replace( ' ', '-' );
-
-				// upload the file
-				File backupFile = new File( this.storagePath, MainActivity.BACKUP_FILENAME );
-				
-				// try to upload the backup file
-				try {
-					FileInputStream inputStream = new FileInputStream( backupFile );
-					Entry newEntry = MainActivity.dropboxDatabaseApi.putFileOverwrite( "/" + backupFilename, inputStream, backupFile.length(), null );
-					Log.i( "BackupMyAppsDropbox", "The uploaded file's rev is: " + newEntry.rev );
-				} catch( DropboxUnlinkedException e ) {
-					Log.e( "BackupMyAppsDropbox", "The Dropbox account is not linked to the application anymore. Cannot upload the backup file.", e ); // TODO: handle this by telling it to the user
-				} catch( DropboxException e ) {
-					Log.e( "BackupMyAppsDropbox", "Something went wrong while uploading the backup file to the Dropbox account.", e ); // TODO: handle this by telling it to the user
-				} catch( FileNotFoundException e ) {
-					Log.e( "BackupMyAppsDropbox", "The backup file was not found.", e );
-				}
-			}
-
 			// close the progress dialog
 			this.backupProgressDialog.dismiss();
 			this.backupProgressDialog = null;
+			
+			// if we should sync, copy the file to the Dropbox account
+			if( this.applicationPreferences.getBoolean( "synchronization.useDropbox", false ) ) {
+				// show a new dialog
+				this.uploadProgressDialog = ProgressDialog.show( MainActivity.this, "", this.getString( R.string.progressDialogUploadingToDropbox ), true );
+				
+				// generate the filename for the upload
+				File backupFile = new File( this.storagePath, MainActivity.BACKUP_FILENAME );
+				
+				// try to upload the file
+				UploadToDropboxTask uploadTask = new UploadToDropboxTask( backupFile.toString(), this.getApplicationContext(), this );
+				uploadTask.execute();
+				
+				// be sure that we don't execute the following code in this case
+				return;
+			}
 
 			// inform the user that we succeeded in backuping the data
 			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( this );
@@ -264,7 +241,21 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				}
 			} );
 			dialogBuilder.show();
-
+		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( UploadToDropboxTask.class.getSimpleName() ) ) {
+			// close the progress dialog
+			this.uploadProgressDialog.dismiss();
+			this.uploadProgressDialog = null;
+			
+			// inform the user that we succeeded in backuping the data
+			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( this );
+			dialogBuilder.setMessage( R.string.dialogMessageBackupSucceeded );
+			dialogBuilder.setCancelable( false );
+			dialogBuilder.setPositiveButton( R.string.buttonOk, new DialogInterface.OnClickListener() {
+				public void onClick( DialogInterface dialog, int id ) {
+					// nothing to do here
+				}
+			} );
+			dialogBuilder.show();
 		}
 	}
 
