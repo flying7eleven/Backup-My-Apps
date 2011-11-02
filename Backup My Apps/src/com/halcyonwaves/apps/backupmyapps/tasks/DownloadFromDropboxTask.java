@@ -73,8 +73,8 @@ public class DownloadFromDropboxTask extends AsyncTask< Void, Void, Boolean > {
 			FileOutputStream outputFile = new FileOutputStream( restoreFile );
 			this.dropboxDatabaseApi.getFile( this.fileToRestore, null, outputFile, null );
 
-			// give application feedback
-			this.usedFeedbackClass.taskSuccessfull( this, (Object)restoreFile.toString() );
+			// task succeeeded
+			this.fileToRestore = restoreFile.toString();
 			return true;
 			
 		} catch( IOException e ) {
@@ -84,8 +84,19 @@ public class DownloadFromDropboxTask extends AsyncTask< Void, Void, Boolean > {
 		}
 		
 		// failed to do this task
-		this.usedFeedbackClass.taskFailed( this, null );
 		return false;
+	}
+	
+	@Override
+	protected void onPostExecute( Boolean result ) {
+		super.onPostExecute( result );
+
+		// give the application feedback
+		if( result ) {
+			this.usedFeedbackClass.taskSuccessfull( this, (Object)this.fileToRestore );
+		} else {
+			this.usedFeedbackClass.taskFailed( this, null );
+		}
 	}
 
 }
