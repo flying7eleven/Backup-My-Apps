@@ -14,7 +14,6 @@ import com.dropbox.client2.session.AppKeyPair;
 import com.halcyonwaves.apps.backupmyapps.tasks.DownloadFromDropboxTask;
 import com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask;
 
-import android.app.Dialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -40,21 +39,6 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 	private ProgressDialog downloadFileProgressDialog = null;
 	private SharedPreferences applicationPreferences = null;
 	private DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
-	private static final int DIALOG_DOWNLOADING_FILE = 1;
-	private static final int DIALOG_RESTORING_APPS = 2;
-	
-	@Override
-	protected Dialog onCreateDialog( int id ) {
-		switch( id ) {
-			case DIALOG_DOWNLOADING_FILE:
-				return null;
-			case DIALOG_RESTORING_APPS:
-				this.restoreProgressDialog = ProgressDialog.show( RestoreSelectFileActivity.this, "", RestoreSelectFileActivity.this.getString( R.string.progressDialogRestoreInProgress ), true );
-				return this.restoreProgressDialog;
-			default:
-				return super.onCreateDialog( id );
-		}
-	}
 	
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
@@ -184,7 +168,7 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 			this.downloadFileProgressDialog = null;
 			
 			// show a progress dialog
-			this.showDialog( DIALOG_RESTORING_APPS );
+			this.restoreProgressDialog = ProgressDialog.show( RestoreSelectFileActivity.this, "", RestoreSelectFileActivity.this.getString( R.string.progressDialogRestoreInProgress ), true );
 
 			// get the filename from the executing task
 			String fileToRestore = (String)data;
