@@ -1,6 +1,9 @@
 package com.halcyonwaves.apps.backupmyapps;
 
+import com.dropbox.client2.DropboxAPI;
+import com.dropbox.client2.android.AndroidAuthSession;
 import com.dropbox.client2.session.AccessTokenPair;
+import com.dropbox.client2.session.AppKeyPair;
 
 import android.app.Dialog;
 import android.content.SharedPreferences;
@@ -19,6 +22,7 @@ public class SettingsActivity extends PreferenceActivity {
 	private Preference buildVersionPreference = null;
 	private CheckBoxPreference loginIntoDropbox = null;
 	private SharedPreferences applicationPreferences = null;
+	private DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
 	
 	public final static String PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_KEY = "synchronization.dropboxAccessKey";
 	public final static String PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_SECRET = "synchronization.dropboxAccessSecret";
@@ -43,13 +47,13 @@ public class SettingsActivity extends PreferenceActivity {
 		super.onResume();
 
 		//
-		if( MainActivity.dropboxDatabaseApi.getSession().authenticationSuccessful() ) {
+		if( this.dropboxDatabaseApi.getSession().authenticationSuccessful() ) {
 			try {
 				// MANDATORY call to complete authentication
-				MainActivity.dropboxDatabaseApi.getSession().finishAuthentication();
+				this.dropboxDatabaseApi.getSession().finishAuthentication();
 
 				// get the access token pair
-				AccessTokenPair tokens = MainActivity.dropboxDatabaseApi.getSession().getAccessTokenPair();
+				AccessTokenPair tokens = this.dropboxDatabaseApi.getSession().getAccessTokenPair();
 
 				// store the access token pair in the applications settings
 				Editor sharedPreferenceEditor = this.applicationPreferences.edit();
@@ -80,6 +84,27 @@ public class SettingsActivity extends PreferenceActivity {
 
 		// get the preference object for this application
 		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
+		
+		// setup the Dropbox API client
+		AppKeyPair appKeys = new AppKeyPair( MainActivity.DROPBOX_API_APP_KEY, MainActivity.DROPBOX_API_APP_SECRET );
+		AndroidAuthSession session = new AndroidAuthSession( appKeys, MainActivity.DROPBOX_API_APP_ACCESS_TYPE );
+		this.dropboxDatabaseApi = new DropboxAPI< AndroidAuthSession >( session );
+
+		// if we already have stored authentication keys, use them
+		if( this.applicationPreferences.getString( "synchronization.dropboxAccessKey", "" ).length() > 0 ) {
+			// get the key and the secret from the settings
+			String key = this.applicationPreferences.getString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_KEY, "" );
+			String secret = this.applicationPreferences.getString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_SECRET, "" );
+
+			// create the required Dropbox access token object
+			AccessTokenPair tokens = new AccessTokenPair( key, secret );
+
+			// set the loaded access token pair
+			this.dropboxDatabaseApi.getSession().setAccessTokenPair( tokens );
+
+			// just log that we set the correct auth tokens
+			Log.i( "BackupMyAppsSettings", "Successfully set the stored Dropbox authentication tokens." );
+		}
 
 		// get the preference object and create an on click handler
 		this.buildVersionPreference = (Preference)this.findPreference( "BUILD_VERSION_PREFERENCE" );
@@ -105,7 +130,7 @@ public class SettingsActivity extends PreferenceActivity {
 			public boolean onPreferenceClick( Preference preference ) {
 				Log.v( "BackupMyAppsPreferences", "Dropbox checkbox OnClickHandler called!" );
 				if( ((CheckBoxPreference)SettingsActivity.this.loginIntoDropbox).isChecked() ) {
-					MainActivity.dropboxDatabaseApi.getSession().startAuthentication( SettingsActivity.this );
+					SettingsActivity.this.dropboxDatabaseApi.getSession().startAuthentication( SettingsActivity.this );
 				} else {
 					// to deauthenticate, just delete the stored tokens
 					Editor sharedPreferenceEditor = SettingsActivity.this.applicationPreferences.edit();
