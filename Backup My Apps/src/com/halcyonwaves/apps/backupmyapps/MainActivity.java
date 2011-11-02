@@ -13,6 +13,7 @@ import com.dropbox.client2.session.AccessTokenPair;
 import com.dropbox.client2.session.AppKeyPair;
 import com.dropbox.client2.session.Session.AccessType;
 import com.halcyonwaves.apps.backupmyapps.tasks.GatherBackupInformationTask;
+import com.halcyonwaves.apps.backupmyapps.tasks.UploadToDropboxTask;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -44,6 +45,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private TextView textViewAdditionalInformation = null;
 	private Dialog dialogHelp = null;
 	private ProgressDialog backupProgressDialog = null;
+	private ProgressDialog uploadProgressDialog = null;
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStorageDirectory();
 	private SharedPreferences applicationPreferences = null;
@@ -214,32 +216,25 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			// enable the restore button, because we succeeded creating the backup
 			this.buttonRestoreInstalledApplications.setEnabled( true );
 
-			// if we should sync, copy the file to the Dropbox account
-			if( this.applicationPreferences.getBoolean( "synchronization.useDropbox", false ) ) {
-				// define the backup filename
-				String backupFilename = android.os.Build.DEVICE + "-" + android.os.Build.MODEL + ".backupmyapps";
-				backupFilename = backupFilename.replace( ' ', '-' );
-
-				// upload the file
-				File backupFile = new File( this.storagePath, MainActivity.BACKUP_FILENAME );
-				
-				// try to upload the backup file
-				try {
-					FileInputStream inputStream = new FileInputStream( backupFile );
-					Entry newEntry = this.dropboxDatabaseApi.putFileOverwrite( "/" + backupFilename, inputStream, backupFile.length(), null );
-					Log.i( "BackupMyAppsDropbox", "The uploaded file's rev is: " + newEntry.rev );
-				} catch( DropboxUnlinkedException e ) {
-					Log.e( "BackupMyAppsDropbox", "The Dropbox account is not linked to the application anymore. Cannot upload the backup file.", e ); // TODO: handle this by telling it to the user
-				} catch( DropboxException e ) {
-					Log.e( "BackupMyAppsDropbox", "Something went wrong while uploading the backup file to the Dropbox account.", e ); // TODO: handle this by telling it to the user
-				} catch( FileNotFoundException e ) {
-					Log.e( "BackupMyAppsDropbox", "The backup file was not found.", e );
-				}
-			}
-
 			// close the progress dialog
 			this.backupProgressDialog.dismiss();
 			this.backupProgressDialog = null;
+			
+			// if we should sync, copy the file to the Dropbox account
+			if( this.applicationPreferences.getBoolean( "synchronization.useDropbox", false ) ) {
+				// show a new dialog
+				this.uploadProgressDialog = ProgressDialog.show( MainActivity.this, "", this.getString( R.string.progressDialogUploadingToDropbox ), true );
+				
+				// generate the filename for the upload
+				File backupFile = new File( this.storagePath, MainActivity.BACKUP_FILENAME );
+				
+				// try to upload the file
+				UploadToDropboxTask uploadTask = new UploadToDropboxTask( backupFile.toString(), this.getApplicationContext(), this );
+				uploadTask.execute();
+				
+				// be sure that we don't execute the following code in this case
+				return;
+			}
 
 			// inform the user that we succeeded in backuping the data
 			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( this );
@@ -251,7 +246,21 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				}
 			} );
 			dialogBuilder.show();
-
+		} else if( sender.getClass().getSimpleName().equalsIgnoreCase( UploadToDropboxTask.class.getSimpleName() ) ) {
+			// close the progress dialog
+			this.uploadProgressDialog.dismiss();
+			this.uploadProgressDialog = null;
+			
+			// inform the user that we succeeded in backuping the data
+			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder( this );
+			dialogBuilder.setMessage( R.string.dialogMessageBackupSucceeded );
+			dialogBuilder.setCancelable( false );
+			dialogBuilder.setPositiveButton( R.string.buttonOk, new DialogInterface.OnClickListener() {
+				public void onClick( DialogInterface dialog, int id ) {
+					// nothing to do here
+				}
+			} );
+			dialogBuilder.show();
 		}
 	}
 
