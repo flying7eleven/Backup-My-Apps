@@ -40,6 +40,7 @@
     <string name="textViewWhatsNewText">Thank you for using / updating Backup My Apps. Here are the changes since the last update:\n\n* Support for Dropbox synchronization\n* Better multithreading support\n* Application icons are now stored in the backup file\n* Several bugfixes</string>
     <string name="textViewSelectFileToRestore">Please select the backup file you want to restore from on your current device.</string>
     <string name="listItemLocalBackupFile">Local backup file</string>
+    
     <string name="progressDialogUploadingToDropbox">Uploading the backup file into your Dropbox folder. Please wait...</string>
     <string name="progressDialogDownloadingFromDropbox">Downloading the backup file from your Dropbox folder. Please wait...</string>
 </resources>
