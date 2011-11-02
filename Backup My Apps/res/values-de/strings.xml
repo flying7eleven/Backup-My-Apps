@@ -19,9 +19,7 @@
     <string name="textViewAboutArtworkContent">Tango harm-on-icons</string>
     <string name="textViewAboutTranslationsLabel">Übersetzungen</string>
     <string name="textViewAboutTranslationsContent">Tim Hütz\nMichaela Gaens</string>
-    <string name="dialogMessageAskForPackageInformation">Vielen Dank für die Nutzung dieser Anwendung!\n\nDa diese Anwendung Paketnamen für die Filterung von Systempaketen verwendet, müssen wir die Namen der Systempakete der Hersteller sammeln. Es wäre nett, wenn Sie uns Ihre Backupdatei an <a href="mailto:backupmyapps@halcyonwaves.com">backupmyapps@halcyonwaves.com</a> schicken würden, um die Pakete zu filtern.\n\nVielen Dank!</string>
     <string name="progressDialogRestoreInProgress">Wiederherstellung läuft. Bitte warten...</string>
-    <string name="menuPackageInformationHelp">Wie Sie helfen können</string>
     <string name="textViewSelectApplicationToRestore">Zum Wiederherstellen einer Anwendung klicken Sie diese an. Die Anwendung wird dann im Android Market geöffnet und Sie können sie installieren.</string>
     <string name="dialogMessageBackupFailed">Das Backup der installierten Anwendungen ist fehlgeschlagen. Bitte starten Sie Ihr Gerät neu und versuchen Sie es erneut.</string>
     <string name="dialogMessageBackupSucceeded">Das Backup der installierten Anwendungen wurde erfolgreich erstellt.</string>
