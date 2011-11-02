@@ -33,15 +33,14 @@
     <string name="preferenceCategoryBuildVersion">Build-Version</string>
     <string name="preferenceTitleBuildVersion">Build-Version</string>
     <string name="preferenceSummaryBuildVersion">Version: %s</string>
-    
     <string name="preferenceCategorySynchronization">Synchronisation</string>
     <string name="preferenceTitleEnableDropboxSynchronization">Synchronisation verwenden</string>
     <string name="preferenceSummaryEnableDropboxSynchronizationOn">Die Daten werden lokal und in Ihrem Dropbox-Account gespeichert.</string>
     <string name="preferenceSummaryEnableDropboxSynchronizationOff">Es wird keine Synchronisation mit Dropbox vorgenommen und die Daten werden nur lokal gespeichert.</string>
     <string name="textViewWhatsNewLabel">Was ist neu?</string>
     <string name="buttonClose">Schließen</string>
-    <string name="textViewWhatsNewText">Vielen Dank für die Verwendung von Backup My Apps. Hier ist eine Liste der Änderungen seit der letzten Version:\n\n* Unterstützung für Dropbox Synchronisation\n* Bessere Unterstützung von multithreading\n* Die Anwendungsicons werden mit im Backup gespeichert\n* Einige Fehlerbehebungen</string>
-    <string name="textViewSelectFileToRestore">Bitte wählen Sie die Backupdatei aus, welche wiederhergestellt werden soll.</string>
+    <string name="textViewWhatsNewText">Vielen Dank für die Verwendung von Backup My Apps. Hier ist eine Liste der Änderungen seit der letzten Version:\n\n* Unterstützung für Dropbox Synchronisation\n* Bessere Unterstützung von Multithreading\n* Die Anwendungsicons werden mit im Backup gespeichert\n* Einige Fehlerbehebungen</string>
+    <string name="textViewSelectFileToRestore">Bitte wählen Sie die Backupdatei aus, von welcher wiederhergestellt werden soll.</string>
     <string name="listItemLocalBackupFile">Lokale Backupdatei</string>
 <string name="progressDialogUploadingToDropbox">Lade die Backupdatei in Ihren Dropbox-Ordner hoch. Bitte warten...</string>
     <string name="progressDialogDownloadingFromDropbox">Lade die Backupdatei aus Ihrem Dropbox-Ordner herunter. Bitte warten...</string>
