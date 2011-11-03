@@ -12955,7 +12955,7 @@ Methods (count = 6):
     Access flags: 0x84
       = protected java.lang.Boolean a(java.lang.Void[])
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 420, locals = 14, stack = 4):
+    + Code attribute instructions (code length = 430, locals = 14, stack = 4):
       [0] ldc #21
         - Class [com/halcyonwaves/apps/backupmyapps/a/c]
       [2] invokevirtual #69
@@ -13031,195 +13031,205 @@ Methods (count = 6):
         - Methodref [com/halcyonwaves/apps/backupmyapps/a/c.a (Ljava/lang/String;)Lorg/w3c/dom/Document;]
       [108] astore v7
       [110] aload v7
-      [112] ldc #12
+      [112] ifnonnull +8 (target=120)
+      [115] iconst_0
+      [116] invokestatic #68
+        - Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
+      [119] areturn
+      [120] aload v7
+      [122] ldc #12
         - String [InstalledApplications]
-      [114] invokeinterface #89
+      [124] invokeinterface #89
         - InterfaceMethodref [org/w3c/dom/Document.getElementsByTagName (Ljava/lang/String;)Lorg/w3c/dom/NodeList;]
-      [119] iconst_0
-      [120] invokeinterface #95
+      [129] iconst_0
+      [130] invokeinterface #95
         - InterfaceMethodref [org/w3c/dom/NodeList.item (I)Lorg/w3c/dom/Node;]
-      [125] invokeinterface #93
+      [135] invokeinterface #93
         - InterfaceMethodref [org/w3c/dom/Node.getAttributes ()Lorg/w3c/dom/NamedNodeMap;]
-      [130] astore v8
-      [132] iconst_0
-      [133] istore v9
-      [135] goto +125 (target=260)
-      [138] aload v8
-      [140] iload v9
-      [142] invokeinterface #92
+      [140] astore v8
+      [142] iconst_0
+      [143] istore v9
+      [145] goto +125 (target=270)
+      [148] aload v8
+      [150] iload v9
+      [152] invokeinterface #92
         - InterfaceMethodref [org/w3c/dom/NamedNodeMap.item (I)Lorg/w3c/dom/Node;]
-      [147] astore v10
-      [149] aload v10
-      [151] checkcast #39
+      [157] astore v10
+      [159] aload v10
+      [161] checkcast #39
         - Class [org/w3c/dom/Attr]
-      [154] astore v11
-      [156] aload v11
-      [158] ifnonnull +6 (target=164)
-      [161] goto +96 (target=257)
-      [164] ldc #5
+      [164] astore v11
+      [166] aload v11
+      [168] ifnonnull +6 (target=174)
+      [171] goto +96 (target=267)
+      [174] ldc #5
         - String [BackupFileVersion]
-      [166] new #34
+      [176] new #34
         - Class [java/lang/StringBuilder]
-      [169] dup
-      [170] ldc #9
+      [179] dup
+      [180] ldc #9
         - String [Found a new attribute with the following name: ]
-      [172] invokespecial #72
+      [182] invokespecial #72
         - Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [175] aload v11
-      [177] invokeinterface #87
+      [185] aload v11
+      [187] invokeinterface #87
         - InterfaceMethodref [org/w3c/dom/Attr.getName ()Ljava/lang/String;]
-      [182] invokevirtual #74
+      [192] invokevirtual #74
         - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [185] invokevirtual #75
+      [195] invokevirtual #75
         - Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [188] invokestatic #52
+      [198] invokestatic #52
         - Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
-      [191] pop
-      [192] aload v11
-      [194] invokeinterface #87
+      [201] pop
+      [202] aload v11
+      [204] invokeinterface #87
         - InterfaceMethodref [org/w3c/dom/Attr.getName ()Ljava/lang/String;]
-      [199] ldc #17
+      [209] ldc #17
         - String [version]
-      [201] invokevirtual #70
+      [211] invokevirtual #70
         - Methodref [java/lang/String.equalsIgnoreCase (Ljava/lang/String;)Z]
-      [204] ifeq +53 (target=257)
-      [207] new #22
+      [214] ifeq +53 (target=267)
+      [217] new #22
         - Class [com/halcyonwaves/apps/backupmyapps/c/a]
-      [210] dup
-      [211] ldc #4
+      [220] dup
+      [221] ldc #4
         - String [0.5]
-      [213] invokespecial #56
+      [223] invokespecial #56
         - Methodref [com/halcyonwaves/apps/backupmyapps/c/a.<init> (Ljava/lang/String;)V]
-      [216] astore v12
-      [218] new #22
+      [226] astore v12
+      [228] new #22
         - Class [com/halcyonwaves/apps/backupmyapps/c/a]
-      [221] dup
-      [222] aload v11
-      [224] invokeinterface #88
+      [231] dup
+      [232] aload v11
+      [234] invokeinterface #88
         - InterfaceMethodref [org/w3c/dom/Attr.getValue ()Ljava/lang/String;]
-      [229] invokespecial #56
+      [239] invokespecial #56
         - Methodref [com/halcyonwaves/apps/backupmyapps/c/a.<init> (Ljava/lang/String;)V]
-      [232] astore v13
-      [234] aload v12
-      [236] aload v13
-      [238] invokevirtual #57
+      [242] astore v13
+      [244] aload v12
+      [246] aload v13
+      [248] invokevirtual #57
         - Methodref [com/halcyonwaves/apps/backupmyapps/c/a.a (Lcom/halcyonwaves/apps/backupmyapps/c/a;)Z]
-      [241] ifne +16 (target=257)
-      [244] ldc #5
+      [251] ifne +16 (target=267)
+      [254] ldc #5
         - String [BackupFileVersion]
-      [246] ldc #13
+      [256] ldc #13
         - String [It seems that the format of the backup file is not supported by this application.]
-      [248] invokestatic #51
+      [258] invokestatic #51
         - Methodref [android/util/Log.e (Ljava/lang/String;Ljava/lang/String;)I]
-      [251] pop
-      [252] iconst_0
-      [253] invokestatic #68
+      [261] pop
+      [262] iconst_0
+      [263] invokestatic #68
         - Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
-      [256] areturn
-      [257] iinc v9, 1
-      [260] iload v9
-      [262] aload v8
-      [264] invokeinterface #91
+      [266] areturn
+      [267] iinc v9, 1
+      [270] iload v9
+      [272] aload v8
+      [274] invokeinterface #91
         - InterfaceMethodref [org/w3c/dom/NamedNodeMap.getLength ()I]
-      [269] ificmplt -131 (target=138)
-      [272] aload v7
-      [274] ldc #11
+      [279] ificmplt -131 (target=148)
+      [282] aload v7
+      [284] ldc #11
         - String [InstalledApp]
-      [276] invokeinterface #89
+      [286] invokeinterface #89
         - InterfaceMethodref [org/w3c/dom/Document.getElementsByTagName (Ljava/lang/String;)Lorg/w3c/dom/NodeList;]
-      [281] astore v9
-      [283] iconst_0
-      [284] istore v10
-      [286] goto +101 (target=387)
-      [289] aload v9
-      [291] iload v10
-      [293] invokeinterface #95
+      [291] astore v9
+      [293] iconst_0
+      [294] istore v10
+      [296] goto +101 (target=397)
+      [299] aload v9
+      [301] iload v10
+      [303] invokeinterface #95
         - InterfaceMethodref [org/w3c/dom/NodeList.item (I)Lorg/w3c/dom/Node;]
-      [298] checkcast #41
+      [308] checkcast #41
         - Class [org/w3c/dom/Element]
-      [301] astore v11
-      [303] ldc #21
+      [311] astore v11
+      [313] ldc #21
         - Class [com/halcyonwaves/apps/backupmyapps/a/c]
-      [305] invokevirtual #69
+      [315] invokevirtual #69
         - Methodref [java/lang/Class.getSimpleName ()Ljava/lang/String;]
-      [308] new #34
+      [318] new #34
         - Class [java/lang/StringBuilder]
-      [311] dup
-      [312] ldc #10
+      [321] dup
+      [322] ldc #10
         - String [Found package to restore: ]
-      [314] invokespecial #72
+      [324] invokespecial #72
         - Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [317] aload v11
-      [319] ldc #16
+      [327] aload v11
+      [329] ldc #16
         - String [packageName]
-      [321] invokeinterface #90
+      [331] invokeinterface #90
         - InterfaceMethodref [org/w3c/dom/Element.getAttribute (Ljava/lang/String;)Ljava/lang/String;]
-      [326] invokevirtual #74
+      [336] invokevirtual #74
         - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [329] ldc #2
+      [339] ldc #2
         - String [ (]
-      [331] invokevirtual #74
+      [341] invokevirtual #74
         - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [334] aload v11
-      [336] ldc #15
+      [344] aload v11
+      [346] ldc #15
         - String [applicationName]
-      [338] invokeinterface #90
+      [348] invokeinterface #90
         - InterfaceMethodref [org/w3c/dom/Element.getAttribute (Ljava/lang/String;)Ljava/lang/String;]
-      [343] invokevirtual #74
+      [353] invokevirtual #74
         - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [346] ldc #3
+      [356] ldc #3
         - String [)]
-      [348] invokevirtual #74
+      [358] invokevirtual #74
         - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [351] invokevirtual #75
+      [361] invokevirtual #75
         - Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [354] invokestatic #52
+      [364] invokestatic #52
         - Methodref [android/util/Log.v (Ljava/lang/String;Ljava/lang/String;)I]
-      [357] pop
-      [358] aload_0 v0
-      [359] getfield #49
+      [367] pop
+      [368] aload_0 v0
+      [369] getfield #49
         - Fieldref [com/halcyonwaves/apps/backupmyapps/a/c.c Ljava/util/HashMap;]
-      [362] aload v11
-      [364] ldc #16
+      [372] aload v11
+      [374] ldc #16
         - String [packageName]
-      [366] invokeinterface #90
+      [376] invokeinterface #90
         - InterfaceMethodref [org/w3c/dom/Element.getAttribute (Ljava/lang/String;)Ljava/lang/String;]
-      [371] aload v11
-      [373] ldc #15
+      [381] aload v11
+      [383] ldc #15
         - String [applicationName]
-      [375] invokeinterface #90
+      [385] invokeinterface #90
         - InterfaceMethodref [org/w3c/dom/Element.getAttribute (Ljava/lang/String;)Ljava/lang/String;]
-      [380] invokevirtual #77
+      [390] invokevirtual #77
         - Methodref [java/util/HashMap.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;]
-      [383] pop
-      [384] iinc v10, 1
-      [387] iload v10
-      [389] aload v9
-      [391] invokeinterface #94
+      [393] pop
+      [394] iinc v10, 1
+      [397] iload v10
+      [399] aload v9
+      [401] invokeinterface #94
         - InterfaceMethodref [org/w3c/dom/NodeList.getLength ()I]
-      [396] ificmplt -107 (target=289)
-      [399] goto +16 (target=415)
-      [402] astore_2 v2
-      [403] aload_2 v2
-      [404] invokevirtual #62
+      [406] ificmplt -107 (target=299)
+      [409] goto +16 (target=425)
+      [412] astore_2 v2
+      [413] aload_2 v2
+      [414] invokevirtual #62
         - Methodref [java/io/FileNotFoundException.printStackTrace ()V]
-      [407] goto +8 (target=415)
-      [410] astore_2 v2
-      [411] aload_2 v2
-      [412] invokevirtual #64
+      [417] goto +8 (target=425)
+      [420] astore_2 v2
+      [421] aload_2 v2
+      [422] invokevirtual #64
         - Methodref [java/io/IOException.printStackTrace ()V]
-      [415] iconst_1
-      [416] invokestatic #68
+      [425] iconst_1
+      [426] invokestatic #68
         - Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
-      [419] areturn
-      Code attribute exceptions (count = 4):
-      - ExceptionInfo (28 -> 256: 402):
+      [429] areturn
+      Code attribute exceptions (count = 6):
+      - ExceptionInfo (28 -> 119: 412):
       - Class [java/io/FileNotFoundException]
-      - ExceptionInfo (257 -> 399: 402):
+      - ExceptionInfo (120 -> 266: 412):
       - Class [java/io/FileNotFoundException]
-      - ExceptionInfo (28 -> 256: 410):
+      - ExceptionInfo (267 -> 409: 412):
+      - Class [java/io/FileNotFoundException]
+      - ExceptionInfo (28 -> 119: 420):
       - Class [java/io/IOException]
-      - ExceptionInfo (257 -> 399: 410):
+      - ExceptionInfo (120 -> 266: 420):
+      - Class [java/io/IOException]
+      - ExceptionInfo (267 -> 409: 420):
       - Class [java/io/IOException]
       Code attribute attributes (attribute count = 0):
   + Method:       a(Ljava/lang/Boolean;)V
