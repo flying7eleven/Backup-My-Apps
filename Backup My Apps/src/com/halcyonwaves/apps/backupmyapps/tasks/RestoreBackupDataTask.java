@@ -125,6 +125,11 @@ public class RestoreBackupDataTask extends AsyncTask< Void, Void, Boolean > {
 			// get the xml document from the string
 			Document backupFile = this.XMLfromString( full );
 			
+			// handle a null argument which indicates a error during parsing the XML file
+			if( null == backupFile ) {
+				return false;
+			}
+			
 			// check the version of the backup file
 			NamedNodeMap fileAttributes = backupFile.getElementsByTagName( "InstalledApplications" ).item( 0 ).getAttributes();
 			for( int i = 0; i < fileAttributes.getLength(); i++ ) {
