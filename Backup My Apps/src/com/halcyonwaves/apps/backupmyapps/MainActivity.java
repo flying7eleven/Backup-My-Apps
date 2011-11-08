@@ -145,7 +145,6 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// add a click handler for the button to restore the applications
 		this.buttonRestoreInstalledApplications.setOnClickListener( new OnClickListener() {
 			public void onClick( View v ) {
-				MainActivity.analyticsTracker.trackPageView( "/applicationRestoreAppsSelectFile" );
 				Intent selectRestoreFileIntent = new Intent( MainActivity.this, RestoreSelectFileActivity.class );
 				selectRestoreFileIntent.putExtra( "BackupFileName", (new File( MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME ) ).toString() );
 				MainActivity.this.startActivity( selectRestoreFileIntent );
@@ -190,7 +189,6 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	public boolean onOptionsItemSelected( MenuItem item ) {
 		switch( item.getItemId() ) {
 			case R.id.menuSettings:
-				MainActivity.analyticsTracker.trackPageView( "/applicationSettings" );
 				Intent preferenceIntent = new Intent( MainActivity.this, SettingsActivity.class );
 				this.startActivity( preferenceIntent );
 				return true;

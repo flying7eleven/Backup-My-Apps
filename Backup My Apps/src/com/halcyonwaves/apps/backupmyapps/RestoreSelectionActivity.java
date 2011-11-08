@@ -29,6 +29,9 @@ public class RestoreSelectionActivity extends ListActivity {
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 
+		// just track this event
+		MainActivity.analyticsTracker.trackPageView( "/applicationRestoreAppsSelectApp" );
+		
 		// set the custom layout of this view
 		this.setContentView( R.layout.restorelistactivity );
 		

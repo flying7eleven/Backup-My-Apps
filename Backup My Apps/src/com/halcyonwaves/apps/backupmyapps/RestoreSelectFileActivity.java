@@ -45,6 +45,9 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 		super.onCreate( savedInstanceState );
 		List< String > foundFileNames = new ArrayList< String >();
 		List< String > foundFilePaths = new ArrayList< String >();
+		
+		// just track this event
+		MainActivity.analyticsTracker.trackPageView( "/applicationRestoreAppsSelectFile" );
 
 		// set the custom layout of this view
 		this.setContentView( R.layout.restore_selectfile );

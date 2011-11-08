@@ -81,6 +81,9 @@ public class SettingsActivity extends PreferenceActivity {
 		// create the preference dialog
 		super.onCreate( savedInstanceState );
 		this.addPreferencesFromResource( R.xml.appreferences );
+		
+		// just track this event
+		MainActivity.analyticsTracker.trackPageView( "/applicationSettings" );
 
 		// get the preference object for this application
 		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
