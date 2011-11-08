@@ -192,6 +192,10 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				Intent preferenceIntent = new Intent( MainActivity.this, SettingsActivity.class );
 				this.startActivity( preferenceIntent );
 				return true;
+			case R.id.menuFeedback:
+				MainActivity.analyticsTracker.trackPageView( "/applicationFeedback" );
+				// TODO: implement this
+				return true;
 			case R.id.menuHelp:
 				MainActivity.analyticsTracker.trackPageView( "/applicationHelp" );
 				if( null == this.dialogHelp ) {

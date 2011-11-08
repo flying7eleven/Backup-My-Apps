@@ -42,4 +42,6 @@
     <string name="textViewAdditionalInformation">To backup the installed applications, press the backup button. The file with the backup information will be stored in %s. To restore the applications place the file with the backup information in the same folder and press the restore button. Optionally, if you enabled the synchronization option of this application, the restore function will also display backup files found in your Dropbox folder.\n\nFor more information open the menu and select the Help item.</string>
     <string name="progressDialogUploadingToDropbox">Uploading the backup file into your Dropbox folder. Please wait...</string>
     <string name="progressDialogDownloadingFromDropbox">Downloading the backup file from your Dropbox folder. Please wait...</string>
+    
+    <string name="menuFeedback">Feedback</string>
 </resources>
