@@ -41,7 +41,6 @@
     <string name="textViewAdditionalInformation">Um die installierten Anwendungen zu sichern, drücken Sie auf den entsprechenden Knopf. Die Sicherungsinformationen werden unter %s gesichert. Um die Anwendungen wiederherzustellen, kopieren Sie die Sicherungsdatei in denselben Ordner und drücken Sie den Wiederherstellungsknopf. Sollten Sie die Synchronisationsfunktion aktiviert haben, zeigt das Wiederherstellungsmenü außerdem Backupdateien aus Ihrem Dropbox-Account an.\n\nFür weitere Informationen öffnen Sie das Menü und wählen Sie den Hilfeeintrag.</string>
     <string name="progressDialogUploadingToDropbox">Lade die Backupdatei in Ihren Dropbox-Ordner hoch. Bitte warten...</string>
     <string name="progressDialogDownloadingFromDropbox">Lade die Backupdatei aus Ihrem Dropbox-Ordner herunter. Bitte warten...</string>
-    
     <string name="menuFeedback">Feedback</string>
     <string name="intentSendFeedback">Feedback senden</string>
 	<string name="intentSendFeedbackBodyText">Bitte teilen Sie uns Ihre Meinung über Backup My Apps mit und/oder nennen Sie uns Funktionen die Sie gerne in der Anwendung hätten.</string>
@@ -54,5 +53,5 @@
     <string name="dialogButtonRateAppYes">Ja</string>
     <string name="dialogButtonRateAppLater">Später</string>
     <string name="dialogButtonRateAppNever">Nie</string>
-    <string name="textViewWhatsNewText">Vielen Dank für die Verwendung von Backup My Apps. Hier ist eine Liste der Änderungen seit der letzten Version:\n\n* Anwendungsicons werden in der Wiederherstellungsliste angezeigt\n* Dropbox-Synchronisierung wurde optimiert\n* Dropbox-Synchronisierung kann nur korrekt aktiviert werden\n* Einige Fehlerbehebungen</string>
+    <string name="textViewWhatsNewText">Vielen Dank für die Verwendung von Backup My Apps. Hier ist eine Liste der Änderungen seit der letzten Version:\n\n* Anwendungsicons werden in der Wiederherstellungsliste angezeigt\n* Dropbox-Synchronisierung wurde optimiert\n* Dropbox-Synchronisierung kann nun korrekt aktiviert werden\n* Einige Fehlerbehebungen</string>
 </resources>
