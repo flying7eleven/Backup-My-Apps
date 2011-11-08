@@ -31,7 +31,7 @@ public class RestoreSelectionActivity extends ListActivity {
 		super.onResume();
 		
 		// track this event
-		MainActivity.analyticsTracker.trackPageView( "/applicationRestoreAppsSelectApp" );
+		MainActivity.analyticsTracker.trackPageView( "/RestoreSelectionActivity" );
 	}
 	
 	@Override
@@ -84,9 +84,15 @@ public class RestoreSelectionActivity extends ListActivity {
 	 */
 	private void installPackageFromMarket( String packageName ) {
 		try {
+			// just log which package should be installed
+			MainActivity.analyticsTracker.trackEvent( "RestoreSelectionActivity", "installPackageFromMarket", packageName, -1 );
+			
+			// try to open the market with the package name
 			Intent browserIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "market://details?id=" + packageName ) );
 			this.startActivity( browserIntent );
 		} catch( Exception outerException ) {
+			
+			// since opening the market directly failed, try to open the brower with the market page 
 			Log.e( RestoreBackupDataTask.class.getSimpleName(), "Failed to open the market directly. The exception was: " + outerException.getMessage() );
 			try {
 				Log.v( RestoreBackupDataTask.class.getSimpleName(), "Opening browser directly!!" );
