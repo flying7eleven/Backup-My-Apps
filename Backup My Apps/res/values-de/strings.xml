@@ -9,7 +9,6 @@
     <string name="progressDialogBackupInProgress">Ermittlung und Speicherung der Metainformationen der installierten Anwendungen. Bitte warten...</string>
     <string name="menuHelp">Hilfe</string>
     <string name="dialogTitleHelpDialog">Hilfe</string>
-    <string name="textViewHelpText">Diese Anwendung wurde dafür entwickelt eine Sicherung der von Ihnen auf diesem Gerät installierten Pakete zu erstellen. Dabei werden lediglich Metainformationen über die Pakete gespeichert, so dass diese in einem Wiederherstellungsvorgang über den Market installiert werden können. Dies reduziert bei einem neuen Gerät (oder nach dem Zurücksetzen des Gerätes auf Werkszustand) den Arbeitsaufwand.\n\nDiese Anwendung liest Informationen über die installierten Anwendungen ein und speichert diese in eine XML-Datei. Diese Datei kann dazu genutzt werden, die Anwendungen erneut auf einem neuen Gerät oder nach dem Zurücksetzen des Geräts zu installieren.\n\nDa diese Anwendung noch in der Entwicklung steckt, erscheinen regelmäßig Updates im Android Market. Des Weiteren kann es zu Fehlern in der Anwendung kommen.</string>
     <string name="dialogTitleAboutDialog">Über...</string>
     <string name="textViewAboutAppName">Backup My Apps %s</string>
     <string name="textViewAboutCopyright">2011 von Tim Hütz entwickelt</string>
@@ -58,4 +57,5 @@
     <string name="dialogButtonDontAllowUsageStatistics">Nein</string>
     
     <string name="textViewWhatsNewText">Vielen Dank für die Verwendung von Backup My Apps. Hier ist eine Liste der Änderungen seit der letzten Version:\n\n* Anwendungsicons werden in der Wiederherstellungsliste angezeigt\n* Dropbox-Synchronisierung wurde optimiert\n* Dropbox-Synchronisierung kann nun korrekt aktiviert werden\n*Optimierungen für kleinere Bildschirme\n* Einige Fehlerbehebungen</string>
+	<string name="textViewHelpText">Diese Anwendung wurde dafür entwickelt eine Sicherung der von Ihnen auf diesem Gerät installierten Pakete zu erstellen. Dafür liest diese Anwendung Informationen über die installierten Anwendungen ein und speichert diese in eine XML-Datei. Diese Datei kann dazu genutzt werden, die Anwendungen erneut auf einem neuen Gerät oder nach dem Zurücksetzen des Geräts zu installieren.\n\nDa diese Anwendung noch in der Entwicklung steckt, erscheinen regelmäßig Updates im Android Market. Des Weiteren kann es zu Fehlern in der Anwendung kommen.</string>
 </resources>

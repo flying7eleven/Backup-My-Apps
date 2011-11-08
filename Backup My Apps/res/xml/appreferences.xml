@@ -12,5 +12,4 @@
     <PreferenceCategory android:title="@string/preferenceCategoryBuildVersion">
         <Preference android:key="BUILD_VERSION_PREFERENCE" android:title="@string/preferenceTitleBuildVersion" android:summary="@string/preferenceSummaryBuildVersion"></Preference>
     </PreferenceCategory>
-     
 </PreferenceScreen>
