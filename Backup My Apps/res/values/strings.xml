@@ -46,4 +46,8 @@
     <string name="menuFeedback">Feedback</string>
     <string name="intentSendFeedback">Send feedback</string>
     <string name="intentSendFeedbackBodyText">Please tell us your opinion about Backup My Apps or even request features you would like to see.</string>
+    <string name="preferenceCategoryStatistics">Statistics</string>
+    <string name="preferenceTitleUsageStatistics">Send usage statistics</string>
+    <string name="preferenceSummaryUsageStatisticsOn">Send anonymous usage statistics to the developer to improve the application.</string>
+    <string name="preferenceSummaryUsageStatisticsOff">Do not send any anonymous usage statistics to the developer.</string>
 </resources>
