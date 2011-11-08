@@ -32,6 +32,7 @@ public class RestoreSelectionActivity extends ListActivity {
 		
 		// track this event
 		MainActivity.analyticsTracker.trackPageView( "/RestoreSelectionActivity" );
+		MainActivity.sendUsageStatistics();
 	}
 	
 	@Override
@@ -86,6 +87,7 @@ public class RestoreSelectionActivity extends ListActivity {
 		try {
 			// just log which package should be installed
 			MainActivity.analyticsTracker.trackEvent( "RestoreSelectionActivity", "installPackageFromMarket", packageName, -1 );
+			MainActivity.sendUsageStatistics();
 			
 			// try to open the market with the package name
 			Intent browserIntent = new Intent( Intent.ACTION_VIEW, Uri.parse( "market://details?id=" + packageName ) );

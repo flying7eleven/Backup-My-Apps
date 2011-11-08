@@ -44,12 +44,18 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private ProgressDialog uploadProgressDialog = null;
 	private static final String BACKUP_FILENAME = "installedApplications.backupmyapps";
 	private final File storagePath = Environment.getExternalStorageDirectory();
-	private SharedPreferences applicationPreferences = null;
+	private static SharedPreferences applicationPreferences = null;
 	private static final String PREFERENCES_LAST_WHATSNEW_DIALOG = "com.halcyonwaves.apps.backupmyapps.lastWhatsNewDialog";
 	private DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
 	private final static int DIALOG_WHATSNEW = 1; 
 	public static GoogleAnalyticsTracker analyticsTracker = null;
 
+	public static void sendUsageStatistics() {
+		if( MainActivity.applicationPreferences.getBoolean( "statistics.acquireUsageStatistics", false ) ) {
+			MainActivity.analyticsTracker.dispatch();
+		}
+	}
+	
 	@Override
 	protected Dialog onCreateDialog( int id ) {
 		Dialog dialogToShow;
@@ -105,7 +111,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		}
 		
 		// get the preference object for this application
-		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
+		MainActivity.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
 		
 		// setup the Dropbox API client
 		AppKeyPair appKeys = new AppKeyPair( MainActivity.DROPBOX_API_APP_KEY, MainActivity.DROPBOX_API_APP_SECRET );
@@ -113,10 +119,10 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		this.dropboxDatabaseApi = new DropboxAPI< AndroidAuthSession >( session );
 
 		// if we already have stored authentication keys, use them
-		if( this.applicationPreferences.getString( "synchronization.dropboxAccessKey", "" ).length() > 0 ) {
+		if( MainActivity.applicationPreferences.getString( "synchronization.dropboxAccessKey", "" ).length() > 0 ) {
 			// get the key and the secret from the settings
-			String key = this.applicationPreferences.getString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_KEY, "" );
-			String secret = this.applicationPreferences.getString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_SECRET, "" );
+			String key = MainActivity.applicationPreferences.getString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_KEY, "" );
+			String secret = MainActivity.applicationPreferences.getString( SettingsActivity.PREFERENCE_SYNCHRONIZATION_DROPBOX_ACCESS_SECRET, "" );
 
 			// create the required Dropbox access token object
 			AccessTokenPair tokens = new AccessTokenPair( key, secret );
@@ -184,12 +190,12 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// for each application update, show the What's new? dialog
 		try {
 			final int applicationVersionCode = this.getPackageManager().getPackageInfo( this.getPackageName(), 0 ).versionCode;
-			if( this.applicationPreferences.getInt( MainActivity.PREFERENCES_LAST_WHATSNEW_DIALOG, 0 ) < applicationVersionCode ) { 
+			if( MainActivity.applicationPreferences.getInt( MainActivity.PREFERENCES_LAST_WHATSNEW_DIALOG, 0 ) < applicationVersionCode ) { 
 				// show the dialog
 				this.showDialog( MainActivity.DIALOG_WHATSNEW );
 
 				// after we showed the dialog, save that we showed the dialog for this version
-				Editor prefsEditor = this.applicationPreferences.edit();
+				Editor prefsEditor = MainActivity.applicationPreferences.edit();
 				prefsEditor.putInt( MainActivity.PREFERENCES_LAST_WHATSNEW_DIALOG, applicationVersionCode );
 				if( !prefsEditor.commit() ) {
 					Log.e( "BackupMyAppsMainActivity", "Failed to commit the changes to the local settings database for storing the state of the \"What's new?\" dialog." );
@@ -201,18 +207,18 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		}
 		
 		// ask the user if he or she wants to enable the usage statistics
-		if( !this.applicationPreferences.contains( "statistics.acquireUsageStatistics" ) ) {
+		if( !MainActivity.applicationPreferences.contains( "statistics.acquireUsageStatistics" ) ) {
 			AlertDialog.Builder builder = new AlertDialog.Builder( this );
 			builder.setMessage( this.getText( R.string.dialogMessageAllowUsageStatistics ) ).setTitle( this.getString( R.string.dialogTitleAllowUsageStatistics ) ).setCancelable( false ).setPositiveButton( this.getText( R.string.dialogButtonAllowUsageStatistics ), new DialogInterface.OnClickListener() {
 				public void onClick( DialogInterface dialog, int id ) {
-					Editor prefEditor = MainActivity.this.applicationPreferences.edit();
+					Editor prefEditor = MainActivity.applicationPreferences.edit();
 					prefEditor.putBoolean( "statistics.acquireUsageStatistics", true );
 					prefEditor.commit();
 					prefEditor = null;
 				}
 			} ).setNegativeButton( this.getText( R.string.dialogButtonDontAllowUsageStatistics ), new DialogInterface.OnClickListener() {
 				public void onClick( DialogInterface dialog, int id ) {
-					Editor prefEditor = MainActivity.this.applicationPreferences.edit();
+					Editor prefEditor = MainActivity.applicationPreferences.edit();
 					prefEditor.putBoolean( "statistics.acquireUsageStatistics", false );
 					prefEditor.commit();
 					prefEditor = null;
@@ -226,11 +232,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	@Override
 	protected void onStop() {
 		super.onStop();
-
-		// if the user enabled statistics, send them now
-		if( true ) { // TODO: check the preferences
-			MainActivity.analyticsTracker.dispatch();
-		}
+		MainActivity.sendUsageStatistics();
 	}
 
 	@Override
@@ -242,6 +244,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				return true;
 			case R.id.menuFeedback:
 				MainActivity.analyticsTracker.trackPageView( "/FeedbackMenuItem" );
+				MainActivity.sendUsageStatistics();
 				final Intent emailIntent = new Intent( android.content.Intent.ACTION_SEND );
 				emailIntent.setType( "plain/text" );
 				emailIntent.putExtra( android.content.Intent.EXTRA_EMAIL, new String[]{ "backupmyapps@halcyonwaves.com" } );
@@ -251,6 +254,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				return true;
 			case R.id.menuHelp:
 				MainActivity.analyticsTracker.trackPageView( "/HelpMenuItem" );
+				MainActivity.sendUsageStatistics();
 				if( null == this.dialogHelp ) {
 					this.dialogHelp = new Dialog( this );
 					this.dialogHelp.setCanceledOnTouchOutside( true );
@@ -266,10 +270,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	}
 	
 	@Override
-	protected void onDestroy() {
-		// stop the tracker session again
-		MainActivity.analyticsTracker.stopSession();
-		
+	protected void onDestroy() {		
 		// call the super method
 		super.onDestroy();
 	};
@@ -291,7 +292,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			this.backupProgressDialog = null;
 			
 			// if we should sync, copy the file to the Dropbox account
-			if( this.applicationPreferences.getBoolean( "synchronization.useDropbox", false ) ) {
+			if( MainActivity.applicationPreferences.getBoolean( "synchronization.useDropbox", false ) ) {
 				// show a new dialog
 				this.uploadProgressDialog = ProgressDialog.show( MainActivity.this, "", this.getString( R.string.progressDialogUploadingToDropbox ), true );
 				

@@ -48,6 +48,7 @@ public class SettingsActivity extends PreferenceActivity {
 		
 		// just track this event
 		MainActivity.analyticsTracker.trackPageView( "/SettingsActivity" );
+		MainActivity.sendUsageStatistics();
 
 		//
 		if( this.dropboxDatabaseApi.getSession().authenticationSuccessful() ) {
