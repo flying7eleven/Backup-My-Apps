@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-  xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <!--<PreferenceCategory android:title="@string/preferenceCategoryBackgroundService">
         <CheckBoxPreference android:summaryOn="@string/preferenceSummaryBackgroundServiceOn" android:summaryOff="@string/preferenceSummaryBackgroundServiceOff" android:title="@string/preferenceTitleUseBackupBackgroundService" android:key="backgroundService.isEnabled"></CheckBoxPreference>
     </PreferenceCategory>-->
