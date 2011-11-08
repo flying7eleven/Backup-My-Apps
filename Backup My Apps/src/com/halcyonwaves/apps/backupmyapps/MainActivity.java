@@ -48,7 +48,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private static final String PREFERENCES_LAST_WHATSNEW_DIALOG = "com.halcyonwaves.apps.backupmyapps.lastWhatsNewDialog";
 	private DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
 	private final static int DIALOG_WHATSNEW = 1; 
-	private GoogleAnalyticsTracker analyticsTracker = null;
+	public static GoogleAnalyticsTracker analyticsTracker = null;
 
 	@Override
 	protected Dialog onCreateDialog( int id ) {
@@ -83,10 +83,10 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		setContentView( R.layout.main );
 
 		// get the Google Analytics tracker instance
-		this.analyticsTracker = GoogleAnalyticsTracker.getInstance();
+		MainActivity.analyticsTracker = GoogleAnalyticsTracker.getInstance();
 		
 		// setup the tracker and set a automatic dispatch of 5 seconds
-		this.analyticsTracker.startNewSession( "UA-26870251-1", 5, this );
+		MainActivity.analyticsTracker.startNewSession( "UA-26870251-1", 5, this );
 		
 		// get the preference object for this application
 		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
@@ -145,7 +145,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// add a click handler for the button to restore the applications
 		this.buttonRestoreInstalledApplications.setOnClickListener( new OnClickListener() {
 			public void onClick( View v ) {
-				MainActivity.this.analyticsTracker.trackPageView( "/applicationRestoreAppsSelectFile" );
+				MainActivity.analyticsTracker.trackPageView( "/applicationRestoreAppsSelectFile" );
 				Intent selectRestoreFileIntent = new Intent( MainActivity.this, RestoreSelectFileActivity.class );
 				selectRestoreFileIntent.putExtra( "BackupFileName", (new File( MainActivity.this.storagePath, MainActivity.BACKUP_FILENAME ) ).toString() );
 				MainActivity.this.startActivity( selectRestoreFileIntent );
@@ -190,12 +190,12 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	public boolean onOptionsItemSelected( MenuItem item ) {
 		switch( item.getItemId() ) {
 			case R.id.menuSettings:
-				this.analyticsTracker.trackPageView( "/applicationSettings" );
+				MainActivity.analyticsTracker.trackPageView( "/applicationSettings" );
 				Intent preferenceIntent = new Intent( MainActivity.this, SettingsActivity.class );
 				this.startActivity( preferenceIntent );
 				return true;
 			case R.id.menuHelp:
-				this.analyticsTracker.trackPageView( "/applicationHelp" );
+				MainActivity.analyticsTracker.trackPageView( "/applicationHelp" );
 				if( null == this.dialogHelp ) {
 					this.dialogHelp = new Dialog( this );
 					this.dialogHelp.setCanceledOnTouchOutside( true );
@@ -216,7 +216,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		super.onDestroy();
 		
 		// stop the tracker session again
-		this.analyticsTracker.stopSession();
+		MainActivity.analyticsTracker.stopSession();
 	};
 
 	@Override
