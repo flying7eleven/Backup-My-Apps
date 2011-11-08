@@ -5,7 +5,7 @@
         <CheckBoxPreference android:summaryOn="@string/preferenceSummaryBackgroundServiceOn" android:summaryOff="@string/preferenceSummaryBackgroundServiceOff" android:title="@string/preferenceTitleUseBackupBackgroundService" android:key="backgroundService.isEnabled"></CheckBoxPreference>
     </PreferenceCategory>-->
     <PreferenceCategory android:title="@string/preferenceCategoryStatistics">
-        <CheckBoxPreference android:title="@string/preferenceTitleUsageStatistics" android:summaryOn="@string/preferenceSummaryUsageStatisticsOn" android:summaryOff="@string/preferenceSummaryUsageStatisticsOff" android:key="statistics.acquireUsageStatistics" android:defaultValue="true"/>
+        <CheckBoxPreference android:title="@string/preferenceTitleUsageStatistics" android:summaryOn="@string/preferenceSummaryUsageStatisticsOn" android:summaryOff="@string/preferenceSummaryUsageStatisticsOff" android:key="statistics.acquireUsageStatistics" />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/preferenceCategorySynchronization">
         <CheckBoxPreference android:title="@string/preferenceTitleEnableDropboxSynchronization" android:summaryOn="@string/preferenceSummaryEnableDropboxSynchronizationOn" android:summaryOff="@string/preferenceSummaryEnableDropboxSynchronizationOff" android:key="synchronization.useDropbox"></CheckBoxPreference>
