@@ -6,7 +6,6 @@
 	<classpathentry kind="lib" path="libraries/dropbox-android-sdk-1.2.1.jar"/>
 	<classpathentry kind="lib" path="libraries/httpmime-4.0.3.jar"/>
 	<classpathentry kind="lib" path="libraries/json_simple-1.1.jar"/>
-	<classpathentry kind="lib" path="/Applications/android-sdk-mac_x86/extras/android/compatibility/v4/android-support-v4.jar"/>
 	<classpathentry kind="lib" path="libraries/libGoogleAnalytics.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
