@@ -2,7 +2,6 @@
 <resources>
     <string name="applicationName">Backup My Apps</string>
     <string name="applicationBackupServiceName">Backup My Apps Background Backup Service</string>
-    <string name="textViewApplicationInformation">This application is designed for doing a backup of your installed packages / applications on your device. It only stores the meta information of the packages in order to bunch-install them through the market on another device or after a factory reset of your device.</string>
     <string name="buttonBackupInstalledApplications">Backup application list</string>
     <string name="buttonRestoreInstalledApplications">Restore (install) applications</string>
     <string name="dialogMessageNoExternalStorageMounted">It seems that there is no external storage device mounted on your device. This application relies on having such a device and will close now.</string>
@@ -10,7 +9,7 @@
     <string name="progressDialogBackupInProgress">Gathering and saving application backup information. Please wait...</string>
     <string name="menuHelp">Help</string>
     <string name="dialogTitleHelpDialog">Help</string>
-    <string name="textViewHelpText">This application reads information about the installed applications and stores this information in a XML file. This file can be used to reinstall all applications on a new device or after a factory reset.\n\n As this application is still under development, please expect frequent updates and bugs inside the application.</string>
+    <string name="textViewHelpText">This application is designed for doing a backup of your installed packages / applications on your device. It only stores the meta information of the packages in order to bunch-install them through the market on another device or after a factory reset of your device.\n\nThis application reads information about the installed applications and stores this information in a XML file. This file can be used to reinstall all applications on a new device or after a factory reset.\n\n As this application is still under development, please expect frequent updates and bugs inside the application.</string>
     <string name="dialogTitleAboutDialog">About...</string>
     <string name="textViewAboutAppName">Backup My Apps %s</string>
     <string name="textViewAboutCopyright">Developed 2011 by Tim Hütz</string>
