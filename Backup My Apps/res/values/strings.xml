@@ -54,9 +54,8 @@
     <string name="dialogButtonRateAppLater">Later</string>
     <string name="dialogButtonRateAppNever">Never</string>
     <string name="textViewWhatsNewText">Thank you for using / updating Backup My Apps. Here are the changes since the last update:\n\n* Application icons are displayed in the restore list\n* Optimized the Dropbox synchronization\n* The Dropbox synchronization can now be enabled properly\n* Several bugfixes</string>
-    
     <string name="dialogTitleAllowUsageStatistics">Enable usage statistics</string>
-    <string name="dialogMessageAllowUsageStatistics">For optimizing the application we're recording how you use the application (button clicks, time in the different application states and usage time). These information are send anonymously to our server. It would help us really much if you enable this option but if you don't like doing this you can disable acquiring those information. Do you want to enable acquiring and sending anonymous usage statistics?</string>
+    <string name="dialogMessageAllowUsageStatistics">For optimizing the application we would like to record how you use the application (button clicks, time in the different application states and usage time). This information will be sent anonymously to our server. It would help us a lot if you enable this option but if you don't like it you can disable acquiring the information. Do you want to enable acquiring and sending anonymous usage statistics?</string>
     <string name="dialogButtonAllowUsageStatistics">Yes</string>
     <string name="dialogButtonDontAllowUsageStatistics">No</string>
 </resources>
