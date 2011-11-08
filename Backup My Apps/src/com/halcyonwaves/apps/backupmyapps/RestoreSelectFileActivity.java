@@ -46,7 +46,7 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 		super.onResume();
 		
 		// track this event
-		MainActivity.analyticsTracker.trackPageView( "/applicationRestoreAppsSelectFile" );
+		MainActivity.analyticsTracker.trackPageView( "/RestoreSelectFileActivity" );
 	}
 	
 	@Override
@@ -137,10 +137,16 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 			DownloadFromDropboxTask downloadTask = new DownloadFromDropboxTask( fileToRestore, this.getApplicationContext(), RestoreSelectFileActivity.this );
 			downloadTask.execute();
 			
+			// log the event
+			MainActivity.analyticsTracker.trackEvent( "RestoreSelectFileActivity", "BackupFileSourceDropbox", "", -1 );
+			
 			// call the handler for this event of the super class
 			super.onListItemClick( l, v, position, id );
 			return;
 		}
+		
+		// log the event
+		MainActivity.analyticsTracker.trackEvent( "RestoreSelectFileActivity", "BackupFileSourceLocal", "", -1 );
 		
 		// show a progress dialog
 		RestoreSelectFileActivity.this.restoreProgressDialog = ProgressDialog.show( RestoreSelectFileActivity.this, "", RestoreSelectFileActivity.this.getString( R.string.progressDialogRestoreInProgress ), true );
