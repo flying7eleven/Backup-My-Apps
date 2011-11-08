@@ -88,6 +88,13 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// setup the tracker and set a manual dispatch 
 		MainActivity.analyticsTracker.startNewSession( "UA-26870251-1", this );
 		
+		// setup the product version
+		try {
+			MainActivity.analyticsTracker.setProductVersion( String.valueOf( this.getPackageManager().getPackageInfo( this.getPackageName(), 0 ).versionCode ),  this.getPackageManager().getPackageInfo( this.getPackageName(), 0 ).versionName );
+		} catch( NameNotFoundException e1 ) {
+			Log.w( "BackupMyAppsMainActivity", "Cannot set the product version to the tracking class. The following exception occurred: ", e1 );
+		}
+		
 		// get the preference object for this application
 		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
 
