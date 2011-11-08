@@ -194,7 +194,12 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				return true;
 			case R.id.menuFeedback:
 				MainActivity.analyticsTracker.trackPageView( "/applicationFeedback" );
-				// TODO: implement this
+				final Intent emailIntent = new Intent( android.content.Intent.ACTION_SEND );
+				emailIntent.setType( "plain/text" );
+				emailIntent.putExtra( android.content.Intent.EXTRA_EMAIL, new String[]{ "backupmyapps@halcyonwaves.com" } );
+				emailIntent.putExtra( android.content.Intent.EXTRA_SUBJECT, "Feedback: Backup My Apps (Android)" );
+				emailIntent.putExtra( android.content.Intent.EXTRA_TEXT, this.getString( R.string.intentSendFeedbackBodyText ) );
+				this.startActivity( Intent.createChooser( emailIntent, this.getString( R.string.intentSendFeedback ) ) );
 				return true;
 			case R.id.menuHelp:
 				MainActivity.analyticsTracker.trackPageView( "/applicationHelp" );

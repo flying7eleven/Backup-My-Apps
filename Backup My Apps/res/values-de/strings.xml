@@ -44,4 +44,6 @@
     <string name="progressDialogDownloadingFromDropbox">Lade die Backupdatei aus Ihrem Dropbox-Ordner herunter. Bitte warten...</string>
     
     <string name="menuFeedback">Feedback</string>
+    <string name="intentSendFeedback">Feedback senden</string>
+	<string name="intentSendFeedbackBodyText">Bitte teilen Sie uns Ihre Meinung über Backup My Apps mit und/oder nennen Sie uns Funktionen die Sie gerne in der Anwendung hätten.</string>
 </resources>

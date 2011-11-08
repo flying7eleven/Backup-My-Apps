@@ -44,4 +44,6 @@
     <string name="progressDialogDownloadingFromDropbox">Downloading the backup file from your Dropbox folder. Please wait...</string>
     
     <string name="menuFeedback">Feedback</string>
+    <string name="intentSendFeedback">Send feedback</string>
+    <string name="intentSendFeedbackBodyText">Please tell us your opinion about Backup My Apps or even request features you would like to see.</string>
 </resources>
