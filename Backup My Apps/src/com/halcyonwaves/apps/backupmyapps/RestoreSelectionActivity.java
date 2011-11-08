@@ -26,11 +26,17 @@ public class RestoreSelectionActivity extends ListActivity {
 	private String[] packageNames = null;
 
 	@Override
+	protected void onResume() {
+		// call the super method
+		super.onResume();
+		
+		// track this event
+		MainActivity.analyticsTracker.trackPageView( "/applicationRestoreAppsSelectApp" );
+	}
+	
+	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
-
-		// just track this event
-		MainActivity.analyticsTracker.trackPageView( "/applicationRestoreAppsSelectApp" );
 		
 		// set the custom layout of this view
 		this.setContentView( R.layout.restorelistactivity );

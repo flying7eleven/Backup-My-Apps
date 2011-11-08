@@ -77,6 +77,15 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	}
 	
 	@Override
+	protected void onResume() {
+		// call the super method
+		super.onResume();
+		
+		// track this event
+		MainActivity.analyticsTracker.trackPageView( "/applicationMainActivity" );
+	}
+	
+	@Override
 	public void onCreate( Bundle savedInstanceState ) {
 		// create the layout of the main activity
 		super.onCreate( savedInstanceState );

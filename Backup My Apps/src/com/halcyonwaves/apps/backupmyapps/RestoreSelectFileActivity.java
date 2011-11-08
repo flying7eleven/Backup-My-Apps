@@ -41,14 +41,20 @@ public class RestoreSelectFileActivity extends ListActivity implements IAsyncTas
 	private DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
 	
 	@Override
+	protected void onResume() {
+		// call the super method
+		super.onResume();
+		
+		// track this event
+		MainActivity.analyticsTracker.trackPageView( "/applicationRestoreAppsSelectFile" );
+	}
+	
+	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		List< String > foundFileNames = new ArrayList< String >();
 		List< String > foundFilePaths = new ArrayList< String >();
 		
-		// just track this event
-		MainActivity.analyticsTracker.trackPageView( "/applicationRestoreAppsSelectFile" );
-
 		// set the custom layout of this view
 		this.setContentView( R.layout.restore_selectfile );
 		
