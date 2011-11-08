@@ -50,4 +50,9 @@
     <string name="preferenceTitleUsageStatistics">Send usage statistics</string>
     <string name="preferenceSummaryUsageStatisticsOn">Send anonymous usage statistics to the developer to improve the application.</string>
     <string name="preferenceSummaryUsageStatisticsOff">Do not send any anonymous usage statistics to the developer.</string>
+    <string name="dialogTitleRateApp">Please rate the application</string>
+    <string name="dialogMessageRateApp">Thank you for using this application. It would be nice if you rate this application in the Android Market. Do you have 10 seconds to do this right now?</string>
+    <string name="dialogButtonRateAppYes">Yes</string>
+    <string name="dialogButtonRateAppLater">Later</string>
+    <string name="dialogButtonRateAppNever">Never</string>
 </resources>
