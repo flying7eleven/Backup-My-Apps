@@ -14,3 +14,4 @@ com.halcyonwaves.apps.backupmyapps.RestoreSelectFileActivity
 com.halcyonwaves.apps.backupmyapps.RestoreSelectionActivity
 com.halcyonwaves.apps.backupmyapps.SettingsActivity
 com.halcyonwaves.apps.backupmyapps.BackupService
+com.google.android.apps.analytics.AnalyticsReceiver
