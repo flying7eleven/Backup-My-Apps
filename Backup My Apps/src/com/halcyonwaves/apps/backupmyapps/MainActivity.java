@@ -48,7 +48,6 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	private static final String PREFERENCES_LAST_WHATSNEW_DIALOG = "com.halcyonwaves.apps.backupmyapps.lastWhatsNewDialog";
 	private DropboxAPI< AndroidAuthSession > dropboxDatabaseApi = null;
 	private final static int DIALOG_WHATSNEW = 1; 
-	private final static int DIALOG_USESTATISTICS = 2; 
 	public static GoogleAnalyticsTracker analyticsTracker = null;
 
 	@Override
@@ -70,23 +69,6 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 						dismissDialog( MainActivity.DIALOG_WHATSNEW );
 					}
 				} );
-				break;
-			case MainActivity.DIALOG_USESTATISTICS:
-				AlertDialog.Builder builder = new AlertDialog.Builder( this );
-				builder.setMessage( this.getText( R.string.dialogMessageAllowUsageStatistics ) ).setTitle( this.getString( R.string.dialogTitleAllowUsageStatistics ) ).setCancelable( false ).setPositiveButton( this.getText( R.string.dialogButtonAllowUsageStatistics ), new DialogInterface.OnClickListener() {
-					public void onClick( DialogInterface dialog, int id ) {
-						Editor prefEditor = MainActivity.this.applicationPreferences.edit();
-						prefEditor.putBoolean( "synchronization.dropboxAccessKey", true );
-						prefEditor.commit();
-					}
-				} ).setNegativeButton( this.getText( R.string.dialogButtonDontAllowUsageStatistics ), new DialogInterface.OnClickListener() {
-					public void onClick( DialogInterface dialog, int id ) {
-						Editor prefEditor = MainActivity.this.applicationPreferences.edit();
-						prefEditor.putBoolean( "synchronization.dropboxAccessKey", false );
-						prefEditor.commit();
-					}
-				} );
-				dialogToShow = builder.create();
 				break;
 			default:
 				dialogToShow = null;
@@ -125,11 +107,6 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// get the preference object for this application
 		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
 		
-		// ask the user if he or she wants to enable the usage statistics
-		if( !this.applicationPreferences.contains( "statistics.acquireUsageStatistics" ) ) {
-			this.showDialog( MainActivity.DIALOG_USESTATISTICS );
-		}
-
 		// setup the Dropbox API client
 		AppKeyPair appKeys = new AppKeyPair( MainActivity.DROPBOX_API_APP_KEY, MainActivity.DROPBOX_API_APP_SECRET );
 		AndroidAuthSession session = new AndroidAuthSession( appKeys, MainActivity.DROPBOX_API_APP_ACCESS_TYPE );
@@ -221,6 +198,28 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			}
 		} catch( NameNotFoundException e ) {
 			Log.e( "BackupMyAppsMainActivity", "Failed to retrieve the version number for the application: ", e );
+		}
+		
+		// ask the user if he or she wants to enable the usage statistics
+		if( !this.applicationPreferences.contains( "statistics.acquireUsageStatistics" ) ) {
+			AlertDialog.Builder builder = new AlertDialog.Builder( this );
+			builder.setMessage( this.getText( R.string.dialogMessageAllowUsageStatistics ) ).setTitle( this.getString( R.string.dialogTitleAllowUsageStatistics ) ).setCancelable( false ).setPositiveButton( this.getText( R.string.dialogButtonAllowUsageStatistics ), new DialogInterface.OnClickListener() {
+				public void onClick( DialogInterface dialog, int id ) {
+					Editor prefEditor = MainActivity.this.applicationPreferences.edit();
+					prefEditor.putBoolean( "statistics.acquireUsageStatistics", true );
+					prefEditor.commit();
+					prefEditor = null;
+				}
+			} ).setNegativeButton( this.getText( R.string.dialogButtonDontAllowUsageStatistics ), new DialogInterface.OnClickListener() {
+				public void onClick( DialogInterface dialog, int id ) {
+					Editor prefEditor = MainActivity.this.applicationPreferences.edit();
+					prefEditor.putBoolean( "statistics.acquireUsageStatistics", false );
+					prefEditor.commit();
+					prefEditor = null;
+				}
+			} );
+			AlertDialog dialogToShow = builder.create();
+			dialogToShow.show();
 		}
 	}
 	
