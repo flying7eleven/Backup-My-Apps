@@ -82,7 +82,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		super.onResume();
 		
 		// track this event
-		MainActivity.analyticsTracker.trackPageView( "/applicationMainActivity" );
+		MainActivity.analyticsTracker.trackPageView( "/MainActivity" );
 	}
 	
 	@Override
@@ -219,7 +219,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				this.startActivity( preferenceIntent );
 				return true;
 			case R.id.menuFeedback:
-				MainActivity.analyticsTracker.trackPageView( "/applicationFeedback" );
+				MainActivity.analyticsTracker.trackPageView( "/FeedbackMenuItem" );
 				final Intent emailIntent = new Intent( android.content.Intent.ACTION_SEND );
 				emailIntent.setType( "plain/text" );
 				emailIntent.putExtra( android.content.Intent.EXTRA_EMAIL, new String[]{ "backupmyapps@halcyonwaves.com" } );
@@ -228,7 +228,7 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 				this.startActivity( Intent.createChooser( emailIntent, this.getString( R.string.intentSendFeedback ) ) );
 				return true;
 			case R.id.menuHelp:
-				MainActivity.analyticsTracker.trackPageView( "/applicationHelp" );
+				MainActivity.analyticsTracker.trackPageView( "/HelpMenuItem" );
 				if( null == this.dialogHelp ) {
 					this.dialogHelp = new Dialog( this );
 					this.dialogHelp.setCanceledOnTouchOutside( true );
