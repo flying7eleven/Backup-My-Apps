@@ -85,8 +85,8 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 		// get the Google Analytics tracker instance
 		MainActivity.analyticsTracker = GoogleAnalyticsTracker.getInstance();
 		
-		// setup the tracker and set a automatic dispatch of 5 seconds
-		MainActivity.analyticsTracker.startNewSession( "UA-26870251-1", 5, this );
+		// setup the tracker and set a manual dispatch 
+		MainActivity.analyticsTracker.startNewSession( "UA-26870251-1", this );
 		
 		// get the preference object for this application
 		this.applicationPreferences = PreferenceManager.getDefaultSharedPreferences( this.getApplicationContext() );
@@ -182,6 +182,16 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 			}
 		} catch( NameNotFoundException e ) {
 			Log.e( "BackupMyAppsMainActivity", "Failed to retrieve the version number for the application: ", e );
+		}
+	}
+	
+	@Override
+	protected void onStop() {
+		super.onStop();
+
+		// if the user enabled statistics, send them now
+		if( true ) { // TODO: check the preferences
+			MainActivity.analyticsTracker.dispatch();
 		}
 	}
 
