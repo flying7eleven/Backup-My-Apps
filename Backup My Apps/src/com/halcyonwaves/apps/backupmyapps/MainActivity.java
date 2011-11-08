@@ -236,11 +236,11 @@ public class MainActivity extends Activity implements IAsyncTaskFeedback {
 	
 	@Override
 	protected void onDestroy() {
-		// call the super method
-		super.onDestroy();
-		
 		// stop the tracker session again
 		MainActivity.analyticsTracker.stopSession();
+		
+		// call the super method
+		super.onDestroy();
 	};
 
 	@Override
