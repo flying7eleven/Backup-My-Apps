@@ -53,9 +53,10 @@
     <string name="dialogButtonRateAppYes">Ja</string>
     <string name="dialogButtonRateAppLater">Später</string>
     <string name="dialogButtonRateAppNever">Nie</string>
-    <string name="textViewWhatsNewText">Vielen Dank für die Verwendung von Backup My Apps. Hier ist eine Liste der Änderungen seit der letzten Version:\n\n* Anwendungsicons werden in der Wiederherstellungsliste angezeigt\n* Dropbox-Synchronisierung wurde optimiert\n* Dropbox-Synchronisierung kann nun korrekt aktiviert werden\n* Einige Fehlerbehebungen</string>
     <string name="dialogTitleAllowUsageStatistics">Verwendungsstatistik aktivieren</string>
     <string name="dialogMessageAllowUsageStatistics">Für die Optimierung der Anwendung möchten wir gerne messen wie Sie die Anwendung nutzen (Reihenfolge und Anzahl der Klicks, Zeit in den Verschiedenen Ansichten und die Verweildauer). Diese Informationen werden anonym an unseren Server gesendet. Es würde uns sehr helfen, wenn Sie uns erlauben diese Informationen zu erhalten. Sie können diese Option allerdings auch deaktivieren. Wollen Sie die anonyme Sammlung von Verwendungsstatistiken aktivieren?</string>
     <string name="dialogButtonAllowUsageStatistics">Ja</string>
     <string name="dialogButtonDontAllowUsageStatistics">Nein</string>
+    
+    <string name="textViewWhatsNewText">Vielen Dank für die Verwendung von Backup My Apps. Hier ist eine Liste der Änderungen seit der letzten Version:\n\n* Anwendungsicons werden in der Wiederherstellungsliste angezeigt\n* Dropbox-Synchronisierung wurde optimiert\n* Dropbox-Synchronisierung kann nun korrekt aktiviert werden\n*Optimierungen für kleinere Bildschirme\n* Einige Fehlerbehebungen</string>
 </resources>
