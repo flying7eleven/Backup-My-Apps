@@ -211,7 +211,6 @@ com.google.android.apps.analytics.CustomVariableBuffer -> com.google.android.app
 com.google.android.apps.analytics.Dispatcher -> com.google.android.apps.analytics.c:
     void dispatchHits(com.google.android.apps.analytics.Hit[]) -> a
     void init(com.google.android.apps.analytics.Dispatcher$Callbacks) -> a
-    void stop() -> a
     void setDryRun(boolean) -> a
 com.google.android.apps.analytics.Dispatcher$Callbacks -> com.google.android.apps.analytics.ad:
     void hitDispatched(long) -> a
@@ -289,14 +288,12 @@ com.google.android.apps.analytics.GoogleAnalyticsTracker -> com.google.android.a
     void trackPageView(java.lang.String) -> a
     void createEvent(java.lang.String,java.lang.String,java.lang.String,java.lang.String,int) -> a
     void setDispatchPeriod(int) -> a
-    void maybeScheduleNextDispatch() -> g
-    void cancelPendingDispatches() -> h
-    void resetPowerSaveMode() -> i
+    void maybeScheduleNextDispatch() -> e
+    void cancelPendingDispatches() -> f
+    void resetPowerSaveMode() -> g
     boolean dispatch() -> b
     void dispatchFinished() -> c
-    void stopSession() -> d
-    void stop() -> e
-    boolean getDebug() -> f
+    boolean getDebug() -> d
     android.os.Handler access$000(com.google.android.apps.analytics.GoogleAnalyticsTracker) -> a
     com.google.android.apps.analytics.HitStore access$100(com.google.android.apps.analytics.GoogleAnalyticsTracker) -> b
 com.google.android.apps.analytics.GoogleAnalyticsTracker$1 -> com.google.android.apps.analytics.k:
@@ -372,8 +369,8 @@ com.google.android.apps.analytics.NetworkDispatcher -> com.google.android.apps.a
     void init(com.google.android.apps.analytics.Dispatcher$Callbacks) -> a
     void dispatchHits(com.google.android.apps.analytics.Hit[]) -> a
     void setDryRun(boolean) -> a
-    boolean isDryRun() -> b
-    void stop() -> a
+    boolean isDryRun() -> a
+    void stop() -> b
     org.apache.http.HttpHost access$200(com.google.android.apps.analytics.NetworkDispatcher) -> a
 com.google.android.apps.analytics.NetworkDispatcher$1 -> com.google.android.apps.analytics.f:
 com.google.android.apps.analytics.NetworkDispatcher$DispatcherThread -> com.google.android.apps.analytics.z:
@@ -535,7 +532,7 @@ com.google.android.apps.analytics.Utils -> com.google.android.apps.analytics.w:
     java.lang.String addQueueTimeParameter(java.lang.String,long) -> a
 com.halcyonwaves.apps.backupmyapps.BackupService -> com.halcyonwaves.apps.backupmyapps.BackupService:
     void onHandleIntent(android.content.Intent) -> onHandleIntent
-com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback -> com.halcyonwaves.apps.backupmyapps.h:
+com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback -> com.halcyonwaves.apps.backupmyapps.j:
     void taskSuccessfull(java.lang.Object,java.lang.Object) -> a
     void taskFailed(java.lang.Object,java.lang.Object) -> b
 com.halcyonwaves.apps.backupmyapps.MainActivity -> com.halcyonwaves.apps.backupmyapps.MainActivity:
@@ -550,6 +547,7 @@ com.halcyonwaves.apps.backupmyapps.MainActivity -> com.halcyonwaves.apps.backupm
     android.content.SharedPreferences applicationPreferences -> j
     com.dropbox.client2.DropboxAPI dropboxDatabaseApi -> k
     com.google.android.apps.analytics.GoogleAnalyticsTracker analyticsTracker -> b
+    void sendUsageStatistics() -> a
     android.app.Dialog onCreateDialog(int) -> onCreateDialog
     void onResume() -> onResume
     void onCreate(android.os.Bundle) -> onCreate
@@ -561,6 +559,7 @@ com.halcyonwaves.apps.backupmyapps.MainActivity -> com.halcyonwaves.apps.backupm
     void taskFailed(java.lang.Object,java.lang.Object) -> b
     void access$0(com.halcyonwaves.apps.backupmyapps.MainActivity,android.app.ProgressDialog) -> a
     java.io.File access$1(com.halcyonwaves.apps.backupmyapps.MainActivity) -> a
+    android.content.SharedPreferences access$2() -> b
 com.halcyonwaves.apps.backupmyapps.MainActivity$1 -> com.halcyonwaves.apps.backupmyapps.b:
     com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
@@ -579,7 +578,13 @@ com.halcyonwaves.apps.backupmyapps.MainActivity$5 -> com.halcyonwaves.apps.backu
 com.halcyonwaves.apps.backupmyapps.MainActivity$6 -> com.halcyonwaves.apps.backupmyapps.c:
     com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.halcyonwaves.apps.backupmyapps.MainActivity$7 -> com.halcyonwaves.apps.backupmyapps.g:
+com.halcyonwaves.apps.backupmyapps.MainActivity$7 -> com.halcyonwaves.apps.backupmyapps.i:
+    com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.halcyonwaves.apps.backupmyapps.MainActivity$8 -> com.halcyonwaves.apps.backupmyapps.h:
+    com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.halcyonwaves.apps.backupmyapps.MainActivity$9 -> com.halcyonwaves.apps.backupmyapps.g:
     com.halcyonwaves.apps.backupmyapps.MainActivity this$0 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
 com.halcyonwaves.apps.backupmyapps.RestoreSelectFileActivity -> com.halcyonwaves.apps.backupmyapps.RestoreSelectFileActivity:
@@ -611,10 +616,10 @@ com.halcyonwaves.apps.backupmyapps.SettingsActivity -> com.halcyonwaves.apps.bac
     android.preference.CheckBoxPreference access$1(com.halcyonwaves.apps.backupmyapps.SettingsActivity) -> b
     com.dropbox.client2.DropboxAPI access$2(com.halcyonwaves.apps.backupmyapps.SettingsActivity) -> c
     android.content.SharedPreferences access$3(com.halcyonwaves.apps.backupmyapps.SettingsActivity) -> d
-com.halcyonwaves.apps.backupmyapps.SettingsActivity$1 -> com.halcyonwaves.apps.backupmyapps.i:
+com.halcyonwaves.apps.backupmyapps.SettingsActivity$1 -> com.halcyonwaves.apps.backupmyapps.k:
     com.halcyonwaves.apps.backupmyapps.SettingsActivity this$0 -> a
     boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
-com.halcyonwaves.apps.backupmyapps.SettingsActivity$2 -> com.halcyonwaves.apps.backupmyapps.j:
+com.halcyonwaves.apps.backupmyapps.SettingsActivity$2 -> com.halcyonwaves.apps.backupmyapps.l:
     com.halcyonwaves.apps.backupmyapps.SettingsActivity this$0 -> a
     boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
 com.halcyonwaves.apps.backupmyapps.packages.PackageInformation -> com.halcyonwaves.apps.backupmyapps.b.a:

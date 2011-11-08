@@ -116,6 +116,7 @@ com.google.android.apps.analytics.CustomVariable:
     public static final int MAX_CUSTOM_VARIABLE_LENGTH
     public CustomVariable(int,java.lang.String,java.lang.String)
 com.google.android.apps.analytics.Dispatcher:
+    public abstract void stop()
     public abstract boolean isDryRun()
 com.google.android.apps.analytics.Event:
     static final java.lang.String PAGEVIEW_EVENT_CATEGORY
@@ -130,6 +131,8 @@ com.google.android.apps.analytics.GoogleAnalyticsTracker:
     public void start(java.lang.String,int,android.content.Context)
     public void start(java.lang.String,android.content.Context)
     com.google.android.apps.analytics.Dispatcher getDispatcher()
+    public void stopSession()
+    public void stop()
     com.google.android.apps.analytics.HitStore getHitStore()
     public boolean setCustomVar(int,java.lang.String,java.lang.String,int)
     public boolean setCustomVar(int,java.lang.String,java.lang.String)
