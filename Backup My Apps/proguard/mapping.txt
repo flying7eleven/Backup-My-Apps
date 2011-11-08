@@ -280,9 +280,12 @@ com.google.android.apps.analytics.GoogleAnalyticsTracker -> com.google.android.a
     java.lang.Runnable dispatchRunner -> t
     com.google.android.apps.analytics.GoogleAnalyticsTracker getInstance() -> a
     void startNewSession(java.lang.String,int,android.content.Context) -> a
+    void startNewSession(java.lang.String,android.content.Context) -> a
     void start(java.lang.String,int,android.content.Context,boolean) -> a
     void start(java.lang.String,int,android.content.Context,com.google.android.apps.analytics.HitStore,com.google.android.apps.analytics.Dispatcher,boolean) -> a
     void start(java.lang.String,int,android.content.Context,com.google.android.apps.analytics.HitStore,com.google.android.apps.analytics.Dispatcher,boolean,com.google.android.apps.analytics.Dispatcher$Callbacks) -> a
+    void setProductVersion(java.lang.String,java.lang.String) -> a
+    void trackEvent(java.lang.String,java.lang.String,java.lang.String,int) -> a
     void trackPageView(java.lang.String) -> a
     void createEvent(java.lang.String,java.lang.String,java.lang.String,java.lang.String,int) -> a
     void setDispatchPeriod(int) -> a
@@ -548,7 +551,9 @@ com.halcyonwaves.apps.backupmyapps.MainActivity -> com.halcyonwaves.apps.backupm
     com.dropbox.client2.DropboxAPI dropboxDatabaseApi -> k
     com.google.android.apps.analytics.GoogleAnalyticsTracker analyticsTracker -> b
     android.app.Dialog onCreateDialog(int) -> onCreateDialog
+    void onResume() -> onResume
     void onCreate(android.os.Bundle) -> onCreate
+    void onStop() -> onStop
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
     void onDestroy() -> onDestroy
     boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
@@ -583,12 +588,14 @@ com.halcyonwaves.apps.backupmyapps.RestoreSelectFileActivity -> com.halcyonwaves
     android.app.ProgressDialog downloadFileProgressDialog -> c
     android.content.SharedPreferences applicationPreferences -> d
     com.dropbox.client2.DropboxAPI dropboxDatabaseApi -> e
+    void onResume() -> onResume
     void onCreate(android.os.Bundle) -> onCreate
     void onListItemClick(android.widget.ListView,android.view.View,int,long) -> onListItemClick
     void taskSuccessfull(java.lang.Object,java.lang.Object) -> a
     void taskFailed(java.lang.Object,java.lang.Object) -> b
 com.halcyonwaves.apps.backupmyapps.RestoreSelectionActivity -> com.halcyonwaves.apps.backupmyapps.RestoreSelectionActivity:
     java.lang.String[] packageNames -> a
+    void onResume() -> onResume
     void onCreate(android.os.Bundle) -> onCreate
     void onListItemClick(android.widget.ListView,android.view.View,int,long) -> onListItemClick
     void installPackageFromMarket(java.lang.String) -> a

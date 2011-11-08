@@ -129,10 +129,7 @@ com.google.android.apps.analytics.GoogleAnalyticsTracker:
     public static final java.lang.String LOG_TAG
     public void start(java.lang.String,int,android.content.Context)
     public void start(java.lang.String,android.content.Context)
-    public void startNewSession(java.lang.String,android.content.Context)
     com.google.android.apps.analytics.Dispatcher getDispatcher()
-    public void setProductVersion(java.lang.String,java.lang.String)
-    public void trackEvent(java.lang.String,java.lang.String,java.lang.String,int)
     com.google.android.apps.analytics.HitStore getHitStore()
     public boolean setCustomVar(int,java.lang.String,java.lang.String,int)
     public boolean setCustomVar(int,java.lang.String,java.lang.String)
