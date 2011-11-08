@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" >
-    <ScrollView android:layout_width="wrap_content" android:layout_height="200px" android:layout_marginLeft="5px" android:layout_marginRight="5px">
+    <ScrollView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5px" android:layout_marginRight="5px" android:fadeScrollbars="false">
         <TextView android:id="@+id/textViewWhatsNewText" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/textViewWhatsNewText" />
     </ScrollView>
     <Button android:id="@+id/buttonCloseWhatsNewDialog" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="right" android:text="@string/buttonClose" />
