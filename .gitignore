@@ -3,8 +3,8 @@
 .DS_Store
 .metadata
 bin/
+gen/*
 *.class
 *.apk
 *.dex
 *.ap_
-*/gen/*
