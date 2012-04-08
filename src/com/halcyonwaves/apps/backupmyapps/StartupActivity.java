@@ -1,7 +1,6 @@
 package com.halcyonwaves.apps.backupmyapps;
 
-import android.app.Activity;
+import com.actionbarsherlock.app.SherlockActivity;
 
-public class StartupActivity extends Activity {
-
+public class StartupActivity extends SherlockActivity {
 }
