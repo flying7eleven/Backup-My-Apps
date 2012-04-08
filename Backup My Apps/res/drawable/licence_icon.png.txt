@@ -1,7 +1,0 @@
-Source: http://openiconlibrary.sourceforge.net/gallery2/?./Icons/status/disc-00.png
-
-Tango harm-on-icons (tango-harm)
-link: http://gnome-look.org/content/show.php/Tango+mine?content=76316
-license: CC-BY 3.0
-formats: svg->png
-subdirectory: open_icon_library-devel/icons/tango-harm
