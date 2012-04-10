@@ -16,7 +16,7 @@ public class StartupActivity extends SherlockFragmentActivity {
 	@Override
 	protected void onCreate( final Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
-		this.setContentView( R.layout.startup_layout );
+		this.setContentView( R.layout.activity_startup );
 
 		this.mAdapter = new FragmentAdapter( this.getSupportFragmentManager(), this.getApplicationContext() );
 		this.mPager = (ViewPager) this.findViewById( R.id.pager );
