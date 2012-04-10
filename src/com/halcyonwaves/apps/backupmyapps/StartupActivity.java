@@ -11,32 +11,11 @@ import com.viewpagerindicator.TabPageIndicator;
 import com.viewpagerindicator.TitleProvider;
 
 public class StartupActivity extends SherlockFragmentActivity {
-	
-	private static final String[] CONTENT = new String[] { "Recent", "Artists", "Albums", "Songs", "Playlists", "Genres" };
-	private ViewPager mPager = null;
-	private PageIndicator mIndicator = null;
-	private GoogleMusicAdapter mAdapter = null;
 
-	@Override
-	protected void onCreate( final Bundle savedInstanceState ) {
-		super.onCreate( savedInstanceState );
-		this.setContentView( R.layout.startup_layout );
-		
-		mAdapter = new GoogleMusicAdapter( getSupportFragmentManager() );
-		mPager = (ViewPager)findViewById(R.id.pager);
-		mPager.setAdapter( mAdapter );
-		mIndicator = (TabPageIndicator)findViewById(R.id.indicator);
-		mIndicator.setViewPager(mPager);
-	}
-	
 	class GoogleMusicAdapter extends TestFragmentAdapter implements TitleProvider {
-		public GoogleMusicAdapter(FragmentManager fm) {
-			super(fm);
-		}
 
-		@Override
-		public Fragment getItem(int position) {
-			return TestFragment.newInstance(StartupActivity.CONTENT[position % StartupActivity.CONTENT.length]);
+		public GoogleMusicAdapter( final FragmentManager fm ) {
+			super( fm );
 		}
 
 		@Override
@@ -45,8 +24,31 @@ public class StartupActivity extends SherlockFragmentActivity {
 		}
 
 		@Override
-		public String getTitle(int position) {
-			return StartupActivity.CONTENT[position % StartupActivity.CONTENT.length].toUpperCase();
+		public Fragment getItem( final int position ) {
+			return TestFragment.newInstance( StartupActivity.CONTENT[ position % StartupActivity.CONTENT.length ] );
 		}
+
+		@Override
+		public String getTitle( final int position ) {
+			return StartupActivity.CONTENT[ position % StartupActivity.CONTENT.length ].toUpperCase();
+		}
+	}
+
+	private static final String[] CONTENT = new String[] { "Recent", "Artists", "Albums", "Songs", "Playlists", "Genres" };
+	private GoogleMusicAdapter mAdapter = null;
+	private PageIndicator mIndicator = null;
+
+	private ViewPager mPager = null;
+
+	@Override
+	protected void onCreate( final Bundle savedInstanceState ) {
+		super.onCreate( savedInstanceState );
+		this.setContentView( R.layout.startup_layout );
+
+		this.mAdapter = new GoogleMusicAdapter( this.getSupportFragmentManager() );
+		this.mPager = (ViewPager) this.findViewById( R.id.pager );
+		this.mPager.setAdapter( this.mAdapter );
+		this.mIndicator = (TabPageIndicator) this.findViewById( R.id.indicator );
+		this.mIndicator.setViewPager( this.mPager );
 	}
 }

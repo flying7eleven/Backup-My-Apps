@@ -16,8 +16,6 @@
  */
 package com.viewpagerindicator;
 
-import com.halcyonwaves.apps.backupmyapps.R;
-
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -30,219 +28,227 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.halcyonwaves.apps.backupmyapps.R;
+
 /**
  * This widget implements the dynamic action bar tab behavior that can change
  * across different configurations or circumstances.
  */
 public class TabPageIndicator extends HorizontalScrollView implements PageIndicator {
-    Runnable mTabSelector;
 
-    private OnClickListener mTabClickListener = new OnClickListener() {
-        public void onClick(View view) {
-            TabView tabView = (TabView)view;
-            mViewPager.setCurrentItem(tabView.getIndex());
-        }
-    };
+	public static class TabView extends LinearLayout {
 
-    private LinearLayout mTabLayout;
-    private ViewPager mViewPager;
-    private ViewPager.OnPageChangeListener mListener;
+		private int mIndex;
+		private TabPageIndicator mParent;
 
-    private LayoutInflater mInflater;
+		public TabView( final Context context, final AttributeSet attrs ) {
+			super( context, attrs );
+		}
 
-    int mMaxTabWidth;
-    private int mSelectedTabIndex;
+		public int getIndex() {
+			return this.mIndex;
+		}
 
-    public TabPageIndicator(Context context) {
-        this(context, null);
-    }
+		public void init( final TabPageIndicator parent, final String text, final int index ) {
+			this.mParent = parent;
+			this.mIndex = index;
 
-    public TabPageIndicator(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        setHorizontalScrollBarEnabled(false);
+			final TextView textView = (TextView) this.findViewById( android.R.id.text1 );
+			textView.setText( text );
+		}
 
-        mInflater = LayoutInflater.from(context);
+		@Override
+		public void onMeasure( final int widthMeasureSpec, final int heightMeasureSpec ) {
+			super.onMeasure( widthMeasureSpec, heightMeasureSpec );
 
-        mTabLayout = new LinearLayout(getContext());
-        addView(mTabLayout, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.FILL_PARENT));
-    }
+			// Re-measure if we went beyond our maximum size.
+			if( (this.mParent.mMaxTabWidth > 0) && (this.getMeasuredWidth() > this.mParent.mMaxTabWidth) ) {
+				super.onMeasure( MeasureSpec.makeMeasureSpec( this.mParent.mMaxTabWidth, MeasureSpec.EXACTLY ), heightMeasureSpec );
+			}
+		}
+	}
 
-    @Override
-    public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        final int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-        final boolean lockedExpanded = widthMode == MeasureSpec.EXACTLY;
-        setFillViewport(lockedExpanded);
+	private final LayoutInflater mInflater;
 
-        final int childCount = mTabLayout.getChildCount();
-        if (childCount > 1 && (widthMode == MeasureSpec.EXACTLY || widthMode == MeasureSpec.AT_MOST)) {
-            if (childCount > 2) {
-                mMaxTabWidth = (int)(MeasureSpec.getSize(widthMeasureSpec) * 0.4f);
-            } else {
-                mMaxTabWidth = MeasureSpec.getSize(widthMeasureSpec) / 2;
-            }
-        } else {
-            mMaxTabWidth = -1;
-        }
+	private ViewPager.OnPageChangeListener mListener;
+	int mMaxTabWidth;
+	private int mSelectedTabIndex;
 
-        final int oldWidth = getMeasuredWidth();
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        final int newWidth = getMeasuredWidth();
+	private final OnClickListener mTabClickListener = new OnClickListener() {
 
-        if (lockedExpanded && oldWidth != newWidth) {
-            // Recenter the tab display if we're at a new (scrollable) size.
-            setCurrentItem(mSelectedTabIndex);
-        }
-    }
+		@Override
+		public void onClick( final View view ) {
+			final TabView tabView = (TabView) view;
+			TabPageIndicator.this.mViewPager.setCurrentItem( tabView.getIndex() );
+		}
+	};
 
-    private void animateToTab(final int position) {
-        final View tabView = mTabLayout.getChildAt(position);
-        if (mTabSelector != null) {
-            removeCallbacks(mTabSelector);
-        }
-        mTabSelector = new Runnable() {
-            public void run() {
-                final int scrollPos = tabView.getLeft() - (getWidth() - tabView.getWidth()) / 2;
-                smoothScrollTo(scrollPos, 0);
-                mTabSelector = null;
-            }
-        };
-        post(mTabSelector);
-    }
+	private final LinearLayout mTabLayout;
+	Runnable mTabSelector;
 
-    @Override
-    public void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        if (mTabSelector != null) {
-            // Re-post the selector we saved
-            post(mTabSelector);
-        }
-    }
+	private ViewPager mViewPager;
 
-    @Override
-    public void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        if (mTabSelector != null) {
-            removeCallbacks(mTabSelector);
-        }
-    }
+	public TabPageIndicator( final Context context ) {
+		this( context, null );
+	}
 
-    private void addTab(String text, int index) {
-        //Workaround for not being able to pass a defStyle on pre-3.0
-        final TabView tabView = (TabView)mInflater.inflate(R.layout.vpi__tab, null);
-        tabView.init(this, text, index);
-        tabView.setFocusable(true);
-        tabView.setOnClickListener(mTabClickListener);
+	public TabPageIndicator( final Context context, final AttributeSet attrs ) {
+		super( context, attrs );
+		this.setHorizontalScrollBarEnabled( false );
 
-        mTabLayout.addView(tabView, new LinearLayout.LayoutParams(0, LayoutParams.FILL_PARENT, 1));
-    }
+		this.mInflater = LayoutInflater.from( context );
 
-    @Override
-    public void onPageScrollStateChanged(int arg0) {
-        if (mListener != null) {
-            mListener.onPageScrollStateChanged(arg0);
-        }
-    }
+		this.mTabLayout = new LinearLayout( this.getContext() );
+		this.addView( this.mTabLayout, new ViewGroup.LayoutParams( ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.FILL_PARENT ) );
+	}
 
-    @Override
-    public void onPageScrolled(int arg0, float arg1, int arg2) {
-        if (mListener != null) {
-            mListener.onPageScrolled(arg0, arg1, arg2);
-        }
-    }
+	private void addTab( final String text, final int index ) {
+		// Workaround for not being able to pass a defStyle on pre-3.0
+		final TabView tabView = (TabView) this.mInflater.inflate( R.layout.vpi__tab, null );
+		tabView.init( this, text, index );
+		tabView.setFocusable( true );
+		tabView.setOnClickListener( this.mTabClickListener );
 
-    @Override
-    public void onPageSelected(int arg0) {
-        setCurrentItem(arg0);
-        if (mListener != null) {
-            mListener.onPageSelected(arg0);
-        }
-    }
+		this.mTabLayout.addView( tabView, new LinearLayout.LayoutParams( 0, android.view.ViewGroup.LayoutParams.FILL_PARENT, 1 ) );
+	}
 
-    @Override
-    public void setViewPager(ViewPager view) {
-        final PagerAdapter adapter = view.getAdapter();
-        if (adapter == null) {
-            throw new IllegalStateException("ViewPager does not have adapter instance.");
-        }
-        if (!(adapter instanceof TitleProvider)) {
-            throw new IllegalStateException("ViewPager adapter must implement TitleProvider to be used with TitlePageIndicator.");
-        }
-        mViewPager = view;
-        view.setOnPageChangeListener(this);
-        notifyDataSetChanged();
-    }
+	private void animateToTab( final int position ) {
+		final View tabView = this.mTabLayout.getChildAt( position );
+		if( this.mTabSelector != null ) {
+			this.removeCallbacks( this.mTabSelector );
+		}
+		this.mTabSelector = new Runnable() {
 
-    public void notifyDataSetChanged() {
-        mTabLayout.removeAllViews();
-        TitleProvider adapter = (TitleProvider)mViewPager.getAdapter();
-        final int count = ((PagerAdapter)adapter).getCount();
-        for (int i = 0; i < count; i++) {
-            addTab(adapter.getTitle(i), i);
-        }
-        if (mSelectedTabIndex > count) {
-            mSelectedTabIndex = count - 1;
-        }
-        setCurrentItem(mSelectedTabIndex);
-        requestLayout();
-    }
+			@Override
+			public void run() {
+				final int scrollPos = tabView.getLeft() - ((TabPageIndicator.this.getWidth() - tabView.getWidth()) / 2);
+				TabPageIndicator.this.smoothScrollTo( scrollPos, 0 );
+				TabPageIndicator.this.mTabSelector = null;
+			}
+		};
+		this.post( this.mTabSelector );
+	}
 
-    @Override
-    public void setViewPager(ViewPager view, int initialPosition) {
-        setViewPager(view);
-        setCurrentItem(initialPosition);
-    }
+	@Override
+	public void notifyDataSetChanged() {
+		this.mTabLayout.removeAllViews();
+		final TitleProvider adapter = (TitleProvider) this.mViewPager.getAdapter();
+		final int count = ((PagerAdapter) adapter).getCount();
+		for( int i = 0; i < count; i++ ) {
+			this.addTab( adapter.getTitle( i ), i );
+		}
+		if( this.mSelectedTabIndex > count ) {
+			this.mSelectedTabIndex = count - 1;
+		}
+		this.setCurrentItem( this.mSelectedTabIndex );
+		this.requestLayout();
+	}
 
-    @Override
-    public void setCurrentItem(int item) {
-        if (mViewPager == null) {
-            throw new IllegalStateException("ViewPager has not been bound.");
-        }
-        mSelectedTabIndex = item;
-        final int tabCount = mTabLayout.getChildCount();
-        for (int i = 0; i < tabCount; i++) {
-            final View child = mTabLayout.getChildAt(i);
-            final boolean isSelected = (i == item);
-            child.setSelected(isSelected);
-            if (isSelected) {
-                animateToTab(item);
-            }
-        }
-    }
+	@Override
+	public void onAttachedToWindow() {
+		super.onAttachedToWindow();
+		if( this.mTabSelector != null ) {
+			// Re-post the selector we saved
+			this.post( this.mTabSelector );
+		}
+	}
 
-    @Override
-    public void setOnPageChangeListener(OnPageChangeListener listener) {
-        mListener = listener;
-    }
+	@Override
+	public void onDetachedFromWindow() {
+		super.onDetachedFromWindow();
+		if( this.mTabSelector != null ) {
+			this.removeCallbacks( this.mTabSelector );
+		}
+	}
 
-    public static class TabView extends LinearLayout {
-        private TabPageIndicator mParent;
-        private int mIndex;
+	@Override
+	public void onMeasure( final int widthMeasureSpec, final int heightMeasureSpec ) {
+		final int widthMode = MeasureSpec.getMode( widthMeasureSpec );
+		final boolean lockedExpanded = widthMode == MeasureSpec.EXACTLY;
+		this.setFillViewport( lockedExpanded );
 
-        public TabView(Context context, AttributeSet attrs) {
-            super(context, attrs);
-        }
+		final int childCount = this.mTabLayout.getChildCount();
+		if( (childCount > 1) && ((widthMode == MeasureSpec.EXACTLY) || (widthMode == MeasureSpec.AT_MOST)) ) {
+			if( childCount > 2 ) {
+				this.mMaxTabWidth = (int) (MeasureSpec.getSize( widthMeasureSpec ) * 0.4f);
+			} else {
+				this.mMaxTabWidth = MeasureSpec.getSize( widthMeasureSpec ) / 2;
+			}
+		} else {
+			this.mMaxTabWidth = -1;
+		}
 
-        public void init(TabPageIndicator parent, String text, int index) {
-            mParent = parent;
-            mIndex = index;
+		final int oldWidth = this.getMeasuredWidth();
+		super.onMeasure( widthMeasureSpec, heightMeasureSpec );
+		final int newWidth = this.getMeasuredWidth();
 
-            TextView textView = (TextView)findViewById(android.R.id.text1);
-            textView.setText(text);
-        }
+		if( lockedExpanded && (oldWidth != newWidth) ) {
+			// Recenter the tab display if we're at a new (scrollable) size.
+			this.setCurrentItem( this.mSelectedTabIndex );
+		}
+	}
 
-        @Override
-        public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-            super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+	@Override
+	public void onPageScrolled( final int arg0, final float arg1, final int arg2 ) {
+		if( this.mListener != null ) {
+			this.mListener.onPageScrolled( arg0, arg1, arg2 );
+		}
+	}
 
-            // Re-measure if we went beyond our maximum size.
-            if (mParent.mMaxTabWidth > 0 && getMeasuredWidth() > mParent.mMaxTabWidth) {
-                super.onMeasure(MeasureSpec.makeMeasureSpec(mParent.mMaxTabWidth, MeasureSpec.EXACTLY),
-                        heightMeasureSpec);
-            }
-        }
+	@Override
+	public void onPageScrollStateChanged( final int arg0 ) {
+		if( this.mListener != null ) {
+			this.mListener.onPageScrollStateChanged( arg0 );
+		}
+	}
 
-        public int getIndex() {
-            return mIndex;
-        }
-    }
+	@Override
+	public void onPageSelected( final int arg0 ) {
+		this.setCurrentItem( arg0 );
+		if( this.mListener != null ) {
+			this.mListener.onPageSelected( arg0 );
+		}
+	}
+
+	@Override
+	public void setCurrentItem( final int item ) {
+		if( this.mViewPager == null ) {
+			throw new IllegalStateException( "ViewPager has not been bound." );
+		}
+		this.mSelectedTabIndex = item;
+		final int tabCount = this.mTabLayout.getChildCount();
+		for( int i = 0; i < tabCount; i++ ) {
+			final View child = this.mTabLayout.getChildAt( i );
+			final boolean isSelected = (i == item);
+			child.setSelected( isSelected );
+			if( isSelected ) {
+				this.animateToTab( item );
+			}
+		}
+	}
+
+	@Override
+	public void setOnPageChangeListener( final OnPageChangeListener listener ) {
+		this.mListener = listener;
+	}
+
+	@Override
+	public void setViewPager( final ViewPager view ) {
+		final PagerAdapter adapter = view.getAdapter();
+		if( adapter == null ) {
+			throw new IllegalStateException( "ViewPager does not have adapter instance." );
+		}
+		if( !(adapter instanceof TitleProvider) ) {
+			throw new IllegalStateException( "ViewPager adapter must implement TitleProvider to be used with TitlePageIndicator." );
+		}
+		this.mViewPager = view;
+		view.setOnPageChangeListener( this );
+		this.notifyDataSetChanged();
+	}
+
+	@Override
+	public void setViewPager( final ViewPager view, final int initialPosition ) {
+		this.setViewPager( view );
+		this.setCurrentItem( initialPosition );
+	}
 }
