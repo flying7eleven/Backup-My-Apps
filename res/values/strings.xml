@@ -5,4 +5,5 @@
     <string name="fragment_title_backup">Backup</string>
     <string name="fragment_title_restore">Restore</string>
     <string name="tv_application_introduction">This application is designed for doing a backup of your installed packages / applications on your device. It only stores the meta information of the packages in order to bunch-install them through the market on another device or after a factory reset of your device.\n\nTo backup the installed applications, press the backup button. The file with the backup information will be stored in %s. To restore the applications place the file with the backup information in the same folder and press the restore button. Optionally, if you enabled the synchronization option of this application, the restore function will also display backup files found in your Dropbox folder.\n\nFor more information open the menu and select the Help item.</string>
+    <string name="m_preferences">Preferences</string>
 </resources>
