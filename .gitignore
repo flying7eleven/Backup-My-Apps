@@ -4,6 +4,7 @@
 .metadata
 bin/
 gen/*
+.settings/
 *.class
 *.apk
 *.dex
