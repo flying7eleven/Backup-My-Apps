@@ -1,0 +1,6 @@
+[submodule "3rd.ViewPagerIndicator"]
+	path = 3rd.ViewPagerIndicator
+	url = https://github.com/JakeWharton/Android-ViewPagerIndicator.git
+[submodule "3rd.ActionBarSherlock"]
+	path = 3rd.ActionBarSherlock
+	url = https://github.com/JakeWharton/ActionBarSherlock.git
