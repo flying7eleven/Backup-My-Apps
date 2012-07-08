@@ -2,15 +2,21 @@ com.dropbox.client2.DropboxAPI$ThumbFormat: com.dropbox.client2.DropboxAPI$Thumb
 com.dropbox.client2.DropboxAPI$ThumbFormat: com.dropbox.client2.DropboxAPI$ThumbFormat valueOf(java.lang.String)
 com.dropbox.client2.DropboxAPI$ThumbSize: com.dropbox.client2.DropboxAPI$ThumbSize[] values()
 com.dropbox.client2.DropboxAPI$ThumbSize: com.dropbox.client2.DropboxAPI$ThumbSize valueOf(java.lang.String)
-com.dropbox.client2.session.Session$AccessType: com.dropbox.client2.session.Session$AccessType[] values()
-com.dropbox.client2.session.Session$AccessType: com.dropbox.client2.session.Session$AccessType valueOf(java.lang.String)
 com.dropbox.client2.RESTUtility$RequestMethod: com.dropbox.client2.RESTUtility$RequestMethod[] values()
 com.dropbox.client2.RESTUtility$RequestMethod: com.dropbox.client2.RESTUtility$RequestMethod valueOf(java.lang.String)
+com.dropbox.client2.android.AuthActivity
+com.dropbox.client2.android.AuthActivity: AuthActivity()
+com.dropbox.client2.session.Session$AccessType: com.dropbox.client2.session.Session$AccessType[] values()
+com.dropbox.client2.session.Session$AccessType: com.dropbox.client2.session.Session$AccessType valueOf(java.lang.String)
+com.halcyonwaves.apps.backupmyapps.BackupService
+com.halcyonwaves.apps.backupmyapps.BackupService: BackupService()
+com.halcyonwaves.apps.backupmyapps.MainActivity
+com.halcyonwaves.apps.backupmyapps.MainActivity: MainActivity()
+com.halcyonwaves.apps.backupmyapps.RestoreSelectFileActivity
+com.halcyonwaves.apps.backupmyapps.RestoreSelectFileActivity: RestoreSelectFileActivity()
+com.halcyonwaves.apps.backupmyapps.RestoreSelectionActivity
+com.halcyonwaves.apps.backupmyapps.RestoreSelectionActivity: RestoreSelectionActivity()
+com.halcyonwaves.apps.backupmyapps.SettingsActivity
+com.halcyonwaves.apps.backupmyapps.SettingsActivity: SettingsActivity()
 org.apache.http.entity.mime.HttpMultipartMode: org.apache.http.entity.mime.HttpMultipartMode[] values()
 org.apache.http.entity.mime.HttpMultipartMode: org.apache.http.entity.mime.HttpMultipartMode valueOf(java.lang.String)
-com.dropbox.client2.android.AuthActivity
-com.halcyonwaves.apps.backupmyapps.MainActivity
-com.halcyonwaves.apps.backupmyapps.RestoreSelectFileActivity
-com.halcyonwaves.apps.backupmyapps.RestoreSelectionActivity
-com.halcyonwaves.apps.backupmyapps.SettingsActivity
-com.halcyonwaves.apps.backupmyapps.BackupService

@@ -1,3 +1,5 @@
+android.annotation.SuppressLint
+android.annotation.TargetApi
 com.dropbox.client2.DropboxAPI:
     public static final int VERSION
     public static final java.lang.String SDK_VERSION
@@ -32,9 +34,14 @@ com.dropbox.client2.DropboxAPI$ThumbFormat
 com.dropbox.client2.DropboxAPI$ThumbSize
 com.dropbox.client2.DropboxAPI$UploadRequest:
     public void abort()
+com.dropbox.client2.ProgressListener:
+    public ProgressListener()
 com.dropbox.client2.RESTUtility:
+    private RESTUtility()
     public static java.util.Map parseAsQueryString(org.apache.http.HttpResponse)
     public static java.util.Date parseDate(java.lang.String)
+com.dropbox.client2.android.AndroidAuthSession:
+    public AndroidAuthSession(com.dropbox.client2.session.AppKeyPair,com.dropbox.client2.session.Session$AccessType,com.dropbox.client2.session.AccessTokenPair)
 com.dropbox.client2.android.AuthActivity:
     public static final java.lang.String EXTRA_CONSUMER_KEY
     public static final java.lang.String EXTRA_ACCESS_TOKEN
@@ -48,6 +55,7 @@ com.dropbox.client2.android.AuthActivity:
     static final java.lang.String EXTRA_INTERNAL_CONSUMER_SECRET
 com.dropbox.client2.exception.DropboxException:
     private static final long serialVersionUID
+    public DropboxException(java.lang.String,java.lang.Throwable)
 com.dropbox.client2.exception.DropboxFileSizeException
 com.dropbox.client2.exception.DropboxIOException:
     private static final long serialVersionUID
@@ -55,6 +63,7 @@ com.dropbox.client2.exception.DropboxLocalStorageFullException:
     private static final long serialVersionUID
 com.dropbox.client2.exception.DropboxParseException:
     private static final long serialVersionUID
+    public DropboxParseException(java.lang.String)
 com.dropbox.client2.exception.DropboxPartialFileException:
     private static final long serialVersionUID
 com.dropbox.client2.exception.DropboxSSLException:
@@ -81,6 +90,7 @@ com.dropbox.client2.exception.DropboxServerException:
     public boolean isDuplicateAccount()
 com.dropbox.client2.exception.DropboxUnlinkedException:
     private static final long serialVersionUID
+    public DropboxUnlinkedException(java.lang.String)
 com.dropbox.client2.session.AbstractSession:
     private static final java.lang.String API_SERVER
     private static final java.lang.String CONTENT_SERVER
@@ -104,6 +114,7 @@ com.dropbox.client2.session.Session$ProxyInfo:
 com.dropbox.client2.session.WebAuthSession
 com.dropbox.client2.session.WebAuthSession$1
 com.dropbox.client2.session.WebAuthSession$WebAuthInfo
+com.halcyonwaves.apps.backupmyapps.BuildConfig
 com.halcyonwaves.apps.backupmyapps.MainActivity:
     public static final java.lang.String DROPBOX_API_APP_KEY
     public static final java.lang.String DROPBOX_API_APP_SECRET
@@ -126,6 +137,7 @@ com.halcyonwaves.apps.backupmyapps.packages.PackageInformation:
 com.halcyonwaves.apps.backupmyapps.tasks.RestoreBackupDataTask:
     52:56:public RestoreBackupDataTask(java.io.File,java.lang.String,com.halcyonwaves.apps.backupmyapps.IAsyncTaskFeedback)
 com.halcyonwaves.apps.backupmyapps.utils.Base64:
+    73:73:public Base64()
     150:192:public static final byte[] decode(char[])
     207:257:public static final byte[] decodeFast(char[])
     274:314:public static final byte[] encodeToByte(byte[],boolean)
@@ -159,6 +171,7 @@ org.json.simple.JSONObject:
     public static java.lang.String escape(java.lang.String)
 org.json.simple.JSONStreamAware
 org.json.simple.JSONValue:
+    public JSONValue()
     public static java.lang.Object parse(java.io.Reader)
     public static java.lang.Object parse(java.lang.String)
     public static java.lang.Object parseWithException(java.io.Reader)
