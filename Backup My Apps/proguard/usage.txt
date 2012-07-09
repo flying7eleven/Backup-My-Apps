@@ -2,7 +2,6 @@ android.annotation.SuppressLint
 android.annotation.TargetApi
 com.dropbox.client2.DropboxAPI:
     public static final int VERSION
-    public static final java.lang.String SDK_VERSION
     public static final long MAX_UPLOAD_SIZE
     protected static final int METADATA_DEFAULT_LIMIT
     private static final int REVISION_DEFAULT_LIMIT
@@ -22,26 +21,44 @@ com.dropbox.client2.DropboxAPI:
     public com.dropbox.client2.DropboxAPI$Entry restore(java.lang.String,java.lang.String)
     public com.dropbox.client2.DropboxAPI$DropboxLink media(java.lang.String,boolean)
     public com.dropbox.client2.DropboxAPI$DropboxLink share(java.lang.String)
+    public com.dropbox.client2.DropboxAPI$DeltaPage delta(java.lang.String)
+    public com.dropbox.client2.DropboxAPI$CreatedCopyRef createCopyRef(java.lang.String)
+    public com.dropbox.client2.DropboxAPI$Entry addFromCopyRef(java.lang.String,java.lang.String)
 com.dropbox.client2.DropboxAPI$Account
+com.dropbox.client2.DropboxAPI$BasicUploadRequest:
+    public void abort()
+com.dropbox.client2.DropboxAPI$CreatedCopyRef
+com.dropbox.client2.DropboxAPI$DeltaEntry
+com.dropbox.client2.DropboxAPI$DeltaEntry$JsonExtractor
+com.dropbox.client2.DropboxAPI$DeltaPage
 com.dropbox.client2.DropboxAPI$DropboxFileInfo:
     public final java.lang.String getMimeType()
+    public final long getContentLength()
     public final java.lang.String getCharset()
+    public final com.dropbox.client2.DropboxAPI$Entry getMetadata()
 com.dropbox.client2.DropboxAPI$DropboxLink
 com.dropbox.client2.DropboxAPI$Entry:
     public java.lang.String fileName()
     public java.lang.String parentPath()
+com.dropbox.client2.DropboxAPI$Entry$1:
+    public com.dropbox.client2.DropboxAPI$Entry extract(com.dropbox.client2.jsonextract.JsonThing)
+    public bridge synthetic java.lang.Object extract(com.dropbox.client2.jsonextract.JsonThing)
 com.dropbox.client2.DropboxAPI$ThumbFormat
 com.dropbox.client2.DropboxAPI$ThumbSize
 com.dropbox.client2.DropboxAPI$UploadRequest:
-    public void abort()
+    public abstract void abort()
 com.dropbox.client2.ProgressListener:
     public ProgressListener()
 com.dropbox.client2.RESTUtility:
     private RESTUtility()
     public static java.util.Map parseAsQueryString(org.apache.http.HttpResponse)
     public static java.util.Date parseDate(java.lang.String)
+com.dropbox.client2.SdkVersion:
+    public SdkVersion()
+    public static void main(java.lang.String[])
 com.dropbox.client2.android.AndroidAuthSession:
     public AndroidAuthSession(com.dropbox.client2.session.AppKeyPair,com.dropbox.client2.session.Session$AccessType,com.dropbox.client2.session.AccessTokenPair)
+    public void unlink()
 com.dropbox.client2.android.AuthActivity:
     public static final java.lang.String EXTRA_CONSUMER_KEY
     public static final java.lang.String EXTRA_ACCESS_TOKEN
@@ -63,7 +80,6 @@ com.dropbox.client2.exception.DropboxLocalStorageFullException:
     private static final long serialVersionUID
 com.dropbox.client2.exception.DropboxParseException:
     private static final long serialVersionUID
-    public DropboxParseException(java.lang.String)
 com.dropbox.client2.exception.DropboxPartialFileException:
     private static final long serialVersionUID
 com.dropbox.client2.exception.DropboxSSLException:
@@ -91,6 +107,20 @@ com.dropbox.client2.exception.DropboxServerException:
 com.dropbox.client2.exception.DropboxUnlinkedException:
     private static final long serialVersionUID
     public DropboxUnlinkedException(java.lang.String)
+com.dropbox.client2.jsonextract.JsonBase
+com.dropbox.client2.jsonextract.JsonExtractionException
+com.dropbox.client2.jsonextract.JsonExtractor:
+    public abstract java.lang.Object extract(com.dropbox.client2.jsonextract.JsonThing)
+com.dropbox.client2.jsonextract.JsonList
+com.dropbox.client2.jsonextract.JsonList$1
+com.dropbox.client2.jsonextract.JsonList$Extractor
+com.dropbox.client2.jsonextract.JsonList$WrapperIterator
+com.dropbox.client2.jsonextract.JsonMap
+com.dropbox.client2.jsonextract.JsonMap$1
+com.dropbox.client2.jsonextract.JsonMap$WrappedEntry
+com.dropbox.client2.jsonextract.JsonMap$WrapperIterator
+com.dropbox.client2.jsonextract.JsonThing
+com.dropbox.client2.jsonextract.JsonThing$OptionalExtractor
 com.dropbox.client2.session.AbstractSession:
     private static final java.lang.String API_SERVER
     private static final java.lang.String CONTENT_SERVER
@@ -172,8 +202,6 @@ org.json.simple.JSONObject:
 org.json.simple.JSONStreamAware
 org.json.simple.JSONValue:
     public JSONValue()
-    public static java.lang.Object parse(java.io.Reader)
-    public static java.lang.Object parse(java.lang.String)
     public static java.lang.Object parseWithException(java.io.Reader)
     public static java.lang.Object parseWithException(java.lang.String)
     public static void writeJSONString(java.lang.Object,java.io.Writer)

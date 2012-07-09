@@ -36,7 +36,7 @@
     <string name="preferenceSummaryEnableDropboxSynchronizationOff">There will be NO synchronization with Dropbox. Data will only be stored locally.</string>
     <string name="textViewWhatsNewLabel">What\'s new?</string>
     <string name="buttonClose">Close</string>
-    <string name="textViewWhatsNewText">Thank you for using / updating Backup My Apps. Here are the changes since the last update:\n\n* Added support for Android 4.1 (Jelly Bean)\n* Removed support for Android 2.1 (Eclair)\n* Fixed some minor security issues\n* Updated the About... information</string>
+    <string name="textViewWhatsNewText">Thank you for using / updating Backup My Apps. Here are the changes since the last update:\n\n* Added support for Android 4.1 (Jelly Bean)\n* Removed support for Android 2.1 (Eclair)\n* Fixed some minor security issues\n* Updated the About... information\n* Updated the Dropbox API</string>
     <string name="textViewSelectFileToRestore">Please select the backup file you want to restore from on your current device.</string>
     <string name="listItemLocalBackupFile">Local backup file</string>
     <string name="textViewAdditionalInformation">To backup the installed applications, press the backup button. The file with the backup information will be stored in %s. To restore the applications place the file with the backup information in the same folder and press the restore button. Optionally, if you enabled the synchronization option of this application, the restore function will also display backup files found in your Dropbox folder.\n\nFor more information open the menu and select the Help item.</string>

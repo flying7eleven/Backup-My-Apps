@@ -1,66 +1,74 @@
 com.dropbox.client2.DropboxAPI -> com.dropbox.client2.a:
-    com.dropbox.client2.session.Session session -> a
+    java.lang.String SDK_VERSION -> a
+    com.dropbox.client2.session.Session session -> b
     com.dropbox.client2.session.Session getSession() -> a
     com.dropbox.client2.DropboxAPI$DropboxFileInfo getFile(java.lang.String,java.lang.String,java.io.OutputStream,com.dropbox.client2.ProgressListener) -> a
     com.dropbox.client2.DropboxAPI$DropboxInputStream getFileStream(java.lang.String,java.lang.String) -> a
     com.dropbox.client2.DropboxAPI$Entry putFileOverwrite(java.lang.String,java.io.InputStream,long,com.dropbox.client2.ProgressListener) -> a
     com.dropbox.client2.DropboxAPI$UploadRequest putFileOverwriteRequest(java.lang.String,java.io.InputStream,long,com.dropbox.client2.ProgressListener) -> b
     com.dropbox.client2.DropboxAPI$Entry metadata(java.lang.String,int,java.lang.String,boolean,java.lang.String) -> a
-    void assertAuthenticated() -> b
-    long getFromMapAsLong(java.util.Map,java.lang.String) -> a
-    boolean getFromMapAsBoolean(java.util.Map,java.lang.String) -> b
+    boolean getFromMapAsBoolean(java.util.Map,java.lang.String) -> a
     com.dropbox.client2.DropboxAPI$UploadRequest putFileRequest(java.lang.String,java.io.InputStream,long,boolean,java.lang.String,com.dropbox.client2.ProgressListener) -> a
+    void assertAuthenticated() -> b
+    long getFromMapAsLong(java.util.Map,java.lang.String) -> b
 com.dropbox.client2.DropboxAPI$1 -> com.dropbox.client2.b:
-com.dropbox.client2.DropboxAPI$DropboxFileInfo -> com.dropbox.client2.c:
+com.dropbox.client2.DropboxAPI$BasicUploadRequest -> com.dropbox.client2.c:
+    org.apache.http.client.methods.HttpUriRequest request -> a
+    com.dropbox.client2.session.Session session -> b
+    com.dropbox.client2.DropboxAPI$Entry upload() -> a
+com.dropbox.client2.DropboxAPI$DropboxFileInfo -> com.dropbox.client2.d:
     java.lang.String mimeType -> a
-    long length -> b
+    long fileSize -> b
     java.lang.String charset -> c
-    long getContentLength() -> a
-    long access$100(com.dropbox.client2.DropboxAPI$DropboxFileInfo) -> a
-com.dropbox.client2.DropboxAPI$DropboxInputStream -> com.dropbox.client2.d:
+    com.dropbox.client2.DropboxAPI$Entry metadata -> d
+    com.dropbox.client2.DropboxAPI$Entry parseXDropboxMetadata(org.apache.http.HttpResponse) -> a
+    long parseFileSize(org.apache.http.HttpResponse,com.dropbox.client2.DropboxAPI$Entry) -> a
+    long getFileSize() -> a
+com.dropbox.client2.DropboxAPI$DropboxInputStream -> com.dropbox.client2.e:
     org.apache.http.client.methods.HttpUriRequest request -> a
     com.dropbox.client2.DropboxAPI$DropboxFileInfo info -> b
     void close() -> close
     com.dropbox.client2.DropboxAPI$DropboxFileInfo getFileInfo() -> a
     void copyStreamToOutput(java.io.OutputStream,com.dropbox.client2.ProgressListener) -> a
-com.dropbox.client2.DropboxAPI$Entry -> com.dropbox.client2.e:
+com.dropbox.client2.DropboxAPI$Entry -> com.dropbox.client2.f:
     long bytes -> a
     java.lang.String hash -> b
     java.lang.String icon -> c
     boolean isDir -> d
     java.lang.String modified -> e
-    java.lang.String path -> f
-    java.lang.String root -> g
-    java.lang.String size -> h
-    java.lang.String mimeType -> i
-    java.lang.String rev -> j
-    boolean thumbExists -> k
-    boolean isDeleted -> l
-    java.util.List contents -> m
-com.dropbox.client2.DropboxAPI$RequestAndResponse -> com.dropbox.client2.f:
+    java.lang.String clientMtime -> f
+    java.lang.String path -> g
+    java.lang.String root -> h
+    java.lang.String size -> i
+    java.lang.String mimeType -> j
+    java.lang.String rev -> k
+    boolean thumbExists -> l
+    boolean isDeleted -> m
+    java.util.List contents -> n
+    com.dropbox.client2.jsonextract.JsonExtractor JsonExtractor -> o
+com.dropbox.client2.DropboxAPI$Entry$1 -> com.dropbox.client2.g:
+com.dropbox.client2.DropboxAPI$RequestAndResponse -> com.dropbox.client2.h:
     org.apache.http.client.methods.HttpUriRequest request -> a
     org.apache.http.HttpResponse response -> b
-com.dropbox.client2.DropboxAPI$UploadRequest -> com.dropbox.client2.g:
-    org.apache.http.client.methods.HttpUriRequest request -> a
-    com.dropbox.client2.session.Session session -> b
+com.dropbox.client2.DropboxAPI$UploadRequest -> com.dropbox.client2.i:
     com.dropbox.client2.DropboxAPI$Entry upload() -> a
-com.dropbox.client2.ProgressListener -> com.dropbox.client2.h:
+com.dropbox.client2.ProgressListener -> com.dropbox.client2.j:
     void onProgress(long,long) -> a
     long progressInterval() -> a
-com.dropbox.client2.ProgressListener$ProgressHttpEntity -> com.dropbox.client2.i:
+com.dropbox.client2.ProgressListener$ProgressHttpEntity -> com.dropbox.client2.k:
     com.dropbox.client2.ProgressListener listener -> a
     long length -> b
     void writeTo(java.io.OutputStream) -> writeTo
     com.dropbox.client2.ProgressListener access$000(com.dropbox.client2.ProgressListener$ProgressHttpEntity) -> a
     long access$100(com.dropbox.client2.ProgressListener$ProgressHttpEntity) -> b
-com.dropbox.client2.ProgressListener$ProgressHttpEntity$CountingOutputStream -> com.dropbox.client2.j:
+com.dropbox.client2.ProgressListener$ProgressHttpEntity$CountingOutputStream -> com.dropbox.client2.l:
     long lastListened -> b
     long intervalMs -> c
     long transferred -> d
     com.dropbox.client2.ProgressListener$ProgressHttpEntity this$0 -> a
     void write(byte[],int,int) -> write
     void write(int) -> write
-com.dropbox.client2.RESTUtility -> com.dropbox.client2.k:
+com.dropbox.client2.RESTUtility -> com.dropbox.client2.m:
     java.text.DateFormat dateFormat -> a
     java.lang.Object request(com.dropbox.client2.RESTUtility$RequestMethod,java.lang.String,java.lang.String,int,java.lang.String[],com.dropbox.client2.session.Session) -> a
     com.dropbox.client2.DropboxAPI$RequestAndResponse streamRequest(com.dropbox.client2.RESTUtility$RequestMethod,java.lang.String,java.lang.String,int,java.lang.String[],com.dropbox.client2.session.Session) -> b
@@ -71,12 +79,14 @@ com.dropbox.client2.RESTUtility -> com.dropbox.client2.k:
     org.apache.http.client.HttpClient updatedHttpClient(com.dropbox.client2.session.Session) -> a
     void updateClientProxy(org.apache.http.client.HttpClient,com.dropbox.client2.session.Session) -> a
     java.lang.String urlencode(java.lang.String[]) -> a
-com.dropbox.client2.RESTUtility$RequestMethod -> com.dropbox.client2.l:
+com.dropbox.client2.RESTUtility$RequestMethod -> com.dropbox.client2.n:
     com.dropbox.client2.RESTUtility$RequestMethod GET -> a
     com.dropbox.client2.RESTUtility$RequestMethod POST -> b
     com.dropbox.client2.RESTUtility$RequestMethod[] $VALUES -> c
     com.dropbox.client2.RESTUtility$RequestMethod[] values() -> values
     com.dropbox.client2.RESTUtility$RequestMethod valueOf(java.lang.String) -> valueOf
+com.dropbox.client2.SdkVersion -> com.dropbox.client2.o:
+    java.lang.String get() -> a
 com.dropbox.client2.android.AndroidAuthSession -> com.dropbox.client2.android.a:
     void startAuthentication(android.content.Context) -> a
     boolean authenticationSuccessful() -> a
@@ -102,8 +112,7 @@ com.dropbox.client2.exception.DropboxException -> com.dropbox.client2.a.a:
 com.dropbox.client2.exception.DropboxIOException -> com.dropbox.client2.a.b:
 com.dropbox.client2.exception.DropboxLocalStorageFullException -> com.dropbox.client2.a.c:
 com.dropbox.client2.exception.DropboxParseException -> com.dropbox.client2.a.d:
-    java.lang.String body -> a
-    java.lang.String toString() -> toString
+    java.lang.String stringifyBody(java.io.BufferedReader) -> a
 com.dropbox.client2.exception.DropboxPartialFileException -> com.dropbox.client2.a.e:
     long bytesTransferred -> a
 com.dropbox.client2.exception.DropboxSSLException -> com.dropbox.client2.a.f:
@@ -113,6 +122,7 @@ com.dropbox.client2.exception.DropboxServerException -> com.dropbox.client2.a.g:
     java.lang.String reason -> c
     java.lang.String server -> d
     java.lang.String location -> e
+    java.util.Map parsedResponse -> f
     java.lang.String toString() -> toString
     boolean isValidWithNullBody(org.apache.http.HttpResponse) -> a
     java.lang.String getHeader(org.apache.http.HttpResponse,java.lang.String) -> a
@@ -120,7 +130,8 @@ com.dropbox.client2.exception.DropboxServerException$Error -> com.dropbox.client
     java.lang.String error -> a
     java.lang.String userError -> b
 com.dropbox.client2.exception.DropboxUnlinkedException -> com.dropbox.client2.a.i:
-com.dropbox.client2.session.AbstractSession -> com.dropbox.client2.b.a:
+com.dropbox.client2.jsonextract.JsonExtractor -> com.dropbox.client2.b.a:
+com.dropbox.client2.session.AbstractSession -> com.dropbox.client2.c.a:
     com.dropbox.client2.session.Session$AccessType accessType -> a
     com.dropbox.client2.session.AppKeyPair appKeyPair -> b
     com.dropbox.client2.session.AccessTokenPair accessTokenPair -> c
@@ -139,26 +150,38 @@ com.dropbox.client2.session.AbstractSession -> com.dropbox.client2.b.a:
     void setRequestTimeout(org.apache.http.client.methods.HttpUriRequest) -> a
     java.lang.String getAPIServer() -> j
     java.lang.String getContentServer() -> k
-com.dropbox.client2.session.AbstractSession$1 -> com.dropbox.client2.b.b:
+com.dropbox.client2.session.AbstractSession$1 -> com.dropbox.client2.c.b:
     com.dropbox.client2.session.AbstractSession this$0 -> a
     int getMaxForRoute(org.apache.http.conn.routing.HttpRoute) -> getMaxForRoute
-com.dropbox.client2.session.AbstractSession$2 -> com.dropbox.client2.b.c:
+com.dropbox.client2.session.AbstractSession$2 -> com.dropbox.client2.c.c:
     com.dropbox.client2.session.AbstractSession this$0 -> a
     org.apache.http.conn.ConnectionKeepAliveStrategy createConnectionKeepAliveStrategy() -> createConnectionKeepAliveStrategy
-com.dropbox.client2.session.AbstractSession$DBClientConnManager -> com.dropbox.client2.b.d:
+    org.apache.http.ConnectionReuseStrategy createConnectionReuseStrategy() -> createConnectionReuseStrategy
+com.dropbox.client2.session.AbstractSession$3 -> com.dropbox.client2.c.d:
+    com.dropbox.client2.session.AbstractSession this$0 -> a
+    void process(org.apache.http.HttpRequest,org.apache.http.protocol.HttpContext) -> process
+com.dropbox.client2.session.AbstractSession$4 -> com.dropbox.client2.c.e:
+    com.dropbox.client2.session.AbstractSession this$0 -> a
+    void process(org.apache.http.HttpResponse,org.apache.http.protocol.HttpContext) -> process
+com.dropbox.client2.session.AbstractSession$DBClientConnManager -> com.dropbox.client2.c.f:
     org.apache.http.conn.ClientConnectionRequest requestConnection(org.apache.http.conn.routing.HttpRoute,java.lang.Object) -> requestConnection
-com.dropbox.client2.session.AbstractSession$DBKeepAliveStrategy -> com.dropbox.client2.b.e:
+com.dropbox.client2.session.AbstractSession$DBConnectionReuseStrategy -> com.dropbox.client2.c.g:
+    boolean keepAlive(org.apache.http.HttpResponse,org.apache.http.protocol.HttpContext) -> keepAlive
+com.dropbox.client2.session.AbstractSession$DBKeepAliveStrategy -> com.dropbox.client2.c.h:
     long getKeepAliveDuration(org.apache.http.HttpResponse,org.apache.http.protocol.HttpContext) -> getKeepAliveDuration
-com.dropbox.client2.session.AbstractSession$IdleConnectionCloserThread -> com.dropbox.client2.b.f:
+com.dropbox.client2.session.AbstractSession$GzipDecompressingEntity -> com.dropbox.client2.c.i:
+    java.io.InputStream getContent() -> getContent
+    long getContentLength() -> getContentLength
+com.dropbox.client2.session.AbstractSession$IdleConnectionCloserThread -> com.dropbox.client2.c.j:
     com.dropbox.client2.session.AbstractSession$DBClientConnManager manager -> a
     int idleTimeoutSeconds -> b
     int checkIntervalMs -> c
     com.dropbox.client2.session.AbstractSession$IdleConnectionCloserThread thread -> d
     void ensureRunning(com.dropbox.client2.session.AbstractSession$DBClientConnManager,int,int) -> a
     void run() -> run
-com.dropbox.client2.session.AccessTokenPair -> com.dropbox.client2.b.g:
-com.dropbox.client2.session.AppKeyPair -> com.dropbox.client2.b.h:
-com.dropbox.client2.session.Session -> com.dropbox.client2.b.i:
+com.dropbox.client2.session.AccessTokenPair -> com.dropbox.client2.c.k:
+com.dropbox.client2.session.AppKeyPair -> com.dropbox.client2.c.l:
+com.dropbox.client2.session.Session -> com.dropbox.client2.c.m:
     com.dropbox.client2.session.Session$AccessType getAccessType() -> e
     java.util.Locale getLocale() -> f
     boolean isLinked() -> g
@@ -168,7 +191,7 @@ com.dropbox.client2.session.Session -> com.dropbox.client2.b.i:
     void setRequestTimeout(org.apache.http.client.methods.HttpUriRequest) -> a
     java.lang.String getAPIServer() -> j
     java.lang.String getContentServer() -> k
-com.dropbox.client2.session.Session$AccessType -> com.dropbox.client2.b.j:
+com.dropbox.client2.session.Session$AccessType -> com.dropbox.client2.c.n:
     com.dropbox.client2.session.Session$AccessType DROPBOX -> a
     com.dropbox.client2.session.Session$AccessType APP_FOLDER -> b
     java.lang.String urlPart -> c
@@ -176,10 +199,10 @@ com.dropbox.client2.session.Session$AccessType -> com.dropbox.client2.b.j:
     com.dropbox.client2.session.Session$AccessType[] values() -> values
     com.dropbox.client2.session.Session$AccessType valueOf(java.lang.String) -> valueOf
     java.lang.String toString() -> toString
-com.dropbox.client2.session.Session$ProxyInfo -> com.dropbox.client2.b.k:
+com.dropbox.client2.session.Session$ProxyInfo -> com.dropbox.client2.c.o:
     java.lang.String host -> a
     int port -> b
-com.dropbox.client2.session.TokenPair -> com.dropbox.client2.b.l:
+com.dropbox.client2.session.TokenPair -> com.dropbox.client2.c.p:
     java.lang.String key -> a
     java.lang.String secret -> b
     int hashCode() -> hashCode
@@ -339,8 +362,10 @@ org.json.simple.JSONObject -> a.a.a.c:
     java.lang.String toJSONString(java.lang.String,java.lang.Object,java.lang.StringBuffer) -> a
     java.lang.String toString() -> toString
 org.json.simple.JSONValue -> a.a.a.d:
+    java.lang.Object parse(java.io.Reader) -> a
+    java.lang.Object parse(java.lang.String) -> a
     java.lang.String toJSONString(java.lang.Object) -> a
-    java.lang.String escape(java.lang.String) -> a
+    java.lang.String escape(java.lang.String) -> b
     void escape(java.lang.String,java.lang.StringBuffer) -> a
 org.json.simple.parser.ContainerFactory -> a.a.a.a.a:
     java.util.Map createObjectContainer() -> a
