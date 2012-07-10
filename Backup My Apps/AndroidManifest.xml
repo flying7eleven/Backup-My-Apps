@@ -25,7 +25,7 @@
         <activity android:name=".SettingsActivity" android:exported="false">
             <intent-filter></intent-filter>
         </activity>
-		<activity android:name="com.dropbox.client2.android.AuthActivity" android:launchMode="singleTask" android:configChanges="orientation|keyboard"  android:exported="false">
+		<activity android:name="com.dropbox.client2.android.AuthActivity" android:launchMode="singleTask" android:configChanges="orientation|keyboard" android:exported="true">
 			<intent-filter>
 			    <data android:scheme="db-lacao8kfka8qr5b" />
 			    <action android:name="android.intent.action.VIEW" />
