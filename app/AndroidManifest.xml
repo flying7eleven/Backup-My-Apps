@@ -1,51 +1,10 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.halcyonwaves.apps.backupmyapps"
-    android:versionCode="1"
-    android:versionName="1.0">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.halcyonwaves.apps.backupmyapps" android:versionCode="60" android:versionName="0.6">
+    
+    <!-- define the requirements for running the app -->
+    <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="16" android:maxSdkVersion="16" />
 
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="15" />
-
-    <application android:label="@string/app_name"
-        android:icon="@drawable/ic_launcher"
-        android:theme="@style/AppTheme">
-
+    <!-- define the application content -->
+    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:theme="@style/AppTheme">
     </application>
 
-</manifest>
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.halcyonwaves.apps.backupmyapps"
-      android:versionCode="40"
-      android:versionName="0.5.8">
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="8" android:maxSdkVersion="16" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-
-    <application android:icon="@drawable/icon" android:label="@string/applicationName">
-    	<service android:name=".BackupService" android:enabled="true" android:label="@string/applicationBackupServiceName" />
-        <activity android:name=".MainActivity"
-                  android:label="@string/applicationName">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".RestoreSelectionActivity" android:exported="false">
-            <intent-filter></intent-filter>
-        </activity>
-        <activity android:name=".RestoreSelectFileActivity" android:exported="false">
-            <intent-filter></intent-filter>
-        </activity>
-        <activity android:name=".SettingsActivity" android:exported="false">
-            <intent-filter></intent-filter>
-        </activity>
-		<activity android:name="com.dropbox.client2.android.AuthActivity" android:launchMode="singleTask" android:configChanges="orientation|keyboard" android:exported="true">
-			<intent-filter>
-			    <data android:scheme="db-lacao8kfka8qr5b" />
-			    <action android:name="android.intent.action.VIEW" />
-			    <category android:name="android.intent.category.BROWSABLE"/>
-			    <category android:name="android.intent.category.DEFAULT" />
-			</intent-filter>
-		</activity>
-    </application>
 </manifest>
